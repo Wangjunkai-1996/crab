@@ -116,3 +116,10 @@
 4. 小程序前端开发文档与运营后台前端开发文档均已补齐并定稿。
 5. CloudBase 后端主文档与配套执行文档已补齐，前后端后续实现应以这组技术文档为事实来源。
 6. `Draft`、协议、提审、清单类文档继续保留，但不覆盖已锁定的技术与 UI 文档。
+
+## Skills 同步
+
+如需在另一台电脑对齐当前这台机器使用的 skills，可查看：
+
+- [tools/skills-sync/README.md](/Users/tokk/Desktop/crab-miniapp/tools/skills-sync/README.md)
+- [tools/skills-sync/MANIFEST.md](/Users/tokk/Desktop/crab-miniapp/tools/skills-sync/MANIFEST.md)

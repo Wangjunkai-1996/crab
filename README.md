@@ -1,176 +1,118 @@
-# 螃蟹通告类小程序交接说明
+# 多米通告 项目文档总览
 
-## 目的
+## 项目状态
 
-本文件用于承接上一条对话里的竞品研究结果，方便在新对话中继续推进「类似螃蟹通告的小程序」产品方案、PRD、信息架构与开发设计。
+当前仓库已完成多米通告 V1 的产品、交互、UI 与技术选型定稿，仍处于文档先行阶段，尚未进入正式代码开发。
 
-## 当前结论
+当前有效方向：
 
-螃蟹通告本质上不是内容社区，而是一个双边撮合平台：
+1. 产品定位为低门槛、全链路免费、轻风控兜底的达人合作撮合小程序
+2. UI 方向已锁定为“清爽可信、带编辑感的独立移动产品感”
+3. 技术路线已锁定为“原生微信小程序 + CloudBase + 独立 Web 运营后台”
 
-- 商家发布推广招募需求，即「通告」
-- 博主维护个人社媒名片并报名合作
-- 平台通过审核、筛选、推荐、会员增值来提升撮合效率
+当前开发事实来源：
 
-它的核心价值不在发帖，而在于把原本分散在微信群、Excel、私聊里的合作流程做成标准化链路。
+1. 小程序前端开发文档已定稿
+2. 运营后台前端开发文档已定稿
+3. CloudBase 后端开发文档、后台鉴权规范、API Contract、索引与部署文档已定稿
 
-## 已确认的公开功能
+## 核心文档
 
-### 1. 商家端
+## 文档目录结构
 
-- 发布通告
-- 编辑通告
-- 通告审核后进入广场
-- 跨平台招募博主
-- 查看报名博主主页和互动数据
-- 导出 Excel 报名列表
+- `docs/product/`：产品需求、字段字典、权限矩阵、状态流转、审核工作流
+- `docs/design/`：UI 定稿、设计系统、Token、高保真原型
+- `docs/engineering/`：技术选型、前后端开发文档、鉴权规范、API Contract、部署与安全规范
+- `docs/operations/`：品牌提审、规则协议、SOP、上线清单、种子内容模板
 
-### 2. 博主端
+### 产品与流程
 
-- 建立个人社媒名片
-- 导入社交平台账号
-- 名片数据自动更新
-- 浏览广场通告
-- 按平台、领域等条件筛选
-- 搜索通告
-- 报名通告
-- 订阅感兴趣的通告
+- 产品需求文档：[docs/product/PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
+- 运营后台需求：[docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
+- 字段字典：[docs/product/Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
+- 可见性与权限矩阵：[docs/product/Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
+- 状态流转表：[docs/product/Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)
+- 审核工作流：[docs/product/Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
 
-### 3. 平台与会员能力
+### UI 与体验
 
-- 推荐算法和撮合匹配
-- 内容审核
-- 消息推送
-- 会员订阅
-- 高奖励频道
-- 报名上限提升
-- 自定义探店城市
-- 超级报名
-- 会员免广告
+- UI 设计系统与规范：[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)
+- Design Token：[docs/design/UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json)
+- UI 高保真预览：[docs/design/UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html)
+- UI 定稿结论：[docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
 
-## 从界面和公开协议反推的信息架构
+### 技术与开发
 
-公开截图里可以看到的主导航与核心入口大致包括：
+- 技术架构与选型方案：[docs/engineering/Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)
+- CloudBase 后端开发文档：[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
+- 小程序前端开发文档：[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)
+- 运营后台前端开发文档：[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)
+- CloudBase 后台鉴权规范：[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
+- Cloud Function API Contract：[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
+- CloudBase 安全规则与索引规范：[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
+- 后端环境与部署 Runbook：[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
 
-- 顶部主入口：`广场`、`订阅`、`搜索`
-- 广场筛选：`全部`、`高奖励`、`平台结算`、`平台担保`
-- 二级筛选：平台筛选、招募领域筛选
-- 平台入口：小红书、微博、抖音、Bilibili、快手、逛逛等
-- 底部导航：`钟意`、`带货`、`我的通告`、`我`
+### 运营、上线与合规
 
-注：
-- `平台结算`、`平台担保` 来自截图观察，属于中高置信推断
-- `钟意`、`带货`、`我的通告` 来自截图识别，可能随版本略有变化
+- 品牌与提审文案：[docs/operations/Brand-And-Audit-Copy-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Brand-And-Audit-Copy-V1.md)
+- 平台规则文案初稿：[docs/operations/Platform-Rules-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Platform-Rules-Draft-V1.md)
+- 用户协议初稿：[docs/operations/User-Agreement-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/User-Agreement-Draft-V1.md)
+- 隐私政策初稿：[docs/operations/Privacy-Policy-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Privacy-Policy-Draft-V1.md)
+- 审核与处罚 SOP：[docs/operations/Moderation-SOP-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Moderation-SOP-V1.md)
+- 首批通告模板：[docs/operations/Seed-Notice-Templates-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Seed-Notice-Templates-V1.md)
+- 上线准备清单：[docs/operations/Miniapp-Launch-Checklist-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Miniapp-Launch-Checklist-V1.md)
 
-## 产品本质判断
+## 文档状态分层
 
-如果要做类似产品，真正难的不是页面，而是下面这几个系统能力：
+### 已定稿，可直接作为开发依据
 
-- 供需两端冷启动
-- 商家身份与通告真实性审核
-- 博主账号真实性验证
-- 数据展示可信度
-- 报名后的沟通和履约管理
-- 纠纷处理与平台信任建设
+- 小程序前端开发文档：[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)
+- 运营后台前端开发文档：[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)
+- CloudBase 后端开发文档：[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
+- CloudBase 后台鉴权规范：[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
+- Cloud Function API Contract：[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
+- CloudBase 安全规则与索引规范：[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
+- 后端环境与部署 Runbook：[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
 
-## 用户痛点与可切入机会
+### 有效但属于业务/运营补充或上线前补全
 
-从公开评论和协议能看到几个明显信号：
+- 品牌与提审文案：[docs/operations/Brand-And-Audit-Copy-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Brand-And-Audit-Copy-V1.md)
+- 平台规则文案初稿：[docs/operations/Platform-Rules-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Platform-Rules-Draft-V1.md)
+- 用户协议初稿：[docs/operations/User-Agreement-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/User-Agreement-Draft-V1.md)
+- 隐私政策初稿：[docs/operations/Privacy-Policy-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Privacy-Policy-Draft-V1.md)
+- 审核与处罚 SOP：[docs/operations/Moderation-SOP-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Moderation-SOP-V1.md)
+- 首批通告模板：[docs/operations/Seed-Notice-Templates-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Seed-Notice-Templates-V1.md)
+- 上线准备清单：[docs/operations/Miniapp-Launch-Checklist-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Miniapp-Launch-Checklist-V1.md)
 
-- 部分用户对认证信息采集比较敏感
-- 部分用户认为收费感偏强
-- 小博主对高粉门槛不友好
+## 建议阅读顺序
 
-因此，新产品的差异化机会可以是：
+1. 先看 [docs/product/PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md) 与 [docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)，确认前台与后台的业务边界
+2. 再看 [docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)、[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md) 与 [docs/design/UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html)，确认小程序端页面与交互定稿
+3. 再看 [docs/engineering/Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)，确认技术路线、边界与拆分方式
+4. 小程序前端开发先看 [docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)，并同时配合 [docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)、[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)、[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 与 [docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
+5. 运营后台前端开发先看 [docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)，并同时配合 [docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)、[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 与 [docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
+6. CloudBase 后端开发先看 [docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)，配合 [docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)、[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)、[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)，再配合 [docs/product/Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)、[docs/product/Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)、[docs/product/Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)、[docs/product/Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+7. 上线前再回到合规、运营与法务文档补齐执行项
 
-- 更轻量的认证流程
-- 更透明的收费方式
-- 对中小博主更友好的分层机制
-- 更清晰的报名成功率预期
+## 文档优先级
 
-## 建议的产品定位
+当文档之间出现冲突时，按以下优先级认定：
 
-不建议一开始全量复制螃蟹通告。
+1. [docs/engineering/Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)、[docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
+2. [docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)、[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)、[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)、[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)、[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
+3. [docs/product/PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)、[docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)、[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)、[docs/product/Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)、[docs/product/Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)、[docs/product/Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)、[docs/product/Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+4. 各类 `Draft`、`Checklist`、`SOP`、协议与提审文档
 
-更适合的方向是做一个更聚焦、更容易冷启动的垂直版 MVP，例如：
+说明：
 
-- 小红书探店撮合
-- 本地生活达人招募
-- 单一行业垂类招募，比如美妆、餐饮、母婴
+1. 若实现层发生冲突，开发团队优先遵守“架构选型 / UI 定稿 / API Contract / 开发文档”这一层级。
+2. 协议、规则和清单类文档仍是有效工作文档，但部分内容属于上线前占位初稿。
 
-建议的一句话定位：
+## 本轮清理结论
 
-`帮助本地商家快速招募合适达人，帮助中小博主高效接到真实合作。`
-
-## 建议的 MVP 范围
-
-### 第一版必做
-
-- 微信登录
-- 商家认证
-- 商家发布通告
-- 通告审核后台
-- 广场列表
-- 搜索与基础筛选
-- 博主名片
-- 博主报名
-- 商家查看报名列表
-- 基础消息通知
-- 基础会员订阅
-
-### 第一版先不要做
-
-- 全平台自动同步社媒数据
-- 平台担保与平台结算
-- 超级报名
-- 复杂广告系统
-- 过重的推荐算法
-
-## 微信小程序实现建议
-
-如果做微信小程序，建议先采用：
-
-- 社媒数据手动填写
-- 上传截图佐证
-- 平台人工审核
-
-不要第一版就追求自动抓取全平台数据，否则开发复杂度和合规风险都会显著上升。
-
-## 推荐的下一步工作顺序
-
-1. 明确切入场景和目标用户
-2. 画双边业务流程图
-3. 输出小程序信息架构
-4. 确定页面清单
-5. 划定 MVP 范围
-6. 设计后台审核与运营流程
-7. 再进入 PRD 和技术方案
-
-## 新对话建议启动语
-
-新开对话后，可直接发送下面这段：
-
-```text
-先阅读 /Users/tokk/Desktop/crab-miniapp-handoff/README.md。
-
-我们要继续做一个类似“螃蟹通告”的微信小程序，请你直接以资深产品经理身份继续推进。
-
-先输出：
-1. 小程序信息架构
-2. 商家端和博主端核心流程
-3. MVP 页面清单
-4. 第一版 PRD 范围
-5. 变现方案与优先级
-```
-
-## 主要公开来源
-
-- 官网：https://www.pangxietonggao.com/
-- App Store：https://apps.apple.com/cn/app/%E8%9E%83%E8%9F%B9%E9%80%9A%E5%91%8A/id1536540331
-- 用户协议：https://img.xiaoduanshijian.com/0000000000/crab-app/user-agreement.html
-- 会员协议：https://img.xiaoduanshijian.com/0000000000/vip/member-service-agreement.html
-- 隐私政策：https://img.xiaoduanshijian.com/0000000000/crab-app/privacy-policy.html
-
-## 说明
-
-本文件基于上一条对话中的公开资料研究整理，不包含登录后私域界面和后台系统的实际抓取结果。
+1. 旧的竞品交接型 README 已废弃，现已替换为正式项目索引。
+2. 低保真原型文档已废弃并移除，后续不再作为当前事实来源。
+3. 当前 `docs/` 目录中剩余文档均仍有保留价值。
+4. 小程序前端开发文档与运营后台前端开发文档均已补齐并定稿。
+5. CloudBase 后端主文档与配套执行文档已补齐，前后端后续实现应以这组技术文档为事实来源。
+6. `Draft`、协议、提审、清单类文档继续保留，但不覆盖已锁定的技术与 UI 文档。

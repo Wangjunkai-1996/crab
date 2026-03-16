@@ -1,0 +1,310 @@
+{
+  "meta": {
+    "productName": "多米通告",
+    "version": "V1.0",
+    "updatedAt": "2026-03-16",
+    "platform": "wechat-mini-program",
+    "designDirection": "independent-mobile-product"
+  },
+  "brand": {
+    "name": "多米通告",
+    "nameLatin": "Duomi Tonggao",
+    "slogan": "真实合作，更快匹配",
+    "traits": [
+      "可信",
+      "克制",
+      "现代",
+      "轻商务",
+      "精致"
+    ]
+  },
+  "colors": {
+    "primary": {
+      "50": "#EEF4FF",
+      "100": "#D9E6FF",
+      "200": "#B8D0FF",
+      "500": "#2F6BFF",
+      "600": "#2457E6",
+      "700": "#1941BC"
+    },
+    "secondary": {
+      "50": "#EAFBF8",
+      "100": "#CFF5F0",
+      "200": "#9AE8DF",
+      "500": "#12B3A8",
+      "600": "#0B938A",
+      "700": "#0A766F"
+    },
+    "accent": {
+      "50": "#FFF7E7",
+      "100": "#FFE9BE",
+      "200": "#FFD27A",
+      "500": "#FFB547",
+      "600": "#F39A22",
+      "700": "#D77F11"
+    },
+    "danger": {
+      "50": "#FFF0F3",
+      "100": "#FFD9E1",
+      "200": "#F8A8B9",
+      "500": "#E35D6A",
+      "600": "#C74653",
+      "700": "#A73744"
+    },
+    "neutral": {
+      "0": "#FFFFFF",
+      "25": "#F8FAFD",
+      "50": "#F5F7FB",
+      "100": "#EEF3F8",
+      "200": "#DCE5F0",
+      "300": "#C3CFDB",
+      "400": "#8A96A8",
+      "500": "#5C6980",
+      "600": "#425067",
+      "700": "#2A3548",
+      "800": "#19345E",
+      "950": "#091221",
+      "900": "#152033"
+    },
+    "text": {
+      "primary": "#152033",
+      "secondary": "#5C6980",
+      "tertiary": "#8A96A8",
+      "inverse": "#FFFFFF"
+    },
+    "border": {
+      "light": "#DCE5F0",
+      "strong": "#C3CFDB",
+      "focus": "#7EA8FF"
+    },
+    "surface": {
+      "page": "#F5F7FB",
+      "pageSecondary": "#EEF3F8",
+      "card": "#FFFFFF",
+      "cardElevated": "rgba(255,255,255,0.92)",
+      "cardSoft": "#F8FAFD",
+      "cardEdge": "rgba(255,255,255,0.72)",
+      "glass": "rgba(255,255,255,0.82)",
+      "overlay": "rgba(21,32,51,0.42)",
+      "ambientBlue": "rgba(47,107,255,0.22)",
+      "ambientTeal": "rgba(18,179,168,0.18)",
+      "ambientAmber": "rgba(255,181,71,0.18)"
+    }
+  },
+  "gradients": {
+    "pageBackground": "linear-gradient(180deg, #FCFDFF 0%, #EEF4FA 100%)",
+    "pageAmbient": "radial-gradient(circle at 12% 0%, rgba(47,107,255,0.18), transparent 26%), radial-gradient(circle at 86% 8%, rgba(18,179,168,0.14), transparent 22%), linear-gradient(180deg, #FCFDFF 0%, #EEF4FA 100%)",
+    "brandHero": "linear-gradient(145deg, #0E1A30 0%, #1C3D76 22%, #2F6BFF 56%, #8EBFFF 100%)",
+    "workbenchHero": "linear-gradient(145deg, #091526 0%, #183866 24%, #245FE7 62%, #4FD0C5 100%)",
+    "tealGlow": "linear-gradient(135deg, #12B3A8 0%, #5CD7CF 100%)",
+    "accentGlow": "linear-gradient(135deg, #FFD27A 0%, #FFB547 100%)",
+    "dangerSoft": "linear-gradient(135deg, #FFD9E1 0%, #FFF0F3 100%)",
+    "paperSurface": "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(247,250,255,0.94) 100%)"
+  },
+  "typography": {
+    "fontFamily": {
+      "display": "\"SF Pro Display\", \"HarmonyOS Sans SC\", \"PingFang SC\", \"Noto Sans SC\", sans-serif",
+      "body": "\"PingFang SC\", \"HarmonyOS Sans SC\", \"Noto Sans SC\", sans-serif",
+      "numeric": "\"SF Pro Display\", \"DIN Alternate\", \"HarmonyOS Sans SC\", sans-serif"
+    },
+    "fontSize": {
+      "meta": "22rpx",
+      "caption": "24rpx",
+      "bodyS": "26rpx",
+      "bodyM": "28rpx",
+      "heading3": "30rpx",
+      "heading2": "34rpx",
+      "heading1": "40rpx",
+      "display": "56rpx"
+    },
+    "fontWeight": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    },
+    "lineHeight": {
+      "tight": 1.2,
+      "normal": 1.45,
+      "relaxed": 1.6
+    },
+    "letterSpacing": {
+      "tight": "-0.02em",
+      "display": "-0.05em",
+      "normal": "0",
+      "wide": "0.02em",
+      "kicker": "0.08em"
+    }
+  },
+  "spacing": {
+    "1": "8rpx",
+    "2": "12rpx",
+    "3": "16rpx",
+    "4": "20rpx",
+    "5": "24rpx",
+    "6": "32rpx",
+    "7": "40rpx",
+    "8": "48rpx",
+    "pagePaddingX": "32rpx",
+    "pagePaddingTop": "40rpx",
+    "sectionGap": "32rpx",
+    "cardPadding": "24rpx"
+  },
+  "radius": {
+    "input": "20rpx",
+    "card": "28rpx",
+    "sheet": "36rpx",
+    "pill": "999rpx",
+    "full": "9999rpx"
+  },
+  "shadow": {
+    "soft": "0 20rpx 56rpx rgba(25, 61, 118, 0.12)",
+    "raised": "0 24rpx 64rpx rgba(21, 52, 104, 0.14)",
+    "float": "0 28rpx 84rpx rgba(16, 38, 78, 0.18)",
+    "focus": "0 0 0 4rpx rgba(47, 107, 255, 0.14)"
+  },
+  "motion": {
+    "duration": {
+      "tap": "140ms",
+      "toggle": "180ms",
+      "page": "240ms",
+      "sheet": "320ms"
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+      "enter": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "exit": "cubic-bezier(0.4, 0, 1, 1)"
+    },
+    "distance": {
+      "cardLift": "-4rpx",
+      "pageEnterY": "24rpx",
+      "sheetEnterY": "48rpx"
+    }
+  },
+  "layout": {
+    "safeAreaBottom": "34rpx",
+    "navHeight": "96rpx",
+    "heroNavHeight": "120rpx",
+    "tabBarHeight": "112rpx",
+    "contentMaxWidth": "750rpx",
+    "phonePreviewWidth": "390px",
+    "phonePreviewHeight": "844px"
+  },
+  "components": {
+    "button": {
+      "primaryHeight": "88rpx",
+      "secondaryHeight": "88rpx",
+      "compactHeight": "72rpx",
+      "radius": "999rpx",
+      "paddingX": "28rpx"
+    },
+    "chip": {
+      "height": "64rpx",
+      "paddingX": "24rpx",
+      "gap": "12rpx"
+    },
+    "input": {
+      "height": "88rpx",
+      "textareaMinHeight": "200rpx",
+      "radius": "20rpx",
+      "paddingX": "24rpx"
+    },
+    "card": {
+      "padding": "24rpx",
+      "gap": "20rpx",
+      "radius": "28rpx"
+    },
+    "tabBar": {
+      "height": "112rpx",
+      "iconBox": "52rpx",
+      "labelSize": "22rpx"
+    },
+    "bottomActionBar": {
+      "height": "128rpx",
+      "paddingX": "32rpx",
+      "paddingTop": "20rpx"
+    }
+  },
+  "status": {
+    "notice": {
+      "pending_review": {
+        "bg": "#EEF4FF",
+        "text": "#2457E6",
+        "border": "#B8D0FF"
+      },
+      "active": {
+        "bg": "#EAFBF8",
+        "text": "#0A766F",
+        "border": "#9AE8DF"
+      },
+      "expired": {
+        "bg": "#FFF7E7",
+        "text": "#D77F11",
+        "border": "#FFD27A"
+      },
+      "closed": {
+        "bg": "#EEF3F8",
+        "text": "#5C6980",
+        "border": "#DCE5F0"
+      },
+      "removed": {
+        "bg": "#FFF0F3",
+        "text": "#C74653",
+        "border": "#F8A8B9"
+      },
+      "rejected": {
+        "bg": "#FFF0F3",
+        "text": "#C74653",
+        "border": "#F8A8B9"
+      }
+    },
+    "application": {
+      "applied": {
+        "bg": "#EEF4FF",
+        "text": "#2457E6",
+        "border": "#B8D0FF"
+      },
+      "viewed": {
+        "bg": "#F2F6FF",
+        "text": "#2457E6",
+        "border": "#D9E6FF"
+      },
+      "contact_pending": {
+        "bg": "#FFF7E7",
+        "text": "#D77F11",
+        "border": "#FFD27A"
+      },
+      "communicating": {
+        "bg": "#EAFBF8",
+        "text": "#0A766F",
+        "border": "#9AE8DF"
+      },
+      "rejected": {
+        "bg": "#FFF0F3",
+        "text": "#C74653",
+        "border": "#F8A8B9"
+      },
+      "completed": {
+        "bg": "#EAFBF8",
+        "text": "#0A766F",
+        "border": "#9AE8DF"
+      }
+    }
+  },
+  "illustration": {
+    "style": "geometric-linear",
+    "corner": "rounded",
+    "fillStrategy": "soft-gradient",
+    "outlineColor": "#8A96A8"
+  },
+  "adSlot": {
+    "strategy": "native-feed-card-only",
+    "listInsertPositions": [
+      5,
+      11
+    ],
+    "background": "#F8FAFD",
+    "border": "#DCE5F0",
+    "label": "推广"
+  }
+}

@@ -6,11 +6,11 @@
 
 定稿依据为：
 
-- [UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)
-- [UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json)
-- [UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html)
-- [Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
-- [Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)
+- [UI-Design-System-V1.md](UI-Design-System-V1.md)
+- [UI-Design-Tokens-V1.json](UI-Design-Tokens-V1.json)
+- [UI-High-Fidelity-Prototype-V1.html](UI-High-Fidelity-Prototype-V1.html)
+- [Visibility-Permissions-Matrix-V1.md](../product/Visibility-Permissions-Matrix-V1.md)
+- [Technical-Architecture-Selection-V1.md](../engineering/Technical-Architecture-Selection-V1.md)
 
 ## 2. 已锁定的关键决策
 

@@ -27,80 +27,80 @@
 
 ### 产品与流程
 
-- 产品需求文档：[docs/product/PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 运营后台需求：[docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
-- 字段字典：[docs/product/Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
-- 可见性与权限矩阵：[docs/product/Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
-- 状态流转表：[docs/product/Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)
-- 审核工作流：[docs/product/Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+- 产品需求文档：[docs/product/PRD-V1.md](docs/product/PRD-V1.md)
+- 运营后台需求：[docs/product/Admin-Operations-Backend-PRD-V1.md](docs/product/Admin-Operations-Backend-PRD-V1.md)
+- 字段字典：[docs/product/Field-Dictionary-V1.md](docs/product/Field-Dictionary-V1.md)
+- 可见性与权限矩阵：[docs/product/Visibility-Permissions-Matrix-V1.md](docs/product/Visibility-Permissions-Matrix-V1.md)
+- 状态流转表：[docs/product/Status-Flow-Matrix-V1.md](docs/product/Status-Flow-Matrix-V1.md)
+- 审核工作流：[docs/product/Review-Workflow-V1.md](docs/product/Review-Workflow-V1.md)
 
 ### UI 与体验
 
-- UI 设计系统与规范：[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)
-- Design Token：[docs/design/UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json)
-- UI 高保真预览：[docs/design/UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html)
-- UI 定稿结论：[docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
+- UI 设计系统与规范：[docs/design/UI-Design-System-V1.md](docs/design/UI-Design-System-V1.md)
+- Design Token：[docs/design/UI-Design-Tokens-V1.json](docs/design/UI-Design-Tokens-V1.json)
+- UI 高保真预览：[docs/design/UI-High-Fidelity-Prototype-V1.html](docs/design/UI-High-Fidelity-Prototype-V1.html)
+- UI 定稿结论：[docs/design/UI-Final-Signoff-V1.md](docs/design/UI-Final-Signoff-V1.md)
 
 ### 技术与开发
 
-- 技术架构与选型方案：[docs/engineering/Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)
-- CloudBase 后端开发文档：[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- 小程序前端开发文档：[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)
-- 运营后台前端开发文档：[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)
-- CloudBase 后台鉴权规范：[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-- Cloud Function API Contract：[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-- CloudBase 安全规则与索引规范：[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
-- 后端环境与部署 Runbook：[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
+- 技术架构与选型方案：[docs/engineering/Technical-Architecture-Selection-V1.md](docs/engineering/Technical-Architecture-Selection-V1.md)
+- CloudBase 后端开发文档：[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
+- 小程序前端开发文档：[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)
+- 运营后台前端开发文档：[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)
+- CloudBase 后台鉴权规范：[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
+- Cloud Function API Contract：[docs/engineering/CloudFunction-API-Contract-V1.md](docs/engineering/CloudFunction-API-Contract-V1.md)
+- CloudBase 安全规则与索引规范：[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
+- 后端环境与部署 Runbook：[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
 
 ### 运营、上线与合规
 
-- 品牌与提审文案：[docs/operations/Brand-And-Audit-Copy-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Brand-And-Audit-Copy-V1.md)
-- 平台规则文案初稿：[docs/operations/Platform-Rules-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Platform-Rules-Draft-V1.md)
-- 用户协议初稿：[docs/operations/User-Agreement-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/User-Agreement-Draft-V1.md)
-- 隐私政策初稿：[docs/operations/Privacy-Policy-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Privacy-Policy-Draft-V1.md)
-- 审核与处罚 SOP：[docs/operations/Moderation-SOP-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Moderation-SOP-V1.md)
-- 首批通告模板：[docs/operations/Seed-Notice-Templates-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Seed-Notice-Templates-V1.md)
-- 上线准备清单：[docs/operations/Miniapp-Launch-Checklist-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Miniapp-Launch-Checklist-V1.md)
+- 品牌与提审文案：[docs/operations/Brand-And-Audit-Copy-V1.md](docs/operations/Brand-And-Audit-Copy-V1.md)
+- 平台规则文案初稿：[docs/operations/Platform-Rules-Draft-V1.md](docs/operations/Platform-Rules-Draft-V1.md)
+- 用户协议初稿：[docs/operations/User-Agreement-Draft-V1.md](docs/operations/User-Agreement-Draft-V1.md)
+- 隐私政策初稿：[docs/operations/Privacy-Policy-Draft-V1.md](docs/operations/Privacy-Policy-Draft-V1.md)
+- 审核与处罚 SOP：[docs/operations/Moderation-SOP-V1.md](docs/operations/Moderation-SOP-V1.md)
+- 首批通告模板：[docs/operations/Seed-Notice-Templates-V1.md](docs/operations/Seed-Notice-Templates-V1.md)
+- 上线准备清单：[docs/operations/Miniapp-Launch-Checklist-V1.md](docs/operations/Miniapp-Launch-Checklist-V1.md)
 
 ## 文档状态分层
 
 ### 已定稿，可直接作为开发依据
 
-- 小程序前端开发文档：[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)
-- 运营后台前端开发文档：[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)
-- CloudBase 后端开发文档：[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- CloudBase 后台鉴权规范：[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-- Cloud Function API Contract：[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-- CloudBase 安全规则与索引规范：[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
-- 后端环境与部署 Runbook：[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
+- 小程序前端开发文档：[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)
+- 运营后台前端开发文档：[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)
+- CloudBase 后端开发文档：[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
+- CloudBase 后台鉴权规范：[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
+- Cloud Function API Contract：[docs/engineering/CloudFunction-API-Contract-V1.md](docs/engineering/CloudFunction-API-Contract-V1.md)
+- CloudBase 安全规则与索引规范：[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
+- 后端环境与部署 Runbook：[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
 
 ### 有效但属于业务/运营补充或上线前补全
 
-- 品牌与提审文案：[docs/operations/Brand-And-Audit-Copy-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Brand-And-Audit-Copy-V1.md)
-- 平台规则文案初稿：[docs/operations/Platform-Rules-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Platform-Rules-Draft-V1.md)
-- 用户协议初稿：[docs/operations/User-Agreement-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/User-Agreement-Draft-V1.md)
-- 隐私政策初稿：[docs/operations/Privacy-Policy-Draft-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Privacy-Policy-Draft-V1.md)
-- 审核与处罚 SOP：[docs/operations/Moderation-SOP-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Moderation-SOP-V1.md)
-- 首批通告模板：[docs/operations/Seed-Notice-Templates-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Seed-Notice-Templates-V1.md)
-- 上线准备清单：[docs/operations/Miniapp-Launch-Checklist-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Miniapp-Launch-Checklist-V1.md)
+- 品牌与提审文案：[docs/operations/Brand-And-Audit-Copy-V1.md](docs/operations/Brand-And-Audit-Copy-V1.md)
+- 平台规则文案初稿：[docs/operations/Platform-Rules-Draft-V1.md](docs/operations/Platform-Rules-Draft-V1.md)
+- 用户协议初稿：[docs/operations/User-Agreement-Draft-V1.md](docs/operations/User-Agreement-Draft-V1.md)
+- 隐私政策初稿：[docs/operations/Privacy-Policy-Draft-V1.md](docs/operations/Privacy-Policy-Draft-V1.md)
+- 审核与处罚 SOP：[docs/operations/Moderation-SOP-V1.md](docs/operations/Moderation-SOP-V1.md)
+- 首批通告模板：[docs/operations/Seed-Notice-Templates-V1.md](docs/operations/Seed-Notice-Templates-V1.md)
+- 上线准备清单：[docs/operations/Miniapp-Launch-Checklist-V1.md](docs/operations/Miniapp-Launch-Checklist-V1.md)
 
 ## 建议阅读顺序
 
-1. 先看 [docs/product/PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md) 与 [docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)，确认前台与后台的业务边界
-2. 再看 [docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)、[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md) 与 [docs/design/UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html)，确认小程序端页面与交互定稿
-3. 再看 [docs/engineering/Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)，确认技术路线、边界与拆分方式
-4. 小程序前端开发先看 [docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)，并同时配合 [docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)、[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)、[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 与 [docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-5. 运营后台前端开发先看 [docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)，并同时配合 [docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)、[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 与 [docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
-6. CloudBase 后端开发先看 [docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)，配合 [docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)、[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)、[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)，再配合 [docs/product/Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)、[docs/product/Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)、[docs/product/Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)、[docs/product/Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+1. 先看 [docs/product/PRD-V1.md](docs/product/PRD-V1.md) 与 [docs/product/Admin-Operations-Backend-PRD-V1.md](docs/product/Admin-Operations-Backend-PRD-V1.md)，确认前台与后台的业务边界
+2. 再看 [docs/design/UI-Final-Signoff-V1.md](docs/design/UI-Final-Signoff-V1.md)、[docs/design/UI-Design-System-V1.md](docs/design/UI-Design-System-V1.md) 与 [docs/design/UI-High-Fidelity-Prototype-V1.html](docs/design/UI-High-Fidelity-Prototype-V1.html)，确认小程序端页面与交互定稿
+3. 再看 [docs/engineering/Technical-Architecture-Selection-V1.md](docs/engineering/Technical-Architecture-Selection-V1.md)，确认技术路线、边界与拆分方式
+4. 小程序前端开发先看 [docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)，并同时配合 [docs/design/UI-Final-Signoff-V1.md](docs/design/UI-Final-Signoff-V1.md)、[docs/design/UI-Design-System-V1.md](docs/design/UI-Design-System-V1.md)、[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 与 [docs/engineering/CloudFunction-API-Contract-V1.md](docs/engineering/CloudFunction-API-Contract-V1.md)
+5. 运营后台前端开发先看 [docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)，并同时配合 [docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](docs/engineering/CloudFunction-API-Contract-V1.md)、[docs/engineering/CloudBase-Backend-Development-Guide-V1.md](docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 与 [docs/product/Admin-Operations-Backend-PRD-V1.md](docs/product/Admin-Operations-Backend-PRD-V1.md)
+6. CloudBase 后端开发先看 [docs/engineering/CloudBase-Backend-Development-Guide-V1.md](docs/engineering/CloudBase-Backend-Development-Guide-V1.md)，配合 [docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](docs/engineering/CloudFunction-API-Contract-V1.md)、[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)、[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](docs/engineering/Backend-Env-Deploy-Runbook-V1.md)，再配合 [docs/product/Field-Dictionary-V1.md](docs/product/Field-Dictionary-V1.md)、[docs/product/Visibility-Permissions-Matrix-V1.md](docs/product/Visibility-Permissions-Matrix-V1.md)、[docs/product/Status-Flow-Matrix-V1.md](docs/product/Status-Flow-Matrix-V1.md)、[docs/product/Review-Workflow-V1.md](docs/product/Review-Workflow-V1.md)
 7. 上线前再回到合规、运营与法务文档补齐执行项
 
 ## 文档优先级
 
 当文档之间出现冲突时，按以下优先级认定：
 
-1. [docs/engineering/Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)、[docs/design/UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-2. [docs/engineering/CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)、[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)、[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)、[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)、[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
-3. [docs/product/PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)、[docs/product/Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)、[docs/design/UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)、[docs/product/Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)、[docs/product/Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)、[docs/product/Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)、[docs/product/Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+1. [docs/engineering/Technical-Architecture-Selection-V1.md](docs/engineering/Technical-Architecture-Selection-V1.md)、[docs/design/UI-Final-Signoff-V1.md](docs/design/UI-Final-Signoff-V1.md)、[docs/engineering/CloudFunction-API-Contract-V1.md](docs/engineering/CloudFunction-API-Contract-V1.md)
+2. [docs/engineering/CloudBase-Backend-Development-Guide-V1.md](docs/engineering/CloudBase-Backend-Development-Guide-V1.md)、[docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md](docs/engineering/MiniProgram-Frontend-Development-Guide-V1.md)、[docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md](docs/engineering/Admin-Web-Frontend-Development-Guide-V1.md)、[docs/engineering/CloudBase-Admin-Auth-Spec-V1.md](docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)、[docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md](docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)、[docs/engineering/Backend-Env-Deploy-Runbook-V1.md](docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
+3. [docs/product/PRD-V1.md](docs/product/PRD-V1.md)、[docs/product/Admin-Operations-Backend-PRD-V1.md](docs/product/Admin-Operations-Backend-PRD-V1.md)、[docs/design/UI-Design-System-V1.md](docs/design/UI-Design-System-V1.md)、[docs/product/Field-Dictionary-V1.md](docs/product/Field-Dictionary-V1.md)、[docs/product/Visibility-Permissions-Matrix-V1.md](docs/product/Visibility-Permissions-Matrix-V1.md)、[docs/product/Status-Flow-Matrix-V1.md](docs/product/Status-Flow-Matrix-V1.md)、[docs/product/Review-Workflow-V1.md](docs/product/Review-Workflow-V1.md)
 4. 各类 `Draft`、`Checklist`、`SOP`、协议与提审文档
 
 说明：
@@ -121,5 +121,5 @@
 
 如需在另一台电脑对齐当前这台机器使用的 skills，可查看：
 
-- [tools/skills-sync/README.md](/Users/tokk/Desktop/crab-miniapp/tools/skills-sync/README.md)
-- [tools/skills-sync/MANIFEST.md](/Users/tokk/Desktop/crab-miniapp/tools/skills-sync/MANIFEST.md)
+- [tools/skills-sync/README.md](tools/skills-sync/README.md)
+- [tools/skills-sync/MANIFEST.md](tools/skills-sync/MANIFEST.md)

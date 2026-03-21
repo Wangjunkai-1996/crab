@@ -3,15 +3,15 @@
 ## 1. 文档信息
 
 - 文档名称：CloudBase 后端开发文档 V1
-- 对应产品文档：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应技术选型：[Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)
-- 对应字段字典：[Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
-- 对应状态流转：[Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)
-- 对应审核工作流：[Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
-- 对应权限矩阵：[Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
-- 对应 UI 定稿：[UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
-- 对应 UI 设计系统：[UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)
-- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
+- 对应产品文档：[PRD-V1.md](../product/PRD-V1.md)
+- 对应技术选型：[Technical-Architecture-Selection-V1.md](Technical-Architecture-Selection-V1.md)
+- 对应字段字典：[Field-Dictionary-V1.md](../product/Field-Dictionary-V1.md)
+- 对应状态流转：[Status-Flow-Matrix-V1.md](../product/Status-Flow-Matrix-V1.md)
+- 对应审核工作流：[Review-Workflow-V1.md](../product/Review-Workflow-V1.md)
+- 对应权限矩阵：[Visibility-Permissions-Matrix-V1.md](../product/Visibility-Permissions-Matrix-V1.md)
+- 对应 UI 定稿：[UI-Final-Signoff-V1.md](../design/UI-Final-Signoff-V1.md)
+- 对应 UI 设计系统：[UI-Design-System-V1.md](../design/UI-Design-System-V1.md)
+- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](../product/Admin-Operations-Backend-PRD-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：为多米通告 V1 输出一份可直接进入 CloudBase 后端开发的实现规范，统一云函数拆分、数据结构、权限收口、状态机和运维动作
 
@@ -69,7 +69,7 @@
 ### 3.6 UI 联动原则
 
 1. 后端返回结构不仅要满足业务正确性，还要满足已锁定 UI 稿的页面状态和首屏决策需求。
-2. 对于 [UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md) 中已点名锁定的状态页，后端必须返回足够字段，不能把关键 CTA、错误态或联系方式释放态交给前端自行推断。
+2. 对于 [UI-Final-Signoff-V1.md](../design/UI-Final-Signoff-V1.md) 中已点名锁定的状态页，后端必须返回足够字段，不能把关键 CTA、错误态或联系方式释放态交给前端自行推断。
 3. 所有“游客态”“双角色态”“限制状态提示”“筛选回显”“联系方式释放态”都必须由服务端提供明确状态字段或能力字段。
 4. 任何会影响 CTA 文案和按钮可点击状态的逻辑，都优先由服务端返回 `permissionState`、`ctaState` 或同等级结构，而不是前端本地散落判断。
 
@@ -188,7 +188,7 @@ V1 推荐规则：
 
 1. 架构文档中的 `dm_account_actions` 与字段字典中的 `restrictionRecord` 在实现层视为同一类数据。
 2. 字段字典已定义 `feedbackRecord`，因此实现层补充 `dm_feedback_records` 作为正式业务集合。
-3. 后台鉴权支撑集合详见 [CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)。
+3. 后台鉴权支撑集合详见 [CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)。
 
 ### 5.2 `dm_users`
 
@@ -256,7 +256,7 @@ V1 推荐规则：
 关键约束：
 
 1. 发布动作只能发生在账号允许发布且发布方资料完整时。
-2. 通告状态流转必须严格符合 [Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)。
+2. 通告状态流转必须严格符合 [Status-Flow-Matrix-V1.md](../product/Status-Flow-Matrix-V1.md)。
 3. `publisherContactTypeSnapshot` 和 `publisherContactValueSnapshot` 在创建或重新发布时固化。
 4. 只有 `active` 状态进入广场默认列表。
 
@@ -744,7 +744,7 @@ V1 推荐规则：
 
 ### 8.6 UI 状态页联动返回要求
 
-结合 [UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md) 与 [UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)，后端必须补足以下页面视图模型：
+结合 [UI-Design-System-V1.md](../design/UI-Design-System-V1.md) 与 [UI-Final-Signoff-V1.md](../design/UI-Final-Signoff-V1.md)，后端必须补足以下页面视图模型：
 
 #### 广场首页与搜索结果
 
@@ -1308,7 +1308,7 @@ V1 不做复杂机器风控，但建议至少做：
 
 配套执行文档：
 
-1. [CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-2. [CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-3. [CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
-4. [Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
+1. [CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)
+2. [CloudFunction-API-Contract-V1.md](CloudFunction-API-Contract-V1.md)
+3. [CloudBase-Security-Rules-And-Indexes-V1.md](CloudBase-Security-Rules-And-Indexes-V1.md)
+4. [Backend-Env-Deploy-Runbook-V1.md](Backend-Env-Deploy-Runbook-V1.md)

@@ -3,9 +3,9 @@
 ## 1. 文档信息
 
 - 文档名称：CloudBase 后台鉴权规范 V1
-- 对应技术选型：[Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)
-- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
-- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
+- 对应技术选型：[Technical-Architecture-Selection-V1.md](Technical-Architecture-Selection-V1.md)
+- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](../product/Admin-Operations-Backend-PRD-V1.md)
+- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：锁定运营后台的身份体系、角色模型、会话机制与权限校验方式，避免后台开发时临时拍脑袋决定鉴权实现
 
@@ -417,5 +417,5 @@ V1 推荐最低标准：
 ## 13. 与其他文档的关系
 
 1. 本文档回答“后台管理员如何登录、如何鉴权、如何校验权限”。
-2. [CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md) 继续负责“后台业务怎么执行”。
-3. [CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md) 会对 `admin-auth`、`review-admin`、`governance-admin` 给出具体接口 contract。
+2. [CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md) 继续负责“后台业务怎么执行”。
+3. [CloudFunction-API-Contract-V1.md](CloudFunction-API-Contract-V1.md) 会对 `admin-auth`、`review-admin`、`governance-admin` 给出具体接口 contract。

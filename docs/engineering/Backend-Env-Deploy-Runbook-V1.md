@@ -3,10 +3,10 @@
 ## 1. 文档信息
 
 - 文档名称：后端环境与部署 Runbook V1
-- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- 对应安全规则文档：[CloudBase-Security-Rules-And-Indexes-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Security-Rules-And-Indexes-V1.md)
-- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-- 对应上线清单：[Miniapp-Launch-Checklist-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Miniapp-Launch-Checklist-V1.md)
+- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
+- 对应安全规则文档：[CloudBase-Security-Rules-And-Indexes-V1.md](CloudBase-Security-Rules-And-Indexes-V1.md)
+- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)
+- 对应上线清单：[Miniapp-Launch-Checklist-V1.md](../operations/Miniapp-Launch-Checklist-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：给 V1 后端提供环境初始化、部署顺序、验证步骤、回滚与日常运维的执行手册
 

@@ -1,0 +1,37 @@
+# 今晚自主执行任务单
+
+- [x] 读取后台最新回报并开 `R39` 会议
+- [x] 将 `R39` 结论落入 `board.md` / `decisions.md` / `inbox/后台.md`
+- [x] 启动后台 Subagent：核对部署页版本一致性，确认是否仍跑旧逻辑
+- [x] 启动后端 Subagent：支援部署 / 环境 / transport 边界核查，补可复用诊断
+- [x] 启动前端 Subagent：收敛一项不依赖外部窗口的可推进任务
+- [x] 通过部署指纹核查与 bundle 对比确认：线上 `admin-web` 仍跑旧逻辑
+- [x] 补充 `deploy-runtime-mismatch-summary.md` 与 `R40` 会议纪要
+- [x] 新增 `publish-admin-web-hosting.mjs` 并通过 dry-run
+- [x] 启动设计 Subagent：更新后台 `admin-auth` 最小验收锚点
+- [x] 启动产品 Subagent：整理剩余规则拍板优先级与明日最小确认单
+- [x] 汇总首轮 Subagents 结果并形成今晚执行中报
+- [x] 在具备真实发布凭据的 shell 中执行 `publish:admin-web`
+- [x] 发布后重跑部署指纹核查
+- [x] 等 queryless 根页短缓存窗口过去后，重跑首次改密 smoke
+- [x] 确认并修正生产构建误走 mock 的根因（`.env.production`）
+- [x] 收口“已到工作区但 smoke 仍报失败”的自动化误判
+- [x] 写出 `R42` 会议纪要并更新 `board.md` / `decisions.md`
+- [x] 启动设计 Subagent：基于 `r40` 最新证据执行第二轮 must-close 复审
+- [x] 启动产品 Subagent：整理明日最小决策单与落盘文案
+- [x] 启动后端 Subagent：评估 `review-admin` / `governance-admin` 真实读方案
+- [x] 启动前端 Subagent：刷新小程序真实 smoke readiness 与阻塞口径
+- [x] 启动后台 Subagent：梳理业务域真实读承接面与后台下一步
+- [x] 汇总 `R42` 子代理结果并回填控制面
+- [x] 汇总 `R42` 子代理结果并回填控制面
+- [x] 为 `review-admin` / `governance-admin` 新增可复用函数安全规则更新脚本
+- [x] 在 `dev` 环境为 `review-admin` / `governance-admin` 执行路线 A 最小放行
+- [x] 为后台补“真实读下写动作默认只读”工程兜底并通过构建校验
+- [x] 同步 `.control-state/current` 供跨电脑续接
+- [x] 旋转 `domi_admin` 一次性凭据，避免沿用已暴露测试密码
+- [x] 执行后台业务域服务端真实读 smoke，并落证据到 `r44/admin-real-reads-smoke.latest.json`
+- [x] 验证后台在 `VITE_ENABLE_REAL_ADMIN_READS=true` 条件下 `typecheck + build` 通过
+- [x] 写出 `R45` 会议纪要并更新 `board.md` / `decisions.md` / `parking-lot.md` / `inbox`
+- [ ] 启动后台 Subagent：执行页面级真实读 smoke / adapter 收口
+- [ ] 启动后端 Subagent：评估详情页样本数据方案或 smoke 脚本增强
+- [ ] 汇总新一轮 Subagents 结果并同步控制面

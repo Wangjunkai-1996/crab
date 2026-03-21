@@ -3,10 +3,10 @@
 ## 1. 文档信息
 
 - 文档名称：运营后台需求 V1
-- 对应前台 PRD：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应 UI 定稿：[UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
-- 对应字段字典：[Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
-- 对应审核工作流：[Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+- 对应前台 PRD：[PRD-V1.md](PRD-V1.md)
+- 对应 UI 定稿：[UI-Final-Signoff-V1.md](../design/UI-Final-Signoff-V1.md)
+- 对应字段字典：[Field-Dictionary-V1.md](Field-Dictionary-V1.md)
+- 对应审核工作流：[Review-Workflow-V1.md](Review-Workflow-V1.md)
 - 文档日期：2026-03-15
 - 文档目标：定义 V1 阶段审核后台、举报后台、黑名单后台的最小需求
 

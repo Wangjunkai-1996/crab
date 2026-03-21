@@ -3,12 +3,12 @@
 ## 1. 文档信息
 
 - 文档名称：运营后台前端开发文档 V1
-- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
-- 对应技术选型：[Technical-Architecture-Selection-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Technical-Architecture-Selection-V1.md)
-- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-- 对应 API Contract：[CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-- 对应运行手册：[Backend-Env-Deploy-Runbook-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/Backend-Env-Deploy-Runbook-V1.md)
+- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](../product/Admin-Operations-Backend-PRD-V1.md)
+- 对应技术选型：[Technical-Architecture-Selection-V1.md](Technical-Architecture-Selection-V1.md)
+- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
+- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)
+- 对应 API Contract：[CloudFunction-API-Contract-V1.md](CloudFunction-API-Contract-V1.md)
+- 对应运行手册：[Backend-Env-Deploy-Runbook-V1.md](Backend-Env-Deploy-Runbook-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：为多米通告 V1 运营后台输出一份可直接指导前端工程落地的详细开发文档，统一工程结构、登录鉴权、布局组件、页面模式、服务调用和联调规范
 
@@ -65,10 +65,10 @@
 
 当实现细节出现冲突时，按以下顺序认定：
 
-1. [CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-2. [CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-3. [CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-4. [Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
+1. [CloudFunction-API-Contract-V1.md](CloudFunction-API-Contract-V1.md)
+2. [CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)
+3. [CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
+4. [Admin-Operations-Backend-PRD-V1.md](../product/Admin-Operations-Backend-PRD-V1.md)
 5. 本文档
 
 说明：
@@ -1010,7 +1010,7 @@ admin-web/
 
 1. 小程序前端开发文档已定稿，本轮无需回退重写。
 2. 运营后台前端开发文档已补齐鉴权启动、游标分页、页面状态机、角色动作边界和当前 V1 锁定实现说明。
-3. 后台前端后续开发必须同时以本文档、[CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md) 与 [CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md) 为事实来源。
+3. 后台前端后续开发必须同时以本文档、[CloudFunction-API-Contract-V1.md](CloudFunction-API-Contract-V1.md) 与 [CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md) 为事实来源。
 
 开发红线：
 

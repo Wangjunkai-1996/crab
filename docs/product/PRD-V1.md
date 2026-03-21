@@ -8,9 +8,9 @@
 - 文档类型：MVP 产品需求文档
 - 适用阶段：0 到 1 冷启动阶段
 - 配套开发文档：
-  - [Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
-  - [Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
-  - [Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+  - [Field-Dictionary-V1.md](Field-Dictionary-V1.md)
+  - [Visibility-Permissions-Matrix-V1.md](Visibility-Permissions-Matrix-V1.md)
+  - [Review-Workflow-V1.md](Review-Workflow-V1.md)
 
 ## 2. 项目背景
 
@@ -822,9 +822,9 @@ V1 建议至少包含以下核心实体：
 
 字段级定义、可见性规则和审核任务流分别以以下文档为准：
 
-- [Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
-- [Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
-- [Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+- [Field-Dictionary-V1.md](Field-Dictionary-V1.md)
+- [Visibility-Permissions-Matrix-V1.md](Visibility-Permissions-Matrix-V1.md)
+- [Review-Workflow-V1.md](Review-Workflow-V1.md)
 
 ## 14. 广告变现策略
 

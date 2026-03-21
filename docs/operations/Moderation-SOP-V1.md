@@ -3,7 +3,7 @@
 ## 1. 文档信息
 
 - 文档名称：审核与处罚 SOP V1
-- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
+- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](../product/Admin-Operations-Backend-PRD-V1.md)
 - 文档日期：2026-03-15
 - 文档目标：定义平台在通告审核、举报处理、违规处罚上的执行标准
 

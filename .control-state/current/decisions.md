@@ -1,0 +1,195 @@
+# KK_Crab 已拍板事项
+
+- 更新时间：2026-03-21 11:08
+- 当前轮次：R57
+
+## 协作机制
+
+- [x] 使用三套独立 `git worktree` 并行开发：前端 / 后台 / 后端
+- [x] 使用“会议制 + 收件箱/回报箱”作为长期协作机制
+- [x] 总控窗口负责维护 `board.md`、`decisions.md`、`parking-lot.md`、`meetings/*.md`
+- [x] 当前电脑三条线继续使用仓库外运行态 `KK_Crab-control`
+- [x] 跨电脑续接时，以仓库内 `.control-state/current/` 和 `.control-templates/reentry-prompts.md` 为准
+- [x] 例行轮次只向在线角色窗口发送“读取 inbox 并继续”的唤醒词；仅在新开窗口、窗口失忆或换电脑续接时，才发送长版重进场提示词
+- [x] `产品经理`、`体验设计审查` 与 `阻塞协调` 作为按需启用的专项角色，也使用同一套 `inbox/outbox` 机制
+- [x] 变更时间：2026-03-20 20:14；当前轮次切到 `R54`，主目标从“明早人工顺序点击”进一步收口为“开发者控制台半自动真实 smoke + 结构化证据”
+- [x] 变更时间：2026-03-20 20:14；小程序真实联调正式固定为两段：导入前先跑 `build-miniprogram-js.mjs` 与 `check-devtools-readiness.mjs`，导入后再通过 `App.globalData.devSmoke.runFirstBatch()` 执行首轮真实 smoke
+- [x] 变更时间：2026-03-20 20:14；`R54` 首轮真实 smoke 的主验证路径不再是人肉逐页点 UI，而是 DevTools console；UI 点击验证降为补充验证
+- [x] 变更时间：2026-03-20 20:14；后端已新增 `check-miniprogram-dev-smoke-sample.mjs` 作为 dev 样本核查入口，但该脚本只验证候选通告样本，不伪造 `wxContext.OPENID`
+- [x] 变更时间：2026-03-20 20:14；`R54` 证据目录固定为 `miniprogram/evidence/r54/{runtime,smoke,logs}`，所有首轮真实联调证据统一落此处
+- [x] 变更时间：2026-03-21 10:26；当前轮次切到 `R55`，用户明确不再承担 DevTools / console 人工 smoke；`R54` 只保留自动准备成果，不再把“立即执行真实 smoke”作为当前主线
+- [x] 变更时间：2026-03-21 10:26；小程序真实 smoke 不删除、不回退，改为“未来恢复项”：继续复用 `R54` 的 helper、预检脚本、runbook 与证据位，待独立时间窗再执行
+- [x] 变更时间：2026-03-21 10:26；`R55` 主线正式切到“上线资料包 + owner 台账 + 发布/回滚/值守 runbook”，后台 / 后端继续维护态，不主动扩新功能
+- [x] 变更时间：2026-03-21 10:26；`阻塞协调` 当前职责从“盯最小人工关口”切换为“补齐发布 owner、回滚 owner、值守 owner、主体/客服/法务占位 owner”，不再默认由用户亲自执行调试动作
+- [x] 变更时间：2026-03-21 10:51；当前轮次切到 `R56`，主目标从“R55 资料包初版”推进到“资料矩阵定版 + 截图模板固化 + 发布日执行表定版”，依旧不要求用户当前做人肉 smoke
+- [x] 变更时间：2026-03-21 10:51；`R56` 新增固定事实源：`Miniapp-Launch-Execution-Plan-R56.md`、`Miniapp-Submission-Materials-Pack-R56.md`、`Miniapp-Launch-Day-Runbook-R56.md`、`Miniapp-Submission-Screenshot-Template-R56.md`
+- [x] 变更时间：2026-03-21 10:51；提审截图在 `R56` 阶段只固化模板、命名规则、验收标准与未来回填目录，不要求当前产出最终截图
+- [x] 变更时间：2026-03-21 10:51；`R54` 真实 smoke 继续作为唯一恢复 gate：未来恢复时仍按 `R54` runbook + `App.globalData.devSmoke` 执行，不另起新入口
+- [x] 变更时间：2026-03-21 11:08；当前轮次切到 `R57`，已确认运营主体为 `王俊凯`、联系邮箱为 `junkaifly@gmail.com`、客服方式为 `17621503908`
+- [x] 变更时间：2026-03-21 11:08；发布 owner、回滚 owner、值守 owner 当前默认暂按 `王俊凯` 挂载，用于先打通上线台账；若后续有专门负责人，再统一替换
+- [x] 变更时间：2026-03-21 11:08；法院辖区当前暂按 `浙江省杭州市滨江区人民法院` 记为候选口径，但正式上线前仍需结合主体所在地与法务意见最终确认
+- [x] 变更时间：2026-03-21 11:08；`R57` 主线正式切到“已确认真实值入稿 + 法院辖区最终确认 + 冷启动内容 / 提审终稿收口”，继续不要求用户当前做人肉 smoke
+- [x] `阻塞协调` 窗口默认视为“老板/外部协调窗口”；凡需外部支援、环境真实值、部署入口、账号交付或安全渠道确认的事项，先由该窗口与用户/外部持有方对接，再回写正式回报
+- [x] 当当前第一阻塞依赖老板/外部持有方掌握的真实值时，`阻塞协调` 窗口必须主动产出正式索取文案并向老板发起询问，不等待用户自行想起或主动补充
+- [x] 变更时间：2026-03-19 14:06；默认协作模式切换为“总控单窗口 + 内部 Subagents + 会议落盘”，用户正常情况下只与总控窗口对接，不再承担角色间消息转发
+- [x] 变更时间：2026-03-19 14:06；`前端 / 后台 / 后端 / 产品经理 / 体验设计审查 / 阻塞协调` 六个角色继续全部保留；切换到 Subagents 不得丢失角色职责与边界
+- [x] 变更时间：2026-03-19 14:06；`inbox/outbox/board/decisions/meetings` 继续保留，作为总控与内部角色的持久化协调介质，也是跨电脑续接的统一事实源
+- [x] 变更时间：2026-03-19 14:06；只有在 subagents 不可用、用户明确要求手动多窗口、或必须保留独立外部窗口时，才回退到旧的手动多窗口模式
+- [x] 变更时间：2026-03-19 14:06；切换到新的总控会话或新电脑后，CloudBase 真实密钥不会随仓库快照、控制文档或协作模式自动续带；凡需执行 CloudBase 真实脚本，必须先为**当前会话**重新注入真实腾讯云密钥
+- [x] 变更时间：2026-03-19 14:06；当前“无法继续重置一次性凭据”的根因记为“当前会话安全凭据未注入”，不记为代码问题、脚本问题或角色协作问题
+- [x] 变更时间：2026-03-19 15:35；`R34` 中“当前总控会话安全凭据未注入”的操作级阻塞已关闭；本会话已重新具备真实腾讯云密钥并成功恢复 CloudBase 侧脚本执行能力
+
+## 当前开发边界
+
+- [x] 前端只修改 `miniprogram/**`
+- [x] 后台只修改 `admin-web/**`
+- [x] 后端只修改 `cloudfunctions/**`、`database/**`、`scripts/**`
+- [x] 产品经理、体验设计审查与阻塞协调都不写代码、不直接修改共享控制文件
+- [x] 各角色都不直接改其他线目录
+
+## 已定策略
+
+- [x] 小程序当前按个人主体开发路径推进；主体类型已确认个人，`AppID=wxa6f615dcab1f984f` 已回传，公众平台账号可持续使用情况已确认为 `是`；拟用名称为“多米通告”，类目当前选为“工具-预约/报名”，备案与认证状态当前均为“审核中”
+- [x] 当前 `CLOUDBASE_ENV_ID_DEV` 候选值为 `cloud1-4grxqg018586792d`，且已在微信开发者工具云开发控制台显示为“当前环境”；但这只代表开发者工具侧环境绑定基本打通，不代表业务集合、规则、索引、seed、云函数、后台访问地址或管理员账号已完成交接
+- [x] 变更时间：2026-03-20 14:57；`R49` 主线正式收口为“后台字段消费稳定 + 治理样本扩面 + 真实写继续关闭”，不再把 `review/report` 详情样本缺失记为当前主阻塞
+- [x] 变更时间：2026-03-20 14:57；后台页面级真实读 smoke 的 fallback 统一改为 SPA 内 `history.pushState + popstate` 导航，禁止再把 Hosting 直达深链接 `404/NoSuchKey` 当成业务页失败
+- [x] 变更时间：2026-03-20 14:57；`governance-admin.reportList` 遇到坏单条 `report` 时必须跳过或降级，不能再把整页打成 `10000`；降级展示至少保留 `reportId` 级别的可读占位
+- [x] 变更时间：2026-03-20 14:57；治理侧最小真实样本基线已扩展为 `review/report detail + accountAction/historyReport/operationLog`，`blacklist`、`historyReports`、`historyActions` 与 `operationLogList` 真实读均以该基线为准
+- [x] 变更时间：2026-03-20 16:13；`R50` 已完成“后台字段扫尾 + 治理样本扩面第二轮 + 证据强化”，当前不再把“字段裸枚举较多”或“治理样本只覆盖单一目标类型”记为主阻塞
+- [x] 变更时间：2026-03-20 16:13；后台真实读页面剩余的 raw code / raw enum / 散落文案，继续统一收口到 `__ADMIN_WORKTREE__/admin-web/src/utils/admin-labels.ts`；页面层只消费 label / summary / hint，不再扩散判断分支
+- [x] 变更时间：2026-03-20 16:13；治理样本当前基线进一步扩展为 `notice/publisher/creator report + active/released accountAction + richer operationLog.afterSnapshot`；后续继续补样本时仍保持 root-shape 写入，禁止默认新增 `data.*` 持久化
+- [x] 变更时间：2026-03-20 16:13；`governance-admin.reportList` 的坏单条稳定性正式纳入固定回归证据：坏单条必须继续 `code=0` 且降级为 `targetType=missing`，不得回退成整页 `10000`
+- [x] 变更时间：2026-03-20 16:13；`R50` 验收证据目录固定为 `__BACKEND_WORKTREE__/scripts/evidence/r50` 与 `__ADMIN_WORKTREE__/admin-web/evidence/r50`；后续轮次不得覆盖 `r49`
+- [x] 变更时间：2026-03-20 16:13；后台继续固定 `VITE_ENABLE_REAL_ADMIN_READS=true`、`VITE_ENABLE_REAL_ADMIN_WRITES=false`，并继续只允许无头 / 脚本 / 构建 / 日志推进，不打开用户可见浏览器
+- [x] 变更时间：2026-03-20 17:01；`R51` 执行顺序固定为“体验设计审查先基于 `R50` 证据正式复核，再由后台 / 后端只处理复核指出的最小问题，最后统一回写控制面与仓库内快照”
+- [x] 变更时间：2026-03-20 17:01；`R51` 已完成“体验复核收口 + 后台最终扫尾 + 治理样本第三轮扩宽”，当前不再把 `dashboard / operation logs / review detail / report detail / blacklist` 的明显裸值或 `R50` 已指出的残余展示问题记为主阻塞
+- [x] 变更时间：2026-03-20 17:01；体验设计审查对 `R50` 真实证据及 `R51` 修正后的治理域页面正式结论为 `可通过`；若后续问题实为规则未定，统一回退为“待拍板后复核”，不在开发阶段自行发散
+- [x] 变更时间：2026-03-20 17:01；治理样本当前基线进一步扩展为“弱资料 `report` + 长期 / 即将到期 / 已解除 `accountAction` + 更宽 `operationLog` 组合”，并继续坚持 root-shape 写库与坏单条降级回归进入固定 smoke
+- [x] 变更时间：2026-03-20 17:01；`R51` 验收证据目录固定为 `__BACKEND_WORKTREE__/scripts/evidence/r51` 与 `__ADMIN_WORKTREE__/admin-web/evidence/r51`；后续轮次不得覆盖 `r50`
+- [x] 变更时间：2026-03-20 17:01；`R51` 继续固定 `VITE_ENABLE_REAL_ADMIN_READS=true`、`VITE_ENABLE_REAL_ADMIN_WRITES=false`，并继续只允许无头 / 脚本 / 构建 / 日志推进，不打开用户可见浏览器
+- [x] 变更时间：2026-03-20 17:59；`R52` 主线正式收口为“回归固化 + 空态证据固定 + 上线前收口”，本轮不再扩业务功能；后台 / 后端主线默认从“功能实现”切到“维护与上线前复查”
+- [x] 变更时间：2026-03-20 17:59；后台页面级真实读 smoke 的空态固定策略正式收口为：SPA 内导航统一走 `page.evaluate(...) + history.pushState + popstate`，进入空态分支后主动点击一次 `查询`；`review list` 采用真实可识别的低命中过滤组合，`report list` 保持强制空态分支
+- [x] 变更时间：2026-03-20 17:59；后台 `R52` 页面级真实读验收结论固定为：`dashboard / logs / review-list / review-detail / report-list / report-detail / blacklist` 7 页全部可进入，`review list / report list` 稳定空态证据均为 `yes`，且 `dashboard_load_error=no`
+- [x] 变更时间：2026-03-20 17:59；后端 `R52` 固定回归结论为：`reportList` 坏单条矩阵（`empty_target / invalid_target_type / missing_notice_target`）全部 `ok=true`，`reportDetail` 坏详情继续 `code=0` 且 `targetSnapshotType=missing`
+- [x] 变更时间：2026-03-20 17:59；当前第一上线风险切换为“小程序真实联调未完成 + 冻结规则未拍板 + 真实写 transport 仍关闭”；治理域后台 / 后端主线默认转维护态
+- [x] 变更时间：2026-03-20 18:59；`R53` 主线正式切到“双线并行”：`小程序真实联调 readiness` + `正式上线倒排与验收清单`；后台 / 后端默认只保留维护态，不再主动扩新功能
+- [x] 变更时间：2026-03-20 18:59；小程序工程已固定 `AppID=wxa6f615dcab1f984f`，`DEFAULT_CLOUD_ENV_ID=cloud1-4grxqg018586792d`，且继续保持 `DEFAULT_API_MODE=mock`；`cloud` 仅通过开发态显式切换
+- [x] 变更时间：2026-03-20 18:59；小程序真实联调入口统一收口到 `App.globalData.runtimeDebug` console helper：查看 runtime、切 `mock/cloud`、清请求日志、强制重跑 `bootstrap`；禁止新增前台可见 debug UI
+- [x] 变更时间：2026-03-20 18:59；今晚明确不做脚本伪造 `OPENID` 的“假真实 smoke”；小程序真实 smoke 继续以微信开发者工具 / 真机提供的 `wxContext.OPENID` 为准
+- [x] 变更时间：2026-03-20 18:59；`R53` 明早人工关口顺序固定为：微信开发者工具导入工程 -> console 切 `cloud` -> `bootstrap -> 资料读写 -> application.submit -> application.withdraw`；若 `bootstrap` 失败，立即停止后续链路并只回传 `runtime summary + request logs + error`
+- [x] 变更时间：2026-03-20 18:59；执行版上线倒排清单已固定为 owner 驱动表，必须逐项写清 `owner / 输入物 / 完成定义 / 是否依赖人工 / 是否阻塞上线`；缺资料只允许标记 `待补`，不擅自代填
+- [x] 前端继续保留 mock，不自创业务规则；`preferredView` 在未拍板前允许为 `null`
+- [x] 后台先接 `admin-auth` 真接口，其余管理端接口继续 mock，待 DTO 收口后统一切换
+- [x] 后台以 `cloudfunctions/shared/src/contracts/admin/*.ts` 与 `scripts/api-samples/*.json` 作为 `review-admin` / `governance-admin` 的当前实现口径
+- [x] 小程序 `notice-bff.myList`、`application-bff.publisherList`、`application-bff.publisherDetail` 以后端 `contracts/miniprogram/*.ts`、`scripts/api-samples/*.json` 与真实 handler 作为当前实现口径
+- [x] 小程序发布侧动作、达人侧 `submit/withdraw`、资料读写与 `notice-bff` 写接口以后端当前 contract / sample / handler 作为实现口径，前端不得自行拼联系方式字段
+- [x] `permissionSummary` 采用 `pageAccess + actionAccess` 结构，`availableActions` 采用后端已输出的最终 action key 枚举
+- [x] 在产品未明确前，非列表场景不保证直跳单条报名详情；若缺正式 `applicationId` 聚合字段，前端统一降级到“我的报名列表”
+- [x] 在产品正式拍板前，后台动作请求临时事实源以 `__BACKEND_WORKTREE__/cloudfunctions/shared/src/contracts/admin/action-payloads.ts`、`__BACKEND_WORKTREE__/scripts/api-samples/admin.action-payload-enums.json`、`__BACKEND_WORKTREE__/scripts/coordination/admin-action-payload-suggestions.md` 为准，页面层不得扩散
+- [x] `notice-bff.republish` 在正式新增 `deadlineAt` 入参前，仅支持“原通告仍具未来 `deadlineAt`”的场景；过期通告无新截止时间不视为当前已支持
+- [x] 工作台 / 日志页、Token 细节、状态页统一性在 real smoke 或截图型回报前，暂不判定为最终体验完成态
+- [x] 在 CloudBase 环境、管理员账号或产品最终拍板未到位前，各角色继续推进不依赖真实环境或最终规则的任务，不空等
+- [x] 初始化是否完成只以 `init-database.mjs --apply` 的实际执行结果为准；候选 `dev` 环境可见、权限可访问或 dry-run 输出计划都不等于初始化完成
+- [x] 对当前 `dev` 候选环境 `cloud1-4grxqg018586792d`，`storageRule` 的 `OperationDenied.FreePackageDenied` 暂按“已知环境例外”处理，不阻塞当前 `dev` 联调；若后续升级套餐或切换支持该能力的新环境，再执行 `__BACKEND_WORKTREE__/scripts/retry-storage-rule.mjs` 补齐
+- [x] `ADMIN_WEB_BASE_URL`、后台真实登录入口、当前可用管理员账号、初始密码交付方式与首次改密链路等联调最小真实值，优先由后台 / 环境 / 部署持有方直接回传；仅当存在多个可选方案时，再由用户做最小确认，不在事实缺失时让用户盲目拍板
+- [x] 默认拆责：后台线先确认登录页实际入口与 smoke 脚本所需访问路径；后端线先给出管理员账号来源、标准账号/首次改密账号的默认联调方案与可执行性；老板 / 外部协调窗口只处理外部部署事实、访问权限、安全交付或多方案选择，不承担开发线本可自行收口的技术事实判断
+- [x] 当前首批 `admin-auth` 联调默认方案采用已创建 seed 账号 `domi_admin`；不再把“额外标准账号 / 额外首次改密账号”作为首批 smoke 前置阻塞
+- [x] 后端已确认 seed 账号 `domi_admin` 的初始密码已生成；当前只剩 `ADMIN_WEB_BASE_URL`、真实登录入口最终确认、以及 seed 初始密码是否已通过安全渠道交付 3 项外部缺口
+- [x] 当前后台代码侧默认登录入口技术结论为 `${ADMIN_WEB_BASE_URL}/login`；若部署后真实入口不是该路径，后台线应直接回传真实路径并自行调整 smoke 脚本，而不是继续笼统上报“环境未到位”
+- [x] 变更时间：2026-03-18 15:23；修正 `ADMIN_WEB_BASE_URL` 与真实登录入口的 owner 边界：`后端` 负责云函数部署，`后台` 负责 `admin-web` 静态站点发布并回传 `ADMIN_WEB_BASE_URL` / 真实登录入口，`阻塞协调（老板/外部协调）` 仅在后台缺发布权限、缺发布账号、需外部持有方配合或地址未回写时介入
+- [x] 若 `ADMIN_WEB_BASE_URL` 或真实入口暂未拿到，后台后续回报必须先写清楚是 `未发布`、`可发布但未执行`、`已发布但地址未回写`，还是 `缺发布权限/外部持有方待配合`；不再允许笼统写成“后端 / 环境侧提供”
+- [x] 变更时间：2026-03-18 15:38；后台已正式按固定枚举回报发布现状为 `缺发布权限/外部持有方待配合`，并给出 `cloudbase_cli=no`、`publish_auth_source=none` 等证据；因此当前升级条件已触发，`阻塞协调（老板/外部协调）` 必须介入解决 CloudBase 静态托管发布权限 / 账号 / 登录态，或协调外部持有方代发 `admin-web`
+- [x] 变更时间：2026-03-18 15:38；`ADMIN_WEB_BASE_URL` 与真实登录入口当前统一视为 `admin-web` 发布结果，不再与 seed 密码交付状态并列为三条平行根阻塞；当前根阻塞收口为“发布权限链路”与“安全交付链路”两条
+- [x] 变更时间：2026-03-18 17:14；`admin-web` 已通过 CloudBase 控制台发布，正式 `ADMIN_WEB_BASE_URL` 为 `https://cloud1-4grxqg018586792d-1412048057.tcloudbaseapp.com/`，真实登录入口当前确认为 `/login`
+- [x] 变更时间：2026-03-18 17:14；当前 CloudBase 控制台显示 `cloud1-4grxqg018586792d` 的云函数列表为空，至少未见 `admin-auth` 部署结果；在该事实未解释前，登录提交阶段的 `PERMISSION_DENIED` 按“云函数未部署到同一环境或环境不一致”优先处理，不按“用户名密码错误”处理
+- [x] 变更时间：2026-03-18 17:14；当前根阻塞从“发布权限链路 + 安全交付链路”调整为“云函数环境一致性 + 安全交付链路”；其中云函数环境一致性 owner 为 `后端`，seed 密码交付状态 owner 为 `阻塞协调（老板/外部协调）`
+- [x] 变更时间：2026-03-18 18:01；后端已正式确认 `admin-auth` 部署到 `cloud1-4grxqg018586792d` 且处于 `Active`，云函数环境一致性阻塞已关闭
+- [x] 变更时间：2026-03-18 18:01；当前首要阻塞只剩 seed 初始密码安全交付状态
+- [x] 变更时间：2026-03-18 18:10；用户已确认 seed 初始密码明文已交付给后台执行窗口，按既定规则本次只记录 `已交付` 状态，不记录明文
+- [x] 变更时间：2026-03-18 18:10；首批 `admin-auth` 真实 smoke 的外部阻塞已全部解除，当前第一优先任务改为后台立即执行 `login / me / changePassword / logout` 真实 smoke
+- [x] 变更时间：2026-03-18 18:40；后台已成功完成首批真实 `admin-auth` smoke，链路覆盖 `login -> changePassword -> workspace -> logout -> login -> me -> workspace -> logout`，并已补齐证据目录与截图
+- [x] 变更时间：2026-03-18 18:40；CloudBase 测试域名当前应优先从根路径 `/` 进入，必要时通过风险提示页，再进入真实登录页；裸 `/login` 的 HTTP `404` 不再作为“后台未发布”的判断依据
+- [x] 变更时间：2026-03-18 18:40；首批后台登录链路已正式闭环，总控阶段重点切换到 must-close 二次复核、真实 handler/mock 收口、`dm_configs` 去重决策与题 4 / 5 / 6 拍板
+- [x] 变更时间：2026-03-18 19:05；后台 `admin-auth` 技术 smoke 成功这一事实继续成立，但当前体验设计审查已明确指出证据包与摘要不自洽，因此“后台 must-close 已真实验证通过”这一结论暂不成立
+- [x] 变更时间：2026-03-18 19:05；从本轮开始，必须分开记录“技术链路成功”与“体验 / must-close 证据已自洽并通过复审”这两类结论，禁止再混写
+- [x] 变更时间：2026-03-18 19:05；后端已在 `cloud1-4grxqg018586792d` 补部署 `user-bff`、`publisher-bff`、`creator-bff`、`application-bff`、`review-admin`、`governance-admin`、`notice-bff`、`message-bff`、`cron-jobs` 共 9 个函数，当前环境共 10 个 Active 云函数，可支撑下一批后台 / 小程序真实联调
+- [x] 变更时间：2026-03-19 10:21；后台当前主要缺口被正式定义为“可信凭据缺口”，不是脚本能力或工程骨架问题；在补到可信凭据前，无法产出一版新的自洽 `admin-auth` 真实证据
+- [x] 变更时间：2026-03-19 10:21；后端为本轮可信凭据路径的第一技术 owner，需二选一支持后台重跑：重置 `domi_admin.mustResetPassword` 并准备一次性密码，或确认当前可用的标准登录密码；明文仍不得进入同步文档
+- [x] 变更时间：2026-03-19 10:21；后端已选择路径 A，并已为 `domi_admin` 准备好一次性密码 + `mustResetPassword=true` 的可信联调凭据；当前状态为 `已准备好交付`，明文未进入任何同步文档
+- [x] 变更时间：2026-03-19 10:21；当前第一阻塞已从“是否有可信凭据”收口为“是否已完成本轮一次性密码的非同步交付”，交付完成后后台立即补跑一轮自洽证据
+- [x] 变更时间：2026-03-19 10:21；继续禁止把“技术链路成功”和“体验 / must-close 通过”混写；体验复审通过仍以后台补齐一版自洽证据为前提
+- [x] 变更时间：2026-03-19 12:19；以后台 12:14 的回报为准，本轮一次性密码的非同步交付已完成，`R30` 中“待交付”阻塞正式关闭
+- [x] 变更时间：2026-03-19 12:19；后台已完成一轮新的“证据自洽版”真实 `admin-auth` smoke 重跑，新证据目录为 `__ADMIN_WORKTREE__/admin-web/evidence/r30/real-admin-auth`，但体验 / must-close 是否通过仍待复核
+- [x] 变更时间：2026-03-19 12:19；当前第一阻塞调整为体验设计审查对 `R30` 新证据的复核；若仍不足，补证据范围先严格收敛为“首次改密成功后进入工作区”的独立锚点，不扩大返工范围
+- [x] 变更时间：2026-03-19 12:19；当同一事实出现前后冲突回报时，总控以时间更晚且带执行结果 / 产物路径的回报作为当前事实，较早回报标记为旧状态，等待后续回报覆盖
+- [x] 变更时间：2026-03-19 12:29；体验设计审查已正式给出 `R30` 新证据复核结论：后台 `admin-auth` 体验 / must-close 当前为 `仍缺其他具体证据（逐项列出）`，不能记为“可通过”
+- [x] 变更时间：2026-03-19 12:29；当前缺口不能压缩成“只差一张首次改密后工作区独立锚点”，最小缺口正式收敛为 3 项：首次改密弹层、首次改密后工作区、标准登录后工作区
+- [x] 变更时间：2026-03-19 12:29；两次退出后回登录页的当前证据已被体验接受，下一轮不再重复补这两项
+- [x] 变更时间：2026-03-19 12:29；后台下一步只围绕 3 个最小证据点补证据；若需要新的首次改密机会，后端按既有脚本提供一次性凭据支援，不扩大为整链路返工
+- [x] 变更时间：2026-03-19 12:41；后台已正式确认：若没有新的首次改密机会，当前无法在现状态下补齐“首次改密弹层 / 首次改密后工作区”，且“标准登录后工作区”也需在下一轮有效凭据下重新抓取
+- [x] 变更时间：2026-03-19 12:41；当前第一阻塞进一步收口为“后端立即响应后台正式请求，再次重置一次性凭据并完成非同步交付”，而不是继续泛化为环境问题或整链路返工
+- [x] 变更时间：2026-03-19 12:41；后端新增 `__BACKEND_WORKTREE__/scripts/check-cloudfunctions-active.mjs` 并已验证 `cloud1-4grxqg018586792d` 中 10 个云函数全部 `Active`，该脚本纳入可复用工具链
+- [x] 变更时间：2026-03-19 15:35；后端已再次完成 `domi_admin` 一次性凭据重置，且当前环境 10 个云函数继续全部 `Active`；因此若后台再次在登录提交阶段看到 `PERMISSION_DENIED`，优先按 Web 侧 CloudBase 调用权限 / 环境配置链路处理，不再回退成“当前会话无密钥”
+- [x] 变更时间：2026-03-19 15:35；`R33` 新一轮后台真实 smoke 的失败点已收口为“点击登录后仍停留在登录页，并出现 `OPERATION_FAIL / PERMISSION_DENIED`”；当前不归因为首次改密弹层锚点不匹配
+- [x] 变更时间：2026-03-19 15:35；后台真实 smoke 脚本必须落 `*-after-submit-snapshot.txt`，并在“登录失败 / 直接进工作区 / 首次改密弹层出现”三类结果之间显式分支，不再用超时替代失败原因
+- [x] 变更时间：2026-03-19 15:35；当前 `PERMISSION_DENIED` 根因的第一技术 owner 为 `后端`；只有在定位到 CloudBase 控制台设置 / 环境权限需外部操作时，`阻塞协调（老板/外部协调）` 再介入
+- [x] 变更时间：2026-03-19 16:00；总控已完成对照核验：同一环境下，服务端管理调用 `admin-auth.login` 成功返回 `code=0`、`mustResetPassword=true`、`hasToken=true`，而后台 Web 侧匿名 CloudBase `callFunction` 失败；结合官方文档，当前根因高概率为环境级云函数安全规则排除了匿名调用
+- [x] 变更时间：2026-03-19 16:00；只要 admin-web 继续沿用“匿名 CloudBase 登录 + SDK callFunction”方案，后续不仅 `admin-auth`，`review-admin` / `governance-admin` 的真实 transport 也会受到同一类权限控制影响；后端在修复时不能只看登录链路
+- [x] 变更时间：2026-03-19 16:25；总控已直接读取当前 `dev` 环境函数安全规则真实值，确认实际规则为仅允许 `auth != null && auth.loginType != 'ANONYMOUS'` 的 wildcard `invoke`，因此 `admin-web` 当前匿名 CloudBase transport 被当前环境规则直接拦截；`R35` 的“高概率根因”已升级为已确认事实
+- [x] 变更时间：2026-03-19 16:25；总控已对当前 `dev` 环境直接执行最小 unblock：保留 wildcard 非匿名基线，同时新增 `admin-auth.invoke=true`；当前第一阻塞不再是根因补查，而是后台基于已修复环境立即重跑 `admin-auth` 的 3 个最小证据点
+- [x] 变更时间：2026-03-19 16:25；在 admin-web 仍沿用匿名 CloudBase transport 的前提下，后续若开启 `review-admin` / `governance-admin` 真实读，必须先扩函数安全规则放行对应函数，或调整 Web transport 方案；在此之前不把 `admin-auth` 的最小 unblock 误记成全后台真实读已打通
+- [x] 变更时间：2026-03-19 17:29；总控已直接完成服务端对照核验：fresh 凭据下 `admin-auth.login -> changePassword -> me` 均返回 `code=0`，因此“当前凭据不匹配 / 后端需继续重发密码”不再作为当前第一根因
+- [x] 变更时间：2026-03-19 17:29；`R39` 新证据已把当前第一阻塞收口为“后台首次改密点击确认后弹层不关闭”；当前主 owner 为 `后台`，`后端` 降为支援位
+- [x] 变更时间：2026-03-19 17:29；`admin-web/scripts/smoke-admin-auth-real.sh` 已补两项稳定性改进：同账号显式标准密码场景下 `all` 模式自动按 `first-reset -> standard` 执行；首次改密提交失败时追加 `after-change-failed` 证据文件，避免再次把页面停留态写成泛化凭据问题
+- [x] 变更时间：2026-03-19 17:58；后台本轮“首次改密页面收口修复”当前只记为候选修复，不记为已验证通过；总控使用 fresh 一次性凭据重跑 `R40` 后，问题仍然复现
+- [x] 变更时间：2026-03-19 17:58；fresh 一次性凭据已由总控亲自重置并用于 `R40` 实证，因此“缺 fresh 凭据”不再允许继续登记为当前阻塞
+- [x] 变更时间：2026-03-19 17:58；当前问题边界固定为“后台 Web 首次改密提交后弹层不关闭”，下一步必须优先拿到 `changePassword` 请求这一跳的真实返回体（`code/message/data`），在拿到 action 级事实前不再泛化归因到后端、密码交付或 CloudBase 权限
+- [x] 变更时间：2026-03-19 19:11；后台已补齐 `changePassword` action 级真实返回体：`code=0`、`message=ok`、`data.success=true`、`logoutOtherSessions=true`，且同链路下 `me` 也返回 `code=0`；因此当前不再允许把问题归因为 action 层失败或请求层普遍失败
+- [x] 变更时间：2026-03-19 19:11；当前第一阻塞从“拿不到 `changePassword` 返回体”调整为“确认真实部署页是否仍运行旧版页面收口逻辑，或页面运行态哪一段仍把弹层留在前台”；当前主 owner 继续为 `后台`
+- [x] 变更时间：2026-03-19 19:11；今晚默认协作执行切回“总控主会话 + 内部 Subagents 持续推进”，外部角色窗口暂不再作为主推进链路；后续以 `meetings/*.md`、`board.md`、`decisions.md`、`.control-state/current/` 作为续接事实源
+- [x] 变更时间：2026-03-19 19:38；总控已通过线上/本地 bundle 对比与标准部署指纹核查确认：当前线上 `admin-web` 仍运行旧版前端逻辑；`markPasswordResetCompleted` 未部署到线上，且线上仍命中旧逻辑 `changePassword -> fetchMe`
+- [x] 变更时间：2026-03-19 19:38；当前第一优先级不再是继续猜页面运行态，而是先重新发布最新 `admin-web/dist` 到当前 CloudBase Hosting，再重跑部署指纹核查与首次改密 smoke
+- [x] 变更时间：2026-03-19 19:38；已新增 `__BACKEND_WORKTREE__/scripts/publish-admin-web-hosting.mjs` 作为可复用发版入口；当前可在注入真实发布凭据的 shell 中直接执行
+- [x] 变更时间：2026-03-19 19:25；总控主会话已实际完成一轮 `admin-web` 真实重发版；当前不再把“是否已经发新版”记为待办
+- [x] 变更时间：2026-03-19 19:25；带 cache-busting query 的根页已命中新版关键标记 `markPasswordResetCompleted`，说明发布已生效；当前剩余短阻塞为 queryless 根页的 `max-age=120` 缓存窗口，而不是继续归因为代码未发上去
+- [x] 变更时间：2026-03-19 19:45；已正式确认 `__ADMIN_WORKTREE__/admin-web/.env.production` 仍在把生产构建编译到 mock：`VITE_USE_MOCK_SERVICE=true` 且 `VITE_CLOUDBASE_ENV_ID` 为空；这就是线上一度出现 `requestId=mock-*` 的直接根因
+- [x] 变更时间：2026-03-19 19:45；生产构建已切回真实 CloudBase transport，并完成重新 build + publish；当前线上不再把 `admin-auth.login` 打到 mock
+- [x] 变更时间：2026-03-19 19:45；`R41` 证据已确认 `login(code=0) -> me(mustResetPassword=true) -> changePassword(code=0) -> me(mustResetPassword=false)` 全链路成功；当前剩余问题收口为 smoke 自动化误判，而不是业务功能失败
+- [x] 变更时间：2026-03-19 20:10；`standard` 路径真实 smoke 已补齐 `workspace` 与 `after-logout` 证据，后台 `admin-auth` 的首次改密闭环与标准登录闭环当前都已绿色跑通
+- [x] 变更时间：2026-03-19 20:10；当前不再把“旧包 / 生产 mock / smoke 误判”记为第一阻塞；后台第一技术风险切换为 `review-admin` / `governance-admin` 若继续沿用匿名 CloudBase transport 时的规则放行或 transport 替代方案
+- [x] 变更时间：2026-03-19 20:10；技术 smoke 成功与体验 / must-close 结论继续严格分写；后台 `admin-auth` 是否最终通过，仍以体验设计审查第二轮复审为准
+- [x] 变更时间：2026-03-19 20:28；体验设计审查已正式回传后台 `admin-auth` 第二轮 must-close 复审结论为 `可通过`；该结论只覆盖后台 `admin-auth` 最小体验闭环，不扩写到其他后台业务页或整个项目
+- [x] 变更时间：2026-03-19 20:28；总控已在当前 `dev` 环境将 `review-admin.invoke=true`、`governance-admin.invoke=true` 实际写入函数安全规则；当前规则保持 wildcard 非匿名基线不变，并继续保留 `admin-auth.invoke=true`
+- [x] 变更时间：2026-03-19 20:28；当前后台第一技术风险已从“是否放行真实读入口”切换为“后台在开启 `VITE_ENABLE_REAL_ADMIN_READS` 前，先明确 `读真实 + 写 mock` 还是 `真实读下详情动作区只读` 的页面策略”
+- [x] 变更时间：2026-03-19 20:28；前端本线当前阻塞已更正为“真实 `AppID` + 开发者工具 cloud 运行态 + 首轮真实 smoke 证据”，不再把 `ADMIN_WEB_BASE_URL` 或后台 `/login` 记为小程序当前阻塞
+- [x] 变更时间：2026-03-19 20:36；后台真实读页面策略已正式收口为保守默认值：当 `VITE_ENABLE_REAL_ADMIN_READS=true` 且 `VITE_ENABLE_REAL_ADMIN_WRITES=false` 时，审核详情、举报详情、处罚页写动作统一保持只读，避免写 transport 未就绪时报错
+- [x] 变更时间：2026-03-19 20:36；当前后台下一步可安全切换到“先收口读模型，再开启真实读 smoke”，不再需要在开启真实读前额外争论 `读真实 + 写 mock` 与 `真实读下只读` 两条策略
+- [x] 变更时间：2026-03-20 10:48；总控已在 `dev` 环境实跑 `__BACKEND_WORKTREE__/scripts/smoke-admin-real-reads.mjs`，并确认 `admin-auth.login/me/logout`、`governance-admin.dashboard`、`review-admin.taskList`、`governance-admin.reportList`、`governance-admin.accountActionList`、`governance-admin.operationLogList` 全部返回 `code=0`
+- [x] 变更时间：2026-03-20 10:48；本轮服务端真实读 smoke 证据路径固定为 `__BACKEND_WORKTREE__/scripts/evidence/r44/admin-real-reads-smoke.latest.json`；该证据证明当前问题已不在函数安全规则或管理会话链路
+- [x] 变更时间：2026-03-20 10:48；当前 `review-admin.taskList` 与 `governance-admin.reportList` 在 `dev` 环境返回空列表，因此 `taskDetail/reportDetail` 的 populated-data 路径尚未覆盖；这记为“数据覆盖缺口”，不记为鉴权、规则或接口失败
+- [x] 变更时间：2026-03-20 10:48；后台当前第一技术风险已从“是否放行真实读入口”进一步切换为“开启 `VITE_ENABLE_REAL_ADMIN_READS` 后的页面 / 浏览器侧真实读 smoke 与 adapter/model 字段收口”；写动作仍维持只读边界，直到真实写 transport ready
+- [x] 变更时间：2026-03-20 10:48；后台已验证在 `VITE_ENABLE_REAL_ADMIN_READS=true`、`VITE_ENABLE_REAL_ADMIN_WRITES=false` 条件下本地 `typecheck + build` 继续通过；下一步可直接进入页面级真实读 smoke，而不是先处理编译级问题
+- [x] 变更时间：2026-03-20 11:18；CloudBase 托管测试域名入口前的“风险提示”页确认按钮存在倒计时，且秒数不保证固定；后台自动化与人工 smoke 均应统一按“先打开根路径 `/`，轮询直到 `确定访问` 按钮真正可点击，再进入登录页”执行，禁止再写死 `sleep 3`
+- [x] 变更时间：2026-03-20 11:30；按用户要求，总控与子代理后续默认只允许无头 / 脚本 / 构建 / 日志方式推进；非经用户明确同意，不再启动可见浏览器
+- [x] 变更时间：2026-03-20 11:30；后台已在无头模式下通过线上托管根路径重新跑通 `first-reset` smoke，且证据已更新到 `__ADMIN_WORKTREE__/admin-web/evidence/r09/real-admin-auth/summary.md`；当前“风险提示页阻塞登录”已关闭
+- [x] 变更时间：2026-03-20 12:08；后台页面级真实读 smoke 已在无头模式下实际执行完成，当前可稳定命中 `/dashboard`、`/logs`、`/review/list`、`/report/list`；因此“页面级真实读 smoke 仍待执行”不再成立
+- [x] 变更时间：2026-03-20 12:08；本轮后台页面级真实读的第一问题正式收口为“页面加载失败态”，不是“路由未到页”、不是“风险提示页阻塞”、也不是“服务端真实读未通”；其中 `dashboard`、`logs`、`review-list`、`report-list` 当前都已命中对应路由，但页面正文进入 `load failure`
+- [x] 变更时间：2026-03-20 12:08；当前不再把 `review-admin.taskList` / `governance-admin.reportList` 的空列表事实直接外推为前端空态未接；在页面真实读恢复前，空态证据暂不作为当前首要判断项
+- [x] 变更时间：2026-03-20 12:08；后台下一步定位顺序固定为：先拿到真实读失败的具体 `ServiceError.message/code/requestId`，再决定是修前端 real-read 开关/构建一致性、浏览器侧 CloudBase transport，还是 adapter / normalizer
+- [x] 变更时间：2026-03-20 12:25；已正式确认 `__ADMIN_WORKTREE__/admin-web/.env.production` 先前仍把 `VITE_ENABLE_REAL_ADMIN_READS=false` 编进生产包，这就是 `R47` 页面统一 `load failure` 的直接根因；总控已改为 `true`、保留 `VITE_ENABLE_REAL_ADMIN_WRITES=false`，并完成重新 `build + publish + deploy fingerprint` 核查
+- [x] 变更时间：2026-03-20 12:25；后台页面级真实读已恢复：`/dashboard`、`/logs`、`/review/list`、`/report/list` 无头 smoke 全部通过，其中 `review-list` / `report-list` 已命中空态，`dashboard_load_error=no`；此前“页面加载失败态”阻塞正式关闭，后台当前剩余缺口调整为读模型字段收口、详情页 populated 样本数据，以及真实写 transport 继续保持只读
+- [x] 变更时间：2026-03-20 13:09；`review/report` 最小 populated 样本数据阻塞已关闭，直接根因确认为 `__BACKEND_WORKTREE__/scripts/seed-admin-detail-smoke-sample.mjs` 误用 `@cloudbase/node-sdk` 的 `add({ data: doc })`，把新增样本写成了 `data.*` 包装文档；本轮已同步修复 `__BACKEND_WORKTREE__/scripts/seed-admin-detail-smoke-sample.mjs` 与 `__BACKEND_WORKTREE__/scripts/init-database.mjs` 的 root-shape 写入
+- [x] 变更时间：2026-03-20 13:09；总控已对同一 `prefix=smoke_r48_detail` 重跑 apply，随后 `__BACKEND_WORKTREE__/scripts/evidence/r44/admin-real-reads-smoke.latest.json` 显示 `review-admin.taskList/taskDetail` 与 `governance-admin.reportList/reportDetail` 全部 `code=0`，因此当前不再把“服务端详情覆盖缺失”记为主阻塞
+- [x] 变更时间：2026-03-20 13:20；后台无头页面级真实读 smoke 已扩大覆盖到 `/review/:reviewTaskId` 与 `/report/:reportId`，并在 `__ADMIN_WORKTREE__/admin-web/evidence/r48/real-admin-reads-detail-pass2/summary.md` 确认 `dashboard / logs / review-list / report-list / review-detail / report-detail` 全部可读
+- [x] 变更时间：2026-03-20 13:20；当前后台第一技术风险进一步收口为字段消费细化与真实写 transport 仍未开放；“详情最小样本缺失”与“详情页真实读未验证”两项都已关闭
+- [x] 变更时间：2026-03-18 18:01；真实密钥、初始密码等敏感值继续不得写入 `board.md`、`meetings/*.md`、`parking-lot.md`、`inbox/outbox`、`.control-state/current/` 或其他同步文档；即使当前未上线，也只能通过非同步的一次性交付传递明文，同步文档里只允许写 `已交付 / 未交付 / 卡在哪一步`
+- [x] 真实密钥、初始密码等敏感值不得写入 `board.md`、`meetings/*.md`、`parking-lot.md`、`inbox/outbox`、`.control-state/current/` 或其他同步文档；只能通过安全渠道单独转交
+- [x] 前端 / 后台后续回报必须按体验证据模板提交；无法截图 / 录屏时，必须补可接受替代证据，并写明当前是 `mock` 还是 `real`
+- [x] 环境未到位导致的缺口统一登记为“待环境后复核”；规则未拍板导致的缺口统一登记为“待拍板后复核”；两类都不提前判定为开发未完成或设计偏离
+- [x] 总控窗口必须遵守 `control-principles.md`，凡是没在文档、决议、会议纪要或回报中明确出现的内容，一律标注为待确认，不得当成既定事实
+
+## 记录规则
+
+1. 每条决策只记录已拍板结论，不记录拉扯过程。
+2. 未拍板问题一律进入 `parking-lot.md`。
+3. 如决策发生变更，在原条目下补充“变更时间 + 新结论”。

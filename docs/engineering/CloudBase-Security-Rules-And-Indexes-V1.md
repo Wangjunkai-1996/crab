@@ -3,8 +3,8 @@
 ## 1. 文档信息
 
 - 文档名称：CloudBase 安全规则与索引规范 V1
-- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
+- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
+- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：锁定 CloudBase 数据库与云存储的访问边界、集合索引方案与环境初始化顺序
 

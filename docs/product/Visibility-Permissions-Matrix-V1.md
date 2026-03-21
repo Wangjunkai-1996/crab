@@ -3,8 +3,8 @@
 ## 1. 文档信息
 
 - 文档名称：可见性与权限矩阵 V1
-- 对应 PRD：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应字段字典：[Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
+- 对应 PRD：[PRD-V1.md](PRD-V1.md)
+- 对应字段字典：[Field-Dictionary-V1.md](Field-Dictionary-V1.md)
 - 文档日期：2026-03-15
 - 文档目标：明确谁能看什么、谁能做什么，避免前后端对字段展示和操作权限理解不一致
 

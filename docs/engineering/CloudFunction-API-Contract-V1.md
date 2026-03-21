@@ -3,9 +3,9 @@
 ## 1. 文档信息
 
 - 文档名称：Cloud Function API Contract V1
-- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Admin-Auth-Spec-V1.md)
-- 对应字段字典：[Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
+- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
+- 对应后台鉴权规范：[CloudBase-Admin-Auth-Spec-V1.md](CloudBase-Admin-Auth-Spec-V1.md)
+- 对应字段字典：[Field-Dictionary-V1.md](../product/Field-Dictionary-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：定义 V1 阶段全部云函数的 action、请求参数、返回结构和主要错误口径，作为前后端联调与测试用例编写依据
 
@@ -1035,5 +1035,5 @@
 ## 17. 落地建议
 
 1. 前端和后台的 service 层必须以本文档的 action 名为准。
-2. 字段详情以 [Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md) 为主，本文档负责“接口收发哪些字段”。
+2. 字段详情以 [Field-Dictionary-V1.md](../product/Field-Dictionary-V1.md) 为主，本文档负责“接口收发哪些字段”。
 3. 若实现中发现 contract 与业务状态矩阵冲突，应优先回到后端总文档和状态流转文档修订，而不是局部拍板改接口。

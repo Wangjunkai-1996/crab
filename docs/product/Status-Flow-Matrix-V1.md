@@ -3,8 +3,8 @@
 ## 1. 文档信息
 
 - 文档名称：状态流转表 V1
-- 对应 PRD：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应审核工作流：[Review-Workflow-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Review-Workflow-V1.md)
+- 对应 PRD：[PRD-V1.md](PRD-V1.md)
+- 对应审核工作流：[Review-Workflow-V1.md](Review-Workflow-V1.md)
 - 文档日期：2026-03-15
 - 文档目标：统一前台、后台、运营对各业务对象状态的理解
 

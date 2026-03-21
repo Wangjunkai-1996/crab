@@ -1,0 +1,4 @@
+.DS_Store
+.playwright-cli/
+project.config.json
+project.private.config.json

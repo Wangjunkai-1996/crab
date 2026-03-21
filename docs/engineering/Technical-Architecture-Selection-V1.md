@@ -3,10 +3,10 @@
 ## 1. 文档说明
 
 - 文档名称：技术架构与选型方案 V1
-- 对应产品文档：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
-- 对应字段字典：[Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md)
-- 对应状态流转：[Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)
+- 对应产品文档：[PRD-V1.md](../product/PRD-V1.md)
+- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](../product/Admin-Operations-Backend-PRD-V1.md)
+- 对应字段字典：[Field-Dictionary-V1.md](../product/Field-Dictionary-V1.md)
+- 对应状态流转：[Status-Flow-Matrix-V1.md](../product/Status-Flow-Matrix-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：为多米通告 V1 锁定前后端技术路线、数据架构、后台架构与演进边界，避免开发启动后反复改栈
 

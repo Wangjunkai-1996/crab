@@ -3,8 +3,8 @@
 ## 1. 文档信息
 
 - 文档名称：字段字典 V1
-- 对应 PRD：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应 UI 定稿：[UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
+- 对应 PRD：[PRD-V1.md](PRD-V1.md)
+- 对应 UI 定稿：[UI-Final-Signoff-V1.md](../design/UI-Final-Signoff-V1.md)
 - 文档日期：2026-03-15
 - 文档目标：统一前后端、测试、运营对核心业务字段的命名、含义和约束理解
 
@@ -13,7 +13,7 @@
 1. V1 采用“一个微信身份对应一个平台用户”的模型，不设计额外注册页。
 2. 一个平台用户可同时挂载一份发布方资料和一张达人名片。
 3. V1 只支持单一达人名片，不支持多名片切换。
-4. 联系方式字段是否展示，不由前端自行判断，必须遵循 [Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)。
+4. 联系方式字段是否展示，不由前端自行判断，必须遵循 [Visibility-Permissions-Matrix-V1.md](Visibility-Permissions-Matrix-V1.md)。
 5. 前台展示文案可友好化，但底层枚举值必须稳定，避免后续统计和状态联动混乱。
 
 ## 3. 全局字段约定

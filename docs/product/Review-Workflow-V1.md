@@ -3,9 +3,9 @@
 ## 1. 文档信息
 
 - 文档名称：审核工作流 V1
-- 对应 PRD：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Admin-Operations-Backend-PRD-V1.md)
-- 对应状态流转：[Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)
+- 对应 PRD：[PRD-V1.md](PRD-V1.md)
+- 对应后台需求：[Admin-Operations-Backend-PRD-V1.md](Admin-Operations-Backend-PRD-V1.md)
+- 对应状态流转：[Status-Flow-Matrix-V1.md](Status-Flow-Matrix-V1.md)
 - 文档日期：2026-03-15
 - 文档目标：区分通告业务状态和审核任务状态，补齐“转人工复核”后的队列和任务生命周期
 

@@ -3,14 +3,14 @@
 ## 1. 文档信息
 
 - 文档名称：小程序前端开发文档 V1
-- 对应产品文档：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应 UI 定稿：[UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
-- 对应 UI 设计系统：[UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md)
-- 对应 Design Token：[UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json)
-- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudBase-Backend-Development-Guide-V1.md)
-- 对应 API Contract：[CloudFunction-API-Contract-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/engineering/CloudFunction-API-Contract-V1.md)
-- 对应权限矩阵：[Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md)
-- 对应状态流转：[Status-Flow-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Status-Flow-Matrix-V1.md)
+- 对应产品文档：[PRD-V1.md](../product/PRD-V1.md)
+- 对应 UI 定稿：[UI-Final-Signoff-V1.md](../design/UI-Final-Signoff-V1.md)
+- 对应 UI 设计系统：[UI-Design-System-V1.md](../design/UI-Design-System-V1.md)
+- 对应 Design Token：[UI-Design-Tokens-V1.json](../design/UI-Design-Tokens-V1.json)
+- 对应后端总文档：[CloudBase-Backend-Development-Guide-V1.md](CloudBase-Backend-Development-Guide-V1.md)
+- 对应 API Contract：[CloudFunction-API-Contract-V1.md](CloudFunction-API-Contract-V1.md)
+- 对应权限矩阵：[Visibility-Permissions-Matrix-V1.md](../product/Visibility-Permissions-Matrix-V1.md)
+- 对应状态流转：[Status-Flow-Matrix-V1.md](../product/Status-Flow-Matrix-V1.md)
 - 文档日期：2026-03-16
 - 文档目标：为多米通告 V1 输出一份可以直接指导原生微信小程序落地开发的详细前端规范，统一目录结构、组件体系、页面数据流、状态处理和联调方式
 
@@ -63,7 +63,7 @@
 
 ### 4.1 UI 还原原则
 
-1. 以 [UI-Design-System-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-System-V1.md) 和高保真稿为视觉事实来源。
+1. 以 [UI-Design-System-V1.md](../design/UI-Design-System-V1.md) 和高保真稿为视觉事实来源。
 2. 所有关键状态页必须真实实现，不能只靠一套通用空白页兜底。
 3. 视觉实现优先沉淀成组件，不在页面内散写样式。
 
@@ -269,7 +269,7 @@ miniprogram/
 
 实现规则：
 
-1. 将 [UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json) 映射到 `styles/tokens.scss`
+1. 将 [UI-Design-Tokens-V1.json](../design/UI-Design-Tokens-V1.json) 映射到 `styles/tokens.scss`
 2. 页面和组件只消费语义化变量，如 `--color-brand-primary`、`--radius-card`、`--shadow-soft`
 3. 禁止在页面内直接散写十六进制颜色
 

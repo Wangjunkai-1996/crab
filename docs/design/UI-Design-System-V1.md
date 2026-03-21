@@ -3,11 +3,11 @@
 ## 1. 文档说明
 
 - 文档名称：UI 设计系统与高保真规范 V1
-- 对应产品文档：[PRD-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/PRD-V1.md)
-- 对应品牌文案：[Brand-And-Audit-Copy-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/operations/Brand-And-Audit-Copy-V1.md)
-- 对应 token 文件：[UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json)
-- 对应高保真预览：[UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html)
-- 对应 UI 定稿：[UI-Final-Signoff-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Final-Signoff-V1.md)
+- 对应产品文档：[PRD-V1.md](../product/PRD-V1.md)
+- 对应品牌文案：[Brand-And-Audit-Copy-V1.md](../operations/Brand-And-Audit-Copy-V1.md)
+- 对应 token 文件：[UI-Design-Tokens-V1.json](UI-Design-Tokens-V1.json)
+- 对应高保真预览：[UI-High-Fidelity-Prototype-V1.html](UI-High-Fidelity-Prototype-V1.html)
+- 对应 UI 定稿：[UI-Final-Signoff-V1.md](UI-Final-Signoff-V1.md)
 - 文档日期：2026-03-16
 - 文档目的：统一 V1 页面视觉语言、组件规则、交互细节与开发交付标准
 
@@ -65,7 +65,7 @@
 
 ## 3. 设计 Token 摘要
 
-完整 token 以 [UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json) 为准，本节仅展示关键设计意图。
+完整 token 以 [UI-Design-Tokens-V1.json](UI-Design-Tokens-V1.json) 为准，本节仅展示关键设计意图。
 
 ### 3.1 核心色彩
 
@@ -581,7 +581,7 @@
 
 ### 6.10 定稿边界说明
 
-1. 本轮 UI 定稿以 [UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html) 与本规范共同作为评审依据。
+1. 本轮 UI 定稿以 [UI-High-Fidelity-Prototype-V1.html](UI-High-Fidelity-Prototype-V1.html) 与本规范共同作为评审依据。
 2. 只要不触碰信息架构、角色权限、主色系统、核心组件样式和上述交互决策，后续实现中的像素级微调可视为开发还原优化，不视为重新开 UI 稿。
 3. 若未来新增广告、会员或认证模块，必须另开版本，不得回写改变 V1 已锁定页面骨架。
 
@@ -603,10 +603,10 @@
 
 ## 9. 开发交付要求
 
-1. 前端实现优先读取 [UI-Design-Tokens-V1.json](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-Design-Tokens-V1.json) 中的颜色、圆角、阴影、字号和状态 token。
+1. 前端实现优先读取 [UI-Design-Tokens-V1.json](UI-Design-Tokens-V1.json) 中的颜色、圆角、阴影、字号和状态 token。
 2. 所有列表卡片、标签和按钮优先沉淀成可复用组件，不要页面内写死多套样式。
-3. 高保真预览稿 [UI-High-Fidelity-Prototype-V1.html](/Users/tokk/Desktop/crab-miniapp/docs/design/UI-High-Fidelity-Prototype-V1.html) 用于视觉对齐，不作为真实数据结构定义来源。
-4. 业务字段、状态与可见性规则仍以 [Field-Dictionary-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Field-Dictionary-V1.md) 和 [Visibility-Permissions-Matrix-V1.md](/Users/tokk/Desktop/crab-miniapp/docs/product/Visibility-Permissions-Matrix-V1.md) 为准。
+3. 高保真预览稿 [UI-High-Fidelity-Prototype-V1.html](UI-High-Fidelity-Prototype-V1.html) 用于视觉对齐，不作为真实数据结构定义来源。
+4. 业务字段、状态与可见性规则仍以 [Field-Dictionary-V1.md](../product/Field-Dictionary-V1.md) 和 [Visibility-Permissions-Matrix-V1.md](../product/Visibility-Permissions-Matrix-V1.md) 为准。
 
 ## 10. UI 验收清单
 

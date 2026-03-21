@@ -1,0 +1,33 @@
+:root {
+  --dm-color-primary: #2f6bff;
+  --dm-color-success: #12b3a8;
+  --dm-color-warning: #ffb547;
+  --dm-color-danger: #e35d6a;
+  --dm-color-background: #f4f7fb;
+  --dm-color-surface: #ffffff;
+  --dm-color-border: #e3e8f0;
+  --dm-color-text-primary: #152033;
+  --dm-color-text-secondary: #5c6980;
+  --dm-shadow-card: 0 8px 24px rgba(21, 32, 51, 0.08);
+  --dm-radius-sm: 12px;
+  --dm-radius-lg: 16px;
+  --dm-layout-min-width: 1280px;
+  --dm-layout-sidebar-width: 240px;
+  --dm-layout-topbar-height: 68px;
+}
+
+body {
+  margin: 0;
+  min-width: 1180px;
+  background: var(--dm-color-background);
+  color: var(--dm-color-text-primary);
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  min-height: 100vh;
+}

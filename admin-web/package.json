@@ -1,0 +1,41 @@
+{
+  "name": "admin-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit",
+    "smoke:admin-auth:real:dry-run": "bash ./scripts/smoke-admin-auth-real.sh --dry-run",
+    "smoke:admin-auth:real:standard:dry-run": "bash ./scripts/smoke-admin-auth-real.sh --dry-run --standard-only",
+    "smoke:admin-auth:real:first-reset:dry-run": "bash ./scripts/smoke-admin-auth-real.sh --dry-run --first-reset-only",
+    "smoke:admin-auth:real": "bash ./scripts/smoke-admin-auth-real.sh",
+    "smoke:admin-auth:real:standard": "bash ./scripts/smoke-admin-auth-real.sh --standard-only",
+    "smoke:admin-auth:real:first-reset": "bash ./scripts/smoke-admin-auth-real.sh --first-reset-only",
+    "smoke:admin-reads:real": "bash ./scripts/smoke-admin-reads-real.sh",
+    "check:publish-status": "bash ./scripts/check-admin-web-publish-status.sh",
+    "check:publish-status:verify-build": "bash ./scripts/check-admin-web-publish-status.sh --verify-build",
+    "release:hosting": "bash ./scripts/release-admin-web.sh",
+    "release:hosting:dry-run": "bash ./scripts/release-admin-web.sh --dry-run",
+    "release:hosting:with-smoke": "bash ./scripts/release-admin-web.sh --with-smoke"
+  },
+  "dependencies": {
+    "@cloudbase/js-sdk": "^2.26.3",
+    "@element-plus/icons-vue": "^2.3.2",
+    "element-plus": "^2.11.4",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.30",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/tsconfig": "^0.9.0",
+    "sass": "^1.93.2",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.0",
+    "vue-tsc": "^3.2.5"
+  }
+}

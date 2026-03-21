@@ -1,0 +1,31 @@
+.el-card {
+  border-color: var(--dm-color-border);
+  border-radius: var(--dm-radius-lg);
+  box-shadow: var(--dm-shadow-card);
+}
+
+.el-table {
+  --el-table-border-color: var(--dm-color-border);
+  --el-table-header-bg-color: #f8faff;
+  --el-table-row-hover-bg-color: #f3f7ff;
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--dm-color-primary);
+  --el-button-border-color: var(--dm-color-primary);
+}
+
+.el-button--danger {
+  --el-button-bg-color: var(--dm-color-danger);
+  --el-button-border-color: var(--dm-color-danger);
+}
+
+.el-dialog {
+  border-radius: var(--dm-radius-lg);
+}
+
+.el-form-item.is-error .el-input__wrapper,
+.el-form-item.is-error .el-textarea__inner,
+.el-form-item.is-error .el-select__wrapper {
+  box-shadow: 0 0 0 1px var(--dm-color-danger) inset;
+}

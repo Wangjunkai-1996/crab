@@ -1,0 +1,38 @@
+@import './tokens.scss';
+@import './mixins.scss';
+
+.glass-chip {
+  @include pill(rgba(255, 255, 255, 0.78), $text-primary, rgba(214, 224, 238, 0.92));
+}
+
+.glass-chip--active {
+  color: $primary-600;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+  box-shadow: 0 10rpx 24rpx rgba(47, 107, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.pill-primary {
+  @include pill(rgba(47, 107, 255, 0.12), $primary-600, rgba(47, 107, 255, 0.24));
+}
+
+.pill-accent {
+  @include pill(rgba(255, 181, 71, 0.16), $accent-700, rgba(255, 181, 71, 0.28));
+}
+
+.pill-teal {
+  @include pill(rgba(18, 179, 168, 0.12), $secondary-700, rgba(18, 179, 168, 0.24));
+}
+
+.pill-danger {
+  @include pill(rgba(227, 93, 106, 0.12), $danger-500, rgba(227, 93, 106, 0.24));
+}
+
+.page-bottom-space {
+  height: calc(128rpx + env(safe-area-inset-bottom));
+}
+
+.divider {
+  height: 1px;
+  background: rgba(220, 229, 240, 0.92);
+}

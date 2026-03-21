@@ -1,0 +1,67 @@
+<view class="page-shell">
+  <app-hero-header theme="surface" kicker="报名管理" title="快速推进报名状态" subtitle="动作区只根据服务端返回的 availableActions 渲染，不在前端自行推导权限。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="manage-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="报名管理加载失败" description="{{errorText}}" actionText="重新加载" bind:action="onRetry"></page-error-state>
+    <empty-state wx:elif="{{pageState === 'empty'}}" title="当前通告下暂无报名" description="后续达人提交报名后，会按状态混排出现在这里。"></empty-state>
+    <block wx:else>
+      <stats-summary-card items="{{stats}}"></stats-summary-card>
+
+      <view class="manage-list">
+        <view
+          wx:for="{{applications}}"
+          wx:key="applicationId"
+          class="surface-card manage-item {{selectedApplicationId === item.applicationId ? 'manage-item--active' : ''}}"
+          data-id="{{item.applicationId}}"
+          bindtap="onTapItem"
+        >
+          <view class="manage-item__head">
+            <status-tag status="{{item.status}}" text="{{item.statusText}}"></status-tag>
+            <text class="manage-item__meta">{{item.publisherViewedAt || '待查看'}}</text>
+          </view>
+          <text class="manage-item__title">{{item.creatorCardSnapshot.nickname}}</text>
+          <view class="manage-item__chips">
+            <text class="manage-item__chip">{{item.platformLabel}}</text>
+            <text class="manage-item__chip">{{item.categoryLabel}}</text>
+            <text class="manage-item__chip">{{item.creatorCardSnapshot.followerBand}}</text>
+          </view>
+          <text class="manage-item__copy">{{item.creatorCardSnapshot.caseDescription || '暂未补充案例说明'}}</text>
+          <text class="manage-item__contact {{item.contactRevealState === 'revealed' ? 'manage-item__contact--visible' : ''}}">{{item.contactStateText}}</text>
+        </view>
+      </view>
+
+      <view class="surface-card manage-detail-card">
+        <view class="manage-detail-card__head">
+          <text class="manage-detail-card__title">报名详情</text>
+          <text class="manage-detail-card__copy">选中一条报名后查看详情与可执行动作</text>
+        </view>
+
+        <page-skeleton wx:if="{{detailLoading}}"></page-skeleton>
+        <page-error-state wx:elif="{{detailErrorText}}" title="报名详情加载失败" description="{{detailErrorText}}" actionText="重试" bind:action="onRetry"></page-error-state>
+        <block wx:elif="{{detail}}">
+          <status-tag status="{{detail.application.status}}" text="{{detail.statusText}}"></status-tag>
+          <grouped-form-card title="达人摘要" items="{{detail.creatorItems}}"></grouped-form-card>
+          <grouped-form-card title="报名内容" items="{{detail.applicationItems}}"></grouped-form-card>
+          <view class="manage-contact-card">
+            <text class="manage-contact-card__title">{{detail.contactTitle}}</text>
+            <text class="manage-contact-card__copy">{{detail.contactCopy}}</text>
+          </view>
+          <view wx:if="{{detail.actionButtons.length}}" class="manage-action-grid">
+            <view
+              wx:for="{{detail.actionButtons}}"
+              wx:key="key"
+              class="manage-action-grid__button"
+              data-id="{{selectedApplicationId}}"
+              data-action="{{item.key}}"
+              bindtap="onTapAction"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:else class="manage-detail-card__empty">当前状态下暂无可执行动作，状态推进以后端返回为准。</text>
+        </block>
+      </view>
+    </block>
+  </view>
+  <bottom-action-bar primaryText="查看原通告" secondaryText="刷新列表" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+</view>

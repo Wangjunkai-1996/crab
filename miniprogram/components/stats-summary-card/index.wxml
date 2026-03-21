@@ -1,0 +1,6 @@
+<view class="stats-grid">
+  <view wx:for="{{items}}" wx:key="label" class="stats-card">
+    <text class="stats-card__value">{{item.value}}</text>
+    <text class="stats-card__label">{{item.label}}</text>
+  </view>
+</view>

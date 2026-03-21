@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../../components/app-hero-header/index",
+    "page-skeleton": "../../../components/page-skeleton/index",
+    "page-error-state": "../../../components/page-error-state/index",
+    "empty-state": "../../../components/empty-state/index",
+    "stats-summary-card": "../../../components/stats-summary-card/index",
+    "status-tag": "../../../components/status-tag/index",
+    "grouped-form-card": "../../../components/grouped-form-card/index",
+    "bottom-action-bar": "../../../components/bottom-action-bar/index"
+  }
+}

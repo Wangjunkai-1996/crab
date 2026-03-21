@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../../components/app-hero-header/index",
+    "stats-summary-card": "../../../components/stats-summary-card/index",
+    "status-tag": "../../../components/status-tag/index",
+    "empty-state": "../../../components/empty-state/index",
+    "page-error-state": "../../../components/page-error-state/index",
+    "page-skeleton": "../../../components/page-skeleton/index"
+  }
+}

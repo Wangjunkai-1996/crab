@@ -1,0 +1,100 @@
+@import '../../../styles/tokens.scss';
+
+.list-stack {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.segment-row,
+.notice-manage-card__metrics,
+.notice-manage-card__actions {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+}
+
+.segment {
+  flex: 1;
+  min-width: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64rpx;
+  border-radius: 20rpx;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  background: rgba(255, 255, 255, 0.78);
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.segment--active {
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  color: $primary-600;
+  border-color: rgba(47, 107, 255, 0.28);
+}
+
+.notice-manage-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.notice-manage-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.notice-manage-card__meta {
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.notice-manage-card__title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.notice-manage-card__pill,
+.notice-manage-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: $radius-pill;
+  font-size: $font-caption;
+}
+
+.notice-manage-card__pill {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: $text-secondary;
+}
+
+.notice-manage-card__pill--accent {
+  background: rgba(255, 181, 71, 0.16);
+  border-color: rgba(255, 181, 71, 0.24);
+  color: $accent-700;
+}
+
+.notice-manage-card__button {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 253, 0.92));
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: $text-primary;
+}
+
+.notice-manage-card__button--primary {
+  background: rgba(47, 107, 255, 0.12);
+  border-color: rgba(47, 107, 255, 0.24);
+  color: $primary-600;
+}
+
+.notice-manage-card__button--danger {
+  background: rgba(227, 93, 106, 0.12);
+  border-color: rgba(227, 93, 106, 0.24);
+  color: $danger-500;
+}

@@ -1,0 +1,14 @@
+<view class="uploader-grid">
+  <view class="uploader-grid__list">
+    <view wx:for="{{files}}" wx:key="*this" class="uploader-grid__item">
+      <image class="uploader-grid__image" src="{{item}}" mode="aspectFill" data-url="{{item}}" bindtap="onPreview"></image>
+      <view wx:if="{{!readonly}}" class="uploader-grid__remove" data-index="{{index}}" catchtap="onRemove">×</view>
+    </view>
+    <view wx:if="{{!readonly && files.length < maxCount}}" class="uploader-grid__item uploader-grid__item--add" bindtap="onChoose">
+      <text class="uploader-grid__plus">＋</text>
+      <text class="uploader-grid__add-text">{{addText}}</text>
+      <text class="uploader-grid__add-count">{{files.length}} / {{maxCount}}</text>
+    </view>
+  </view>
+  <text class="uploader-grid__hint">{{helperText || ('最多上传 ' + maxCount + ' 张图片')}}</text>
+</view>

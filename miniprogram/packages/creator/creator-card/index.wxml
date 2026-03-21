@@ -1,0 +1,146 @@
+<view class="page-shell">
+  <app-hero-header
+    theme="surface"
+    kicker="达人名片"
+    title="让发布方快速看懂你"
+    subtitle="名片既是资料表，也是合作判断面板；当前页直接完成编辑和保存。"
+    showBack="{{true}}"
+    topInset="{{topInset}}"
+  ></app-hero-header>
+
+  <view class="page-stack creator-card-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state
+      wx:elif="{{pageState === 'error'}}"
+      title="达人名片加载失败"
+      description="{{errorText}}"
+      actionText="重新加载"
+      bind:action="loadPage"
+    ></page-error-state>
+    <block wx:else>
+      <view class="surface-card preview-card">
+        <view class="preview-card__avatar">{{previewAvatarText}}</view>
+        <view class="preview-card__meta">
+          <text class="preview-card__name">{{previewName}}</text>
+          <text class="preview-card__summary">{{previewSummary}}</text>
+          <text class="preview-card__summary">{{bridgeText}}</text>
+          <text class="preview-card__summary">{{fieldSourceText}}</text>
+          <view class="preview-card__tags">
+            <text wx:for="{{previewTags}}" wx:key="label" class="preview-card__tag {{item.active ? 'preview-card__tag--active' : ''}}">{{item.label}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">基础资料</text>
+          <text class="form-section__copy">昵称、平台、领域、粉丝量级是当前页的最小闭环。</text>
+          <view class="form-summary-row">
+            <text class="form-summary-pill form-summary-pill--accent">{{completenessText}}</text>
+          </view>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">昵称</text><text class="form-field__required">必填</text></view>
+          <input class="form-input {{fieldErrors.nickname ? 'form-input--error' : ''}}" placeholder="最多 20 字" maxlength="20" value="{{cardForm.nickname}}" data-field="nickname" bindinput="onFieldInput" />
+          <text wx:if="{{fieldErrors.nickname}}" class="form-field__error">{{fieldErrors.nickname}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">所在城市</text><text class="form-field__required">必填</text></view>
+          <input class="form-input {{fieldErrors.city ? 'form-input--error' : ''}}" placeholder="例如：杭州" value="{{cardForm.city}}" data-field="city" bindinput="onFieldInput" />
+          <text wx:if="{{fieldErrors.city}}" class="form-field__error">{{fieldErrors.city}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">性别</text></view>
+          <view class="option-grid">
+            <view wx:for="{{genderOptions}}" wx:key="value" class="option-chip {{cardForm.gender === item.value ? 'option-chip--active' : ''}}" data-field="gender" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">擅长平台</text><text class="form-field__required">必填</text></view>
+          <view class="option-grid">
+            <view wx:for="{{platformOptions}}" wx:key="value" class="option-chip {{cardForm.primaryPlatform === item.value ? 'option-chip--active' : ''}}" data-field="primaryPlatform" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+          <text wx:if="{{fieldErrors.primaryPlatform}}" class="form-field__error">{{fieldErrors.primaryPlatform}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">擅长领域</text><text class="form-field__required">必填</text></view>
+          <view class="option-grid">
+            <view wx:for="{{categoryOptions}}" wx:key="value" class="option-chip {{cardForm.primaryCategory === item.value ? 'option-chip--active' : ''}}" data-field="primaryCategory" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+          <text wx:if="{{fieldErrors.primaryCategory}}" class="form-field__error">{{fieldErrors.primaryCategory}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">粉丝量级</text><text class="form-field__required">必填</text></view>
+          <view class="option-grid">
+            <view wx:for="{{followerBandOptions}}" wx:key="value" class="option-chip {{cardForm.followerBand === item.value ? 'option-chip--active' : ''}}" data-field="followerBand" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+          <text wx:if="{{fieldErrors.followerBand}}" class="form-field__error">{{fieldErrors.followerBand}}</text>
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">账号与案例</text>
+          <text class="form-section__copy">{{uploadCopy}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">账号名称</text></view>
+          <input class="form-input {{fieldErrors.accountName ? 'form-input--error' : ''}}" placeholder="选填，最多 30 字" maxlength="30" value="{{cardForm.accountName}}" data-field="accountName" bindinput="onFieldInput" />
+          <text wx:if="{{fieldErrors.accountName}}" class="form-field__error">{{fieldErrors.accountName}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">账号链接或 ID</text></view>
+          <input class="form-input {{fieldErrors.accountIdOrLink ? 'form-input--error' : ''}}" placeholder="选填，最多 100 字" maxlength="100" value="{{cardForm.accountIdOrLink}}" data-field="accountIdOrLink" bindinput="onFieldInput" />
+          <text wx:if="{{fieldErrors.accountIdOrLink}}" class="form-field__error">{{fieldErrors.accountIdOrLink}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">代表作品截图</text><text class="form-field__required">必填</text></view>
+          <uploader-grid files="{{cardForm.portfolioImages}}" maxCount="6" helperText="至少上传 1 张、最多 6 张；保存时一起带入达人名片。" bind:change="onPortfolioChange"></uploader-grid>
+          <text wx:if="{{fieldErrors.portfolioImages}}" class="form-field__error">{{fieldErrors.portfolioImages}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">合作案例说明</text></view>
+          <textarea class="form-textarea {{fieldErrors.caseDescription ? 'form-textarea--error' : ''}}" placeholder="选填，最多 200 字" maxlength="200" auto-height="{{true}}" value="{{cardForm.caseDescription}}" data-field="caseDescription" bindinput="onFieldInput"></textarea>
+          <text wx:if="{{fieldErrors.caseDescription}}" class="form-field__error">{{fieldErrors.caseDescription}}</text>
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">联系与常驻信息</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">常驻城市</text></view>
+          <input class="form-input" placeholder="选填，例如：杭州滨江" value="{{cardForm.residentCity}}" data-field="residentCity" bindinput="onFieldInput" />
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">联系方式类型</text><text class="form-field__required">必填</text></view>
+          <view class="option-grid">
+            <view wx:for="{{contactTypeOptions}}" wx:key="value" class="option-chip {{cardForm.contactType === item.value ? 'option-chip--active' : ''}}" data-field="contactType" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+          <text wx:if="{{fieldErrors.contactType}}" class="form-field__error">{{fieldErrors.contactType}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">联系方式内容</text><text class="form-field__required">必填</text></view>
+          <input class="form-input {{fieldErrors.contactValue ? 'form-input--error' : ''}}" placeholder="最多 40 字" maxlength="40" value="{{cardForm.contactValue}}" data-field="contactValue" bindinput="onFieldInput" />
+          <text wx:if="{{fieldErrors.contactValue}}" class="form-field__error">{{fieldErrors.contactValue}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <bottom-action-bar primaryText="保存资料" secondaryText="预览名片" primaryDisabled="{{primaryDisabled}}" loading="{{saving}}" bottomInset="{{bottomInset}}" bind:primary="onSave" bind:secondary="onPreview"></bottom-action-bar>
+</view>

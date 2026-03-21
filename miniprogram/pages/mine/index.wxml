@@ -1,0 +1,55 @@
+<view class="page-shell page-shell--tight-bottom">
+  <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+  <page-error-state wx:elif="{{pageState === 'error'}}" title="工作台暂时没打开" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
+  <block wx:else>
+    <app-hero-header theme="workbench" kicker="我的工作台" title="{{summary.userSummary.displayName}}" subtitle="{{identityCopy}}" badgeText="{{roleSummaryText}}" badgeType="primary" topInset="{{topInset}}"></app-hero-header>
+    <view wx:if="{{canSwitchView}}" class="role-row">
+      <view class="role-pill {{summary.preferredView === 'publisher' ? 'role-pill--active' : ''}}" data-value="publisher" bindtap="onToggleView">发布方</view>
+      <view class="role-pill {{summary.preferredView === 'creator' ? 'role-pill--active' : ''}}" data-value="creator" bindtap="onToggleView">达人</view>
+    </view>
+    <view wx:if="{{summary.restrictionSummary}}" class="mine-section">
+      <restriction-banner title="{{summary.restrictionSummary.title}}" description="{{summary.restrictionSummary.description}}" type="{{summary.restrictionSummary.type}}"></restriction-banner>
+    </view>
+    <view class="mine-section">
+      <stats-summary-card items="{{stats}}"></stats-summary-card>
+    </view>
+    <view class="surface-card mine-card">
+      <text class="mine-card__title">常用入口</text>
+      <view class="mine-card__list">
+        <view
+          wx:for="{{summary.quickActions}}"
+          wx:key="key"
+          class="mine-card__item"
+          data-key="{{item.key}}"
+          data-route="{{item.route}}"
+          data-locked="{{item.locked ? 1 : 0}}"
+          data-locked-reason="{{item.lockedReason}}"
+          bindtap="onTapQuickAction"
+        >
+          <view class="mine-card__meta">
+            <text class="mine-card__label">{{item.label}}</text>
+            <text wx:if="{{item.lockedReason}}" class="mine-card__hint">{{item.lockedReason}}</text>
+          </view>
+          <text class="mine-card__badge {{item.locked ? 'mine-card__badge--locked' : ''}}">{{item.badgeText}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="surface-card mine-card">
+      <text class="mine-card__title">身份与资料</text>
+      <text class="mine-card__copy">当前优先视角：{{summary.preferredViewLabel}}</text>
+      <text class="mine-card__copy">不隐藏 `我的通告`、`我的报名`、`达人名片`、`消息中心`，仅按服务端状态给出锁定提示。</text>
+    </view>
+    <view class="surface-card mine-card">
+      <text class="mine-card__title">帮助与治理</text>
+      <view class="mine-card__list">
+        <view wx:for="{{supportActions}}" wx:key="key" class="mine-card__item" data-route="{{item.route}}" bindtap="onTapSupportAction">
+          <view class="mine-card__meta">
+            <text class="mine-card__label">{{item.label}}</text>
+            <text class="mine-card__hint">{{item.hint}}</text>
+          </view>
+          <text class="mine-card__badge">{{item.badgeText}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

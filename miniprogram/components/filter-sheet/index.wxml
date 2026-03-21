@@ -1,0 +1,36 @@
+<view wx:if="{{visible}}" class="sheet-wrap">
+  <view class="sheet-wrap__mask" bindtap="onOverlayTap"></view>
+  <view class="sheet-wrap__panel">
+    <view class="sheet-wrap__header">
+      <text class="sheet-wrap__title">筛选条件</text>
+      <text class="sheet-wrap__summary">选择后点击确定生效</text>
+    </view>
+    <view class="sheet-wrap__group">
+      <text class="sheet-wrap__group-title">合作平台</text>
+      <view class="sheet-wrap__grid">
+        <view wx:for="{{platformOptions}}" wx:key="value" class="segment {{selectedPlatform === item.value ? 'segment--active' : ''}}" data-value="{{item.value}}" bindtap="onSelectPlatform">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+    <view class="sheet-wrap__group">
+      <text class="sheet-wrap__group-title">合作领域</text>
+      <view class="sheet-wrap__grid">
+        <view wx:for="{{categoryOptions}}" wx:key="value" class="segment {{selectedCategory === item.value ? 'segment--active' : ''}}" data-value="{{item.value}}" bindtap="onSelectCategory">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+    <view class="sheet-wrap__group">
+      <text class="sheet-wrap__group-title">城市（待确认）</text>
+      <view class="sheet-wrap__placeholder">
+        <text class="sheet-wrap__placeholder-title">{{selectedCity ? '当前已缓存城市：' + selectedCity : '城市筛选数据源待后端与产品确认'}}</text>
+        <text class="sheet-wrap__placeholder-copy">当前仅保留字段位与缓存位，不内置城市枚举，也不在前端自行生成城市规则。</text>
+      </view>
+    </view>
+    <view class="sheet-wrap__actions">
+      <view class="sheet-wrap__button sheet-wrap__button--secondary" bindtap="onReset">重置</view>
+      <view class="sheet-wrap__button sheet-wrap__button--primary" bindtap="onConfirm">确定</view>
+    </view>
+  </view>
+</view>

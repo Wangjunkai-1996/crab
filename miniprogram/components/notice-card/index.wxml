@@ -1,0 +1,17 @@
+<view class="card {{featured ? 'card--featured' : ''}}" bindtap="onCardTap">
+  <view class="card__head">
+    <status-tag status="{{notice.statusTag}}" text="{{notice.statusText}}"></status-tag>
+    <text class="card__money">{{notice.budgetSummary}}</text>
+  </view>
+  <text class="card__title">{{notice.title}}</text>
+  <view class="card__tags">
+    <text class="card__pill card__pill--primary">{{notice.platformLabel}}</text>
+    <text class="card__pill">{{notice.categoryLabel}}</text>
+    <text wx:if="{{notice.highlightTag}}" class="card__pill card__pill--accent">{{notice.highlightTag}}</text>
+  </view>
+  <view class="card__kv"><text>合作形式</text><text>{{notice.cooperationTypeLabel || "待补充"}}</text></view>
+  <view class="card__kv"><text>城市 / 发布时间</text><text>{{notice.metaText || notice.city}}</text></view>
+  <view wx:if="{{notice.publisherSummary}}" class="card__footer">
+    <text class="card__publisher">{{notice.publisherText || notice.publisherSummary.displayName}}</text>
+  </view>
+</view>

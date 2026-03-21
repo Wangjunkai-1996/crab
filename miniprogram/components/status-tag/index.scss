@@ -1,0 +1,40 @@
+@import '../../styles/tokens.scss';
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: $radius-pill;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  font-size: $font-caption;
+}
+
+.tag--active {
+  background: #eafbf8;
+  border-color: #9ae8df;
+  color: #0a766f;
+}
+
+.tag--pending_review,
+.tag--draft {
+  background: #eef4ff;
+  border-color: #b8d0ff;
+  color: #2457e6;
+}
+
+.tag--expired,
+.tag--closed,
+.tag--supplement_required {
+  background: rgba(255, 181, 71, 0.14);
+  border-color: rgba(255, 181, 71, 0.24);
+  color: #d77f11;
+}
+
+.tag--rejected,
+.tag--removed {
+  background: rgba(227, 93, 106, 0.12);
+  border-color: rgba(227, 93, 106, 0.24);
+  color: #e35d6a;
+}

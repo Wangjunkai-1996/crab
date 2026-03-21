@@ -1,0 +1,21 @@
+@import '../../../styles/tokens.scss';
+
+.success-card {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.success-card__title {
+  font-size: $font-heading-2;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.success-card__copy,
+.success-card__hint {
+  color: $text-secondary;
+  font-size: $font-body-s;
+  line-height: 1.6;
+}

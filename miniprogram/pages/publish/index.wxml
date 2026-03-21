@@ -1,0 +1,419 @@
+<view class="page-shell">
+  <app-hero-header
+    theme="form"
+    kicker="发布通告"
+    title="发布合作需求"
+    subtitle="先补资料，再完成通告表单；保存资料后停留当前页继续填写。"
+    topInset="{{topInset}}"
+  ></app-hero-header>
+
+  <view class="page-stack publish-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state
+      wx:elif="{{pageState === 'error'}}"
+      title="发布页暂时不可用"
+      description="{{errorText}}"
+      actionText="重新加载"
+      bind:action="loadPage"
+    ></page-error-state>
+    <block wx:else>
+      <view class="surface-card info-card">
+        <text class="info-card__title">当前联调说明</text>
+        <text class="info-card__copy">{{runtimeCopy}}</text>
+        <text class="info-card__copy">{{draftStatusText}}</text>
+        <text class="info-card__copy">{{profileHelperText}}</text>
+        <text class="info-card__copy">{{fieldSourceText}}</text>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">发布方资料</text>
+          <text class="form-section__copy">资料保存成功后，不会清空下方已填写的通告内容。</text>
+          <view class="form-summary-row">
+            <text class="form-summary-pill form-summary-pill--accent">{{profileBadgeText}}</text>
+            <text
+              wx:for="{{profileSummaryPills}}"
+              wx:key="label"
+              class="form-summary-pill {{item.active ? 'form-summary-pill--primary' : ''}}"
+            >
+              {{item.label}}
+            </text>
+          </view>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">身份类型</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <view class="option-grid">
+            <view
+              wx:for="{{identityOptions}}"
+              wx:key="value"
+              class="option-chip {{profileForm.identityType === item.value ? 'option-chip--active' : ''}}"
+              data-field="identityType"
+              data-value="{{item.value}}"
+              bindtap="onPickProfileOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{profileErrors.identityType}}" class="form-field__error">{{profileErrors.identityType}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">对外展示名称</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <input
+            class="form-input {{profileErrors.displayName ? 'form-input--error' : ''}}"
+            placeholder="例如：多米甜品杭州店"
+            maxlength="20"
+            value="{{profileForm.displayName}}"
+            data-field="displayName"
+            bindinput="onProfileInput"
+          />
+          <text class="form-field__hint">最多 20 字，列表和详情页都会展示。</text>
+          <text wx:if="{{profileErrors.displayName}}" class="form-field__error">{{profileErrors.displayName}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">所在城市</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <input
+            class="form-input {{profileErrors.city ? 'form-input--error' : ''}}"
+            placeholder="例如：杭州"
+            value="{{profileForm.city}}"
+            data-field="city"
+            bindinput="onProfileInput"
+          />
+          <text class="form-field__hint">城市候选源尚未拍板，当前先保留自由输入。</text>
+          <text wx:if="{{profileErrors.city}}" class="form-field__error">{{profileErrors.city}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">联系方式类型</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <view class="option-grid">
+            <view
+              wx:for="{{contactTypeOptions}}"
+              wx:key="value"
+              class="option-chip {{profileForm.contactType === item.value ? 'option-chip--active' : ''}}"
+              data-field="contactType"
+              data-value="{{item.value}}"
+              bindtap="onPickProfileOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{profileErrors.contactType}}" class="form-field__error">{{profileErrors.contactType}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">联系方式内容</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <input
+            class="form-input {{profileErrors.contactValue ? 'form-input--error' : ''}}"
+            placeholder="最多 40 字"
+            maxlength="40"
+            value="{{profileForm.contactValue}}"
+            data-field="contactValue"
+            bindinput="onProfileInput"
+          />
+          <text wx:if="{{profileErrors.contactValue}}" class="form-field__error">{{profileErrors.contactValue}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">简介</text>
+          </view>
+          <textarea
+            class="form-textarea {{profileErrors.intro ? 'form-textarea--error' : ''}}"
+            placeholder="选填，最多 80 字"
+            maxlength="80"
+            auto-height="{{true}}"
+            value="{{profileForm.intro}}"
+            data-field="intro"
+            bindinput="onProfileInput"
+          ></textarea>
+          <text wx:if="{{profileErrors.intro}}" class="form-field__error">{{profileErrors.intro}}</text>
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">通告核心信息</text>
+          <text class="form-section__copy">先完成必要字段，审核通过后系统会自动进入广场曝光。</text>
+          <view class="form-summary-row">
+            <text
+              wx:for="{{noticeSummaryPills}}"
+              wx:key="label"
+              class="form-summary-pill {{item.active ? 'form-summary-pill--primary' : ''}}"
+            >
+              {{item.label}}
+            </text>
+          </view>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">通告标题</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <input
+            class="form-input {{noticeErrors.title ? 'form-input--error' : ''}}"
+            placeholder="最多 28 字"
+            maxlength="28"
+            value="{{noticeForm.title}}"
+            data-field="title"
+            bindinput="onNoticeInput"
+          />
+          <text wx:if="{{noticeErrors.title}}" class="form-field__error">{{noticeErrors.title}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">品牌或门店名称</text>
+          </view>
+          <input
+            class="form-input {{noticeErrors.brandName ? 'form-input--error' : ''}}"
+            placeholder="选填，最多 20 字"
+            maxlength="20"
+            value="{{noticeForm.brandName}}"
+            data-field="brandName"
+            bindinput="onNoticeInput"
+          />
+          <text wx:if="{{noticeErrors.brandName}}" class="form-field__error">{{noticeErrors.brandName}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">合作平台</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <view class="option-grid">
+            <view
+              wx:for="{{platformOptions}}"
+              wx:key="value"
+              class="option-chip {{noticeForm.cooperationPlatform === item.value ? 'option-chip--active' : ''}}"
+              data-field="cooperationPlatform"
+              data-value="{{item.value}}"
+              bindtap="onPickNoticeOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{noticeErrors.cooperationPlatform}}" class="form-field__error">{{noticeErrors.cooperationPlatform}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">合作领域</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <view class="option-grid">
+            <view
+              wx:for="{{categoryOptions}}"
+              wx:key="value"
+              class="option-chip {{noticeForm.cooperationCategory === item.value ? 'option-chip--active' : ''}}"
+              data-field="cooperationCategory"
+              data-value="{{item.value}}"
+              bindtap="onPickNoticeOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{noticeErrors.cooperationCategory}}" class="form-field__error">{{noticeErrors.cooperationCategory}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">合作形式</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <view class="option-grid">
+            <view
+              wx:for="{{cooperationTypeOptions}}"
+              wx:key="value"
+              class="option-chip {{noticeForm.cooperationType === item.value ? 'option-chip--active' : ''}}"
+              data-field="cooperationType"
+              data-value="{{item.value}}"
+              bindtap="onPickNoticeOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{noticeErrors.cooperationType}}" class="form-field__error">{{noticeErrors.cooperationType}}</text>
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">合作方式与预算</text>
+          <text class="form-section__copy">预算是否适用取决于结算方式；不适用时会自动置灰。</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">城市</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <input
+            class="form-input {{noticeErrors.city ? 'form-input--error' : ''}}"
+            placeholder="例如：杭州"
+            value="{{noticeForm.city}}"
+            data-field="city"
+            bindinput="onNoticeInput"
+          />
+          <text wx:if="{{noticeErrors.city}}" class="form-field__error">{{noticeErrors.city}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">结算方式</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <view class="option-grid">
+            <view
+              wx:for="{{settlementTypeOptions}}"
+              wx:key="value"
+              class="option-chip {{noticeForm.settlementType === item.value ? 'option-chip--active' : ''}}"
+              data-field="settlementType"
+              data-value="{{item.value}}"
+              bindtap="onPickNoticeOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{noticeErrors.settlementType}}" class="form-field__error">{{noticeErrors.settlementType}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">预算区间</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <block wx:if="{{noticeForm.settlementType === 'barter' || noticeForm.settlementType === 'free_experience'}}">
+            <view class="form-picker">
+              <text>当前结算方式下不适用</text>
+              <text class="form-picker__arrow">—</text>
+            </view>
+          </block>
+          <view wx:else class="option-grid">
+            <view
+              wx:for="{{budgetRangeOptions}}"
+              wx:key="value"
+              class="option-chip {{noticeForm.budgetRange === item.value ? 'option-chip--active' : ''}}"
+              data-field="budgetRange"
+              data-value="{{item.value}}"
+              bindtap="onPickNoticeOption"
+            >
+              {{item.label}}
+            </view>
+          </view>
+          <text wx:if="{{noticeErrors.budgetRange}}" class="form-field__error">{{noticeErrors.budgetRange}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">招募人数</text>
+          </view>
+          <input
+            class="form-input {{noticeErrors.recruitCount ? 'form-input--error' : ''}}"
+            type="number"
+            placeholder="选填，例如 6"
+            value="{{noticeForm.recruitCount}}"
+            data-field="recruitCount"
+            bindinput="onNoticeInput"
+          />
+          <text wx:if="{{noticeErrors.recruitCount}}" class="form-field__error">{{noticeErrors.recruitCount}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">报名截止日期</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <picker mode="date" value="{{noticeForm.deadlineAt}}" bindchange="onDeadlineChange">
+            <view class="form-picker {{noticeErrors.deadlineAt ? 'form-picker--error' : ''}}">
+              <text class="{{noticeForm.deadlineAt ? '' : 'form-picker__placeholder'}}">{{noticeForm.deadlineAt || '请选择日期'}}</text>
+              <text class="form-picker__arrow">›</text>
+            </view>
+          </picker>
+          <text wx:if="{{noticeErrors.deadlineAt}}" class="form-field__error">{{noticeErrors.deadlineAt}}</text>
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">达人要求与合作说明</text>
+          <text class="form-section__copy">错误提示直接贴字段显示，不等到整页统一报错。</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">达人要求</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <textarea
+            class="form-textarea {{noticeErrors.creatorRequirements ? 'form-textarea--error' : ''}}"
+            placeholder="最多 200 字"
+            maxlength="200"
+            auto-height="{{true}}"
+            value="{{noticeForm.creatorRequirements}}"
+            data-field="creatorRequirements"
+            bindinput="onNoticeInput"
+          ></textarea>
+          <text wx:if="{{noticeErrors.creatorRequirements}}" class="form-field__error">{{noticeErrors.creatorRequirements}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">合作说明</text>
+            <text class="form-field__required">必填</text>
+          </view>
+          <textarea
+            class="form-textarea {{noticeErrors.cooperationDescription ? 'form-textarea--error' : ''}}"
+            placeholder="最多 500 字"
+            maxlength="500"
+            auto-height="{{true}}"
+            value="{{noticeForm.cooperationDescription}}"
+            data-field="cooperationDescription"
+            bindinput="onNoticeInput"
+          ></textarea>
+          <text wx:if="{{noticeErrors.cooperationDescription}}" class="form-field__error">{{noticeErrors.cooperationDescription}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row">
+            <text class="form-field__label">补充图片</text>
+          </view>
+          <uploader-grid
+            files="{{noticeForm.attachments}}"
+            maxCount="6"
+            helperText="选填，最多 6 张；当前先保留前端上传与预览能力。"
+            bind:change="onNoticeAttachmentsChange"
+          ></uploader-grid>
+          <text wx:if="{{noticeErrors.attachments}}" class="form-field__error">{{noticeErrors.attachments}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <bottom-action-bar
+    primaryText="{{primaryText}}"
+    secondaryText="{{savingDraft ? '保存中...' : '保存草稿'}}"
+    primaryDisabled="{{primaryDisabled}}"
+    loading="{{primaryLoading}}"
+    bottomInset="{{bottomInset}}"
+    bind:primary="onPrimaryAction"
+    bind:secondary="onSecondaryAction"
+  ></bottom-action-bar>
+</view>

@@ -1,0 +1,6 @@
+<view class="empty-card">
+  <view class="empty-illus"></view>
+  <text class="empty-title">{{title}}</text>
+  <text class="empty-description">{{description}}</text>
+  <view wx:if="{{actionText}}" class="empty-action" bindtap="onActionTap">{{actionText}}</view>
+</view>

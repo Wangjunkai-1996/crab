@@ -1,0 +1,95 @@
+@import '../../styles/tokens.scss';
+
+.role-row {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 24rpx;
+}
+
+.role-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64rpx;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.78);
+  color: $text-secondary;
+  font-size: $font-caption;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+}
+
+.role-pill--active {
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  color: $primary-600;
+  border-color: rgba(47, 107, 255, 0.28);
+}
+
+.mine-section,
+.mine-card {
+  margin-top: 24rpx;
+}
+
+.mine-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.mine-card__title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.mine-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.mine-card__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(180deg, rgba(249, 251, 255, 0.96), rgba(244, 248, 253, 0.92));
+  border: 1px solid rgba(217, 227, 240, 0.86);
+}
+
+.mine-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.mine-card__label {
+  font-size: $font-body-m;
+  color: $text-primary;
+}
+
+.mine-card__hint,
+.mine-card__copy {
+  color: $text-secondary;
+  font-size: $font-body-s;
+  line-height: 1.6;
+}
+
+.mine-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50rpx;
+  padding: 0 20rpx;
+  border-radius: $radius-pill;
+  background: rgba(47, 107, 255, 0.12);
+  color: $primary-600;
+  font-size: $font-meta;
+}
+
+.mine-card__badge--locked {
+  background: rgba(255, 181, 71, 0.16);
+  color: $accent-700;
+}

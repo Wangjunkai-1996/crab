@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../components/app-hero-header/index",
+    "stats-summary-card": "../../components/stats-summary-card/index",
+    "restriction-banner": "../../components/restriction-banner/index",
+    "page-skeleton": "../../components/page-skeleton/index",
+    "page-error-state": "../../components/page-error-state/index"
+  }
+}

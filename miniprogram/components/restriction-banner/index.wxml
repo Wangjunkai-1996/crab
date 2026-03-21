@@ -1,0 +1,4 @@
+<view class="banner banner--{{type}}">
+  <text class="banner__title">{{title}}</text>
+  <text class="banner__description">{{description}}</text>
+</view>

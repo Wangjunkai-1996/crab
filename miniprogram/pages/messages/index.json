@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../components/app-hero-header/index",
+    "inbox-message-item": "../../components/inbox-message-item/index",
+    "empty-state": "../../components/empty-state/index",
+    "page-skeleton": "../../components/page-skeleton/index",
+    "page-error-state": "../../components/page-error-state/index"
+  }
+}

@@ -1,0 +1,73 @@
+@import '../../styles/tokens.scss';
+@import '../../styles/mixins.scss';
+
+.search-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+
+.search-input {
+  @include soft-input-light;
+  width: 100%;
+}
+
+.search-button {
+  @include button-primary;
+  width: 100%;
+  text-align: center;
+  line-height: 88rpx;
+}
+
+.search-summary-row,
+.search-chip-row,
+.recent-panel__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.search-summary-pill,
+.search-chip,
+.recent-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60rpx;
+  padding: 0 24rpx;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.search-summary-pill--active,
+.search-chip,
+.recent-chip {
+  color: $primary-600;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+}
+
+.search-stack {
+  margin-top: 24rpx;
+}
+
+.recent-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.recent-panel__title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.recent-panel__copy {
+  color: $text-secondary;
+  font-size: $font-body-s;
+}

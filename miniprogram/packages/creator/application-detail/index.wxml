@@ -1,0 +1,39 @@
+<view class="page-shell">
+  <app-hero-header theme="progress" kicker="报名详情" title="一眼看懂当前进展" subtitle="重点不是展示所有字段，而是解释“现在处于哪个阶段、接下来会发生什么”。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="app-detail-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="报名详情加载失败" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
+    <block wx:else>
+      <view class="surface-card app-detail-card">
+        <text class="app-detail-card__status">{{statusText}}</text>
+        <text class="app-detail-card__title">{{detail.noticeSummary.title}}</text>
+        <view class="app-detail-card__row"><text>预算摘要</text><text>{{detail.noticeSummary.budgetSummary}}</text></view>
+        <view wx:if="{{detail.noticeSummary.city}}" class="app-detail-card__row"><text>所在城市</text><text>{{detail.noticeSummary.city}}</text></view>
+        <view class="app-detail-card__row"><text>通告状态</text><text>{{noticeStatusText}}</text></view>
+        <view class="app-detail-card__row"><text>发布方</text><text>{{detail.publisherSummary.displayName}}</text></view>
+      </view>
+      <view class="surface-card app-detail-card">
+        <text class="app-detail-card__section-title">进展时间线</text>
+        <view wx:for="{{detail.timeline}}" wx:key="label" class="timeline-item">
+          <view class="timeline-dot"></view>
+          <view class="timeline-copy">
+            <text class="timeline-copy__title">{{item.label}}</text>
+            <text class="timeline-copy__desc">{{item.time}}{{item.description ? ' · ' + item.description : ''}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="surface-card app-detail-card">
+        <text class="app-detail-card__section-title">{{contactTitle}}</text>
+        <text class="app-detail-card__copy">{{contactCopy}}</text>
+        <text wx:if="{{detail.maskedOrFullPublisherContact}}" class="app-detail-card__contact">{{detail.maskedOrFullPublisherContact}}</text>
+      </view>
+      <view class="surface-card app-detail-card">
+        <text class="app-detail-card__section-title">报名快照</text>
+        <text class="app-detail-card__copy">自我介绍：{{detail.application.selfIntroduction}}</text>
+        <text class="app-detail-card__copy">可交付计划：{{detail.application.deliverablePlan}}</text>
+        <text wx:if="{{detail.application.expectedTerms}}" class="app-detail-card__copy">期望条件：{{detail.application.expectedTerms}}</text>
+      </view>
+    </block>
+  </view>
+  <bottom-action-bar primaryText="查看原通告" secondaryText="{{secondaryText}}" primaryDisabled="{{withdrawing}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+</view>

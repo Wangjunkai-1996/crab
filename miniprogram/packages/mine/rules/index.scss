@@ -1,0 +1,20 @@
+@import '../../../styles/tokens.scss';
+
+.rule-card {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.rule-card__title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.rule-card__copy {
+  color: $text-secondary;
+  font-size: $font-body-s;
+  line-height: 1.6;
+}

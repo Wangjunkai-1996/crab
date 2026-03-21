@@ -1,0 +1,5 @@
+<view class="skeleton-wrap">
+  <view class="skeleton-card"></view>
+  <view class="skeleton-card"></view>
+  <view class="skeleton-card"></view>
+</view>

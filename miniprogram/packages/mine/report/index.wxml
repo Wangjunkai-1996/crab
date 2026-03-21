@@ -1,0 +1,80 @@
+<view class="page-shell">
+  <app-hero-header
+    theme="surface"
+    kicker="举报"
+    title="提交举报信息"
+    subtitle="举报对象、原因和证据会一起进入处理队列；处理进展可在举报记录里查看。"
+    showBack="{{true}}"
+    topInset="{{topInset}}"
+  ></app-hero-header>
+
+  <view class="page-stack report-stack">
+    <view wx:if="{{submitted}}" class="surface-card success-card">
+      <text class="success-card__title">举报已提交</text>
+      <text class="success-card__copy">当前编号：{{reportId}}。平台已接收你的举报并进入处理队列，如需补充证据会通过消息中心提醒。</text>
+      <view class="form-summary-row">
+        <text wx:for="{{summaryPills}}" wx:key="label" class="form-summary-pill {{item.active ? 'form-summary-pill--primary' : ''}}">{{item.label}}</text>
+      </view>
+    </view>
+
+    <block wx:else>
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">举报对象</text>
+          <text class="form-section__copy">如果你是从通告详情进入，这里会自动带上当前通告信息。</text>
+          <view class="form-summary-row">
+            <text wx:for="{{summaryPills}}" wx:key="label" class="form-summary-pill {{item.active ? 'form-summary-pill--primary' : ''}}">{{item.label}}</text>
+          </view>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">对象类型</text><text class="form-field__required">必填</text></view>
+          <view class="option-grid">
+            <view wx:for="{{targetTypeOptions}}" wx:key="value" class="option-chip {{form.targetType === item.value ? 'option-chip--active' : ''}}" data-field="targetType" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+          <text wx:if="{{fieldErrors.targetType}}" class="form-field__error">{{fieldErrors.targetType}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">对象摘要</text><text class="form-field__required">必填</text></view>
+          <input class="form-input {{fieldErrors.targetSummary ? 'form-input--error' : ''}}" placeholder="例如：杭州甜品品牌招募小红书探店达人" value="{{form.targetSummary}}" data-field="targetSummary" bindinput="onFieldInput" />
+          <text wx:if="{{fieldErrors.targetSummary}}" class="form-field__error">{{fieldErrors.targetSummary}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">对象 ID</text></view>
+          <input class="form-input" placeholder="选填，例如 notice-001" value="{{form.targetId}}" data-field="targetId" bindinput="onFieldInput" />
+        </view>
+      </view>
+
+      <view class="surface-card form-section">
+        <view class="form-section__head">
+          <text class="form-section__title">举报原因与证据</text>
+          <text class="form-section__copy">补充说明最多 200 字，证据图片最多 6 张。</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">举报原因</text><text class="form-field__required">必填</text></view>
+          <view class="option-grid">
+            <view wx:for="{{reasonOptions}}" wx:key="value" class="option-chip {{form.reasonCode === item.value ? 'option-chip--active' : ''}}" data-field="reasonCode" data-value="{{item.value}}" bindtap="onPickOption">{{item.label}}</view>
+          </view>
+          <text wx:if="{{fieldErrors.reasonCode}}" class="form-field__error">{{fieldErrors.reasonCode}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">补充说明</text></view>
+          <textarea class="form-textarea {{fieldErrors.description ? 'form-textarea--error' : ''}}" placeholder="选填，最多 200 字" maxlength="200" auto-height="{{true}}" value="{{form.description}}" data-field="description" bindinput="onFieldInput"></textarea>
+          <text wx:if="{{fieldErrors.description}}" class="form-field__error">{{fieldErrors.description}}</text>
+        </view>
+
+        <view class="form-field">
+          <view class="form-field__label-row"><text class="form-field__label">凭证图片</text></view>
+          <uploader-grid files="{{form.evidenceImages}}" maxCount="6" helperText="选填，最多 6 张；当前支持本地选择与预览。" bind:change="onEvidenceChange"></uploader-grid>
+          <text wx:if="{{fieldErrors.evidenceImages}}" class="form-field__error">{{fieldErrors.evidenceImages}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <bottom-action-bar primaryText="{{submitted ? '查看举报记录' : '提交举报'}}" secondaryText="{{submitted ? '返回上一页' : '重置表单'}}" primaryDisabled="{{primaryDisabled}}" loading="{{submitting}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+</view>

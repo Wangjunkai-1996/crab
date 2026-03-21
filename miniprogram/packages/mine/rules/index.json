@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../../components/app-hero-header/index"
+  }
+}

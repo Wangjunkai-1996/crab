@@ -1,0 +1,32 @@
+<view class="page-shell page-shell--tight-bottom">
+  <app-hero-header theme="surface" kicker="搜索结果" title="快速找到合适合作" subtitle="输入关键词后，继续沿用广场的发现筛选条件。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+
+  <view class="search-panel surface-card">
+    <input class="search-input" placeholder="搜索品牌、城市、合作需求" value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="onSearchSubmit" confirm-type="search" />
+    <view class="search-button" bindtap="onSearchSubmit">搜索</view>
+    <view class="search-summary-row">
+      <text class="search-summary-pill search-summary-pill--active">{{resultCountText}}</text>
+      <text class="search-summary-pill">历史记录</text>
+      <text class="search-summary-pill">热门词</text>
+    </view>
+    <view wx:if="{{filterChips.length}}" class="search-chip-row">
+      <text wx:for="{{filterChips}}" wx:key="*this" class="search-chip">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="page-stack search-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="搜索暂时不可用" description="{{errorText}}" actionText="重新搜索" bind:action="onSearchSubmit"></page-error-state>
+    <empty-state wx:elif="{{hasSearched && pageState === 'empty'}}" title="没有更匹配的结果了" description="可以尝试放宽关键词，或者回到广场调整筛选条件。"></empty-state>
+    <block wx:elif="{{hasSearched && pageState === 'ready'}}">
+      <notice-card wx:for="{{notices}}" wx:key="noticeId" notice="{{item}}" bind:tapcard="onTapNotice"></notice-card>
+    </block>
+    <view wx:else class="surface-card recent-panel">
+      <text class="recent-panel__title">最近搜索</text>
+      <view class="recent-panel__chips">
+        <view wx:for="{{recentKeywords}}" wx:key="*this" class="recent-chip" data-keyword="{{item}}" bindtap="onTapRecent">{{item}}</view>
+      </view>
+      <text wx:if="{{!recentKeywords.length}}" class="recent-panel__copy">还没有搜索记录，先试试“杭州 探店”。</text>
+    </view>
+  </view>
+</view>

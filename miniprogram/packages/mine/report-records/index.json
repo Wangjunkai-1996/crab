@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../../components/app-hero-header/index",
+    "empty-state": "../../../components/empty-state/index",
+    "page-error-state": "../../../components/page-error-state/index",
+    "page-skeleton": "../../../components/page-skeleton/index"
+  }
+}

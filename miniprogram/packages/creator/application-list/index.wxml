@@ -1,0 +1,25 @@
+<view class="page-shell page-shell--tight-bottom">
+  <app-hero-header theme="surface" kicker="我的报名" title="跟进合作进度" subtitle="按状态查看，重点看当前处于哪个阶段、联系方式是否已释放。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="app-list-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="报名列表加载失败" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
+    <empty-state wx:elif="{{pageState === 'empty'}}" title="当前状态下暂无报名" description="可以切换状态筛选，或者先回广场继续看看新合作。"></empty-state>
+    <block wx:else>
+      <stats-summary-card items="{{stats}}"></stats-summary-card>
+      <view class="segment-row">
+        <view wx:for="{{tabs}}" wx:key="value" class="segment {{activeStatus === item.value ? 'segment--active' : ''}}" data-value="{{item.value}}" bindtap="onSwitchStatus">{{item.label}}</view>
+      </view>
+      <view wx:for="{{list}}" wx:key="applicationId" class="surface-card app-item" data-id="{{item.applicationId}}" bindtap="onTapItem">
+        <view class="app-item__head">
+          <text class="app-item__status">{{item.statusText}}</text>
+          <text class="app-item__time">{{item.updatedAt || item.city}}</text>
+        </view>
+        <text class="app-item__title">{{item.noticeTitle}}</text>
+        <view class="app-item__row"><text>预算</text><text>{{item.budgetSummary}}</text></view>
+        <view class="app-item__row"><text>发布方</text><text>{{item.publisherSummary.displayName}}</text></view>
+        <view class="app-item__row"><text>当前阶段</text><text>{{item.stageHint || item.statusText}}</text></view>
+        <text class="app-item__contact {{item.canViewPublisherContact ? 'app-item__contact--visible' : ''}}">{{item.contactText}}</text>
+      </view>
+    </block>
+  </view>
+</view>

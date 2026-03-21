@@ -1,0 +1,49 @@
+<view class="page-shell">
+  <app-hero-header theme="decision" kicker="通告详情" title="{{notice ? notice.title : '做决定前，先看清合作信息'}}" subtitle="CTA 和联系方式只按服务端返回渲染，不在前端追加规则。" badgeText="{{heroBadgeText}}" badgeType="primary" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="page-stack detail-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="详情暂时没打开" description="{{errorText}}" actionText="重新加载" bind:action="onRetry"></page-error-state>
+    <block wx:else>
+      <view class="surface-card detail-card">
+        <view class="detail-card__head">
+          <status-tag status="{{notice.statusTag}}" text="{{notice.statusText}}"></status-tag>
+          <text class="detail-card__budget">{{notice.budgetSummary}}</text>
+        </view>
+        <view class="detail-card__metric-row">
+          <text class="detail-card__pill detail-card__pill--accent">{{notice.platformLabel}}</text>
+          <text class="detail-card__pill">{{notice.city}}</text>
+          <text class="detail-card__pill">{{notice.categoryLabel}}</text>
+        </view>
+        <view class="detail-card__row"><text>合作形式</text><text>{{notice.cooperationType}}</text></view>
+        <view class="detail-card__row"><text>招募人数</text><text>{{notice.recruitCount}} 人</text></view>
+        <view class="detail-card__row"><text>截止时间</text><text>{{notice.deadlineAt}}</text></view>
+      </view>
+      <view class="surface-card detail-card">
+        <text class="detail-card__section-title">合作说明</text>
+        <text class="detail-card__copy">{{notice.cooperationDescription}}</text>
+        <text class="detail-card__section-title">达人要求</text>
+        <text class="detail-card__copy">{{notice.creatorRequirements}}</text>
+      </view>
+      <view wx:if="{{showReasonCard}}" class="surface-card detail-card">
+        <text class="detail-card__section-title">{{reasonTitle}}</text>
+        <text class="detail-card__copy">{{reasonCopy}}</text>
+      </view>
+      <view class="surface-card detail-card">
+        <text class="detail-card__section-title">{{contactCardTitle}}</text>
+        <text class="detail-card__copy">{{contactCardCopy}}</text>
+        <text wx:if="{{contactText}}" class="detail-card__contact">{{contactText}}</text>
+      </view>
+      <view class="surface-card detail-card">
+        <text class="detail-card__section-title">发布方</text>
+        <text class="detail-card__copy">{{publisherSummary.displayName}} · {{publisherSummary.city}}</text>
+        <text wx:if="{{publisherSummary.historyLabel}}" class="detail-card__hint">{{publisherSummary.historyLabel}}</text>
+      </view>
+      <view class="surface-card detail-card">
+        <text class="detail-card__section-title">发现异常信息？</text>
+        <text class="detail-card__copy">如果你发现虚假信息、联系方式异常、内容违规或骚扰欺诈，可以直接发起举报。</text>
+        <view class="detail-card__report-button" bindtap="onReportNotice">举报此通告</view>
+      </view>
+    </block>
+  </view>
+  <bottom-action-bar primaryText="{{ctaText}}" secondaryText="返回广场" primaryDisabled="{{ctaAction === 'disabled'}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+</view>

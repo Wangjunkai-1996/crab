@@ -1,0 +1,11 @@
+{
+  "action": "markCommunicating",
+  "payload": {
+    "applicationId": "app_202603160101"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_application_mark_communicating"
+}

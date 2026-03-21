@@ -1,0 +1,11 @@
+{
+  "action": "claimReport",
+  "payload": {
+    "reportId": "report_202603160003"
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_claim_report"
+}

@@ -1,0 +1,7 @@
+.DS_Store
+*.log
+.env
+.env.*
+scripts/node_modules/
+scripts/*.cache-bust.json
+scripts/admin-web-deploy-check*.json

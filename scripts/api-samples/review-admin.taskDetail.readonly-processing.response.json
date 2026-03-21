@@ -1,0 +1,102 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "task": {
+      "reviewTaskId": "rtk_202603170011",
+      "objectType": "notice",
+      "objectId": "notice_202603170011",
+      "noticeStatusSnapshot": "pending_review",
+      "reviewStage": "initial_review",
+      "taskStatus": "processing",
+      "queueType": "initial_review_queue",
+      "riskLevel": "medium",
+      "riskFlags": ["contact_anomaly"],
+      "assignedTo": "admin_other_001",
+      "assignedAdminName": "审核同事 A",
+      "claimedAt": "2026-03-17T02:30:00.000Z",
+      "completedAt": null,
+      "reviewResult": null,
+      "reasonCategory": null,
+      "reasonText": null,
+      "nextQueueType": null,
+      "createdAt": "2026-03-17T02:20:00.000Z"
+    },
+    "notice": {
+      "noticeId": "notice_202603170011",
+      "publisherUserId": "user_pub_3001",
+      "publisherProfileId": "pub_3001",
+      "title": "宁波门店探店图文合作",
+      "brandName": "蟹宝宁波店",
+      "identityTypeSnapshot": "merchant",
+      "cooperationPlatform": "xiaohongshu",
+      "cooperationCategory": "food_beverage",
+      "cooperationType": "image_text",
+      "city": "宁波",
+      "settlementType": "fixed_price",
+      "budgetRange": "500_1000",
+      "budgetSummary": "固定报价 / 500-1000 元",
+      "recruitCount": 3,
+      "deadlineAt": "2026-03-26T16:00:00.000Z",
+      "creatorRequirements": "本地生活门店探店经验优先。",
+      "cooperationDescription": "到店完成图文探店笔记 1 篇。",
+      "attachments": [],
+      "status": "pending_review",
+      "reviewRoundCount": 1,
+      "latestReviewReasonCategory": null,
+      "latestReviewReasonText": null,
+      "riskFlags": ["contact_anomaly"],
+      "applicationCount": 0,
+      "publishedAt": null,
+      "closedAt": null,
+      "removedAt": null
+    },
+    "publisherProfile": {
+      "publisherProfileId": "pub_3001",
+      "userId": "user_pub_3001",
+      "identityType": "merchant",
+      "displayName": "蟹宝宁波店",
+      "city": "宁波",
+      "contactType": "wechat",
+      "contactValue": "crab_nb_ops",
+      "intro": "宁波本地餐饮门店品牌号。",
+      "profileCompleteness": 100,
+      "publishCount": 5,
+      "approvedPublishCount": 4,
+      "violationCount": 0,
+      "status": "complete"
+    },
+    "riskSummary": {
+      "riskLevel": "medium",
+      "riskFlags": ["contact_anomaly"],
+      "suggestedTags": ["建议核查联系方式真实性"]
+    },
+    "historyLogs": [
+      {
+        "action": "review_task_claim",
+        "operatorType": "admin",
+        "operatorId": "admin_other_001",
+        "operatorDisplayName": "审核同事 A",
+        "remark": "已被他人领取，当前只读",
+        "createdAt": "2026-03-17T02:30:00.000Z"
+      }
+    ],
+    "availableActions": [
+      {
+        "key": "release_task",
+        "label": "释放任务",
+        "variant": "default",
+        "disabled": true,
+        "disabledReason": "任务已被其他管理员领取，当前仅可查看"
+      },
+      {
+        "key": "resolve_task_approved",
+        "label": "通过",
+        "variant": "primary",
+        "disabled": true,
+        "disabledReason": "任务已被其他管理员领取，当前仅可查看"
+      }
+    ]
+  },
+  "requestId": "req_example_review_task_detail_readonly_processing"
+}

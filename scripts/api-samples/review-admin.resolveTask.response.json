@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "reviewTaskId": "rtk_202603160001",
+    "taskStatus": "completed",
+    "noticeStatus": "pending_review",
+    "nextReviewTaskId": "rtk_202603160099"
+  },
+  "requestId": "req_example_review_resolve_task"
+}

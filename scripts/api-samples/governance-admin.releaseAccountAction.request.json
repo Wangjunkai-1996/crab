@@ -1,0 +1,12 @@
+{
+  "action": "releaseAccountAction",
+  "payload": {
+    "restrictionId": "restriction_202603160001",
+    "reasonText": "复核通过，解除限制"
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_release_account_action"
+}

@@ -1,0 +1,14 @@
+{
+  "action": "publisherList",
+  "payload": {
+    "noticeId": "notice_202603160101",
+    "status": "contact_pending",
+    "pageSize": 10,
+    "cursor": ""
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_application_publisher_list"
+}

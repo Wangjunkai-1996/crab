@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "noticeId": "notice_202603160201",
+    "status": "draft"
+  },
+  "requestId": "req_example_notice_create_draft"
+}

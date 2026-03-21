@@ -1,0 +1,12 @@
+{
+  "action": "republish",
+  "payload": {
+    "noticeId": "notice_202603150001",
+    "deadlineAt": "2026-03-31T16:00:00.000Z"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_candidate_notice_republish_deadline"
+}

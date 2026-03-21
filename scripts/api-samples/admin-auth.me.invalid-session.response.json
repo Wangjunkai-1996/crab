@@ -1,0 +1,6 @@
+{
+  "code": 30002,
+  "message": "后台登录态失效",
+  "data": null,
+  "requestId": "req_example_admin_me_invalid_session"
+}

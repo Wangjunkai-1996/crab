@@ -1,0 +1,26 @@
+{
+  "action": "upsertCard",
+  "payload": {
+    "nickname": "阿柚探店",
+    "avatarUrl": "https://example.com/avatar/creator-2001.png",
+    "city": "上海",
+    "gender": "female",
+    "primaryPlatform": "xiaohongshu",
+    "primaryCategory": "food_beverage",
+    "followerBand": "5k_10k",
+    "accountName": "阿柚探店日记",
+    "accountIdOrLink": "xiaohongshu://user/creator_2001",
+    "portfolioImages": [
+      "cloud://domi-dev/creator-portfolio/creator_2001/work-1.jpg"
+    ],
+    "caseDescription": "近 3 个月完成多条本地生活探店合作",
+    "residentCity": "上海",
+    "contactType": "wechat",
+    "contactValue": "creator_contact_2001"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_creator_upsert_card"
+}

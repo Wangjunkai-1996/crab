@@ -1,0 +1,9 @@
+{
+  "name": "domi-cloudfunctions",
+  "private": true,
+  "scripts": {
+    "build": "node ../scripts/build-cloudfunctions.mjs all",
+    "typecheck": "npx -p typescript tsc -p tsconfig.base.json --noEmit"
+  }
+}
+

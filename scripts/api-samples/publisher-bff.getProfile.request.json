@@ -1,0 +1,9 @@
+{
+  "action": "getProfile",
+  "payload": {},
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_publisher_get_profile"
+}

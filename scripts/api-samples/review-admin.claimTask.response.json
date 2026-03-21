@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "reviewTaskId": "rtk_202603160001",
+    "taskStatus": "processing",
+    "assignedTo": "admin_4f3b2a1c9d",
+    "claimedAt": "2026-03-16T09:25:00.000Z"
+  },
+  "requestId": "req_example_review_claim_task"
+}

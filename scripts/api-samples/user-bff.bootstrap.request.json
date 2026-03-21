@@ -1,0 +1,8 @@
+{
+  "action": "bootstrap",
+  "payload": {},
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  }
+}

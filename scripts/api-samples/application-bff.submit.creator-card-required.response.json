@@ -1,0 +1,17 @@
+{
+  "code": 50004,
+  "message": "请先完善达人名片",
+  "data": {
+    "missingFieldKeys": [
+      "nickname",
+      "city",
+      "primaryPlatform",
+      "primaryCategory",
+      "followerBand",
+      "portfolioImages",
+      "contactType",
+      "contactValue"
+    ]
+  },
+  "requestId": "req_example_application_submit_creator_card_required"
+}

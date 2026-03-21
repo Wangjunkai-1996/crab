@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "reportId": "report_202603160003",
+        "targetType": "notice",
+        "targetId": "notice_202603150012",
+        "targetDisplayName": "杭州美妆探店合作",
+        "reasonCode": "fake_requirement",
+        "status": "processing",
+        "aggregatedReportCount": 3,
+        "isHighRisk": true,
+        "createdAt": "2026-03-16T08:50:00.000Z",
+        "handlerId": "admin_4f3b2a1c9d",
+        "resultAction": null
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_report_list"
+}

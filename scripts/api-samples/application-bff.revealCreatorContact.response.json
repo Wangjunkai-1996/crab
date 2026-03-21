@@ -1,0 +1,12 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "applicationId": "app_202603160101",
+    "status": "viewed",
+    "publisherViewedAt": "2026-03-16T09:10:00.000Z",
+    "creatorContact": "微信号：duomi-creator",
+    "creatorContactRevealedAt": "2026-03-16T09:15:00.000Z"
+  },
+  "requestId": "req_example_application_reveal_creator_contact"
+}

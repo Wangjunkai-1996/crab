@@ -1,0 +1,29 @@
+{
+  "status": "temporary",
+  "note": "以下枚举仅为 R03 后端联调临时口径，未拍板前不得当成最终业务规则。",
+  "resolveReport": {
+    "result": ["confirmed", "rejected"],
+    "resultAction": [
+      "record_only",
+      "remove_notice",
+      "watchlist",
+      "restricted_publish",
+      "restricted_apply",
+      "banned"
+    ],
+    "noticeAction": ["none", "remove_notice"]
+  },
+  "accountAction": {
+    "restrictionType": ["watchlist", "restricted_publish", "restricted_apply", "banned"]
+  },
+  "resolveTask": {
+    "reviewResult": [
+      "approved",
+      "rejected",
+      "supplement_required",
+      "transfer_manual_review",
+      "removed"
+    ],
+    "nextQueueType": ["manual_review_queue"]
+  }
+}

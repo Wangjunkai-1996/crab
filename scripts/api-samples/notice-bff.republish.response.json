@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "noticeId": "notice_202603160301",
+    "status": "pending_review",
+    "reviewRoundCount": 2,
+    "currentReviewTaskId": "rtk_202603180301"
+  },
+  "requestId": "req_example_notice_republish"
+}

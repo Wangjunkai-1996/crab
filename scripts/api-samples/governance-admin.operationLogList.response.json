@@ -1,0 +1,30 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "logId": "oplog_202603160001",
+        "targetType": "report",
+        "targetId": "report_202603160003",
+        "action": "report_resolve",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "requestId": "req_example_report_resolve",
+        "remark": "举报成立并限制发布",
+        "createdAt": "2026-03-16T09:01:00.000Z",
+        "beforeSnapshot": {
+          "status": "processing"
+        },
+        "afterSnapshot": {
+          "status": "closed",
+          "resultAction": "restricted_publish"
+        }
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_operation_log_list"
+}

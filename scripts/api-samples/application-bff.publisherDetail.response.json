@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "application": {
+      "applicationId": "app_202603160101",
+      "status": "contact_pending",
+      "selfIntroduction": "擅长餐饮门店探店图文与短视频混剪。",
+      "deliverablePlan": "可在到店后 48 小时内交付 1 条图文笔记和 1 条短视频。",
+      "expectedTerms": "支持晚间拍摄，希望可协调工作日到店时间。"
+    },
+    "creatorSummary": {
+      "displayName": "阿蟹探店",
+      "city": "杭州",
+      "primaryPlatform": "xiaohongshu",
+      "primaryCategory": "food_beverage",
+      "followerBand": "5k_10k",
+      "caseDescription": "本地生活门店图文内容为主"
+    },
+    "creatorContactRevealState": "masked",
+    "availableActions": [
+      "markCommunicating",
+      "markRejected",
+      "revealCreatorContact"
+    ]
+  },
+  "requestId": "req_example_application_publisher_detail"
+}

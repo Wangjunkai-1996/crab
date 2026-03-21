@@ -1,0 +1,13 @@
+{
+  "action": "forceRemoveNotice",
+  "payload": {
+    "noticeId": "notice_202603150012",
+    "reasonCategory": "risk_governance",
+    "reasonText": "命中治理动作，强制下架"
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_force_remove_notice"
+}

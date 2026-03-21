@@ -1,0 +1,41 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "reviewPendingCount": 12,
+    "reportPendingCount": 4,
+    "todayNoticeCount": 18,
+    "todayApprovedCount": 9,
+    "todayRejectedCount": 2,
+    "todayNewBlacklistCount": 1,
+    "priorityItems": [
+      {
+        "itemType": "review_task",
+        "itemId": "rtk_202603160001",
+        "title": "高风险审核任务",
+        "summary": "新用户首条通告且命中敏感词，建议优先处理",
+        "status": "pending",
+        "riskLevel": "high",
+        "createdAt": "2026-03-16T09:20:00.000Z",
+        "routeKey": "review-detail",
+        "routeParams": {
+          "reviewTaskId": "rtk_202603160001"
+        }
+      },
+      {
+        "itemType": "report",
+        "itemId": "report_202603160003",
+        "title": "重复举报聚合项",
+        "summary": "同一通告 24 小时内累计 3 次举报",
+        "status": "processing",
+        "riskLevel": "high",
+        "createdAt": "2026-03-16T08:50:00.000Z",
+        "routeKey": "report-detail",
+        "routeParams": {
+          "reportId": "report_202603160003"
+        }
+      }
+    ]
+  },
+  "requestId": "req_example_dashboard"
+}

@@ -1,0 +1,132 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "task": {
+      "reviewTaskId": "rtk_202603160001",
+      "objectType": "notice",
+      "objectId": "notice_202603160001",
+      "noticeStatusSnapshot": "pending_review",
+      "reviewStage": "initial_review",
+      "taskStatus": "processing",
+      "queueType": "initial_review_queue",
+      "riskLevel": "high",
+      "riskFlags": ["new_user_manual_review", "sensitive_keywords"],
+      "assignedTo": "admin_4f3b2a1c9d",
+      "assignedAdminName": "运营主管",
+      "claimedAt": "2026-03-16T09:25:00.000Z",
+      "completedAt": null,
+      "reviewResult": null,
+      "reasonCategory": null,
+      "reasonText": null,
+      "nextQueueType": null,
+      "createdAt": "2026-03-16T09:20:00.000Z"
+    },
+    "notice": {
+      "noticeId": "notice_202603160001",
+      "publisherUserId": "user_pub_1001",
+      "publisherProfileId": "pub_1001",
+      "title": "上海探店短视频达人招募",
+      "brandName": "蟹宝品牌店",
+      "identityTypeSnapshot": "merchant",
+      "cooperationPlatform": "xiaohongshu",
+      "cooperationCategory": "food_beverage",
+      "cooperationType": "short_video",
+      "city": "上海",
+      "settlementType": "fixed_price",
+      "budgetRange": "500_1000",
+      "budgetSummary": "固定报价 / 500-1000 元",
+      "recruitCount": 5,
+      "deadlineAt": "2026-03-20T16:00:00.000Z",
+      "creatorRequirements": "有本地生活探店经验，粉丝 5k+",
+      "cooperationDescription": "到店拍摄 1 条 30-60 秒短视频并配图文笔记",
+      "attachments": [
+        "cloud://domi-dev/notice-images/notice_202603160001/cover-1.jpg"
+      ],
+      "status": "pending_review",
+      "reviewRoundCount": 1,
+      "latestReviewReasonCategory": null,
+      "latestReviewReasonText": null,
+      "riskFlags": ["new_user_manual_review", "sensitive_keywords"],
+      "applicationCount": 0,
+      "publishedAt": null,
+      "closedAt": null,
+      "removedAt": null
+    },
+    "publisherProfile": {
+      "publisherProfileId": "pub_1001",
+      "userId": "user_pub_1001",
+      "identityType": "merchant",
+      "displayName": "蟹宝品牌店",
+      "city": "上海",
+      "contactType": "wechat",
+      "contactValue": "crab_brand_ops",
+      "intro": "本地生活餐饮品牌，常规合作以到店探店为主",
+      "profileCompleteness": 100,
+      "publishCount": 8,
+      "approvedPublishCount": 6,
+      "violationCount": 0,
+      "status": "complete"
+    },
+    "riskSummary": {
+      "riskLevel": "high",
+      "riskFlags": ["new_user_manual_review", "sensitive_keywords"],
+      "suggestedTags": ["建议人工复核", "关注联系方式与敏感词"]
+    },
+    "historyLogs": [
+      {
+        "action": "notice_submit_review",
+        "operatorType": "user",
+        "operatorId": "user_pub_1001",
+        "operatorDisplayName": "蟹宝品牌店",
+        "remark": "用户提交通告审核",
+        "createdAt": "2026-03-16T09:20:00.000Z"
+      }
+    ],
+    "availableActions": [
+      {
+        "key": "release_task",
+        "label": "释放任务",
+        "variant": "default",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_task_approved",
+        "label": "通过",
+        "variant": "primary",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_task_rejected",
+        "label": "驳回",
+        "variant": "danger",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_task_supplement_required",
+        "label": "需补充资料",
+        "variant": "default",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_task_transfer_manual_review",
+        "label": "转人工复核",
+        "variant": "default",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_task_removed",
+        "label": "直接下架",
+        "variant": "danger",
+        "disabled": false,
+        "disabledReason": null
+      }
+    ]
+  },
+  "requestId": "req_example_review_task_detail"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "temporary",
+  "note": "restrictionType 为 R03 临时联调口径。",
+  "action": "createAccountAction",
+  "payload": {
+    "userId": "user_pub_2020",
+    "restrictionType": "watchlist",
+    "reasonCategory": "multi_reports",
+    "reasonText": "短时间内出现多次举报，先加入观察名单",
+    "forceRemoveActiveNotices": false
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_create_account_action"
+}

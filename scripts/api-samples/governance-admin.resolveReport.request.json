@@ -1,0 +1,25 @@
+{
+  "status": "temporary",
+  "note": "resultAction / restrictionType 为 R03 临时联调口径，未拍板前不要在其他线固化为最终规则。",
+  "action": "resolveReport",
+  "payload": {
+    "reportId": "report_202603160003",
+    "result": "confirmed",
+    "resultAction": "restricted_publish",
+    "resultRemark": "举报成立，限制发布 7 天，并同步下架在架通告",
+    "noticeAction": "remove_notice",
+    "accountAction": {
+      "userId": "user_pub_2020",
+      "restrictionType": "restricted_publish",
+      "reasonCategory": "fake_requirement",
+      "reasonText": "举报成立，限制发布 7 天",
+      "endAt": "2026-03-23T09:00:00.000Z",
+      "forceRemoveActiveNotices": true
+    }
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_resolve_report"
+}

@@ -1,0 +1,95 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "task": {
+      "reviewTaskId": "rtk_202603170012",
+      "objectType": "notice",
+      "objectId": "notice_202603170012",
+      "noticeStatusSnapshot": "pending_review",
+      "reviewStage": "resubmission_review",
+      "taskStatus": "completed",
+      "queueType": "resubmission_review_queue",
+      "riskLevel": "low",
+      "riskFlags": [],
+      "assignedTo": "admin_4f3b2a1c9d",
+      "assignedAdminName": "运营主管",
+      "claimedAt": "2026-03-17T03:00:00.000Z",
+      "completedAt": "2026-03-17T03:10:00.000Z",
+      "reviewResult": "approved",
+      "reasonCategory": null,
+      "reasonText": null,
+      "nextQueueType": null,
+      "createdAt": "2026-03-17T02:50:00.000Z"
+    },
+    "notice": {
+      "noticeId": "notice_202603170012",
+      "publisherUserId": "user_pub_3002",
+      "publisherProfileId": "pub_3002",
+      "title": "绍兴门店开业探店合作",
+      "brandName": "蟹宝绍兴店",
+      "identityTypeSnapshot": "merchant",
+      "cooperationPlatform": "douyin",
+      "cooperationCategory": "food_beverage",
+      "cooperationType": "short_video",
+      "city": "绍兴",
+      "settlementType": "negotiable",
+      "budgetRange": "1000_3000",
+      "budgetSummary": "可议价 / 1000-3000 元",
+      "recruitCount": 5,
+      "deadlineAt": "2026-03-28T16:00:00.000Z",
+      "creatorRequirements": "本地探店短视频经验优先。",
+      "cooperationDescription": "到店完成 1 条短视频拍摄。",
+      "attachments": [],
+      "status": "active",
+      "reviewRoundCount": 2,
+      "latestReviewReasonCategory": null,
+      "latestReviewReasonText": null,
+      "riskFlags": [],
+      "applicationCount": 0,
+      "publishedAt": "2026-03-17T03:10:00.000Z",
+      "closedAt": null,
+      "removedAt": null
+    },
+    "publisherProfile": {
+      "publisherProfileId": "pub_3002",
+      "userId": "user_pub_3002",
+      "identityType": "merchant",
+      "displayName": "蟹宝绍兴店",
+      "city": "绍兴",
+      "contactType": "wechat",
+      "contactValue": "crab_sx_ops",
+      "intro": "绍兴本地餐饮门店品牌号。",
+      "profileCompleteness": 100,
+      "publishCount": 7,
+      "approvedPublishCount": 6,
+      "violationCount": 0,
+      "status": "complete"
+    },
+    "riskSummary": {
+      "riskLevel": "low",
+      "riskFlags": [],
+      "suggestedTags": []
+    },
+    "historyLogs": [
+      {
+        "action": "review_task_resolve",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "remark": "已处理完毕，当前只读",
+        "createdAt": "2026-03-17T03:10:00.000Z"
+      }
+    ],
+    "availableActions": [
+      {
+        "key": "resolve_task_approved",
+        "label": "通过",
+        "variant": "primary",
+        "disabled": true,
+        "disabledReason": "任务已处理完毕，当前仅可查看历史结果"
+      }
+    ]
+  },
+  "requestId": "req_example_review_task_detail_readonly_completed"
+}

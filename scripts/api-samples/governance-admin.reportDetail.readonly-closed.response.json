@@ -1,0 +1,57 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "report": {
+      "reportId": "report_202603170022",
+      "reporterUserId": "user_reporter_3102",
+      "targetType": "notice",
+      "targetId": "notice_202603170022",
+      "reasonCode": "fake_requirement",
+      "reasonText": null,
+      "evidenceImages": [],
+      "status": "closed",
+      "handlerId": "admin_4f3b2a1c9d",
+      "resultAction": "restricted_publish",
+      "resultRemark": "举报成立并限制发布 7 天",
+      "createdAt": "2026-03-17T05:10:00.000Z"
+    },
+    "targetSnapshot": {
+      "targetType": "notice",
+      "targetId": "notice_202603170022",
+      "displayName": "台州门店试吃合作",
+      "status": "removed",
+      "ownerUserId": "user_pub_3012",
+      "city": "台州",
+      "summary": "抖音试吃探店，已下架",
+      "riskSummary": {
+        "riskLevel": "high",
+        "riskFlags": ["multi_reports_24h"],
+        "suggestedTags": ["已处理完毕，供历史查看"]
+      }
+    },
+    "historyReports": [],
+    "historyActions": [
+      {
+        "action": "report_resolve",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "remark": "已处理完毕，当前只读",
+        "createdAt": "2026-03-17T05:20:00.000Z",
+        "targetType": "report",
+        "targetId": "report_202603170022"
+      }
+    ],
+    "availableActions": [
+      {
+        "key": "resolve_report_confirmed_restrict_publish",
+        "label": "举报成立并限制发布",
+        "variant": "danger",
+        "disabled": true,
+        "disabledReason": "当前举报已处理完毕，当前仅可查看历史结果"
+      }
+    ]
+  },
+  "requestId": "req_example_report_detail_readonly_closed"
+}

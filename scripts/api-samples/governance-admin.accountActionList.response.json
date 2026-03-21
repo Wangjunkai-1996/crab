@@ -1,0 +1,31 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "restrictionId": "restriction_202603160001",
+        "user": {
+          "userId": "user_pub_2020",
+          "displayName": "杭州门店品牌号",
+          "avatarUrl": null,
+          "accountStatus": "restricted_publish"
+        },
+        "restrictionType": "restricted_publish",
+        "reasonCategory": "fake_requirement",
+        "reasonText": "举报成立，限制发布 7 天",
+        "startAt": "2026-03-16T09:00:00.000Z",
+        "endAt": "2026-03-23T09:00:00.000Z",
+        "operator": {
+          "operatorId": "admin_4f3b2a1c9d",
+          "displayName": "运营主管"
+        },
+        "status": "active",
+        "createdAt": "2026-03-16T09:00:00.000Z"
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_account_action_list"
+}

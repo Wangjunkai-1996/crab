@@ -1,0 +1,31 @@
+{
+  "version": "v1",
+  "defaultPolicy": {
+    "miniprogram": { "read": false, "write": false },
+    "adminWeb": { "read": false, "write": false },
+    "mode": "cloudfunctions-only"
+  },
+  "collections": [
+    { "name": "dm_users", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_publisher_profiles", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_creator_cards", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_notices", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_notice_review_tasks", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_applications", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_messages", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_reports", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_feedback_records", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_account_actions", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_operation_logs", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_admin_users", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    { "name": "dm_admin_sessions", "miniprogram": { "read": false, "write": false }, "adminWeb": { "read": false, "write": false }, "mode": "cloudfunctions-only" },
+    {
+      "name": "dm_configs",
+      "miniprogram": { "read": "public-only", "write": false },
+      "adminWeb": { "read": "public-only", "write": false },
+      "mode": "whitelist-read",
+      "publicGroups": ["public_dictionary", "ad_slots_public", "feature_flags_public"],
+      "privateGroups": ["risk_keywords", "review_reason_categories", "report_reason_codes", "restriction_reason_categories", "admin_ip_whitelist"]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "reviewTaskId": "rtk_202603160001",
+    "taskStatus": "pending"
+  },
+  "requestId": "req_example_review_release_task"
+}

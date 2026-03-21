@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "reportId": "report_202603160003",
+    "status": "processing",
+    "handlerId": "admin_4f3b2a1c9d"
+  },
+  "requestId": "req_example_claim_report"
+}

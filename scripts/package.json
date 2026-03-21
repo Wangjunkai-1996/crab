@@ -1,0 +1,24 @@
+{
+  "name": "domi-backend-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@cloudbase/manager-node": "^4.2.9",
+    "@cloudbase/node-sdk": "^3.0.0"
+  },
+  "scripts": {
+    "check:smoke-readiness": "node check-real-smoke-readiness.mjs",
+    "check:miniprogram-dev-sample": "node check-miniprogram-dev-smoke-sample.mjs",
+    "prepare:miniprogram-dev-sample": "node check-miniprogram-dev-smoke-sample.mjs --apply",
+    "check:functions-active": "node check-cloudfunctions-active.mjs",
+    "check:admin-web-deploy": "node check-admin-web-deploy-fingerprint.mjs",
+    "publish:admin-web": "node publish-admin-web-hosting.mjs",
+    "retry:storage-rule": "node retry-storage-rule.mjs",
+    "update:function-security-rule": "node update-function-security-rule.mjs",
+    "smoke:admin-real-reads": "node smoke-admin-real-reads.mjs",
+    "seed:admin-detail-smoke": "node seed-admin-detail-smoke-sample.mjs",
+    "audit:config-groups": "node audit-config-groups.mjs",
+    "dedupe:config-groups": "node dedupe-config-groups.mjs",
+    "reset:admin-credential": "node reset-admin-credential.mjs"
+  }
+}

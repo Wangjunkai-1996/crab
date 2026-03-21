@@ -1,0 +1,253 @@
+{
+  "version": "v1",
+  "indexes": [
+    {
+      "collection": "dm_users",
+      "name": "idx_users_openid",
+      "fields": [{ "name": "wxOpenId", "order": "asc" }],
+      "unique": true,
+      "purpose": "用户建档查找"
+    },
+    {
+      "collection": "dm_users",
+      "name": "idx_users_account_status_updated",
+      "fields": [
+        { "name": "accountStatus", "order": "asc" },
+        { "name": "updatedAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "风控与后台筛选"
+    },
+    {
+      "collection": "dm_publisher_profiles",
+      "name": "idx_publisher_user",
+      "fields": [{ "name": "userId", "order": "asc" }],
+      "unique": true,
+      "purpose": "一人一档"
+    },
+    {
+      "collection": "dm_creator_cards",
+      "name": "idx_creator_user",
+      "fields": [{ "name": "userId", "order": "asc" }],
+      "unique": true,
+      "purpose": "一人一卡"
+    },
+    {
+      "collection": "dm_notices",
+      "name": "idx_notice_plaza_core",
+      "fields": [
+        { "name": "status", "order": "asc" },
+        { "name": "cooperationPlatform", "order": "asc" },
+        { "name": "cooperationCategory", "order": "asc" },
+        { "name": "city", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "广场列表"
+    },
+    {
+      "collection": "dm_notices",
+      "name": "idx_notice_publisher_created",
+      "fields": [
+        { "name": "publisherUserId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "我的通告"
+    },
+    {
+      "collection": "dm_notices",
+      "name": "idx_notice_status_deadline",
+      "fields": [
+        { "name": "status", "order": "asc" },
+        { "name": "deadlineAt", "order": "asc" }
+      ],
+      "unique": false,
+      "purpose": "定时过期扫描"
+    },
+    {
+      "collection": "dm_notice_review_tasks",
+      "name": "idx_review_task_queue",
+      "fields": [
+        { "name": "taskStatus", "order": "asc" },
+        { "name": "reviewStage", "order": "asc" },
+        { "name": "createdAt", "order": "asc" }
+      ],
+      "unique": false,
+      "purpose": "审核队列"
+    },
+    {
+      "collection": "dm_notice_review_tasks",
+      "name": "idx_review_task_object",
+      "fields": [
+        { "name": "objectId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "按通告追踪"
+    },
+    {
+      "collection": "dm_notice_review_tasks",
+      "name": "idx_review_task_assignee",
+      "fields": [
+        { "name": "assignedTo", "order": "asc" },
+        { "name": "taskStatus", "order": "asc" },
+        { "name": "updatedAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "我的任务"
+    },
+    {
+      "collection": "dm_applications",
+      "name": "idx_application_notice_status",
+      "fields": [
+        { "name": "noticeId", "order": "asc" },
+        { "name": "status", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "报名管理"
+    },
+    {
+      "collection": "dm_applications",
+      "name": "idx_application_creator_created",
+      "fields": [
+        { "name": "creatorUserId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "我的报名"
+    },
+    {
+      "collection": "dm_applications",
+      "name": "idx_application_notice_creator_effective",
+      "fields": [
+        { "name": "noticeId", "order": "asc" },
+        { "name": "creatorUserId", "order": "asc" },
+        { "name": "isDeleted", "order": "asc" }
+      ],
+      "unique": true,
+      "purpose": "防重报名"
+    },
+    {
+      "collection": "dm_messages",
+      "name": "idx_message_receiver_read_created",
+      "fields": [
+        { "name": "receiverUserId", "order": "asc" },
+        { "name": "isRead", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "消息中心"
+    },
+    {
+      "collection": "dm_reports",
+      "name": "idx_report_status_created",
+      "fields": [
+        { "name": "status", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "举报列表"
+    },
+    {
+      "collection": "dm_reports",
+      "name": "idx_report_target_created",
+      "fields": [
+        { "name": "targetType", "order": "asc" },
+        { "name": "targetId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "聚合同对象举报"
+    },
+    {
+      "collection": "dm_feedback_records",
+      "name": "idx_feedback_user_created",
+      "fields": [
+        { "name": "userId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "我的反馈"
+    },
+    {
+      "collection": "dm_account_actions",
+      "name": "idx_account_action_user_status_start",
+      "fields": [
+        { "name": "userId", "order": "asc" },
+        { "name": "status", "order": "asc" },
+        { "name": "startAt", "order": "asc" }
+      ],
+      "unique": false,
+      "purpose": "处罚查询"
+    },
+    {
+      "collection": "dm_account_actions",
+      "name": "idx_account_action_end_status",
+      "fields": [
+        { "name": "endAt", "order": "asc" },
+        { "name": "status", "order": "asc" }
+      ],
+      "unique": false,
+      "purpose": "到期解除"
+    },
+    {
+      "collection": "dm_operation_logs",
+      "name": "idx_operation_target_created",
+      "fields": [
+        { "name": "targetType", "order": "asc" },
+        { "name": "targetId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "回溯查询"
+    },
+    {
+      "collection": "dm_operation_logs",
+      "name": "idx_operation_operator_created",
+      "fields": [
+        { "name": "operatorType", "order": "asc" },
+        { "name": "operatorId", "order": "asc" },
+        { "name": "createdAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "按操作者查询"
+    },
+    {
+      "collection": "dm_admin_users",
+      "name": "idx_admin_username",
+      "fields": [{ "name": "username", "order": "asc" }],
+      "unique": true,
+      "purpose": "后台登录"
+    },
+    {
+      "collection": "dm_admin_sessions",
+      "name": "idx_admin_session_token",
+      "fields": [{ "name": "tokenHash", "order": "asc" }],
+      "unique": true,
+      "purpose": "会话校验"
+    },
+    {
+      "collection": "dm_admin_sessions",
+      "name": "idx_admin_session_user_status",
+      "fields": [
+        { "name": "adminUserId", "order": "asc" },
+        { "name": "status", "order": "asc" },
+        { "name": "updatedAt", "order": "desc" }
+      ],
+      "unique": false,
+      "purpose": "撤销与清理"
+    },
+    {
+      "collection": "dm_admin_sessions",
+      "name": "idx_admin_session_expire",
+      "fields": [
+        { "name": "expiresAt", "order": "asc" },
+        { "name": "status", "order": "asc" }
+      ],
+      "unique": false,
+      "purpose": "过期清理"
+    }
+  ]
+}

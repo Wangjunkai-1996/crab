@@ -1,0 +1,10 @@
+{
+  "action": "logout",
+  "payload": {},
+  "meta": {
+    "source": "admin-web",
+    "clientVersion": "1.0.0",
+    "adminSessionToken": "admst_example_token_001"
+  },
+  "requestId": "req_example_admin_logout"
+}

@@ -1,0 +1,51 @@
+{
+  "miniprogram": [
+    {
+      "name": "user-bff",
+      "actions": ["bootstrap", "setPreferredView"],
+      "status": "available"
+    },
+    {
+      "name": "publisher-bff",
+      "actions": ["getProfile", "upsertProfile"],
+      "status": "real-query-and-write-complete"
+    },
+    {
+      "name": "creator-bff",
+      "actions": ["getCard", "upsertCard"],
+      "status": "real-query-and-write-complete"
+    },
+    {
+      "name": "notice-bff",
+      "actions": ["list", "detail", "createDraft", "updateDraft", "submitReview", "myList", "close", "republish"],
+      "status": "real-query-and-write-partial"
+    },
+    {
+      "name": "application-bff",
+      "actions": ["submit", "withdraw", "myList", "detail", "publisherList", "publisherDetail", "markViewed", "markContactPending", "markCommunicating", "markRejected", "markCompleted", "revealCreatorContact"],
+      "status": "real-query-and-action-complete"
+    },
+    {
+      "name": "message-bff",
+      "actions": ["list", "markRead", "markAllRead"],
+      "status": "sample-ready"
+    }
+  ],
+  "adminWeb": [
+    {
+      "name": "admin-auth",
+      "actions": ["login", "me", "logout", "changePassword"],
+      "status": "available"
+    },
+    {
+      "name": "review-admin",
+      "actions": ["taskList", "taskDetail", "claimTask", "releaseTask", "resolveTask"],
+      "status": "real-query-and-action-partial"
+    },
+    {
+      "name": "governance-admin",
+      "actions": ["dashboard", "reportList", "reportDetail", "claimReport", "resolveReport", "accountActionList", "createAccountAction", "releaseAccountAction", "forceRemoveNotice", "operationLogList"],
+      "status": "real-query-and-action-partial"
+    }
+  ]
+}

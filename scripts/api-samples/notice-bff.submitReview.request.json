@@ -1,0 +1,11 @@
+{
+  "action": "submitReview",
+  "payload": {
+    "noticeId": "notice_202603160201"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_notice_submit_review"
+}

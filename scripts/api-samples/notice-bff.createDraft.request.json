@@ -1,0 +1,27 @@
+{
+  "action": "createDraft",
+  "payload": {
+    "notice": {
+      "title": "杭州蟹煲门店探店合作",
+      "brandName": "蟹宝杭州店",
+      "cooperationPlatform": "xiaohongshu",
+      "cooperationCategory": "food_beverage",
+      "cooperationType": "image_text",
+      "city": "杭州",
+      "settlementType": "fixed_price",
+      "budgetRange": "500_1000",
+      "recruitCount": 3,
+      "deadlineAt": "2026-03-24T16:00:00.000Z",
+      "creatorRequirements": "有本地生活探店经验，粉丝 5k+",
+      "cooperationDescription": "到店拍摄图文笔记 1 篇，可补充短视频素材。",
+      "attachments": [
+        "cloud://domi-dev/notice-images/draft_001/brief-1.jpg"
+      ]
+    }
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_notice_create_draft"
+}

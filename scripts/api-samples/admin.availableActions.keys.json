@@ -1,0 +1,22 @@
+{
+  "availableActionKeys": [
+    "claim_task",
+    "release_task",
+    "resolve_task_approved",
+    "resolve_task_rejected",
+    "resolve_task_supplement_required",
+    "resolve_task_transfer_manual_review",
+    "resolve_task_removed",
+    "claim_report",
+    "resolve_report_rejected",
+    "resolve_report_confirmed_record_only",
+    "resolve_report_confirmed_remove_notice",
+    "resolve_report_confirmed_watchlist",
+    "resolve_report_confirmed_restrict_publish",
+    "resolve_report_confirmed_restrict_apply",
+    "resolve_report_confirmed_banned",
+    "create_account_action",
+    "release_account_action",
+    "force_remove_notice"
+  ]
+}

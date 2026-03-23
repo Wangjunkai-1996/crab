@@ -57,7 +57,7 @@
 
 | 类型 | 目录 |
 | --- | --- |
-| 小程序真实 smoke 证据 | `/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/` |
+| 小程序真实 smoke 证据 | `/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r54/` |
 | 后端 readiness / real-read 证据 | `/Users/gy-vip/Desktop/KK_Crab-backend/scripts/evidence/` |
 | 后台真实读证据 | `/Users/gy-vip/Desktop/KK_Crab-admin/admin-web/evidence/` |
 | 控制面结论 | `/Users/gy-vip/Desktop/KK_Crab-control/meetings/`、`/Users/gy-vip/Desktop/KK_Crab-control/board.md` |

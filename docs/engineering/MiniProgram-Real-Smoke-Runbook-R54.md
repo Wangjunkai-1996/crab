@@ -8,20 +8,20 @@
 
 ## 2. 当前固定事实
 
-- 工程路径：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram`
-- 脚本目录：`/Users/gy-vip/Desktop/KK_Crab-mp/scripts`
+- 工程路径：`/Users/gy-vip/Desktop/KK_Crab/miniprogram`
+- 脚本目录：`/Users/gy-vip/Desktop/KK_Crab/scripts`
 - 小程序 `AppID`：`wxa6f615dcab1f984f`
 - 当前 `dev` CloudBase 环境：`cloud1-4grxqg018586792d`
 - 默认 API 模式：`mock`
-- 证据目录：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/`
+- 证据目录：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r54/`
 
 ## 3. 打开 DevTools 前固定预检
 
 先在终端执行：
 
 ```bash
-node /Users/gy-vip/Desktop/KK_Crab-mp/scripts/build-miniprogram-js.mjs
-node /Users/gy-vip/Desktop/KK_Crab-mp/scripts/check-devtools-readiness.mjs
+node /Users/gy-vip/Desktop/KK_Crab/scripts/build-miniprogram-js.mjs
+node /Users/gy-vip/Desktop/KK_Crab/scripts/check-devtools-readiness.mjs
 ```
 
 预期：
@@ -34,7 +34,7 @@ node /Users/gy-vip/Desktop/KK_Crab-mp/scripts/check-devtools-readiness.mjs
 ## 4. 导入步骤
 
 1. 打开微信开发者工具。
-2. 导入工程目录：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram`
+2. 导入工程目录：`/Users/gy-vip/Desktop/KK_Crab/miniprogram`
 3. 确认工程未回退成 `touristappid`。
 4. 等待编译完成，不手改 storage key，不手改默认运行模式。
 
@@ -111,10 +111,10 @@ await app.globalData.runtimeDebug.useMock()
 
 ## 7. 证据落点
 
-- 运行态摘要：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/runtime/`
-- 首轮 smoke 结果：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/smoke/`
-- 请求日志：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/logs/`
-- 总摘要：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/summary.md`
+- 运行态摘要：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r54/runtime/`
+- 首轮 smoke 结果：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r54/smoke/`
+- 请求日志：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r54/logs/`
+- 总摘要：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r54/summary.md`
 
 ## 8. 回填建议
 

@@ -7,16 +7,16 @@
 
 ## 2. 当前固定事实
 
-- 工程路径：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram`
+- 工程路径：`/Users/gy-vip/Desktop/KK_Crab/miniprogram`
 - 小程序 `AppID`：`wxa6f615dcab1f984f`
 - 当前 `dev` CloudBase 环境：`cloud1-4grxqg018586792d`
 - 默认 API 模式：`mock`
-- 证据目录：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r53/`
+- 证据目录：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r53/`
 
 ## 3. 导入步骤
 
 1. 打开微信开发者工具。
-2. 导入 `miniprogram` 工程目录：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram`
+2. 导入 `miniprogram` 工程目录：`/Users/gy-vip/Desktop/KK_Crab/miniprogram`
 3. 确认工程未再显示 `touristappid`，`project.config.json` 中应为真实 `AppID`。
 4. 等工程编译完成，不手改 storage key、不手改代码里的默认模式。
 
@@ -77,11 +77,11 @@ app.globalData.runtimeDebug.useMock().then(console.log)
 
 ## 6. 证据落点
 
-- 运行态摘要与请求日志：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r53/runtime/`
-- bootstrap 结果：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r53/bootstrap/`
-- 资料读写：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r53/profile/`
-- 报名提交 / 撤回：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r53/application/`
-- 总摘要：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r53/summary.md`
+- 运行态摘要与请求日志：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r53/runtime/`
+- bootstrap 结果：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r53/bootstrap/`
+- 资料读写：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r53/profile/`
+- 报名提交 / 撤回：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r53/application/`
+- 总摘要：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r53/summary.md`
 
 ## 7. 失败时的固定回传格式
 

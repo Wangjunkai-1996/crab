@@ -1,0 +1,95 @@
+<view class="page-shell">
+  <app-hero-header
+    theme="surface"
+    kicker="立即报名"
+    title="完成报名前最后确认"
+    subtitle="通告摘要固定置顶；资料与动作能力完全以后端当前状态为准。"
+    showBack="{{true}}"
+    topInset="{{topInset}}"
+  ></app-hero-header>
+
+  <view class="page-stack apply-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="报名页加载失败" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
+    <block wx:else>
+      <view class="surface-card apply-summary-card">
+        <view class="apply-summary-card__head">
+          <text class="apply-summary-card__badge">{{noticeSummary.statusText}}</text>
+          <text class="apply-summary-card__meta">{{noticeSummary.city}}</text>
+        </view>
+        <text class="apply-summary-card__title">{{noticeSummary.title}}</text>
+        <view class="apply-summary-card__chips">
+          <text class="apply-summary-card__chip">{{noticeSummary.platformLabel}}</text>
+          <text class="apply-summary-card__chip">{{noticeSummary.categoryLabel}}</text>
+          <text class="apply-summary-card__chip">{{noticeSummary.cooperationType}}</text>
+        </view>
+        <text class="apply-summary-card__budget">{{noticeSummary.budgetSummary}}</text>
+      </view>
+
+      <view wx:if="{{submitSuccess}}" class="surface-card success-card">
+        <text class="success-card__title">{{successTitle}}</text>
+        <text class="success-card__copy">{{successCopy}}</text>
+      </view>
+
+      <block wx:else>
+        <view class="surface-card info-card">
+          <text class="info-card__title">当前动作说明</text>
+          <text class="info-card__copy">{{helperText}}</text>
+          <text class="info-card__copy">当前名片状态：{{completenessText}}</text>
+        </view>
+
+        <grouped-form-card title="达人名片摘要" badgeText="{{completenessText}}" items="{{creatorItems}}"></grouped-form-card>
+
+        <view class="surface-card form-section">
+          <view class="form-section__head">
+            <text class="form-section__title">报名内容</text>
+            <text class="form-section__copy">报名提交后会固化为快照，后续在报名详情中可回看。</text>
+          </view>
+
+          <view class="form-field">
+            <view class="form-field__label-row"><text class="form-field__label">自我介绍</text><text class="form-field__required">必填</text></view>
+            <textarea class="form-textarea {{fieldErrors.selfIntroduction ? 'form-textarea--error' : ''}}" placeholder="最多 200 字" maxlength="200" auto-height="{{true}}" value="{{applicationForm.selfIntroduction}}" data-field="selfIntroduction" bindinput="onApplicationInput"></textarea>
+            <text wx:if="{{fieldErrors.selfIntroduction}}" class="form-field__error">{{fieldErrors.selfIntroduction}}</text>
+          </view>
+
+          <view class="form-field">
+            <view class="form-field__label-row"><text class="form-field__label">可交付计划</text><text class="form-field__required">必填</text></view>
+            <textarea class="form-textarea {{fieldErrors.deliverablePlan ? 'form-textarea--error' : ''}}" placeholder="最多 200 字" maxlength="200" auto-height="{{true}}" value="{{applicationForm.deliverablePlan}}" data-field="deliverablePlan" bindinput="onApplicationInput"></textarea>
+            <text wx:if="{{fieldErrors.deliverablePlan}}" class="form-field__error">{{fieldErrors.deliverablePlan}}</text>
+          </view>
+
+          <view class="form-field">
+            <view class="form-field__label-row"><text class="form-field__label">期望条件</text></view>
+            <textarea class="form-textarea {{fieldErrors.expectedTerms ? 'form-textarea--error' : ''}}" placeholder="选填，最多 120 字" maxlength="120" auto-height="{{true}}" value="{{applicationForm.expectedTerms}}" data-field="expectedTerms" bindinput="onApplicationInput"></textarea>
+            <text wx:if="{{fieldErrors.expectedTerms}}" class="form-field__error">{{fieldErrors.expectedTerms}}</text>
+          </view>
+
+          <view class="form-field">
+            <view class="form-field__label-row"><text class="form-field__label">补充案例截图</text></view>
+            <uploader-grid files="{{applicationForm.portfolioImages}}" maxCount="3" helperText="选填，最多 3 张；默认会沿用你当前达人名片里的作品图。" bind:change="onPortfolioChange"></uploader-grid>
+            <text wx:if="{{fieldErrors.portfolioImages}}" class="form-field__error">{{fieldErrors.portfolioImages}}</text>
+          </view>
+
+          <view class="form-field">
+            <view class="form-field__label-row"><text class="form-field__label">本次联系方式</text></view>
+            <view class="form-picker">
+              <text>{{creatorContactText}}</text>
+              <text class="form-picker__arrow">沿用名片</text>
+            </view>
+            <text class="form-field__hint">V1 默认沿用达人名片联系方式，不单独暴露覆盖输入。</text>
+          </view>
+        </view>
+      </block>
+    </block>
+  </view>
+
+  <bottom-action-bar
+    primaryText="{{submitSuccess ? '查看我的报名' : primaryText}}"
+    secondaryText="{{secondaryText}}"
+    primaryDisabled="{{primaryDisabled && !submitSuccess}}"
+    loading="{{submitting}}"
+    bottomInset="{{bottomInset}}"
+    bind:primary="onPrimaryAction"
+    bind:secondary="onSecondaryAction"
+  ></bottom-action-bar>
+</view>

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../components/app-hero-header/index",
+    "filter-chip-bar": "../../components/filter-chip-bar/index",
+    "filter-sheet": "../../components/filter-sheet/index",
+    "notice-card": "../../components/notice-card/index",
+    "empty-state": "../../components/empty-state/index",
+    "page-skeleton": "../../components/page-skeleton/index",
+    "page-error-state": "../../components/page-error-state/index"
+  }
+}

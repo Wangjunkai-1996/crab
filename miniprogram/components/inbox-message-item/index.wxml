@@ -1,0 +1,11 @@
+<view class="message-item" bindtap="onItemTap">
+  <view class="message-bubble message-bubble--{{message.messageType}}">
+    {{message.messageType === 'review' ? '审' : (message.messageType === 'application' ? '报' : '系')}}
+  </view>
+  <view class="message-main">
+    <text class="message-title">{{message.title}}</text>
+    <text class="message-summary">{{message.summary}}</text>
+  </view>
+  <text wx:if="{{!message.isRead}}" class="message-badge">未读</text>
+  <text wx:else class="message-time">{{message.timeText}}</text>
+</view>

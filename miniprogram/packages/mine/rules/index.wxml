@@ -1,0 +1,9 @@
+<view class="page-shell page-shell--tight-bottom">
+  <app-hero-header theme="surface" kicker="规则说明" title="平台边界先讲清楚" subtitle="V1 规则文案先使用静态卡片，后续可切到 dm_configs 配置源。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="surface-card rule-card">
+    <text class="rule-card__title">发布规范</text>
+    <text class="rule-card__copy">仅“进行中”的通告进入广场默认展示；已截止、已关闭、已下架不可继续报名。</text>
+    <text class="rule-card__copy">联系方式释放逻辑、权限判断与 CTA 文案必须以服务端返回为准，前端不自行决定。</text>
+    <text class="rule-card__copy">双角色用户可切换优先视角，但 `发布` Tab 永远进入发布页。</text>
+  </view>
+</view>

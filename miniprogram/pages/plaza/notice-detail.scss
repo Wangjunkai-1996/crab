@@ -1,0 +1,93 @@
+@import '../../styles/tokens.scss';
+
+.detail-stack {
+  margin-top: 24rpx;
+}
+
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.detail-card__head,
+.detail-card__row,
+.detail-card__metric-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.detail-card__budget {
+  font-family: $font-numeric;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: $accent-700;
+}
+
+.detail-card__title,
+.detail-card__section-title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.detail-card__row,
+.detail-card__copy,
+.detail-card__hint,
+.detail-card__contact {
+  font-size: $font-body-s;
+  line-height: 1.6;
+}
+
+.detail-card__row {
+  color: $text-secondary;
+}
+
+.detail-card__row text:last-child,
+.detail-card__contact {
+  color: $text-primary;
+  font-weight: 600;
+}
+
+.detail-card__hint {
+  color: $secondary-700;
+}
+
+.detail-card__metric-row {
+  gap: 12rpx;
+}
+
+.detail-card__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52rpx;
+  padding: 0 20rpx;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.detail-card__pill--accent {
+  background: rgba(255, 181, 71, 0.16);
+  border-color: rgba(255, 181, 71, 0.24);
+  color: $accent-700;
+}
+
+.detail-card__report-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72rpx;
+  padding: 0 28rpx;
+  border-radius: $radius-pill;
+  background: rgba(227, 93, 106, 0.12);
+  border: 1px solid rgba(227, 93, 106, 0.22);
+  color: $danger-500;
+  font-size: $font-body-m;
+  font-weight: 600;
+}

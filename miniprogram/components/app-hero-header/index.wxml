@@ -1,0 +1,17 @@
+<view class="hero hero--{{theme}}" style="padding-top: {{topInset}}px;">
+  <view class="hero__head">
+    <view class="hero__content">
+      <view wx:if="{{showBack}}" class="hero__back" bindtap="onBackTap">‹</view>
+      <view class="hero__meta">
+        <view class="hero__top-line">
+          <text class="hero__kicker">{{kicker}}</text>
+          <text wx:if="{{badgeText}}" class="hero__badge hero__badge--{{badgeType}}">{{badgeText}}</text>
+        </view>
+        <text class="hero__title">{{title}}</text>
+        <text wx:if="{{subtitle}}" class="hero__subtitle">{{subtitle}}</text>
+      </view>
+    </view>
+    <view wx:if="{{actionText}}" class="hero__action" bindtap="onActionTap">{{actionText}}</view>
+  </view>
+  <slot></slot>
+</view>

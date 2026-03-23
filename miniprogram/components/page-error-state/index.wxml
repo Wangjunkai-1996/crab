@@ -1,0 +1,5 @@
+<view class="error-card">
+  <text class="error-title">{{title}}</text>
+  <text class="error-description">{{description}}</text>
+  <view class="error-action" bindtap="onActionTap">{{actionText}}</view>
+</view>

@@ -1,0 +1,79 @@
+@import '../../styles/tokens.scss';
+@import '../../styles/mixins.scss';
+
+.plaza-stack {
+  margin-top: 24rpx;
+}
+
+.search-box {
+  @include soft-input-light;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-top: 20rpx;
+}
+
+.search-box--dark {
+  @include soft-input-dark;
+}
+
+.search-box__icon {
+  width: 20rpx;
+  height: 20rpx;
+  border: 4rpx solid currentColor;
+  border-radius: 50%;
+  position: relative;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.search-box__icon::after {
+  content: '';
+  position: absolute;
+  right: -8rpx;
+  bottom: -10rpx;
+  width: 10rpx;
+  height: 4rpx;
+  background: currentColor;
+  transform: rotate(45deg);
+  border-radius: 999rpx;
+}
+
+.search-box__text {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: $font-body-s;
+}
+
+.ad-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.ad-card__badge,
+.ad-card__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52rpx;
+  padding: 0 20rpx;
+  border-radius: $radius-pill;
+  background: rgba(47, 107, 255, 0.12);
+  color: $primary-600;
+  font-size: $font-caption;
+}
+
+.ad-card__title {
+  display: block;
+  margin-top: 16rpx;
+  font-size: $font-body-m;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.ad-card__copy {
+  display: block;
+  margin-top: 8rpx;
+  color: $text-secondary;
+  font-size: $font-body-s;
+  line-height: 1.6;
+}

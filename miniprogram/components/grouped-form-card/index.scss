@@ -1,0 +1,82 @@
+@import '../../styles/tokens.scss';
+@import '../../styles/mixins.scss';
+
+.form-card {
+  @include surface-card;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.form-card__head,
+.form-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.form-card__title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.form-card__badge,
+.form-card__required {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48rpx;
+  padding: 0 18rpx;
+  border-radius: $radius-pill;
+  font-size: $font-meta;
+}
+
+.form-card__badge--accent {
+  background: rgba(255, 181, 71, 0.16);
+  border: 1px solid rgba(255, 181, 71, 0.24);
+  color: $accent-700;
+}
+
+.form-card__required {
+  background: rgba(47, 107, 255, 0.08);
+  color: $primary-600;
+}
+
+.form-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.form-card__item {
+  padding: 20rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(180deg, rgba(251, 253, 255, 0.98), rgba(244, 248, 253, 0.96));
+  border: 1px solid rgba(216, 226, 239, 0.96);
+}
+
+.form-card__item--error {
+  border-color: rgba(227, 93, 106, 0.34);
+  background: rgba(255, 240, 243, 0.54);
+}
+
+.form-card__label,
+.form-card__hint {
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.form-card__value {
+  margin-top: 10rpx;
+  font-size: $font-body-m;
+  color: $text-primary;
+}
+
+.form-card__error {
+  display: block;
+  margin-top: 10rpx;
+  color: $danger-500;
+  font-size: $font-caption;
+}

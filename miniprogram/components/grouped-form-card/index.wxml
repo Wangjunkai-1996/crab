@@ -1,0 +1,17 @@
+<view class="form-card">
+  <view class="form-card__head">
+    <text class="form-card__title">{{title}}</text>
+    <text wx:if="{{badgeText}}" class="form-card__badge form-card__badge--{{badgeType}}">{{badgeText}}</text>
+  </view>
+  <view class="form-card__list">
+    <view wx:for="{{items}}" wx:key="label" class="form-card__item {{item.error ? 'form-card__item--error' : ''}}">
+      <view class="form-card__row">
+        <text class="form-card__label">{{item.label}}</text>
+        <text wx:if="{{item.required}}" class="form-card__required">必填</text>
+      </view>
+      <view class="form-card__value">{{item.value}}</view>
+      <text wx:if="{{item.hint}}" class="form-card__hint">{{item.hint}}</text>
+      <text wx:if="{{item.error}}" class="form-card__error">{{item.error}}</text>
+    </view>
+  </view>
+</view>

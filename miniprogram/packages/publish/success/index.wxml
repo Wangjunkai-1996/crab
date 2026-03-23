@@ -1,0 +1,9 @@
+<view class="page-shell">
+  <app-hero-header theme="progress" kicker="发布成功" title="已进入审核" subtitle="通常会在 4 小时内完成审核，审核通过后会自动出现在合作广场。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="surface-card success-card">
+    <text class="success-card__title">提交流程已打通</text>
+    <text class="success-card__copy">当前为前端 Mock 骨架，后续只需把请求层切回真实云函数即可继续联调。</text>
+    <text wx:if="{{noticeId}}" class="success-card__hint">通告 ID：{{noticeId}}</text>
+  </view>
+  <bottom-action-bar primaryText="查看我的通告" secondaryText="返回广场" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+</view>

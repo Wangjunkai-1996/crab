@@ -1,0 +1,56 @@
+@import '../../styles/tokens.scss';
+
+.message-summary {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.message-summary__title {
+  font-size: $font-caption;
+  color: $text-secondary;
+}
+
+.message-summary__value {
+  font-family: $font-numeric;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.message-summary__copy {
+  color: $text-secondary;
+  font-size: $font-body-s;
+  line-height: 1.6;
+}
+
+.segment-row {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 24rpx;
+}
+
+.segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64rpx;
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  background: rgba(255, 255, 255, 0.78);
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.segment--active {
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+  color: $primary-600;
+}
+
+.message-stack {
+  margin-top: 24rpx;
+}

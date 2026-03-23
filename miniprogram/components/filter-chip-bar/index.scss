@@ -1,0 +1,39 @@
+@import '../../styles/tokens.scss';
+
+.chip-bar {
+  margin-top: 20rpx;
+  width: 100%;
+}
+
+.chip-bar__inner {
+  display: inline-flex;
+  gap: 12rpx;
+  min-width: 100%;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64rpx;
+  padding: 0 24rpx;
+  border-radius: $radius-pill;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  background: rgba(255, 255, 255, 0.78);
+  color: $text-primary;
+  font-size: $font-caption;
+  white-space: nowrap;
+}
+
+.chip--active {
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+  color: $primary-600;
+  box-shadow: 0 10rpx 24rpx rgba(47, 107, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.chip--filter {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}

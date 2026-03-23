@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "options": {
+    "addGlobalClass": true
+  },
+  "usingComponents": {
+    "status-tag": "../status-tag/index"
+  }
+}

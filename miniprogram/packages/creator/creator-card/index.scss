@@ -1,0 +1,69 @@
+@import '../../../styles/tokens.scss';
+@import '../../../styles/form-page.scss';
+
+.creator-card-stack {
+  margin-top: 24rpx;
+}
+
+.preview-card {
+  display: flex;
+  gap: 20rpx;
+  align-items: center;
+}
+
+.preview-card__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(145deg, rgba(18, 179, 168, 0.92), rgba(94, 207, 200, 0.84));
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.preview-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  flex: 1;
+}
+
+.preview-card__name {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.preview-card__summary {
+  color: $text-secondary;
+  font-size: $font-body-s;
+  line-height: 1.6;
+}
+
+.preview-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.preview-card__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52rpx;
+  padding: 0 20rpx;
+  border-radius: $radius-pill;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: $text-secondary;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: $font-caption;
+}
+
+.preview-card__tag--active {
+  color: $primary-600;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+}

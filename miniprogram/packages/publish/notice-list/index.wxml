@@ -1,0 +1,30 @@
+<view class="page-shell page-shell--tight-bottom">
+  <app-hero-header theme="surface" kicker="我的通告" title="管理已发布通告" subtitle="按状态查看，快速找到待处理或正在进行的合作需求。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
+  <view class="list-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="通告列表加载失败" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
+    <empty-state wx:elif="{{pageState === 'empty'}}" title="当前状态下暂无通告" description="可以切换状态筛选，或者回发布页继续创建合作需求。"></empty-state>
+    <block wx:else>
+      <stats-summary-card items="{{stats}}"></stats-summary-card>
+      <view class="segment-row">
+        <view wx:for="{{tabs}}" wx:key="value" class="segment {{activeStatus === item.value ? 'segment--active' : ''}}" data-value="{{item.value}}" bindtap="onSwitchStatus">{{item.label}}</view>
+      </view>
+      <view wx:for="{{notices}}" wx:key="noticeId" class="surface-card notice-manage-card">
+        <view class="notice-manage-card__head">
+          <status-tag status="{{item.statusTag}}" text="{{item.statusText}}"></status-tag>
+          <text class="notice-manage-card__meta">{{item.createdAt}}</text>
+        </view>
+        <text class="notice-manage-card__title">{{item.title}}</text>
+        <view class="notice-manage-card__metrics">
+          <text class="notice-manage-card__pill notice-manage-card__pill--accent">{{item.budgetSummary}}</text>
+          <text class="notice-manage-card__pill">报名 {{item.applicationCount || 0}}</text>
+        </view>
+        <view class="notice-manage-card__actions">
+          <view class="notice-manage-card__button notice-manage-card__button--primary" data-id="{{item.noticeId}}" data-action="{{item.actionConfig.primaryAction}}" bindtap="onTapAction">{{item.actionConfig.primaryText}}</view>
+          <view wx:if="{{item.actionConfig.secondaryText}}" class="notice-manage-card__button" data-id="{{item.noticeId}}" data-action="{{item.actionConfig.secondaryAction}}" bindtap="onTapAction">{{item.actionConfig.secondaryText}}</view>
+          <view wx:if="{{item.actionConfig.dangerText}}" class="notice-manage-card__button notice-manage-card__button--danger" data-id="{{item.noticeId}}" data-action="{{item.actionConfig.dangerAction}}" bindtap="onTapAction">{{item.actionConfig.dangerText}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

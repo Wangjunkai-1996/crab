@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../components/app-hero-header/index",
+    "notice-card": "../../components/notice-card/index",
+    "empty-state": "../../components/empty-state/index",
+    "page-error-state": "../../components/page-error-state/index",
+    "page-skeleton": "../../components/page-skeleton/index"
+  }
+}

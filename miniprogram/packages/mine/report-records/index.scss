@@ -1,0 +1,76 @@
+@import '../../../styles/tokens.scss';
+
+.records-stack {
+  margin-top: 24rpx;
+}
+
+.segment-row {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60rpx;
+  padding: 0 24rpx;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.segment--active {
+  color: $primary-600;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+}
+
+.latest-card,
+.record-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.latest-card__title,
+.record-card__title {
+  font-size: $font-heading-3;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.latest-card__headline,
+.record-card__status {
+  font-size: $font-body-m;
+  color: $text-primary;
+}
+
+.latest-card__copy,
+.record-card__copy {
+  font-size: $font-body-s;
+  line-height: 1.6;
+  color: $text-secondary;
+}
+
+.record-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.record-card__status--processing {
+  color: $accent-700;
+}
+
+.record-card__status--handled {
+  color: $primary-600;
+}
+
+.record-card__status--invalid {
+  color: $danger-500;
+}

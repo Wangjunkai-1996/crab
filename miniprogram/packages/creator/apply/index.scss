@@ -1,0 +1,60 @@
+@import '../../../styles/tokens.scss';
+@import '../../../styles/form-page.scss';
+
+.apply-stack {
+  margin-top: 24rpx;
+}
+
+.apply-summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.apply-summary-card__head,
+.apply-summary-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  justify-content: space-between;
+}
+
+.apply-summary-card__badge,
+.apply-summary-card__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52rpx;
+  padding: 0 20rpx;
+  border-radius: $radius-pill;
+  font-size: $font-caption;
+}
+
+.apply-summary-card__badge {
+  color: $primary-600;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+}
+
+.apply-summary-card__chip {
+  color: $text-secondary;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+}
+
+.apply-summary-card__meta {
+  color: $text-secondary;
+  font-size: $font-caption;
+}
+
+.apply-summary-card__title {
+  font-size: $font-heading-2;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.apply-summary-card__budget {
+  font-family: $font-numeric;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: $accent-700;
+}

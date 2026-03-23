@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "app-hero-header": "../../../components/app-hero-header/index",
+    "grouped-form-card": "../../../components/grouped-form-card/index",
+    "uploader-grid": "../../../components/uploader-grid/index",
+    "bottom-action-bar": "../../../components/bottom-action-bar/index",
+    "page-skeleton": "../../../components/page-skeleton/index",
+    "page-error-state": "../../../components/page-error-state/index"
+  }
+}

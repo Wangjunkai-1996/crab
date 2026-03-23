@@ -1,0 +1,8 @@
+<scroll-view class="chip-bar" scroll-x enable-flex show-scrollbar="false">
+  <view class="chip-bar__inner">
+    <view wx:for="{{items}}" wx:key="value" class="chip {{item.active ? 'chip--active' : ''}}" data-item="{{item}}" bindtap="onChipTap">
+      {{item.label}}
+    </view>
+    <view class="chip chip--filter" bindtap="onOpenFilter">筛选</view>
+  </view>
+</scroll-view>

@@ -1,0 +1,19 @@
+<view class="page-shell page-shell--tight-bottom">
+  <app-hero-header theme="surface" kicker="消息中心" title="收件箱" subtitle="审核通知、报名进展和系统提醒都在这里统一收拢。" actionText="全部已读" bind:action="onMarkAllRead" topInset="{{topInset}}"></app-hero-header>
+  <view class="message-summary surface-card">
+    <text class="message-summary__title">未读消息</text>
+    <text class="message-summary__value">{{unreadCount}}</text>
+    <text class="message-summary__copy">像收件箱一样收拢通知，不做聊天气泡样式。</text>
+  </view>
+  <view class="segment-row">
+    <view wx:for="{{tabs}}" wx:key="value" class="segment {{activeType === item.value ? 'segment--active' : ''}}" data-value="{{item.value}}" bindtap="onSwitchTab">{{item.label}}</view>
+  </view>
+  <view class="page-stack message-stack">
+    <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
+    <page-error-state wx:elif="{{pageState === 'error'}}" title="消息暂时没加载出来" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
+    <empty-state wx:elif="{{pageState === 'empty'}}" title="{{emptyTitle}}" description="{{emptyDescription}}"></empty-state>
+    <block wx:else>
+      <inbox-message-item wx:for="{{messages}}" wx:key="messageId" message="{{item}}" bind:tapitem="onTapMessage"></inbox-message-item>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+@import '../../styles/tokens.scss';
+@import '../../styles/mixins.scss';
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 32rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.98) 26%);
+  border-top: 1px solid rgba(221, 231, 244, 0.94);
+  box-shadow: 0 -18rpx 40rpx rgba(14, 31, 60, 0.06);
+}
+
+.bar__inner {
+  display: flex;
+  gap: 20rpx;
+}
+
+.bar__button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88rpx;
+  border-radius: $radius-pill;
+  font-size: $font-body-m;
+  font-weight: 600;
+}
+
+.bar__button--secondary {
+  @include button-secondary;
+}
+
+.bar__button--primary {
+  @include button-primary;
+}
+
+.bar__button--disabled {
+  min-height: 88rpx;
+  border-radius: $radius-pill;
+  background: rgba(195, 207, 219, 0.72);
+  color: rgba(21, 32, 51, 0.46);
+}

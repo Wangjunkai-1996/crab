@@ -1,0 +1,71 @@
+$font-display: 'SF Pro Display', 'HarmonyOS Sans SC', 'PingFang SC', 'Noto Sans SC', sans-serif;
+$font-body: 'PingFang SC', 'HarmonyOS Sans SC', 'Noto Sans SC', sans-serif;
+$font-numeric: 'SF Pro Display', 'DIN Alternate', 'HarmonyOS Sans SC', sans-serif;
+
+$primary-50: #eef4ff;
+$primary-100: #d9e6ff;
+$primary-200: #b8d0ff;
+$primary-500: #2f6bff;
+$primary-600: #2457e6;
+$primary-700: #1941bc;
+
+$secondary-50: #eafbf8;
+$secondary-200: #9ae8df;
+$secondary-500: #12b3a8;
+$secondary-700: #0a766f;
+
+$accent-100: #ffe9be;
+$accent-500: #ffb547;
+$accent-700: #d77f11;
+
+$danger-100: #ffd9e1;
+$danger-500: #e35d6a;
+
+$neutral-0: #ffffff;
+$neutral-25: #f8fafd;
+$neutral-50: #f5f7fb;
+$neutral-100: #eef3f8;
+$neutral-200: #dce5f0;
+$neutral-300: #c3cfdb;
+$neutral-400: #8a96a8;
+$neutral-500: #5c6980;
+$neutral-700: #2a3548;
+$neutral-900: #152033;
+
+$text-primary: #152033;
+$text-secondary: #5c6980;
+$text-tertiary: #8a96a8;
+$text-inverse: #ffffff;
+
+$page-bg: #f5f7fb;
+$page-bg-secondary: #eef3f8;
+$card-bg: #ffffff;
+$card-soft: #f8fafd;
+$card-glass: rgba(255, 255, 255, 0.82);
+
+$hero-discover-gradient: linear-gradient(145deg, #0e1a30 0%, #21498f 22%, #2f6bff 58%, #5ecfc8 100%);
+$hero-decision-gradient: linear-gradient(145deg, #0c172b 0%, #1c3c71 28%, #2f6bff 60%, #7cbaff 100%);
+$hero-workbench-gradient: linear-gradient(145deg, #091526 0%, #183866 24%, #245fe7 62%, #4fd0c5 100%);
+$hero-progress-gradient: linear-gradient(145deg, #0b1728 0%, #15375b 32%, #12738e 68%, #64e1d3 100%);
+
+$radius-input: 20rpx;
+$radius-card: 28rpx;
+$radius-sheet: 36rpx;
+$radius-pill: 999rpx;
+
+$shadow-soft: 0 20rpx 56rpx rgba(25, 61, 118, 0.12);
+$shadow-float: 0 28rpx 84rpx rgba(16, 38, 78, 0.18);
+
+$font-meta: 22rpx;
+$font-caption: 24rpx;
+$font-body-s: 26rpx;
+$font-body-m: 28rpx;
+$font-heading-3: 30rpx;
+$font-heading-2: 34rpx;
+$font-heading-1: 40rpx;
+$font-display-size: 56rpx;
+
+$page-padding-x: 32rpx;
+$page-padding-top: 40rpx;
+$section-gap: 32rpx;
+$card-padding: 24rpx;

@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/plaza/index",
+    "pages/publish/index",
+    "pages/messages/index",
+    "pages/mine/index",
+    "pages/plaza/search",
+    "pages/plaza/notice-detail"
+  ],
+  "subpackages": [
+    {
+      "root": "packages/publish",
+      "name": "publish-subpackage",
+      "pages": [
+        "success/index",
+        "edit/index",
+        "notice-list/index",
+        "application-manage/index"
+      ]
+    },
+    {
+      "root": "packages/creator",
+      "name": "creator-subpackage",
+      "pages": [
+        "apply/index",
+        "application-list/index",
+        "application-detail/index",
+        "creator-card/index"
+      ]
+    },
+    {
+      "root": "packages/mine",
+      "name": "mine-subpackage",
+      "pages": [
+        "report/index",
+        "report-records/index",
+        "feedback/index",
+        "rules/index"
+      ]
+    }
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#F5F7FB",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8A96A8",
+    "selectedColor": "#2457E6",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/plaza/index",
+        "text": "广场",
+        "iconPath": "assets/icons/tab-plaza.png",
+        "selectedIconPath": "assets/icons/tab-plaza-active.png"
+      },
+      {
+        "pagePath": "pages/publish/index",
+        "text": "发布",
+        "iconPath": "assets/icons/tab-publish.png",
+        "selectedIconPath": "assets/icons/tab-publish-active.png"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "text": "消息",
+        "iconPath": "assets/icons/tab-messages.png",
+        "selectedIconPath": "assets/icons/tab-messages-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "assets/icons/tab-mine.png",
+        "selectedIconPath": "assets/icons/tab-mine-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

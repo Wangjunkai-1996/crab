@@ -1,0 +1,18 @@
+{
+  "status": "temporary",
+  "note": "nextQueueType 当前仅作为 R03 临时联调口径，未拍板前仅建议使用 manual_review_queue。",
+  "action": "resolveTask",
+  "payload": {
+    "reviewTaskId": "rtk_202603160001",
+    "reviewResult": "transfer_manual_review",
+    "reasonCategory": "sensitive_keywords",
+    "reasonText": "命中敏感词且账号较新，转人工复核",
+    "notifyUser": false,
+    "nextQueueType": "manual_review_queue"
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_review_resolve_task"
+}

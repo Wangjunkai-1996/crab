@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "creatorCardId": "creator_2001",
+    "status": "complete",
+    "profileCompleteness": 100,
+    "roleFlags": {
+      "creatorEnabled": true
+    },
+    "missingFieldKeys": []
+  },
+  "requestId": "req_example_creator_upsert_card"
+}

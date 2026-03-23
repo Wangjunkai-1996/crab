@@ -1,0 +1,11 @@
+{
+  "name": "review-admin",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build-cloudfunctions.mjs review-admin"
+  }
+}

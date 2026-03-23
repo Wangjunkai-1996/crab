@@ -1,0 +1,14 @@
+{
+  "action": "login",
+  "payload": {
+    "username": "ops_admin",
+    "password": "OpsAdmin123456"
+  },
+  "meta": {
+    "source": "admin-web",
+    "clientVersion": "1.0.0",
+    "ip": "127.0.0.1",
+    "userAgent": "Chrome/136.0.0.0"
+  },
+  "requestId": "req_example_admin_login"
+}

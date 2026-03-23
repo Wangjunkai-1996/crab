@@ -1,0 +1,56 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "application": {
+      "applicationId": "app_202603160001",
+      "noticeId": "notice_202603160001",
+      "status": "contact_pending",
+      "selfIntroduction": "擅长本地生活门店探店短视频制作",
+      "deliverablePlan": "可在 48 小时内完成 1 条短视频和 1 条图文笔记",
+      "expectedTerms": "希望支持工作日白天拍摄",
+      "portfolioImages": [
+        "cloud://domi-dev/creator-portfolio/creator_2001/work-1.jpg"
+      ],
+      "createdAt": "2026-03-16T11:00:00.000Z"
+    },
+    "noticeSummary": {
+      "noticeId": "notice_202603160001",
+      "title": "上海探店短视频达人招募",
+      "city": "上海",
+      "budgetSummary": "固定报价 / 500-1000 元",
+      "status": "active"
+    },
+    "publisherSummary": {
+      "publisherUserId": "user_pub_1001",
+      "publisherProfileId": "pub_1001",
+      "displayName": "蟹宝品牌店",
+      "city": "上海"
+    },
+    "permissionState": {
+      "canViewPublisherContact": true
+    },
+    "timeline": [
+      {
+        "key": "applied",
+        "label": "已报名",
+        "at": "2026-03-16T11:00:00.000Z"
+      },
+      {
+        "key": "contact_pending",
+        "label": "待联系",
+        "at": "2026-03-16T13:00:00.000Z"
+      }
+    ],
+    "publisherContactRevealState": {
+      "stage": "revealed",
+      "revealedAt": "2026-03-16T13:00:00.000Z"
+    },
+    "maskedOrFullPublisherContact": {
+      "contactType": "wechat",
+      "contactValue": "crab_brand_ops",
+      "isMasked": false
+    }
+  },
+  "requestId": "req_example_application_detail"
+}

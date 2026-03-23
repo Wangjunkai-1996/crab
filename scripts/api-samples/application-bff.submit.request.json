@@ -1,0 +1,19 @@
+{
+  "action": "submit",
+  "payload": {
+    "noticeId": "notice_202603160001",
+    "selfIntroduction": "擅长本地生活探店短视频与图文内容制作。",
+    "deliverablePlan": "可在到店后 48 小时内交付 1 条短视频和 1 条图文笔记。",
+    "expectedTerms": "希望支持工作日白天拍摄。",
+    "portfolioImages": [
+      "cloud://domi-dev/creator-portfolio/creator_2001/work-1.jpg"
+    ],
+    "contactType": "wechat",
+    "contactValue": "duomi-creator"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_application_submit"
+}

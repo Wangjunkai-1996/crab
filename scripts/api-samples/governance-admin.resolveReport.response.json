@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "reportId": "report_202603160003",
+    "status": "confirmed",
+    "linkedNoticeStatus": "removed",
+    "linkedAccountStatus": "restricted_publish"
+  },
+  "requestId": "req_example_resolve_report"
+}

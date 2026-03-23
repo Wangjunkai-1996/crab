@@ -1,0 +1,31 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "noticeId": "notice_202603160101",
+        "title": "杭州探店图文达人招募",
+        "cooperationPlatform": "xiaohongshu",
+        "cooperationCategory": "food_beverage",
+        "cooperationType": "image_text",
+        "budgetSummary": "固定报价 / 300-600 元",
+        "city": "杭州",
+        "deadlineAt": "2026-03-24T16:00:00.000Z",
+        "createdAt": "2026-03-16T08:00:00.000Z",
+        "publisherSummary": {
+          "displayName": "蟹宝杭州店",
+          "profileCompleteness": 90
+        },
+        "statusTag": {
+          "code": "active",
+          "label": "进行中"
+        },
+        "applicationCount": 3
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_notice_my_list"
+}

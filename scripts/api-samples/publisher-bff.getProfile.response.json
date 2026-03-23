@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "publisherProfile": {
+      "publisherProfileId": "pub_1001",
+      "userId": "user_pub_1001",
+      "identityType": "merchant",
+      "displayName": "蟹宝品牌店",
+      "city": "上海",
+      "contactType": "wechat",
+      "contactValue": "crab_brand_ops",
+      "intro": "本地生活餐饮品牌，常规合作以到店探店为主",
+      "profileCompleteness": 100,
+      "status": "complete"
+    },
+    "editableFields": ["identityType", "displayName", "city", "contactType", "contactValue", "intro"],
+    "profileCompleteness": 100,
+    "missingFieldKeys": []
+  },
+  "requestId": "req_example_publisher_get_profile"
+}

@@ -1,0 +1,16 @@
+export const REQUEST_SOURCES = {
+  MINIPROGRAM: 'miniprogram',
+  ADMIN_WEB: 'admin-web',
+  CRON: 'cron',
+} as const
+
+export const DEFAULTS = {
+  PREFERRED_VIEW: null,
+  DEFAULT_PAGE_SIZE: 10,
+  MAX_PAGE_SIZE: 20,
+  SESSION_ABSOLUTE_HOURS: 12,
+  SESSION_IDLE_HOURS: 2,
+  ADMIN_MAX_CONCURRENT_SESSIONS: 3,
+  ADMIN_LOGIN_FAILURE_LIMIT: 5,
+  ADMIN_LOGIN_LOCK_MINUTES: 15,
+} as const

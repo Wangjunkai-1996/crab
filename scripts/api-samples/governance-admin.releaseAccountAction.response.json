@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "restrictionId": "restriction_202603160001",
+    "status": "released",
+    "accountStatus": "normal"
+  },
+  "requestId": "req_example_release_account_action"
+}

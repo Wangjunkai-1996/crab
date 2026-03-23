@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "noticeId": "notice_202603160001",
+    "status": "closed",
+    "closedAt": "2026-03-18T09:00:00.000Z"
+  },
+  "requestId": "req_example_notice_close"
+}

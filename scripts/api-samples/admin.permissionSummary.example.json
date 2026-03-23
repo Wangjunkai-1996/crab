@@ -1,0 +1,30 @@
+{
+  "pageAccess": {
+    "dashboard": true,
+    "reviewList": true,
+    "reviewDetail": true,
+    "reportList": true,
+    "reportDetail": true,
+    "accountActionList": true,
+    "operationLogList": true,
+    "adminUserManagement": false,
+    "systemConfigManagement": true
+  },
+  "actionAccess": {
+    "claimReviewTask": true,
+    "releaseReviewTask": true,
+    "resolveReviewTask": true,
+    "claimReport": true,
+    "resolveReportBasic": true,
+    "createWatchlist": true,
+    "createRestrictedPublish": true,
+    "createRestrictedApply": true,
+    "createBanned": true,
+    "createAccountAction": true,
+    "releaseAccountAction": true,
+    "forceRemoveNotice": true,
+    "viewOperationLogList": true,
+    "manageAdminUsers": false,
+    "manageSystemConfigs": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "action": "getCard",
+  "payload": {},
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_creator_get_card"
+}

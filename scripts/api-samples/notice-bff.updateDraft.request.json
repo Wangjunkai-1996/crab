@@ -1,0 +1,16 @@
+{
+  "action": "updateDraft",
+  "payload": {
+    "noticeId": "notice_202603160201",
+    "notice": {
+      "budgetRange": "1000_3000",
+      "recruitCount": 5,
+      "cooperationDescription": "到店拍摄图文笔记 1 篇，并补充 1 条 30 秒短视频。"
+    }
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_notice_update_draft"
+}

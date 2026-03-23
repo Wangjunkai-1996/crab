@@ -1,0 +1,51 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "restrictionId": "restriction_202603170031",
+        "user": {
+          "userId": "user_pub_3021",
+          "displayName": "嘉兴门店品牌号",
+          "avatarUrl": null,
+          "accountStatus": "restricted_publish"
+        },
+        "restrictionType": "restricted_publish",
+        "reasonCategory": "fake_requirement",
+        "reasonText": "举报成立，限制发布 7 天",
+        "startAt": "2026-03-17T06:00:00.000Z",
+        "endAt": "2026-03-24T06:00:00.000Z",
+        "operator": {
+          "operatorId": "admin_4f3b2a1c9d",
+          "displayName": "运营主管"
+        },
+        "status": "active",
+        "createdAt": "2026-03-17T06:00:00.000Z"
+      },
+      {
+        "restrictionId": "restriction_202603150021",
+        "user": {
+          "userId": "user_pub_2020",
+          "displayName": "杭州门店品牌号",
+          "avatarUrl": null,
+          "accountStatus": "normal"
+        },
+        "restrictionType": "watchlist",
+        "reasonCategory": "multi_reports",
+        "reasonText": "观察名单已解除，当前只读展示历史记录",
+        "startAt": "2026-03-15T08:00:00.000Z",
+        "endAt": "2026-03-17T08:00:00.000Z",
+        "operator": {
+          "operatorId": "admin_other_002",
+          "displayName": "运营同事 B"
+        },
+        "status": "released",
+        "createdAt": "2026-03-15T08:00:00.000Z"
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_account_action_list_readonly_cases"
+}

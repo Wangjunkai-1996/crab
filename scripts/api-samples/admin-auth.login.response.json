@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "adminUser": {
+      "adminUserId": "admin_4f3b2a1c9d",
+      "displayName": "运营主管",
+      "roleCodes": ["ops_admin"]
+    },
+    "session": {
+      "adminSessionToken": "admst_example_token_001",
+      "expiresAt": "2026-03-18T02:00:00.000Z",
+      "idleExpireAt": "2026-03-17T18:30:00.000Z",
+      "mustResetPassword": false
+    }
+  },
+  "requestId": "req_example_admin_login"
+}

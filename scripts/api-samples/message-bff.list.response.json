@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "messageId": "msg_202603160001",
+        "messageType": "application_status",
+        "title": "报名状态更新",
+        "summary": "你投递的“上海探店短视频达人招募”已进入待联系",
+        "relatedObjectType": "application",
+        "relatedObjectId": "app_202603160001",
+        "isRead": false,
+        "createdAt": "2026-03-16T13:01:00.000Z"
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false,
+    "unreadCount": 3
+  },
+  "requestId": "req_example_message_list"
+}

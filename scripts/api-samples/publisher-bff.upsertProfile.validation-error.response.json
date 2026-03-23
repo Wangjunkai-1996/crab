@@ -1,0 +1,11 @@
+{
+  "code": 40003,
+  "message": "参数校验失败",
+  "data": {
+    "errorType": "validation",
+    "fieldErrors": {
+      "displayName": "displayName 长度不能少于 2"
+    }
+  },
+  "requestId": "req_example_publisher_upsert_profile_validation_error"
+}

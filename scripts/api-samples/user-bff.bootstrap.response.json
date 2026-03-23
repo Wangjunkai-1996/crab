@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "user": {
+      "userId": "user_5a54d4fbd4215f8a",
+      "roleFlags": {
+        "publisherEnabled": false,
+        "creatorEnabled": false
+      },
+      "accountStatus": "normal",
+      "preferredView": null
+    },
+    "message": {
+      "unreadCount": 0
+    }
+  },
+  "requestId": "req_example_bootstrap"
+}

@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "restrictionId": "restriction_202603160001",
+    "accountStatus": "watchlist"
+  },
+  "requestId": "req_example_create_account_action"
+}

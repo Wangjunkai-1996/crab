@@ -1,0 +1,91 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "logId": "oplog_202603170041",
+        "targetType": "report",
+        "targetId": "report_202603170022",
+        "action": "report_resolve",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "requestId": "req_example_report_resolve_2",
+        "remark": "举报成立并限制发布",
+        "createdAt": "2026-03-17T05:20:00.000Z",
+        "beforeSnapshot": {
+          "status": "processing",
+          "handlerId": "admin_4f3b2a1c9d"
+        },
+        "afterSnapshot": {
+          "status": "closed",
+          "resultAction": "restricted_publish",
+          "resultRemark": "举报成立并限制发布 7 天"
+        }
+      },
+      {
+        "logId": "oplog_202603170042",
+        "targetType": "account_action",
+        "targetId": "restriction_202603170031",
+        "action": "account_action_create",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "requestId": "req_example_account_action_create_2",
+        "remark": "新增限制发布 7 天",
+        "createdAt": "2026-03-17T06:00:00.000Z",
+        "beforeSnapshot": null,
+        "afterSnapshot": {
+          "status": "active",
+          "restrictionType": "restricted_publish",
+          "startAt": "2026-03-17T06:00:00.000Z",
+          "endAt": "2026-03-24T06:00:00.000Z"
+        }
+      },
+      {
+        "logId": "oplog_202603170043",
+        "targetType": "account_action",
+        "targetId": "restriction_202603150021",
+        "action": "account_action_release",
+        "operatorType": "admin",
+        "operatorId": "admin_other_002",
+        "operatorDisplayName": "运营同事 B",
+        "requestId": "req_example_account_action_release_2",
+        "remark": "解除观察名单",
+        "createdAt": "2026-03-17T08:00:00.000Z",
+        "beforeSnapshot": {
+          "status": "active"
+        },
+        "afterSnapshot": {
+          "status": "released",
+          "endAt": "2026-03-17T08:00:00.000Z"
+        }
+      },
+      {
+        "logId": "oplog_202603170044",
+        "targetType": "notice",
+        "targetId": "notice_202603170022",
+        "action": "notice_force_remove",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "requestId": "req_example_notice_force_remove_2",
+        "remark": "强制下架违规通告",
+        "createdAt": "2026-03-17T05:18:00.000Z",
+        "beforeSnapshot": {
+          "status": "active",
+          "removedAt": null
+        },
+        "afterSnapshot": {
+          "status": "removed",
+          "removedAt": "2026-03-17T05:18:00.000Z",
+          "latestReviewReasonCategory": "fake_requirement"
+        }
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_operation_log_list_after_snapshot_common"
+}

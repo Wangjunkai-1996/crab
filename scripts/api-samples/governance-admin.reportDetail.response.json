@@ -1,0 +1,109 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "report": {
+      "reportId": "report_202603160003",
+      "reporterUserId": "user_reporter_1002",
+      "targetType": "notice",
+      "targetId": "notice_202603150012",
+      "reasonCode": "fake_requirement",
+      "reasonText": "疑似夸大合作条件，且联系方式异常",
+      "evidenceImages": [
+        "cloud://domi-dev/report-evidence/report_202603160003/evidence-1.jpg"
+      ],
+      "status": "processing",
+      "handlerId": "admin_4f3b2a1c9d",
+      "resultAction": null,
+      "resultRemark": null,
+      "createdAt": "2026-03-16T08:50:00.000Z"
+    },
+    "targetSnapshot": {
+      "targetType": "notice",
+      "targetId": "notice_202603150012",
+      "displayName": "杭州美妆探店合作",
+      "status": "active",
+      "ownerUserId": "user_pub_2020",
+      "city": "杭州",
+      "summary": "小红书美妆探店，预算 1000-3000 元，当前在架",
+      "riskSummary": {
+        "riskLevel": "high",
+        "riskFlags": ["multi_reports_24h", "contact_anomaly"],
+        "suggestedTags": ["建议核查联系方式真实性", "必要时下架并限制发布"]
+      }
+    },
+    "historyReports": [
+      {
+        "reportId": "report_202603150091",
+        "reasonCode": "fake_requirement",
+        "status": "closed",
+        "reporterUserId": "user_reporter_2003",
+        "createdAt": "2026-03-15T16:10:00.000Z"
+      }
+    ],
+    "historyActions": [
+      {
+        "action": "report_claim",
+        "operatorType": "admin",
+        "operatorId": "admin_4f3b2a1c9d",
+        "operatorDisplayName": "运营主管",
+        "remark": "领取举报任务",
+        "createdAt": "2026-03-16T08:55:00.000Z",
+        "targetType": "report",
+        "targetId": "report_202603160003"
+      }
+    ],
+    "availableActions": [
+      {
+        "key": "resolve_report_rejected",
+        "label": "举报不成立",
+        "variant": "default",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_report_confirmed_record_only",
+        "label": "举报成立但仅记录",
+        "variant": "primary",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_report_confirmed_remove_notice",
+        "label": "举报成立并下架通告",
+        "variant": "danger",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_report_confirmed_watchlist",
+        "label": "举报成立并加入观察名单",
+        "variant": "default",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_report_confirmed_restrict_publish",
+        "label": "举报成立并限制发布",
+        "variant": "danger",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_report_confirmed_restrict_apply",
+        "label": "举报成立并限制报名",
+        "variant": "danger",
+        "disabled": false,
+        "disabledReason": null
+      },
+      {
+        "key": "resolve_report_confirmed_banned",
+        "label": "举报成立并全量封禁",
+        "variant": "danger",
+        "disabled": false,
+        "disabledReason": null
+      }
+    ]
+  },
+  "requestId": "req_example_report_detail"
+}

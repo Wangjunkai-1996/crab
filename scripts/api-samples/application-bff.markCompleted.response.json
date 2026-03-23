@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "applicationId": "app_202603160101",
+    "status": "completed",
+    "completedAt": "2026-03-18T10:00:00.000Z",
+    "publisherContactRevealedAt": "2026-03-16T09:20:00.000Z",
+    "creatorContactRevealedAt": "2026-03-16T09:20:00.000Z",
+    "creatorContact": "微信号：duomi-creator"
+  },
+  "requestId": "req_example_application_mark_completed"
+}

@@ -1,0 +1,12 @@
+{
+  "code": 50002,
+  "message": "当前报名状态不支持该操作：communicating",
+  "data": {
+    "currentStatus": "communicating",
+    "expectedStatuses": [
+      "applied",
+      "viewed"
+    ]
+  },
+  "requestId": "req_example_application_withdraw_invalid_status"
+}

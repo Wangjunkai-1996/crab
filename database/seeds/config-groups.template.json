@@ -1,0 +1,53 @@
+{
+  "version": "v1",
+  "groups": [
+    {
+      "groupKey": "public_dictionary",
+      "visibility": "public",
+      "description": "前台公开枚举占位，具体项待产品字段字典确认后补充",
+      "items": []
+    },
+    {
+      "groupKey": "ad_slots_public",
+      "visibility": "public",
+      "description": "广告位占位配置，当前按安全规则文档口径预留；与后端总文档中的 ad_slots 命名待统一",
+      "items": []
+    },
+    {
+      "groupKey": "feature_flags_public",
+      "visibility": "public",
+      "description": "前台功能开关占位，当前按安全规则文档口径预留；与后端总文档中的 feature_flags 命名待统一",
+      "items": []
+    },
+    {
+      "groupKey": "risk_keywords",
+      "visibility": "private",
+      "description": "基础风险词占位，具体项待安全规则确认后补充",
+      "items": []
+    },
+    {
+      "groupKey": "review_reason_categories",
+      "visibility": "private",
+      "description": "审核原因分类占位",
+      "items": []
+    },
+    {
+      "groupKey": "report_reason_codes",
+      "visibility": "private",
+      "description": "举报原因分类占位",
+      "items": []
+    },
+    {
+      "groupKey": "restriction_reason_categories",
+      "visibility": "private",
+      "description": "处罚原因分类占位",
+      "items": []
+    },
+    {
+      "groupKey": "admin_ip_whitelist",
+      "visibility": "private",
+      "description": "后台 IP 白名单占位",
+      "items": []
+    }
+  ]
+}

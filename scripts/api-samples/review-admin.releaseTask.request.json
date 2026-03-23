@@ -1,0 +1,11 @@
+{
+  "action": "releaseTask",
+  "payload": {
+    "reviewTaskId": "rtk_202603160001"
+  },
+  "meta": {
+    "source": "admin-web",
+    "adminSessionToken": "<ADMIN_SESSION_TOKEN>"
+  },
+  "requestId": "req_example_review_release_task"
+}

@@ -1,0 +1,11 @@
+{
+  "code": 40003,
+  "message": "参数校验失败",
+  "data": {
+    "errorType": "validation",
+    "fieldErrors": {
+      "deadlineAt": "republish 当前缺少新的未来 deadlineAt，暂无法直接重发"
+    }
+  },
+  "requestId": "req_example_notice_republish_deadline_missing_future"
+}

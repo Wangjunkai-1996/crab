@@ -1,0 +1,13 @@
+{
+  "action": "myList",
+  "payload": {
+    "status": "active",
+    "pageSize": 10,
+    "cursor": ""
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_notice_my_list"
+}

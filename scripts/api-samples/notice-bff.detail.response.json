@@ -1,0 +1,52 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "notice": {
+      "noticeId": "notice_202603160001",
+      "title": "上海探店短视频达人招募",
+      "brandName": "蟹宝品牌店",
+      "cooperationPlatform": "xiaohongshu",
+      "cooperationCategory": "food_beverage",
+      "cooperationType": "short_video",
+      "city": "上海",
+      "settlementType": "fixed_price",
+      "budgetRange": "500_1000",
+      "budgetSummary": "固定报价 / 500-1000 元",
+      "recruitCount": 5,
+      "deadlineAt": "2026-03-20T16:00:00.000Z",
+      "creatorRequirements": "有本地生活探店经验，粉丝 5k+",
+      "cooperationDescription": "到店拍摄 1 条 30-60 秒短视频并配图文笔记",
+      "attachments": [
+        "cloud://domi-dev/notice-images/notice_202603160001/cover-1.jpg"
+      ],
+      "status": "active",
+      "applicationCount": 2,
+      "publishedAt": "2026-03-16T10:00:00.000Z"
+    },
+    "publisherSummary": {
+      "publisherUserId": "user_pub_1001",
+      "publisherProfileId": "pub_1001",
+      "displayName": "蟹宝品牌店",
+      "identityType": "merchant",
+      "city": "上海"
+    },
+    "permissionState": {
+      "canApply": true,
+      "canViewPublisherContact": false,
+      "hasApplied": false,
+      "isOwner": false
+    },
+    "ctaState": {
+      "primaryAction": "apply",
+      "primaryText": "立即报名",
+      "disabledReason": null
+    },
+    "maskedOrFullContact": {
+      "contactType": null,
+      "contactValue": null,
+      "isMasked": true
+    }
+  },
+  "requestId": "req_example_notice_detail"
+}

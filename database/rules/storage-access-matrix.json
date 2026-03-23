@@ -1,0 +1,40 @@
+{
+  "version": "v1",
+  "paths": [
+    {
+      "prefix": "notice-images/",
+      "miniprogramUpload": true,
+      "miniprogramDirectDownload": "business-returned-only",
+      "adminDownload": true,
+      "description": "通告附件"
+    },
+    {
+      "prefix": "creator-portfolio/",
+      "miniprogramUpload": true,
+      "miniprogramDirectDownload": "business-returned-only",
+      "adminDownload": true,
+      "description": "达人作品图"
+    },
+    {
+      "prefix": "report-evidence/",
+      "miniprogramUpload": true,
+      "miniprogramDirectDownload": false,
+      "adminDownload": true,
+      "description": "举报证据"
+    },
+    {
+      "prefix": "feedback-screenshots/",
+      "miniprogramUpload": true,
+      "miniprogramDirectDownload": false,
+      "adminDownload": true,
+      "description": "反馈截图"
+    },
+    {
+      "prefix": "system-assets/",
+      "miniprogramUpload": false,
+      "miniprogramDirectDownload": true,
+      "adminDownload": true,
+      "description": "公共素材"
+    }
+  ]
+}

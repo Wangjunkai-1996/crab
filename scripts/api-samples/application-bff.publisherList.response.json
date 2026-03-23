@@ -1,0 +1,25 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "applicationId": "app_202603160101",
+        "creatorCardSnapshot": {
+          "nickname": "阿蟹探店",
+          "city": "杭州",
+          "primaryPlatform": "xiaohongshu",
+          "primaryCategory": "food_beverage",
+          "followerBand": "5k_10k",
+          "caseDescription": "本地生活门店图文内容为主"
+        },
+        "status": "contact_pending",
+        "publisherViewedAt": "2026-03-16T09:00:00.000Z",
+        "contactRevealState": "masked"
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false
+  },
+  "requestId": "req_example_application_publisher_list"
+}

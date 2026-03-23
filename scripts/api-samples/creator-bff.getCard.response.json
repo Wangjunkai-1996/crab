@@ -1,0 +1,47 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "creatorCard": {
+      "creatorCardId": "creator_2001",
+      "userId": "user_creator_2001",
+      "nickname": "阿柚探店",
+      "avatarUrl": "https://example.com/avatar/creator-2001.png",
+      "city": "上海",
+      "gender": "female",
+      "primaryPlatform": "xiaohongshu",
+      "primaryCategory": "food_beverage",
+      "followerBand": "5k_10k",
+      "accountName": "阿柚探店日记",
+      "accountIdOrLink": "xiaohongshu://user/creator_2001",
+      "portfolioImages": [
+        "cloud://domi-dev/creator-portfolio/creator_2001/work-1.jpg"
+      ],
+      "caseDescription": "近 3 个月完成多条本地生活探店合作",
+      "residentCity": "上海",
+      "contactType": "wechat",
+      "contactValue": "creator_contact_2001",
+      "profileCompleteness": 100,
+      "status": "complete"
+    },
+    "editableFields": [
+      "nickname",
+      "avatarUrl",
+      "city",
+      "gender",
+      "primaryPlatform",
+      "primaryCategory",
+      "followerBand",
+      "accountName",
+      "accountIdOrLink",
+      "portfolioImages",
+      "caseDescription",
+      "residentCity",
+      "contactType",
+      "contactValue"
+    ],
+    "profileCompleteness": 100,
+    "missingFieldKeys": []
+  },
+  "requestId": "req_example_creator_get_card"
+}

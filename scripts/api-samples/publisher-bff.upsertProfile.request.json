@@ -1,0 +1,16 @@
+{
+  "action": "upsertProfile",
+  "payload": {
+    "identityType": "merchant",
+    "displayName": "蟹宝品牌店",
+    "city": "上海",
+    "contactType": "wechat",
+    "contactValue": "crab_brand_ops",
+    "intro": "本地生活餐饮品牌，常规合作以到店探店为主"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_publisher_upsert_profile"
+}

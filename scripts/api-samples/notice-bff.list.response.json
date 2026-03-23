@@ -1,0 +1,39 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "list": [
+      {
+        "noticeId": "notice_202603160001",
+        "title": "上海探店短视频达人招募",
+        "cooperationPlatform": "xiaohongshu",
+        "cooperationCategory": "food_beverage",
+        "budgetSummary": "固定报价 / 500-1000 元",
+        "city": "上海",
+        "deadlineAt": "2026-03-20T16:00:00.000Z",
+        "publisherSummary": {
+          "displayName": "蟹宝品牌店"
+        },
+        "statusTag": {
+          "code": "active",
+          "label": "进行中"
+        }
+      }
+    ],
+    "nextCursor": "",
+    "hasMore": false,
+    "filterSummary": {
+      "total": 1,
+      "activeCity": "上海",
+      "activePlatform": "xiaohongshu",
+      "activeCategory": "food_beverage"
+    },
+    "filterEcho": {
+      "keyword": "探店",
+      "cooperationPlatform": "xiaohongshu",
+      "cooperationCategory": "food_beverage",
+      "city": "上海"
+    }
+  },
+  "requestId": "req_example_notice_list"
+}

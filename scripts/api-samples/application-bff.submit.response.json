@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "applicationId": "app_202603170101",
+    "status": "applied",
+    "noticeId": "notice_202603160001"
+  },
+  "requestId": "req_example_application_submit"
+}

@@ -1,0 +1,27 @@
+{
+  "version": "v1",
+  "description": "仅存放非敏感初始化模板；密码通过环境变量注入，不入仓库",
+  "admins": [
+    {
+      "displayName": "系统超管",
+      "username": "<secure-input>",
+      "roleCodes": ["super_admin"],
+      "mustResetPassword": true,
+      "notes": "首次初始化时由 scripts/generate-admin-user-seed.mjs 生成真实记录"
+    },
+    {
+      "displayName": "审核员",
+      "username": "<secure-input>",
+      "roleCodes": ["reviewer"],
+      "mustResetPassword": true,
+      "notes": "按需开通"
+    },
+    {
+      "displayName": "运营管理员",
+      "username": "<secure-input>",
+      "roleCodes": ["ops_admin"],
+      "mustResetPassword": true,
+      "notes": "按需开通"
+    }
+  ]
+}

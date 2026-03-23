@@ -1,0 +1,11 @@
+{
+  "action": "withdraw",
+  "payload": {
+    "applicationId": "app_202603170101"
+  },
+  "meta": {
+    "source": "miniprogram",
+    "clientVersion": "1.0.0"
+  },
+  "requestId": "req_example_application_withdraw"
+}

@@ -1,0 +1,19 @@
+{
+  "version": "v1",
+  "collections": [
+    { "name": "dm_users", "purpose": "平台级用户主档", "initOrder": 1 },
+    { "name": "dm_publisher_profiles", "purpose": "发布方资料", "initOrder": 2 },
+    { "name": "dm_creator_cards", "purpose": "达人名片", "initOrder": 3 },
+    { "name": "dm_notices", "purpose": "通告主档", "initOrder": 4 },
+    { "name": "dm_notice_review_tasks", "purpose": "通告审核任务", "initOrder": 5 },
+    { "name": "dm_applications", "purpose": "报名记录", "initOrder": 6 },
+    { "name": "dm_messages", "purpose": "站内消息", "initOrder": 7 },
+    { "name": "dm_reports", "purpose": "举报记录", "initOrder": 8 },
+    { "name": "dm_feedback_records", "purpose": "反馈记录", "initOrder": 9 },
+    { "name": "dm_account_actions", "purpose": "账号处罚与解除", "initOrder": 10 },
+    { "name": "dm_operation_logs", "purpose": "操作审计日志", "initOrder": 11 },
+    { "name": "dm_configs", "purpose": "系统配置", "initOrder": 12 },
+    { "name": "dm_admin_users", "purpose": "后台管理员", "initOrder": 13 },
+    { "name": "dm_admin_sessions", "purpose": "后台会话", "initOrder": 14 }
+  ]
+}

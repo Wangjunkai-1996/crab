@@ -1,0 +1,57 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "report": {
+      "reportId": "report_202603170021",
+      "reporterUserId": "user_reporter_3101",
+      "targetType": "notice",
+      "targetId": "notice_202603170021",
+      "reasonCode": "fake_requirement",
+      "reasonText": "联系方式疑似异常。",
+      "evidenceImages": [],
+      "status": "processing",
+      "handlerId": "admin_other_002",
+      "resultAction": null,
+      "resultRemark": null,
+      "createdAt": "2026-03-17T04:10:00.000Z"
+    },
+    "targetSnapshot": {
+      "targetType": "notice",
+      "targetId": "notice_202603170021",
+      "displayName": "温州门店探店合作",
+      "status": "active",
+      "ownerUserId": "user_pub_3011",
+      "city": "温州",
+      "summary": "小红书探店，预算 500-1000 元，当前在架",
+      "riskSummary": {
+        "riskLevel": "medium",
+        "riskFlags": ["contact_anomaly"],
+        "suggestedTags": ["建议核查联系方式"]
+      }
+    },
+    "historyReports": [],
+    "historyActions": [
+      {
+        "action": "report_claim",
+        "operatorType": "admin",
+        "operatorId": "admin_other_002",
+        "operatorDisplayName": "运营同事 B",
+        "remark": "已被他人接手，当前只读",
+        "createdAt": "2026-03-17T04:15:00.000Z",
+        "targetType": "report",
+        "targetId": "report_202603170021"
+      }
+    ],
+    "availableActions": [
+      {
+        "key": "resolve_report_rejected",
+        "label": "举报不成立",
+        "variant": "default",
+        "disabled": true,
+        "disabledReason": "举报已被其他管理员接手，当前仅可查看"
+      }
+    ]
+  },
+  "requestId": "req_example_report_detail_readonly_processing"
+}

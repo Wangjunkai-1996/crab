@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "noticeId": "notice_202603150012",
+    "status": "removed"
+  },
+  "requestId": "req_example_force_remove_notice"
+}

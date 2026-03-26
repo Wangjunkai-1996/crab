@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import {
   DEFAULT_WECHAT_AUTO_PORT,
   connectMiniProgram,
+  launchMiniProgramWithFreshAutoPort,
   runConsoleFallback,
   waitForAutomationPort,
   waitForMiniProgramReady,
@@ -29,6 +30,7 @@ const initialPortResolution = resolveWeChatDevtoolsPort({
   lookbackLines: 800,
 })
 const autoPort = Number(process.env.WECHAT_AUTO_PORT || DEFAULT_WECHAT_AUTO_PORT)
+const recoveryAutoPort = Number(process.env.WECHAT_AUTO_PORT_RECOVERY || 19641)
 const evidenceRoot = path.join(miniprogramRoot, 'evidence', 'r58')
 const runtimeRoot = path.join(evidenceRoot, 'runtime')
 const logsRoot = path.join(evidenceRoot, 'logs')
@@ -234,6 +236,12 @@ function buildSummaryMarkdown(report) {
     failedItems.push(`automation 端口在 \`${report.autoPortWarmup.waitedMs}ms\` 内仍未连通`)
   }
 
+  if (report.automationRecovery?.ok) {
+    passedItems.push(`固定 automation 端口未起时，脚本已自动切换到恢复端口 \`${report.automationRecovery.port}\``)
+  } else if (report.automationRecovery?.attempted) {
+    failedItems.push(`automation 恢复端口也未拉起：\`${report.automationRecovery.error || 'unknown'}\``)
+  }
+
   if (report.autoSmokeFallback?.ok) {
     passedItems.push('已通过 automator 执行唯一允许的 console fallback，并拿到真实 runtime/batch 结果')
   } else if (report.autoSmokeFallback?.attempted) {
@@ -268,6 +276,7 @@ function buildSummaryMarkdown(report) {
 - DevTools 请求端口：\`${report.devtools.requestedPort || 'auto'}\`
 - DevTools 端口来源：\`${report.devtools.portSource}\`
 - automation 目标端口：\`${report.devtools.autoPort}\`
+- automation 实际端口：\`${report.devtools.effectiveAutoPort}\`
 - DevTools 服务端口：\`${report.devtools.servicePortEnabled ? 'on' : 'off'}\`
 - DevTools 登录态：\`${
     report.blocker === 'devtools_login_required'
@@ -279,6 +288,7 @@ function buildSummaryMarkdown(report) {
 - 登录噪音：\`${report.devtools.logSignals.loginRequiredRaw ? 'seen' : 'none'}\`
 - 启动迹象：\`${report.devtools.logSignals.simulatorLaunchSeen || report.devtools.logSignals.appServiceMainframeSeen ? 'seen' : 'none'}\`
 - automation 预热：\`${report.autoPortWarmup?.ok ? `ready_after_${report.autoPortWarmup.waitedMs}ms` : 'failed'}\`
+- automation 恢复：\`${report.automationRecovery?.ok ? `recovered_on_${report.automationRecovery.port}` : report.automationRecovery?.attempted ? 'failed' : 'skipped'}\`
 - fallback 结果：\`${report.autoSmokeFallback?.ok ? 'success' : report.autoSmokeFallback?.attempted ? 'failed' : 'skipped'}\`
 - AppID：\`wxa6f615dcab1f984f\`
 - CloudBase 环境：\`cloud1-4grxqg018586792d\`
@@ -404,7 +414,8 @@ async function main() {
         timeoutMs: 15000,
         pollMs: 500,
       })
-  const autoPortListening = autoPortWarmup.ok
+  let autoPortListening = autoPortWarmup.ok
+  let effectiveAutoPort = autoPort
   const devtoolsLogInspection = inspectWeChatDevtoolsLogs({
     lookbackLines: 800,
   })
@@ -414,12 +425,41 @@ async function main() {
     ok: false,
     error: '',
   }
+  let automationRecovery = {
+    attempted: false,
+    ok: false,
+    port: null,
+    error: '',
+  }
+  let recoveryMiniProgram = null
+
+  if (!autoPortListening) {
+    automationRecovery.attempted = true
+
+    try {
+      const recovery = await launchMiniProgramWithFreshAutoPort({
+        cliPath,
+        projectPath: miniprogramRoot,
+        cwd: repoRoot,
+        trustProject: true,
+        preferredPort: recoveryAutoPort,
+      })
+
+      recoveryMiniProgram = recovery.miniProgram
+      effectiveAutoPort = recovery.autoPort
+      autoPortListening = true
+      automationRecovery.ok = true
+      automationRecovery.port = recovery.autoPort
+    } catch (error) {
+      automationRecovery.error = error instanceof Error ? error.message : 'automation_recovery_failed'
+    }
+  }
 
   if (autoPortListening && !devtoolsLogInspection.signals.autoSmokeResultSeen) {
     autoSmokeFallback.attempted = true
 
     try {
-      const miniProgram = await connectMiniProgram(autoPort)
+      const miniProgram = recoveryMiniProgram || await connectMiniProgram(effectiveAutoPort)
 
       try {
         const ready = await waitForMiniProgramReady(miniProgram, {
@@ -458,6 +498,7 @@ async function main() {
       port: devtoolsPort,
       portSource: devtoolsPortSource,
       autoPort,
+      effectiveAutoPort,
       servicePortEnabled:
         Boolean(cliGateJson?.servicePortEnabled) ||
         /HTTP 服务地址 http:\/\/127\.0\.0\.1:\d+/i.test(`${cliOpen.stderr || ''}\n${cliOpen.stdout || ''}`),
@@ -482,6 +523,7 @@ async function main() {
     },
     autoPortListening,
     autoPortWarmup,
+    automationRecovery,
     autoSmokeFallback,
     autoSmokeResult,
   }

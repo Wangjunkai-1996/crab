@@ -158,6 +158,40 @@ export async function connectMiniProgram(autoPort) {
   })
 }
 
+export async function findAvailableAutomationPort(options = {}) {
+  const preferredPort = Number(options.preferredPort || 19641)
+  const maxAttempts = Number(options.maxAttempts || 20)
+
+  for (let index = 0; index < maxAttempts; index += 1) {
+    const candidatePort = preferredPort + index
+
+    if (!(await isPortListening(candidatePort))) {
+      return candidatePort
+    }
+  }
+
+  throw new Error('no_available_automation_port')
+}
+
+export async function launchMiniProgramWithFreshAutoPort(options = {}) {
+  const autoPort = await findAvailableAutomationPort({
+    preferredPort: options.preferredPort,
+    maxAttempts: options.maxAttempts,
+  })
+  const miniProgram = await automator.launch({
+    cliPath: options.cliPath,
+    projectPath: options.projectPath,
+    cwd: options.cwd,
+    trustProject: options.trustProject !== false,
+    port: autoPort,
+  })
+
+  return {
+    autoPort,
+    miniProgram,
+  }
+}
+
 export async function bootstrapMiniProgramApp(miniProgram) {
   return await withTimeout(
     miniProgram.evaluate(async () => {

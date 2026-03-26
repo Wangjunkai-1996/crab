@@ -37,6 +37,7 @@ interface DetailItem {
 interface ActionButton {
   key: PublisherApplicationAction;
   label: string;
+  tone: 'primary' | 'neutral' | 'danger';
 }
 
 interface DecoratedPublisherApplicationListItem extends PublisherApplicationListItem {
@@ -44,6 +45,7 @@ interface DecoratedPublisherApplicationListItem extends PublisherApplicationList
   platformLabel: string;
   categoryLabel: string;
   contactStateText: string;
+  priorityHint: string;
 }
 
 interface DecoratedPublisherApplicationDetail extends PublisherApplicationDetailResponse {
@@ -53,6 +55,44 @@ interface DecoratedPublisherApplicationDetail extends PublisherApplicationDetail
   actionButtons: ActionButton[];
   contactTitle: string;
   contactCopy: string;
+}
+
+interface FocusApplicationCard {
+  title: string;
+  badgeText: string;
+  copy: string;
+}
+
+function getPriorityHint(item: PublisherApplicationListItem) {
+  if (item.contactRevealState === 'revealed') {
+    return '联系方式已经释放，优先判断要不要立刻联系达人并推进合作。';
+  }
+
+  if (item.status === 'contact_pending') {
+    return '当前最适合继续推进到联系阶段，先看详情区允许执行哪些动作。';
+  }
+
+  if (item.status === 'communicating') {
+    return '当前已经在沟通中，优先确认交付意向和后续收口动作。';
+  }
+
+  if (item.status === 'viewed') {
+    return '当前已查看过这条报名，可以继续推进到待联系或直接淘汰。';
+  }
+
+  return '先用列表判断优先级，再到详情区查看完整报名内容和可执行动作。';
+}
+
+function resolveActionTone(action: PublisherApplicationAction): ActionButton['tone'] {
+  if (action === 'markRejected') {
+    return 'danger';
+  }
+
+  if (action === 'revealCreatorContact' || action === 'markCompleted') {
+    return 'primary';
+  }
+
+  return 'neutral';
 }
 
 function decorateList(list: PublisherApplicationListItem[]): DecoratedPublisherApplicationListItem[] {
@@ -67,6 +107,7 @@ function decorateList(list: PublisherApplicationListItem[]): DecoratedPublisherA
         : item.contactRevealState === 'masked'
           ? '已留联系方式'
           : '联系方式未释放',
+    priorityHint: getPriorityHint(item),
   }));
 }
 
@@ -79,6 +120,24 @@ function buildStats(list: PublisherApplicationListItem[]) {
     { label: '待推进', value: pendingCount },
     { label: '已处理', value: handledCount },
   ];
+}
+
+function buildFocusApplication(list: PublisherApplicationListItem[]): FocusApplicationCard | null {
+  const candidate =
+    list.find((item) => item.contactRevealState === 'revealed') ||
+    list.find((item) => item.status === 'contact_pending') ||
+    list.find((item) => item.status === 'communicating') ||
+    list[0];
+
+  if (!candidate) {
+    return null;
+  }
+
+  return {
+    title: candidate.creatorCardSnapshot.nickname,
+    badgeText: formatApplicationStatus(candidate.status),
+    copy: getPriorityHint(candidate),
+  };
 }
 
 function decorateDetail(detail: PublisherApplicationDetailResponse): DecoratedPublisherApplicationDetail {
@@ -101,6 +160,7 @@ function decorateDetail(detail: PublisherApplicationDetailResponse): DecoratedPu
     actionButtons: detail.availableActions.map((action) => ({
       key: action,
       label: ACTION_LABELS[action] || action,
+      tone: resolveActionTone(action),
     })),
     contactTitle: detail.creatorContactRevealState === 'revealed' ? '达人联系方式' : '联系方式说明',
     contactCopy:
@@ -118,6 +178,7 @@ Page({
     noticeId: '',
     applications: [] as DecoratedPublisherApplicationListItem[],
     stats: [] as Array<{ label: string; value: number }>,
+    focusApplication: null as FocusApplicationCard | null,
     selectedApplicationId: '',
     detail: null as DecoratedPublisherApplicationDetail | null,
     detailLoading: false,
@@ -152,6 +213,7 @@ Page({
       this.setData({
         applications,
         stats: buildStats(result.list || []),
+        focusApplication: buildFocusApplication(result.list || []),
         selectedApplicationId: nextSelectedId,
         pageState: applications.length ? PAGE_STATUS.ready : PAGE_STATUS.empty,
         detail: null,

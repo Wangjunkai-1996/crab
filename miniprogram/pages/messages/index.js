@@ -18,6 +18,7 @@ Page({
         unreadCount: 0,
         emptyTitle: '当前分类暂无消息',
         emptyDescription: '先回到广场或发布页继续操作，相关通知会自动进入这里。',
+        emptyActionText: '回合作广场',
         errorText: '',
     },
     onLoad() {
@@ -41,6 +42,11 @@ Page({
                 pageState: result.list.length ? page_state_1.PAGE_STATUS.ready : page_state_1.PAGE_STATUS.empty,
                 emptyTitle: this.data.activeType === 'all' ? '当前暂无消息' : '当前分类暂无消息',
                 emptyDescription: this.data.activeType === 'all' ? '后续审核通知、报名进展和系统提醒都会汇总到这里。' : '切回“全部”或继续操作后，相关通知会自动进入这里。',
+                emptyActionText: this.data.activeType === 'review'
+                    ? '去我的通告'
+                    : this.data.activeType === 'application'
+                        ? '去我的报名'
+                        : '回合作广场',
             });
         }
         catch (error) {
@@ -73,5 +79,16 @@ Page({
     async onMarkAllRead() {
         await (0, message_service_1.markAllRead)();
         this.loadPage();
+    },
+    onEmptyAction() {
+        if (this.data.activeType === 'review') {
+            (0, router_1.navigateByRoute)(routes_1.ROUTES.publishNoticeList);
+            return;
+        }
+        if (this.data.activeType === 'application') {
+            (0, router_1.navigateByRoute)(routes_1.ROUTES.creatorApplicationList);
+            return;
+        }
+        (0, router_1.navigateByRoute)(routes_1.ROUTES.plaza);
     },
 });

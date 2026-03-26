@@ -16,9 +16,16 @@ interface NoticeActionConfig {
   dangerAction: string;
 }
 
+interface FocusNoticeCard {
+  title: string;
+  badgeText: string;
+  copy: string;
+}
+
 type DecoratedNoticeCard = NoticeCardItem & {
   statusText: string;
   actionConfig: NoticeActionConfig;
+  actionHint: string;
 };
 
 function getActionConfig(item: NoticeCardItem): NoticeActionConfig {
@@ -65,11 +72,32 @@ function getActionConfig(item: NoticeCardItem): NoticeActionConfig {
   };
 }
 
+function getActionHint(item: NoticeCardItem) {
+  if (item.statusTag === 'active') {
+    return '当前已经在广场曝光，优先看报名量和报名管理，再决定是否需要关闭。';
+  }
+
+  if (item.statusTag === 'pending_review') {
+    return '当前在审核中，先看详情页里的资料是否完整，避免来回切页。';
+  }
+
+  if (item.statusTag === 'supplement_required' || item.statusTag === 'rejected') {
+    return '当前更适合先回编辑页补信息，再决定是否重新提审。';
+  }
+
+  if (item.statusTag === 'draft') {
+    return '当前还是草稿，先把核心字段补齐，再回发布页决定是否提交审核。';
+  }
+
+  return '先看当前状态，再决定是继续管理报名还是回详情页复核。';
+}
+
 function decorate(list: NoticeCardItem[]): DecoratedNoticeCard[] {
   return list.map((item) => ({
     ...item,
     statusText: formatNoticeStatus(item.statusTag),
     actionConfig: getActionConfig(item),
+    actionHint: getActionHint(item),
   }));
 }
 
@@ -81,6 +109,24 @@ function buildStats(list: NoticeCardItem[]) {
   ];
 }
 
+function buildFocusNotice(list: NoticeCardItem[]): FocusNoticeCard | null {
+  const candidate =
+    list.find((item) => item.statusTag === 'supplement_required') ||
+    list.find((item) => item.statusTag === 'pending_review') ||
+    list.find((item) => item.statusTag === 'active') ||
+    list[0];
+
+  if (!candidate) {
+    return null;
+  }
+
+  return {
+    title: candidate.title,
+    badgeText: formatNoticeStatus(candidate.statusTag),
+    copy: getActionHint(candidate),
+  };
+}
+
 Page({
   data: {
     topInset: 0,
@@ -90,6 +136,8 @@ Page({
     rawNotices: [] as NoticeCardItem[],
     notices: [] as DecoratedNoticeCard[],
     stats: [] as Array<{ label: string; value: number }>,
+    focusNotice: null as FocusNoticeCard | null,
+    filteredEmpty: false,
     errorText: '',
   },
 
@@ -102,11 +150,14 @@ Page({
     const activeStatus = this.data.activeStatus;
     const rawList = this.data.rawNotices || [];
     const nextList = activeStatus === 'all' ? rawList : rawList.filter((item) => item.statusTag === activeStatus);
+    const hasAnyData = rawList.length > 0;
 
     this.setData({
       notices: decorate(nextList),
       stats: buildStats(rawList),
-      pageState: nextList.length ? PAGE_STATUS.ready : PAGE_STATUS.empty,
+      focusNotice: buildFocusNotice(rawList),
+      filteredEmpty: hasAnyData && nextList.length === 0,
+      pageState: hasAnyData ? PAGE_STATUS.ready : PAGE_STATUS.empty,
     });
   },
 
@@ -114,6 +165,7 @@ Page({
     this.setData({
       pageState: PAGE_STATUS.loading,
       errorText: '',
+      filteredEmpty: false,
     });
 
     try {
@@ -178,5 +230,9 @@ Page({
         });
       }
     }
+  },
+
+  onEmptyAction() {
+    navigateByRoute('/pages/publish/index');
   },
 });

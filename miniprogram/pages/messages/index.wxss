@@ -1,0 +1,54 @@
+.message-summary {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.message-summary__title {
+  font-size: 24rpx;
+  color: #5c6980;
+}
+
+.message-summary__value {
+  font-family: "SF Pro Display", "DIN Alternate", "HarmonyOS Sans SC", sans-serif;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #152033;
+}
+
+.message-summary__copy {
+  color: #5c6980;
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.segment-row {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 24rpx;
+}
+
+.segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64rpx;
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  background: rgba(255, 255, 255, 0.78);
+  color: #5c6980;
+  font-size: 24rpx;
+}
+
+.segment--active {
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+  color: #2457e6;
+}
+
+.message-stack {
+  margin-top: 24rpx;
+}

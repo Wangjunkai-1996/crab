@@ -4,6 +4,26 @@
     <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
     <page-error-state wx:elif="{{pageState === 'error'}}" title="详情暂时没打开" description="{{errorText}}" actionText="重新加载" bind:action="onRetry"></page-error-state>
     <block wx:else>
+      <view class="surface-card insight-card motion-slide-up">
+        <view class="insight-card__head">
+          <view>
+            <text class="insight-card__eyebrow">决策提示</text>
+            <text class="insight-card__title">先判断当前通告是否值得报名，再看联系方式和下一步动作是否已开放。</text>
+          </view>
+          <text class="pill-primary">{{ctaText}}</text>
+        </view>
+        <view class="info-grid">
+          <view class="info-tile">
+            <text class="info-tile__label">当前状态</text>
+            <text class="info-tile__value">{{notice.statusText}}</text>
+          </view>
+          <view class="info-tile">
+            <text class="info-tile__label">招募人数</text>
+            <text class="info-tile__value">{{notice.recruitCount || '待补充'}}</text>
+          </view>
+        </view>
+        <text class="insight-card__copy">{{showReasonCard ? reasonCopy : '详情页先讲清楚预算、合作形式、发布时间和联系方式规则，避免用户在报名动作前还要来回猜状态。'}}</text>
+      </view>
       <view class="surface-card detail-card">
         <view class="detail-card__head">
           <status-tag status="{{notice.statusTag}}" text="{{notice.statusText}}"></status-tag>
@@ -45,5 +65,5 @@
       </view>
     </block>
   </view>
-  <bottom-action-bar primaryText="{{ctaText}}" secondaryText="返回广场" primaryDisabled="{{ctaAction === 'disabled'}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+  <bottom-action-bar primaryText="{{ctaText}}" secondaryText="返回广场" helperText="{{disabledReason || contactCardCopy}}" primaryDisabled="{{ctaAction === 'disabled'}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
 </view>

@@ -41,9 +41,9 @@ function persistRuntimeConfig(mode, cloudEnvId = '') {
     safeSetStorage(storage_keys_1.STORAGE_KEYS.runtimeMode, mode);
     safeSetStorage(storage_keys_1.STORAGE_KEYS.cloudEnvId, cloudEnvId);
 }
-function resolveRuntimeSwitchState() {
-    const desiredMode = getDesiredApiMode();
-    const cloudEnvId = getCloudEnvId();
+function resolveRuntimeSwitchState(override = {}) {
+    const desiredMode = override.desiredMode ?? getDesiredApiMode();
+    const cloudEnvId = override.cloudEnvId ?? getCloudEnvId();
     const cloudAvailable = typeof wx !== 'undefined' && !!wx.cloud;
     if (desiredMode === 'mock') {
         return {

@@ -1,0 +1,93 @@
+.role-row {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 24rpx;
+}
+
+.role-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.78);
+  color: #5c6980;
+  font-size: 24rpx;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+}
+
+.role-pill--active {
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  color: #2457e6;
+  border-color: rgba(47, 107, 255, 0.28);
+}
+
+.mine-section,
+.mine-card {
+  margin-top: 24rpx;
+}
+
+.mine-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.mine-card__title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #152033;
+}
+
+.mine-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.mine-card__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(180deg, rgba(249, 251, 255, 0.96), rgba(244, 248, 253, 0.92));
+  border: 1px solid rgba(217, 227, 240, 0.86);
+}
+
+.mine-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.mine-card__label {
+  font-size: 28rpx;
+  color: #152033;
+}
+
+.mine-card__hint,
+.mine-card__copy {
+  color: #5c6980;
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.mine-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50rpx;
+  padding: 0 20rpx;
+  border-radius: 999rpx;
+  background: rgba(47, 107, 255, 0.12);
+  color: #2457e6;
+  font-size: 22rpx;
+}
+
+.mine-card__badge--locked {
+  background: rgba(255, 181, 71, 0.16);
+  color: #d77f11;
+}

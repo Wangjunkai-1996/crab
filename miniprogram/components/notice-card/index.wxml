@@ -12,6 +12,10 @@
   <view class="card__kv"><text>合作形式</text><text>{{notice.cooperationTypeLabel || "待补充"}}</text></view>
   <view class="card__kv"><text>城市 / 发布时间</text><text>{{notice.metaText || notice.city}}</text></view>
   <view wx:if="{{notice.publisherSummary}}" class="card__footer">
-    <text class="card__publisher">{{notice.publisherText || notice.publisherSummary.displayName}}</text>
+    <view class="card__footer-main">
+      <text class="card__publisher">{{notice.publisherText || notice.publisherSummary.displayName}}</text>
+      <text class="card__meta">截止 {{notice.deadlineAt || "待补充"}}</text>
+    </view>
+    <text wx:if="{{featured}}" class="card__cta">优先推荐</text>
   </view>
 </view>

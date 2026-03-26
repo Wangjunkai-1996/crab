@@ -26,6 +26,28 @@
         <text class="apply-summary-card__budget">{{noticeSummary.budgetSummary}}</text>
       </view>
 
+      <view class="surface-card insight-card motion-slide-up">
+        <view class="insight-card__head">
+          <view>
+            <text class="insight-card__eyebrow">报名路径</text>
+            <text class="insight-card__title">先确认通告是否值得投，再决定是继续补名片还是直接提交报名。</text>
+          </view>
+          <text class="pill-primary">{{completenessText}}</text>
+        </view>
+        <view class="guide-grid">
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">资料</text>
+            <text class="guide-card__title">报名会沿用当前达人名片</text>
+            <text class="guide-card__copy">昵称、擅长平台、联系方式等都从名片快照里读取，所以这一步先把核心资料确认清楚。</text>
+          </view>
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">提交</text>
+            <text class="guide-card__title">报名内容会在提交后固化</text>
+            <text class="guide-card__copy">自我介绍、可交付计划和补充案例会变成报名快照，后续在报名详情页仍然能回看。</text>
+          </view>
+        </view>
+      </view>
+
       <view wx:if="{{submitSuccess}}" class="surface-card success-card">
         <text class="success-card__title">{{successTitle}}</text>
         <text class="success-card__copy">{{successCopy}}</text>
@@ -86,6 +108,7 @@
   <bottom-action-bar
     primaryText="{{submitSuccess ? '查看我的报名' : primaryText}}"
     secondaryText="{{secondaryText}}"
+    helperText="{{submitSuccess ? '报名已进入跟进流程，后续进展会同步到我的报名和消息中心' : helperText}}"
     primaryDisabled="{{primaryDisabled && !submitSuccess}}"
     loading="{{submitting}}"
     bottomInset="{{bottomInset}}"

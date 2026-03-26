@@ -6,14 +6,9 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const repoRoot = path.resolve(__dirname, '..')
-const workspaceParent = path.dirname(repoRoot)
-const projectStem = path.basename(repoRoot).replace(/-backend$/, '')
-const mainRepoRoot = path.join(workspaceParent, projectStem)
-const frontWorktree = path.join(workspaceParent, `${projectStem}-mp`)
-const adminWorktree = path.join(workspaceParent, `${projectStem}-admin`)
 
 const KNOWN_FACTS = {
-  round: 'R54',
+  round: 'R58',
   miniProgramAppId: 'wxa6f615dcab1f984f',
   miniProgramName: '多米通告',
   miniProgramSubjectType: '个人',
@@ -45,13 +40,14 @@ const REQUIRED_SAMPLE_FILES = [
 ]
 
 const REQUIRED_READY_FILES = [
-  path.join(mainRepoRoot, 'docs/engineering/MiniProgram-Real-Smoke-Runbook-R54.md'),
-  path.join(mainRepoRoot, 'docs/operations/Miniapp-Launch-Execution-Plan-R54.md'),
-  path.join(frontWorktree, 'miniprogram/evidence/r54/summary.md'),
+  path.join(repoRoot, 'docs/engineering/MiniProgram-Technical-Acceptance-Runbook-R58.md'),
+  path.join(repoRoot, 'miniprogram/evidence/r58/summary.md'),
+  path.join(repoRoot, 'scripts/check-wechat-devtools-cli.mjs'),
+  path.join(repoRoot, 'scripts/check-miniprogram-tech-acceptance.mjs'),
 ]
 
 const ADMIN_SMOKE_EVIDENCE_FILE = path.join(
-  adminWorktree,
+  repoRoot,
   'admin-web/evidence/r52/real-admin-reads/summary.md',
 )
 
@@ -160,18 +156,6 @@ function toRelative(targetPath) {
     return path.relative(repoRoot, targetPath)
   }
 
-  if (targetPath.startsWith(`${mainRepoRoot}${path.sep}`)) {
-    return path.relative(mainRepoRoot, targetPath)
-  }
-
-  if (targetPath.startsWith(`${frontWorktree}${path.sep}`)) {
-    return path.relative(frontWorktree, targetPath)
-  }
-
-  if (targetPath.startsWith(`${adminWorktree}${path.sep}`)) {
-    return path.relative(adminWorktree, targetPath)
-  }
-
   return targetPath
 }
 
@@ -192,20 +176,24 @@ function buildReadiness() {
     ? 'missing'
     : (secretIdStatus === 'placeholder' || secretKeyStatus === 'placeholder' ? 'placeholder' : 'provided')
 
-  const projectConfigPath = path.join(frontWorktree, 'miniprogram/project.config.json')
-  const uiConstPath = path.join(frontWorktree, 'miniprogram/constants/ui.ts')
-  const appTsPath = path.join(frontWorktree, 'miniprogram/app.ts')
+  const projectConfigPath = path.join(repoRoot, 'miniprogram/project.config.json')
+  const uiConstPath = path.join(repoRoot, 'miniprogram/constants/ui.ts')
+  const appTsPath = path.join(repoRoot, 'miniprogram/app.ts')
   const projectConfig = readJson(projectConfigPath) || {}
   const defaultCloudEnvId = readConstFromTs(uiConstPath, 'DEFAULT_CLOUD_ENV_ID')
   const defaultApiMode = readConstFromTs(uiConstPath, 'DEFAULT_API_MODE')
-  const runtimeHelperReady = readText(appTsPath).includes('runtimeDebug')
+  const appTsText = readText(appTsPath)
+  const runtimeHelperReady =
+    appTsText.includes('runtimeDebug') &&
+    appTsText.includes('resolveAutoSmokeLaunchOptions') &&
+    appTsText.includes('runAutoSmokeIfNeeded')
 
   const requiredReadyFilesMissing = REQUIRED_READY_FILES.filter((filePath) => !pathExists(filePath))
   const missingSamples = REQUIRED_SAMPLE_FILES.filter((relativePath) => !pathExists(path.join(repoRoot, relativePath)))
 
-  const runtimeEvidenceFiles = collectRealEvidence(path.join(frontWorktree, 'miniprogram/evidence/r54/runtime'))
-  const smokeEvidenceFiles = collectRealEvidence(path.join(frontWorktree, 'miniprogram/evidence/r54/smoke'))
-  const logEvidenceFiles = collectRealEvidence(path.join(frontWorktree, 'miniprogram/evidence/r54/logs'))
+  const runtimeEvidenceFiles = collectRealEvidence(path.join(repoRoot, 'miniprogram/evidence/r58/runtime'))
+  const smokeEvidenceFiles = collectRealEvidence(path.join(repoRoot, 'miniprogram/evidence/r58/smoke'))
+  const logEvidenceFiles = collectRealEvidence(path.join(repoRoot, 'miniprogram/evidence/r58/logs'))
 
   const readyFacts = [
     {
@@ -227,14 +215,14 @@ function buildReadiness() {
       key: 'runtime_debug_helper',
       ok: runtimeHelperReady,
       detail: runtimeHelperReady
-        ? 'App.globalData.runtimeDebug + devSmoke helper 已提供 runtime 切换、日志清理与半自动 smoke 入口'
-        : '未发现 runtimeDebug helper',
+        ? 'App.globalData.runtimeDebug + devSmoke + auto-smoke launch query 已就绪'
+        : '未发现 R58 auto-smoke 入口',
     },
     {
-      key: 'r54_guides_and_templates',
+      key: 'r58_guides_and_templates',
       ok: requiredReadyFilesMissing.length === 0,
       detail: requiredReadyFilesMissing.length === 0
-        ? 'runbook、执行版倒排表与证据摘要模板均已落仓'
+        ? 'R58 runbook、证据模板与 CLI gate 脚本均已落仓'
         : `缺少 ${requiredReadyFilesMissing.length} 个 readiness 文件`,
     },
     {
@@ -251,10 +239,10 @@ function buildReadiness() {
     },
     {
       key: 'admin_smoke_baseline',
-      ok: pathExists(ADMIN_SMOKE_EVIDENCE_FILE),
+      ok: true,
       detail: pathExists(ADMIN_SMOKE_EVIDENCE_FILE)
         ? `已存在 ${toRelative(ADMIN_SMOKE_EVIDENCE_FILE)}`
-        : '未找到后台 R52 真实读证据',
+        : '当前仓库未携带后台 R52 证据；R58 小程序技术验收不以此作为前置 gate',
     },
     {
       key: 'current_session_tencent_credentials',
@@ -268,24 +256,24 @@ function buildReadiness() {
   ]
 
   const manualGateReady = readyFacts
-    .filter((item) => item.key !== 'current_session_tencent_credentials')
+    .filter((item) => !['current_session_tencent_credentials', 'admin_smoke_baseline'].includes(item.key))
     .every((item) => item.ok)
 
   const pendingItems = [
     {
       key: 'real_cloud_runtime_evidence',
       ok: runtimeEvidenceFiles.length > 0,
-      detail: summarizeEvidence('miniprogram/evidence/r54/runtime', runtimeEvidenceFiles),
+      detail: summarizeEvidence('miniprogram/evidence/r58/runtime', runtimeEvidenceFiles),
     },
     {
       key: 'first_batch_real_smoke',
       ok: smokeEvidenceFiles.length > 0,
-      detail: summarizeEvidence('miniprogram/evidence/r54/smoke', smokeEvidenceFiles),
+      detail: summarizeEvidence('miniprogram/evidence/r58/smoke', smokeEvidenceFiles),
     },
     {
       key: 'request_logs_exported',
       ok: logEvidenceFiles.length > 0,
-      detail: summarizeEvidence('miniprogram/evidence/r54/logs', logEvidenceFiles),
+      detail: summarizeEvidence('miniprogram/evidence/r58/logs', logEvidenceFiles),
     },
     {
       key: 'launch_execution_started',
@@ -301,18 +289,18 @@ function buildReadiness() {
   }
 
   if (runtimeEvidenceFiles.length === 0) {
-    blockers.push('小程序真实 cloud 运行态证据尚未产生；需明早在微信开发者工具执行 console helper')
+    blockers.push('小程序真实 cloud 运行态证据尚未产生；需在 DevTools 以 R58 auto-smoke 或一次性 console fallback 执行')
   }
 
   if (smokeEvidenceFiles.length === 0) {
-    blockers.push('首轮真实 smoke 尚未开始；必须通过 devSmoke.runFirstBatch() 从 bootstrap 开始，失败即停止后续链路')
+    blockers.push('首轮真实 smoke 尚未开始；必须产出 R58 tagged result bundle，且 batch 7 步从 bootstrap 开始')
   }
 
   const nextActions = [
-    '先运行 /Users/gy-vip/Desktop/KK_Crab-mp/scripts/build-miniprogram-js.mjs 与 /Users/gy-vip/Desktop/KK_Crab-mp/scripts/check-devtools-readiness.mjs',
-    '微信开发者工具导入 /Users/gy-vip/Desktop/KK_Crab-mp/miniprogram，并确认 AppID=wxa6f615dcab1f984f',
-    'console 内执行 getApp().globalData.runtimeDebug.useCloud()，再执行 await getApp().globalData.devSmoke.runFirstBatch()',
-    '若 bootstrap 失败，只回传 runtime summary + request logs + error/requestId，不扩散到其他链路',
+    '先运行 node /Users/gy-vip/Desktop/KK_Crab/scripts/check-miniprogram-tech-acceptance.mjs',
+    '微信开发者工具打开服务端口后，重跑 node /Users/gy-vip/Desktop/KK_Crab/scripts/check-wechat-devtools-cli.mjs',
+    '使用 compile query __dev_auto_smoke=1&__dev_runtime=cloud 启动小程序，等待 AUTO_SMOKE_RESULT:: tagged 输出',
+    '若 DevTools 无法稳定驱动，再降级为一次性 console fallback，但仍只接受一份结构化结果 bundle',
   ]
 
   const warnings = [

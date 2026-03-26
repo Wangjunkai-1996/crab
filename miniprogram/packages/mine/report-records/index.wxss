@@ -1,0 +1,74 @@
+.records-stack {
+  margin-top: 24rpx;
+}
+
+.segment-row {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: #5c6980;
+  font-size: 24rpx;
+}
+
+.segment--active {
+  color: #2457e6;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+}
+
+.latest-card,
+.record-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.latest-card__title,
+.record-card__title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #152033;
+}
+
+.latest-card__headline,
+.record-card__status {
+  font-size: 28rpx;
+  color: #152033;
+}
+
+.latest-card__copy,
+.record-card__copy {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #5c6980;
+}
+
+.record-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.record-card__status--processing {
+  color: #d77f11;
+}
+
+.record-card__status--handled {
+  color: #2457e6;
+}
+
+.record-card__status--invalid {
+  color: #e35d6a;
+}

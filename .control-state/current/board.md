@@ -3,8 +3,8 @@
 ## 项目状态
 
 - 当前模式：总控单窗口 + Subagents + 会议落盘
-- 当前轮次：R57
-- 更新时间：2026-03-21 11:08
+- 当前轮次：R63
+- 更新时间：2026-03-26 18:52
 - 总控窗口：负责更新本表、会议纪要、各线收件箱，并在需要时内部调度六个角色
 
 ## 协作规则
@@ -22,17 +22,17 @@
 
 | 线别 | 当前状态 | 当前轮次 | 说明 |
 | --- | --- | --- | --- |
-| 前端 | 维护中 | R57 | `R54` 的 `devSmoke`、预检脚本、证据位与 runbook 继续保留；`R57` 重点变为未来截图回填位与恢复 gate ready |
-| 后台 | 维护中 | R57 | 治理域真实读 `r52` 基线继续稳定；`R57` 只保留上线前复查、部署指纹一致性与未来共享缺口修复 |
-| 后端 | 维护中 | R57 | 已补 dev 样本核查脚本、`R54` 接入说明与 smoke 模板；`R57` 继续作为恢复 gate 与上线资料 / 发布事实支援 |
+| 前端 | 维护中 | R63 | `8` 页升档冲刺已完成并补齐一轮 CloudBase 最小真实样本；`R63` 正式结论已升级为 `最终签收通过`，当前页面最终结论更新为 `签收通过 18 / 有条件通过 0 / 退回修复 0` |
+| 后台 | 维护中 | R63 | 治理域真实读 `r52` 基线继续稳定；`R63` 未暴露新的后台共享 blocker，默认继续维护态 |
+| 后端 | 维护中 | R63 | 已为 `R63` 提供最小样本支援并补齐 `publish-application-manage / report-records / search` 所需真实样本；当前小程序主线已无后端最小支援待办 |
 
 ## 专项角色状态
 
 | 角色 | 当前状态 | 当前轮次 | 说明 |
 | --- | --- | --- | --- |
-| 产品经理 | 进行中 | R57 | 当前重点切到 `R57` 资料收口：已确认主体/邮箱/客服，继续收口法院辖区、冷启动内容与提审文案终稿 |
-| 体验设计审查 | 待命 | R57 | 后台 `R51` 结论继续保持 `可通过`；`R57` 继续维护截图模板与体验路径一致性，未来恢复真实证据后再复核 |
-| 阻塞协调（老板/外部协调） | 进行中 | R57 | 当前重点收口为法院辖区最终确认；发布/回滚/值守 owner 当前暂按 `王俊凯` 挂载 |
+| 产品经理 | 已完成 | R63 | 已按 `R63` 最新收口结果刷新产品侧正式结论；当前整体支持“小程序最终签收通过”，并转入并行资料维护态 |
+| 体验设计审查 | 已完成 | R63 | 已按 `R63` 最新收口结果刷新体验侧正式结论；当前整体支持“小程序最终签收通过” |
+| 阻塞协调（老板/外部协调） | 待命 | R63 | 当前小程序主线已无外部环境 blocker；法院辖区、提审资料和 owner 台账继续并行维护，不占小程序主链 |
 
 ## 轮次任务看板
 
@@ -70,7 +70,44 @@
 - [x] 补齐 `evidence/r54` 结构与 `MiniProgram-Real-Smoke-Runbook-R54.md`
 - [x] 冻结“立即执行 DevTools 真实 smoke”主线，不再把用户当前是否手动跑 console 当作推进前提
 - [x] 保留 `R54` 的 helper / runbook / 证据位，作为未来恢复真实 `cloud` 窗口时的固定入口
-- [ ] 待未来恢复真实 `wxContext.OPENID` / DevTools `cloud` 窗口时，再执行 `runtimeDebug.useCloud()` 与 `devSmoke.runFirstBatch()`
+- [x] 新增 `scripts/run-miniprogram-tech-acceptance-r58.mjs` 作为一键技术验收入口
+- [x] 产出 `R58` 首轮结构化技术验收证据
+- [x] 已重新接通微信开发者工具 CLI，当前可确认 `ideConnected=true`、`servicePortEnabled=true`
+- [x] 已补齐小程序 `.scss -> .wxss` 样式构建链，修复“页面像纯文字”这一关键缺口
+- [x] 基于真实运行中的小程序页面，完成 `18` 个注册页的页面盘点矩阵
+- [x] 将 `R58` 页面完成度证据固定到 `miniprogram/evidence/r58/runtime/ui-inventory.json` 与 `miniprogram/evidence/r58/ui-inventory.md`
+- [x] 在完成 UI 完成度盘点前，不再宣称“小程序页面已完成”或“只差真实 smoke”
+- [x] 只修当前真实 `P0/P1` 缺口：`message-bff.list`、`user-bff.mine`、`report-bff.myList`、`application-bff.submit`、`application-manage/detail` 相关权限或样本问题
+- [x] `2026-03-26 10:16` 已再次通过 `run-miniprogram-tech-acceptance-r58.mjs`，继续保持 `ok=true / blocker=none / batch ok=true`
+- [x] `2026-03-26 10:13` 已重跑 `run-miniprogram-ui-inventory-r58.mjs`，继续保持 `18` 页覆盖、`运行异常 0 / 仅骨架 0`，且证据锚点已恢复真实截图路径
+- [x] 已确认当前满足启动产品 / 体验签收准备的技术前提，但不自动输出最终签收结论
+- [x] 已基于最新 `ui-inventory` 生成 `R59` 签收输入包，按 `18` 页给出页面状态、签收候选、待收口点与证据链接
+- [x] 已完成 `R60` 轻量复核：`node scripts/build-miniprogram-js.mjs` 与 `node scripts/check-miniprogram-tech-acceptance.mjs` 继续全绿
+- [x] 已生成 `R60` 页面级签收候选结论矩阵：`.control-state/current/miniapp-signoff-judgment-r60.md`
+- [x] 已确认当前 `R60` 无新增前端 `P0/P1`、后端最小支援或后台共享 blocker，可进入最终签收讨论准备
+- [x] 已完成 `R61` 正式最终签收结论文档：`.control-state/current/miniapp-signoff-conclusion-r61.md`
+- [x] 已形成整体小程序最终签收结论：`最终签收有条件通过`（`签收通过 2 / 有条件通过 16 / 退回修复 0`）
+- [x] 已确认 `R61` 无新增前端 `P0/P1`、后端最小支援或后台共享 blocker；`16` 页待收口项均为非阻塞条件跟踪
+- [x] 已完成 `R62` 的 `16` 页前端收口冲刺一轮，围绕信息层级、空态引导、CTA 说明、状态表达和页面结构完成真实前端收口
+- [x] 已完成 `R62` 固定复核：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 继续 `ok=true / blocker=none / batch ok=true`
+- [x] 已完成 `R62` live screenshot 刷新尝试：`MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续保持 `18` 页覆盖、`运行异常 0 / 仅骨架 0`
+- [x] 已输出 `R62` 收口跟踪与正式结论文档：
+  - `.control-state/current/miniapp-polish-tracking-r62.md`
+  - `.control-state/current/miniapp-signoff-conclusion-r62.md`
+- [x] 已将小程序正式最终签收结论刷新为：`最终签收有条件通过`（`签收通过 10 / 有条件通过 8 / 退回修复 0`）
+- [x] 已完成 `R63` 固定预检与技术复核：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 继续 `ok=true / blocker=none / batch ok=true`
+- [x] 已完成 `R63` live screenshot 刷新尝试：`MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续保持 `18` 页覆盖、`运行异常 0 / 仅骨架 0`
+- [x] 已输出 `R63` 收口跟踪与正式结论文档：
+  - `.control-state/current/miniapp-polish-tracking-r63.md`
+  - `.control-state/current/miniapp-signoff-conclusion-r63.md`
+- [x] 已将小程序正式最终签收结论刷新为：`最终签收有条件通过`（`签收通过 15 / 有条件通过 3 / 退回修复 0`）
+- [x] 已通过 CloudBase 最小样本脚本补齐 `search / publish-application-manage / report-records` 所需真实业务样本
+- [x] 已在最新 `ui inventory` 复核中确认 `publish-application-manage=ready`、`report-records=ready`，并将 `R63` 页面最终结论进一步收敛为：`签收通过 17 / 有条件通过 1 / 退回修复 0`
+- [x] 已确认当前剩余条件项只剩 `search`；最新页面级证据仍为 `pageState=empty`，待 DevTools 登录态恢复后再补一次“关键词命中非空结果”复核
+- [x] 已修复 `pages/plaza/search` 的路由关键词解码问题，确认真实中文关键词不再以 URL 编码串参与搜索
+- [x] 已重新跑通 `WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs`，结果恢复为 `ok=true / blocker=none / batch ok=true`
+- [x] 已重新跑通 `MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs`，确认 `search=ready`
+- [x] 已将小程序 `R63` 正式最终签收结论升级为：`最终签收通过`（`签收通过 18 / 有条件通过 0 / 退回修复 0`）
 - [ ] 等待城市筛选候选源拍板后接真实城市筛选
 
 ### 后台
@@ -209,6 +246,9 @@
 - [x] 已确认运营主体：`王俊凯`
 - [x] 已确认联系邮箱：`junkaifly@gmail.com`
 - [x] 已确认客服方式：`17621503908`
+- [x] 基于 `R59` 签收输入包输出页面级“候选通过 / 待收口”产品结论，不把技术结论外推成最终产品签收
+- [x] 基于 `R60` 页面级候选结论组织最终产品签收讨论，不把讨论前结论写成最终签收
+- [ ] 按 `R61` 有条件通过口径继续跟踪 `16` 页非阻塞待收口项与并行提审资料事项
 - [ ] 等待用户对第一批 3 题中的任意一题正式拍板
 - [ ] 补齐提审资料、合规文案、冷启动内容与值守安排的 owner/待补位
 
@@ -224,7 +264,10 @@
 - [x] 基于 `R50` 真实证据完成 `dashboard / operation logs / review detail / report detail / blacklist` 正式复核
 - [x] `R51` 复核结论已收口为 `可通过`，且 `R50` 残余必须修项已闭环
 - [x] 以总控落盘方式补齐 `R56` 提审截图模板，明确页面位、命名规范与验收标准
-- [ ] 等待未来恢复的小程序真实 smoke 证据后，再决定是否启动下一轮前台体验复核
+- [x] 小程序体验复核前置条件已满足：`tech acceptance` 通过且 `ui inventory` 达成 `运行异常 0 / 仅骨架 0`
+- [x] 基于 `R59` 签收输入包输出页面级体验复核候选结论，不把“可评审但待收口”写成“已签收”
+- [x] 基于 `R60` 页面级候选结论组织最终体验签收讨论，不把讨论前结论写成最终签收
+- [ ] 按 `R61` 有条件通过口径继续跟踪 `16` 页非阻塞待收口项；若无新 `P0/P1`，不重开 must-close
 
 ### 阻塞协调
 
@@ -252,7 +295,11 @@
 
 ## 跨线阻塞
 
-- [ ] 当前第一上线风险已切到：小程序真实 `cloud` smoke 证据仍缺失，但已冻结为后续恢复项；`R57` 自动主线改为法院辖区最终确认、冷启动内容 owner 与上线资料终稿收口
+- [x] 小程序技术链路与页面盘点技术门槛已闭环：`run-miniprogram-tech-acceptance-r58.mjs ok=true`，`run-miniprogram-ui-inventory-r58.mjs` 达成 `运行异常 0 / 仅骨架 0`
+- [x] 当前剩余小程序主线事项已切换为产品 / 体验签收准备：产品经理与体验设计审查已基于 `R59` 签收输入包输出页面级候选结论
+- [x] 当前剩余小程序主线事项已切换为最终签收讨论准备：已基于 `R60` 页面级候选结论完成逐页判断
+- [x] 当前小程序已形成 `R61` 最终签收结论：`最终签收有条件通过`，且 `退回修复 0`
+- [ ] 仅当 `R61` 条件跟踪项升级为真实 `P0/P1`，或签收方明确要求 live screenshot 时，再重开小程序专项
 - [ ] 待未来恢复真实 `AppID` + DevTools `cloud` 窗口时，再按 `R54` runbook 执行 `runtimeDebug.useCloud()` -> `devSmoke.runFirstBatch()` -> 回填 `evidence/r54`
 - [ ] `dm_configs` 重复来源已核清：8 个正式 `groupKey` 各重复 1 次；当前仍待拍板清理策略并执行 apply
 - [ ] 第一批高优先级规则未拍板：后台动作请求最终枚举、举报处理中可见性 / 状态 code、处罚状态模型 / code
@@ -269,4 +316,4 @@
 1. 六个角色都完成当前收件箱任务
 2. 后台访问地址或管理员账号 / 初始化方式有新事实回传
 3. 用户拍板第一批规则（题 4 / 5 / 6）中的任意一项
-4. 未来恢复执行 `R54` 首轮半自动真实 smoke，或后台 / 后端在维护态下发现新的最小修复项
+4. `R61` 条件跟踪项升级为真实 `P0/P1`、签收方明确要求 live screenshot，或并行资料事项回流到小程序主线

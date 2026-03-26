@@ -25,10 +25,49 @@
         <text class="info-card__copy">{{fieldSourceText}}</text>
       </view>
 
+      <view class="surface-card insight-card motion-slide-up">
+        <view class="insight-card__head">
+          <view>
+            <text class="insight-card__eyebrow">发布主路径</text>
+            <text class="insight-card__title">这页不再只是“一个长表单”，而是先补资料、再写通告、最后决定立即提审还是先存草稿。</text>
+          </view>
+          <text class="pill-primary">{{profileIncomplete ? '先补资料' : '可提交审核'}}</text>
+        </view>
+        <view class="guide-grid">
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">1 / 资料</text>
+            <text class="guide-card__title">先把发布方资料补齐</text>
+            <text class="guide-card__copy">保存资料后留在当前页继续填写，不需要回到其它入口重复录入。</text>
+          </view>
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">2 / 通告</text>
+            <text class="guide-card__title">按“核心信息、预算、达人要求”往下推进</text>
+            <text class="guide-card__copy">当前页把审核前用户最关心的字段放在前面，优先保证标题、平台、领域、预算和截止时间清楚可判断。</text>
+          </view>
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">3 / 动作</text>
+            <text class="guide-card__title">{{draftNoticeId ? '已有草稿，可继续提审' : '不确定时先存草稿'}}</text>
+            <text class="guide-card__copy">草稿不会丢掉当前输入，适合需要和门店、品牌或同事再确认一次合作细节时使用。</text>
+          </view>
+        </view>
+        <view class="progress-grid">
+          <view wx:for="{{progressCards}}" wx:key="key" class="progress-card {{item.complete ? 'progress-card--complete' : ''}}">
+            <text class="progress-card__title">{{item.title}}</text>
+            <text class="progress-card__value">{{item.done}} / {{item.total}}</text>
+            <text class="progress-card__copy">{{item.statusText}}</text>
+          </view>
+        </view>
+        <view class="next-step-card">
+          <text class="next-step-card__title">{{nextStepTitle}}</text>
+          <text class="next-step-card__copy">{{nextStepCopy}}</text>
+        </view>
+      </view>
+
       <view class="surface-card form-section">
         <view class="form-section__head">
           <text class="form-section__title">发布方资料</text>
           <text class="form-section__copy">资料保存成功后，不会清空下方已填写的通告内容。</text>
+          <text class="form-section__meta">{{sectionProgress.profile}}</text>
           <view class="form-summary-row">
             <text class="form-summary-pill form-summary-pill--accent">{{profileBadgeText}}</text>
             <text
@@ -151,6 +190,7 @@
         <view class="form-section__head">
           <text class="form-section__title">通告核心信息</text>
           <text class="form-section__copy">先完成必要字段，审核通过后系统会自动进入广场曝光。</text>
+          <text class="form-section__meta">{{sectionProgress.core}}</text>
           <view class="form-summary-row">
             <text
               wx:for="{{noticeSummaryPills}}"
@@ -258,6 +298,7 @@
         <view class="form-section__head">
           <text class="form-section__title">合作方式与预算</text>
           <text class="form-section__copy">预算是否适用取决于结算方式；不适用时会自动置灰。</text>
+          <text class="form-section__meta">{{sectionProgress.budget}}</text>
         </view>
 
         <view class="form-field">
@@ -355,6 +396,7 @@
         <view class="form-section__head">
           <text class="form-section__title">达人要求与合作说明</text>
           <text class="form-section__copy">错误提示直接贴字段显示，不等到整页统一报错。</text>
+          <text class="form-section__meta">{{sectionProgress.detail}}</text>
         </view>
 
         <view class="form-field">
@@ -410,6 +452,7 @@
   <bottom-action-bar
     primaryText="{{primaryText}}"
     secondaryText="{{savingDraft ? '保存中...' : '保存草稿'}}"
+    helperText="{{profileIncomplete ? '保存资料后不会清空下面已填的通告内容' : (draftNoticeId ? '当前草稿已生成，确认无误后可以直接提交审核' : '也可以先保存草稿，稍后回来继续编辑')}}"
     primaryDisabled="{{primaryDisabled}}"
     loading="{{primaryLoading}}"
     bottomInset="{{bottomInset}}"

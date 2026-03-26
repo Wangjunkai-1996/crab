@@ -7,6 +7,32 @@
       <view class="role-pill {{summary.preferredView === 'publisher' ? 'role-pill--active' : ''}}" data-value="publisher" bindtap="onToggleView">发布方</view>
       <view class="role-pill {{summary.preferredView === 'creator' ? 'role-pill--active' : ''}}" data-value="creator" bindtap="onToggleView">达人</view>
     </view>
+    <view class="surface-card insight-card mine-section">
+      <view class="insight-card__head">
+        <view>
+          <text class="insight-card__eyebrow">工作台优先级</text>
+          <text class="insight-card__title">先从当前优先视角继续推进，再回头补另一个角色的资料或动作。</text>
+        </view>
+        <text class="pill-primary">{{summary.preferredViewLabel}}</text>
+      </view>
+      <view class="info-grid">
+        <view class="info-tile">
+          <text class="info-tile__label">当前城市</text>
+          <text class="info-tile__value">{{summary.userSummary.city || '待补充'}}</text>
+        </view>
+        <view class="info-tile">
+          <text class="info-tile__label">未读消息</text>
+          <text class="info-tile__value info-tile__value--accent">{{summary.messageSummary.unreadCount}}</text>
+        </view>
+      </view>
+      <view class="guide-grid">
+        <view class="guide-card">
+          <text class="guide-card__eyebrow">怎么用</text>
+          <text class="guide-card__title">{{nextStepTitle}}</text>
+          <text class="guide-card__copy">{{nextStepCopy}}</text>
+        </view>
+      </view>
+    </view>
     <view wx:if="{{summary.restrictionSummary}}" class="mine-section">
       <restriction-banner title="{{summary.restrictionSummary.title}}" description="{{summary.restrictionSummary.description}}" type="{{summary.restrictionSummary.type}}"></restriction-banner>
     </view>
@@ -14,10 +40,45 @@
       <stats-summary-card items="{{stats}}"></stats-summary-card>
     </view>
     <view class="surface-card mine-card">
-      <text class="mine-card__title">常用入口</text>
+      <text class="mine-card__title">角色准备度</text>
+      <view class="role-card-grid">
+        <view wx:for="{{roleCards}}" wx:key="title" class="role-card">
+          <view class="role-card__head">
+            <text class="role-card__title">{{item.title}}</text>
+            <text class="pill-primary">{{item.badgeText}}</text>
+          </view>
+          <text class="role-card__copy">{{item.copy}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="surface-card mine-card">
+      <text class="mine-card__title">{{nextStepTitle}}</text>
+      <text class="mine-card__copy">{{nextStepCopy}}</text>
       <view class="mine-card__list">
         <view
-          wx:for="{{summary.quickActions}}"
+          wx:for="{{priorityActions}}"
+          wx:key="key"
+          class="mine-card__item mine-card__item--priority"
+          data-key="{{item.key}}"
+          data-route="{{item.route}}"
+          data-locked="{{item.locked ? 1 : 0}}"
+          data-locked-reason="{{item.lockedReason}}"
+          bindtap="onTapQuickAction"
+        >
+          <view class="mine-card__meta">
+            <text class="mine-card__label">{{item.label}}</text>
+            <text class="mine-card__hint">{{item.helperText}}</text>
+          </view>
+          <text class="mine-card__badge {{item.locked ? 'mine-card__badge--locked' : ''}}">{{item.badgeText}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="surface-card mine-card">
+      <text class="mine-card__title">全部入口</text>
+      <text class="mine-card__copy">其余入口继续保留，但从次级列表进入，避免双角色路径同时挤在首屏。</text>
+      <view class="mine-card__list">
+        <view
+          wx:for="{{secondaryActions}}"
           wx:key="key"
           class="mine-card__item"
           data-key="{{item.key}}"
@@ -28,16 +89,11 @@
         >
           <view class="mine-card__meta">
             <text class="mine-card__label">{{item.label}}</text>
-            <text wx:if="{{item.lockedReason}}" class="mine-card__hint">{{item.lockedReason}}</text>
+            <text class="mine-card__hint">{{item.helperText}}</text>
           </view>
           <text class="mine-card__badge {{item.locked ? 'mine-card__badge--locked' : ''}}">{{item.badgeText}}</text>
         </view>
       </view>
-    </view>
-    <view class="surface-card mine-card">
-      <text class="mine-card__title">身份与资料</text>
-      <text class="mine-card__copy">当前优先视角：{{summary.preferredViewLabel}}</text>
-      <text class="mine-card__copy">不隐藏 `我的通告`、`我的报名`、`达人名片`、`消息中心`，仅按服务端状态给出锁定提示。</text>
     </view>
     <view class="surface-card mine-card">
       <text class="mine-card__title">帮助与治理</text>

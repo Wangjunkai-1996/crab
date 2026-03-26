@@ -5,13 +5,36 @@
     <text class="message-summary__value">{{unreadCount}}</text>
     <text class="message-summary__copy">像收件箱一样收拢通知，不做聊天气泡样式。</text>
   </view>
+  <view class="surface-card insight-card">
+    <view class="insight-card__head">
+      <view>
+        <text class="insight-card__eyebrow">消息收口</text>
+        <text class="insight-card__title">先看有没有需要你马上处理的通知，再回主路径完成动作。</text>
+      </view>
+      <text class="pill-primary">{{activeType === 'all' ? '全部消息' : (activeType === 'review' ? '审核通知' : (activeType === 'application' ? '报名进展' : '系统提醒'))}}</text>
+    </view>
+    <view class="info-grid info-grid--triple">
+      <view class="info-tile">
+        <text class="info-tile__label">未读</text>
+        <text class="info-tile__value info-tile__value--accent">{{unreadCount}}</text>
+      </view>
+      <view class="info-tile">
+        <text class="info-tile__label">当前列表</text>
+        <text class="info-tile__value">{{messages.length}}</text>
+      </view>
+      <view class="info-tile">
+        <text class="info-tile__label">处理建议</text>
+        <text class="info-tile__hint">{{activeType === 'review' ? '优先回通告或发布流程补动作' : (activeType === 'application' ? '优先回报名列表继续跟进' : '先读完系统提醒，再回主路径处理')}}</text>
+      </view>
+    </view>
+  </view>
   <view class="segment-row">
     <view wx:for="{{tabs}}" wx:key="value" class="segment {{activeType === item.value ? 'segment--active' : ''}}" data-value="{{item.value}}" bindtap="onSwitchTab">{{item.label}}</view>
   </view>
   <view class="page-stack message-stack">
     <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
     <page-error-state wx:elif="{{pageState === 'error'}}" title="消息暂时没加载出来" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
-    <empty-state wx:elif="{{pageState === 'empty'}}" title="{{emptyTitle}}" description="{{emptyDescription}}"></empty-state>
+    <empty-state wx:elif="{{pageState === 'empty'}}" title="{{emptyTitle}}" description="{{emptyDescription}}" actionText="{{emptyActionText}}" bind:action="onEmptyAction"></empty-state>
     <block wx:else>
       <inbox-message-item wx:for="{{messages}}" wx:key="messageId" message="{{item}}" bind:tapitem="onTapMessage"></inbox-message-item>
     </block>

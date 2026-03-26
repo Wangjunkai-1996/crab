@@ -16,6 +16,7 @@ const requiredFunctionDirs = [
   'cloudfunctions/notice-bff/src',
   'cloudfunctions/application-bff/src',
   'cloudfunctions/message-bff/src',
+  'cloudfunctions/report-bff/src',
   'cloudfunctions/review-admin/src',
   'cloudfunctions/governance-admin/src',
   'cloudfunctions/cron-jobs/src',

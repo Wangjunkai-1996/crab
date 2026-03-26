@@ -4,9 +4,16 @@
   "type": "module",
   "dependencies": {
     "@cloudbase/manager-node": "^4.2.9",
-    "@cloudbase/node-sdk": "^3.0.0"
+    "@cloudbase/node-sdk": "^3.0.0",
+    "miniprogram-automator": "^0.12.1",
+    "sass": "^1.98.0"
   },
   "scripts": {
+    "build:miniprogram-styles": "node build-miniprogram-styles.mjs",
+    "check:devtools-cli": "node check-wechat-devtools-cli.mjs",
+    "check:miniprogram-tech-acceptance": "node check-miniprogram-tech-acceptance.mjs",
+    "run:miniprogram-tech-acceptance:r58": "node run-miniprogram-tech-acceptance-r58.mjs",
+    "run:miniprogram-ui-inventory:r58": "node run-miniprogram-ui-inventory-r58.mjs",
     "check:smoke-readiness": "node check-real-smoke-readiness.mjs",
     "check:miniprogram-dev-sample": "node check-miniprogram-dev-smoke-sample.mjs",
     "prepare:miniprogram-dev-sample": "node check-miniprogram-dev-smoke-sample.mjs --apply",

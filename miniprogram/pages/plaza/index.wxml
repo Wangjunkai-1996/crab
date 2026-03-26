@@ -15,19 +15,56 @@
     <filter-chip-bar items="{{chipItems}}" bind:tapchip="onTapChip" bind:openfilter="onOpenFilter"></filter-chip-bar>
   </app-hero-header>
 
+  <view class="surface-card insight-card motion-slide-up">
+    <view class="insight-card__head">
+      <view>
+        <text class="insight-card__eyebrow">主路径收口</text>
+        <text class="insight-card__title">先看信息完整、预算清晰、可快速报名的合作，再决定是否继续收窄筛选。</text>
+      </view>
+      <text class="pill-accent">{{pageState === 'ready' ? notices.length + ' 条候选' : (pageState === 'empty' ? '待调筛选' : '同步中')}}</text>
+    </view>
+    <text class="insight-card__copy">{{chipItems.length && chipItems[0].value !== 'all' ? '当前筛选会被继续保留，你可以先快速扫一遍结果，再打开筛选面板继续细化。' : '当前是默认发现流，优先展示资料完整、预算清楚、状态明确的合作通告。'}}</text>
+    <view wx:if="{{chipItems.length && chipItems[0].value !== 'all'}}" class="insight-chip-row">
+      <text class="pill-primary">已启用筛选</text>
+      <text wx:for="{{chipItems}}" wx:key="value" class="glass-chip">{{item.label}}</text>
+    </view>
+    <view wx:else class="guide-grid">
+      <view class="guide-card">
+        <text class="guide-card__eyebrow">先看什么</text>
+        <text class="guide-card__title">先看首条推荐卡和预算摘要</text>
+        <text class="guide-card__copy">首屏默认把更适合快速决策的合作放在前面，方便你先判断有没有值得马上报名的机会。</text>
+      </view>
+    </view>
+  </view>
+
   <view class="page-stack plaza-stack">
     <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
     <page-error-state wx:elif="{{pageState === 'error'}}" title="广场暂时没加载出来" description="{{errorText}}" actionText="重新加载" bind:action="onRetry"></page-error-state>
     <empty-state wx:elif="{{pageState === 'empty'}}" title="{{emptyTitle}}" description="{{emptyDescription}}" actionText="重置筛选" bind:action="onResetFilter"></empty-state>
     <block wx:else>
-      <notice-card wx:for="{{notices}}" wx:key="noticeId" notice="{{item}}" featured="{{index === 0}}" bind:tapcard="onTapNotice"></notice-card>
+      <view wx:if="{{featuredNotice}}" class="section-block">
+        <view class="section-heading">
+          <text class="section-heading__eyebrow">首个建议</text>
+          <text class="section-heading__title">先看这条更适合快速决策的合作</text>
+          <text class="section-heading__copy">首屏先给你一条最值得马上判断的合作，再往下继续批量浏览。</text>
+        </view>
+        <notice-card notice="{{featuredNotice}}" featured="{{true}}" bind:tapcard="onTapNotice"></notice-card>
+      </view>
       <view class="ad-card surface-card">
         <view>
           <text class="ad-card__badge">推广位预留</text>
           <text class="ad-card__title">原生信息流广告样式</text>
-          <text class="ad-card__copy">后续广告仅允许以通告卡片变体插入，不打断浏览骨架。</text>
+          <text class="ad-card__copy">后续广告只允许以通告卡片变体插入，默认放在首个决策卡之后，不打断首屏浏览节奏。</text>
         </view>
         <text class="ad-card__tag">AD</text>
+      </view>
+      <view wx:if="{{secondaryNotices.length}}" class="section-block">
+        <view class="section-heading">
+          <text class="section-heading__eyebrow">继续浏览</text>
+          <text class="section-heading__title">再看剩余 {{secondaryNotices.length}} 条合作</text>
+          <text class="section-heading__copy">这里适合继续横向比较预算、城市和合作形式，再决定要不要进详情页深看。</text>
+        </view>
+        <notice-card wx:for="{{secondaryNotices}}" wx:key="noticeId" notice="{{item}}" bind:tapcard="onTapNotice"></notice-card>
       </view>
     </block>
   </view>

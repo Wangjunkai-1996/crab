@@ -411,7 +411,8 @@ export async function submitApplication(payload: ApplicationSubmitPayload, userC
   }
 
   const currentTime = now()
-  const applicationId = createResourceId('app')
+  const reusableWithdrawnRecord = existingRecords.find((item) => asString(item.status) === 'withdrawn') ?? null
+  const applicationId = asString(reusableWithdrawnRecord?.applicationId) || createResourceId('app')
   const creatorSnapshot = {
     nickname: asString(creatorCard.nickname),
     city: asString(creatorCard.city),
@@ -441,9 +442,14 @@ export async function submitApplication(payload: ApplicationSubmitPayload, userC
     completedAt: null,
     createdAt: currentTime,
     updatedAt: currentTime,
+    isDeleted: false,
   }
 
-  await addDocument(COLLECTIONS.APPLICATIONS, document)
+  if (reusableWithdrawnRecord?._id) {
+    await updateDocumentById(COLLECTIONS.APPLICATIONS, reusableWithdrawnRecord._id, document)
+  } else {
+    await addDocument(COLLECTIONS.APPLICATIONS, document)
+  }
 
   const applicationCount = await countEffectiveApplications(payload.noticeId)
   await updateDocumentById(COLLECTIONS.NOTICES, notice._id, {

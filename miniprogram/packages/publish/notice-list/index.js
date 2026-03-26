@@ -47,11 +47,27 @@ function getActionConfig(item) {
         dangerAction: '',
     };
 }
+function getActionHint(item) {
+    if (item.statusTag === 'active') {
+        return '当前已经在广场曝光，优先看报名量和报名管理，再决定是否需要关闭。';
+    }
+    if (item.statusTag === 'pending_review') {
+        return '当前在审核中，先看详情页里的资料是否完整，避免来回切页。';
+    }
+    if (item.statusTag === 'supplement_required' || item.statusTag === 'rejected') {
+        return '当前更适合先回编辑页补信息，再决定是否重新提审。';
+    }
+    if (item.statusTag === 'draft') {
+        return '当前还是草稿，先把核心字段补齐，再回发布页决定是否提交审核。';
+    }
+    return '先看当前状态，再决定是继续管理报名还是回详情页复核。';
+}
 function decorate(list) {
     return list.map((item) => ({
         ...item,
         statusText: (0, formatter_1.formatNoticeStatus)(item.statusTag),
         actionConfig: getActionConfig(item),
+        actionHint: getActionHint(item),
     }));
 }
 function buildStats(list) {
@@ -60,6 +76,20 @@ function buildStats(list) {
         { label: '待审核', value: list.filter((item) => item.statusTag === 'pending_review').length },
         { label: '进行中', value: list.filter((item) => item.statusTag === 'active').length },
     ];
+}
+function buildFocusNotice(list) {
+    const candidate = list.find((item) => item.statusTag === 'supplement_required') ||
+        list.find((item) => item.statusTag === 'pending_review') ||
+        list.find((item) => item.statusTag === 'active') ||
+        list[0];
+    if (!candidate) {
+        return null;
+    }
+    return {
+        title: candidate.title,
+        badgeText: (0, formatter_1.formatNoticeStatus)(candidate.statusTag),
+        copy: getActionHint(candidate),
+    };
 }
 Page({
     data: {
@@ -70,6 +100,8 @@ Page({
         rawNotices: [],
         notices: [],
         stats: [],
+        focusNotice: null,
+        filteredEmpty: false,
         errorText: '',
     },
     onLoad() {
@@ -80,16 +112,20 @@ Page({
         const activeStatus = this.data.activeStatus;
         const rawList = this.data.rawNotices || [];
         const nextList = activeStatus === 'all' ? rawList : rawList.filter((item) => item.statusTag === activeStatus);
+        const hasAnyData = rawList.length > 0;
         this.setData({
             notices: decorate(nextList),
             stats: buildStats(rawList),
-            pageState: nextList.length ? page_state_1.PAGE_STATUS.ready : page_state_1.PAGE_STATUS.empty,
+            focusNotice: buildFocusNotice(rawList),
+            filteredEmpty: hasAnyData && nextList.length === 0,
+            pageState: hasAnyData ? page_state_1.PAGE_STATUS.ready : page_state_1.PAGE_STATUS.empty,
         });
     },
     async loadPage() {
         this.setData({
             pageState: page_state_1.PAGE_STATUS.loading,
             errorText: '',
+            filteredEmpty: false,
         });
         try {
             await (0, bootstrap_service_1.ensureBootstrapReady)();
@@ -148,5 +184,8 @@ Page({
                 });
             }
         }
+    },
+    onEmptyAction() {
+        (0, router_1.navigateByRoute)('/pages/publish/index');
     },
 });

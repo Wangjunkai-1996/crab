@@ -62,11 +62,19 @@ function buildChips(filter) {
     }
     return chips;
 }
+function splitNotices(list) {
+    return {
+        featuredNotice: list[0] || null,
+        secondaryNotices: list.slice(1),
+    };
+}
 Page({
     data: {
         topInset: 0,
         pageState: page_state_1.PAGE_STATUS.loading,
         notices: [],
+        featuredNotice: null,
+        secondaryNotices: [],
         chipItems: [],
         filterVisible: false,
         selectedPlatform: '',
@@ -96,6 +104,8 @@ Page({
         this.setData({
             pageState: page_state_1.PAGE_STATUS.loading,
             errorText: '',
+            featuredNotice: null,
+            secondaryNotices: [],
         });
         try {
             await (0, bootstrap_service_1.ensureBootstrapReady)();
@@ -103,8 +113,12 @@ Page({
             const result = await (0, notice_service_1.list)(filter);
             const nextFilter = (result.filterEcho || filter);
             const hasFilter = Object.keys(nextFilter).length > 0;
+            const decoratedNotices = decorateCards(result.list);
+            const { featuredNotice, secondaryNotices } = splitNotices(decoratedNotices);
             this.setData({
-                notices: decorateCards(result.list),
+                notices: decoratedNotices,
+                featuredNotice,
+                secondaryNotices,
                 pageState: (0, page_state_1.resolveListPageStatus)(result.list),
                 chipItems: buildChips(nextFilter),
                 currentFilter: nextFilter,

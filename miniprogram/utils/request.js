@@ -20,12 +20,13 @@ const FRIENDLY_ERROR_MESSAGE = {
 class RequestError extends Error {
     constructor(code, message, requestId, extra = {}) {
         super(message);
+        const normalizedExtra = extra && typeof extra === 'object' ? extra : {};
         this.name = 'RequestError';
         this.code = code;
         this.requestId = requestId;
-        this.fieldErrors = extra.fieldErrors;
-        this.missingFieldKeys = extra.missingFieldKeys;
-        this.errorType = extra.errorType;
+        this.fieldErrors = normalizedExtra.fieldErrors;
+        this.missingFieldKeys = normalizedExtra.missingFieldKeys;
+        this.errorType = normalizedExtra.errorType;
     }
 }
 exports.RequestError = RequestError;

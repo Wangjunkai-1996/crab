@@ -14,6 +14,30 @@ const ACTION_LABELS = {
     markCompleted: '标记已完成',
     revealCreatorContact: '查看联系方式',
 };
+function getPriorityHint(item) {
+    if (item.contactRevealState === 'revealed') {
+        return '联系方式已经释放，优先判断要不要立刻联系达人并推进合作。';
+    }
+    if (item.status === 'contact_pending') {
+        return '当前最适合继续推进到联系阶段，先看详情区允许执行哪些动作。';
+    }
+    if (item.status === 'communicating') {
+        return '当前已经在沟通中，优先确认交付意向和后续收口动作。';
+    }
+    if (item.status === 'viewed') {
+        return '当前已查看过这条报名，可以继续推进到待联系或直接淘汰。';
+    }
+    return '先用列表判断优先级，再到详情区查看完整报名内容和可执行动作。';
+}
+function resolveActionTone(action) {
+    if (action === 'markRejected') {
+        return 'danger';
+    }
+    if (action === 'revealCreatorContact' || action === 'markCompleted') {
+        return 'primary';
+    }
+    return 'neutral';
+}
 function decorateList(list) {
     return list.map((item) => ({
         ...item,
@@ -25,6 +49,7 @@ function decorateList(list) {
             : item.contactRevealState === 'masked'
                 ? '已留联系方式'
                 : '联系方式未释放',
+        priorityHint: getPriorityHint(item),
     }));
 }
 function buildStats(list) {
@@ -35,6 +60,20 @@ function buildStats(list) {
         { label: '待推进', value: pendingCount },
         { label: '已处理', value: handledCount },
     ];
+}
+function buildFocusApplication(list) {
+    const candidate = list.find((item) => item.contactRevealState === 'revealed') ||
+        list.find((item) => item.status === 'contact_pending') ||
+        list.find((item) => item.status === 'communicating') ||
+        list[0];
+    if (!candidate) {
+        return null;
+    }
+    return {
+        title: candidate.creatorCardSnapshot.nickname,
+        badgeText: (0, formatter_1.formatApplicationStatus)(candidate.status),
+        copy: getPriorityHint(candidate),
+    };
 }
 function decorateDetail(detail) {
     return {
@@ -56,6 +95,7 @@ function decorateDetail(detail) {
         actionButtons: detail.availableActions.map((action) => ({
             key: action,
             label: ACTION_LABELS[action] || action,
+            tone: resolveActionTone(action),
         })),
         contactTitle: detail.creatorContactRevealState === 'revealed' ? '达人联系方式' : '联系方式说明',
         contactCopy: detail.creatorContactRevealState === 'revealed'
@@ -71,6 +111,7 @@ Page({
         noticeId: '',
         applications: [],
         stats: [],
+        focusApplication: null,
         selectedApplicationId: '',
         detail: null,
         detailLoading: false,
@@ -101,6 +142,7 @@ Page({
             this.setData({
                 applications,
                 stats: buildStats(result.list || []),
+                focusApplication: buildFocusApplication(result.list || []),
                 selectedApplicationId: nextSelectedId,
                 pageState: applications.length ? page_state_1.PAGE_STATUS.ready : page_state_1.PAGE_STATUS.empty,
                 detail: null,

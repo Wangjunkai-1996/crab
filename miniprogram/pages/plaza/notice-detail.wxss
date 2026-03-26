@@ -1,0 +1,91 @@
+.detail-stack {
+  margin-top: 24rpx;
+}
+
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.detail-card__head,
+.detail-card__row,
+.detail-card__metric-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.detail-card__budget {
+  font-family: "SF Pro Display", "DIN Alternate", "HarmonyOS Sans SC", sans-serif;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #d77f11;
+}
+
+.detail-card__title,
+.detail-card__section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #152033;
+}
+
+.detail-card__row,
+.detail-card__copy,
+.detail-card__hint,
+.detail-card__contact {
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.detail-card__row {
+  color: #5c6980;
+}
+
+.detail-card__row text:last-child,
+.detail-card__contact {
+  color: #152033;
+  font-weight: 600;
+}
+
+.detail-card__hint {
+  color: #0a766f;
+}
+
+.detail-card__metric-row {
+  gap: 12rpx;
+}
+
+.detail-card__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52rpx;
+  padding: 0 20rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: #5c6980;
+  font-size: 24rpx;
+}
+
+.detail-card__pill--accent {
+  background: rgba(255, 181, 71, 0.16);
+  border-color: rgba(255, 181, 71, 0.24);
+  color: #d77f11;
+}
+
+.detail-card__report-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72rpx;
+  padding: 0 28rpx;
+  border-radius: 999rpx;
+  background: rgba(227, 93, 106, 0.12);
+  border: 1px solid rgba(227, 93, 106, 0.22);
+  color: #e35d6a;
+  font-size: 28rpx;
+  font-weight: 600;
+}

@@ -2,6 +2,7 @@ Component({
   properties: {
     primaryText: String,
     secondaryText: String,
+    helperText: String,
     primaryDisabled: {
       type: Boolean,
       value: false,

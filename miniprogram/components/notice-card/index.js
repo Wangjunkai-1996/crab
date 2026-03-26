@@ -1,3 +1,4 @@
+"use strict";
 Component({
     properties: {
         notice: Object,

@@ -1,6 +1,13 @@
 import { WAIT_CONFIRMATIONS } from '../constants/ui';
 import { getRuntimeMode, initCloud } from './cloud';
-import { getCloudEnvId, type ApiMode, persistRuntimeConfig, type RuntimeSwitchState, resolveRuntimeDescription } from './runtime-config';
+import {
+  getCloudEnvId,
+  type ApiMode,
+  persistRuntimeConfig,
+  type RuntimeOverrideInput,
+  type RuntimeSwitchState,
+  resolveRuntimeDescription,
+} from './runtime-config';
 import { bootstrap as requestBootstrap } from './user.service';
 import { hydrateUserStore, setUnreadCount } from '../stores/user.store';
 import { setSafeAreaInfo } from '../stores/ui.store';
@@ -13,8 +20,8 @@ export interface BootstrapRuntimeSnapshot {
   runtimeDescription: string;
 }
 
-export function prepareBootstrapRuntime(): BootstrapRuntimeSnapshot {
-  const runtimeSwitchState = initCloud();
+export function prepareBootstrapRuntime(runtimeOverride?: RuntimeOverrideInput): BootstrapRuntimeSnapshot {
+  const runtimeSwitchState = initCloud(runtimeOverride);
   setSafeAreaInfo(getSafeAreaInfo());
 
   return {
@@ -49,11 +56,20 @@ export function ensureBootstrapReady(force = false) {
   return app.globalData.bootstrapPromise;
 }
 
-export async function switchBootstrapRuntime(mode: ApiMode, cloudEnvId = getCloudEnvId()) {
-  persistRuntimeConfig(mode, cloudEnvId);
+export async function switchBootstrapRuntime(
+  mode: ApiMode,
+  cloudEnvId = getCloudEnvId(),
+  options: { persist?: boolean } = {},
+) {
+  if (options.persist !== false) {
+    persistRuntimeConfig(mode, cloudEnvId);
+  }
 
   const app = getApp<IAppOption>();
-  const snapshot = prepareBootstrapRuntime();
+  const snapshot = prepareBootstrapRuntime({
+    desiredMode: mode,
+    cloudEnvId,
+  });
 
   app.globalData.runtimeMode = snapshot.runtimeMode;
   app.globalData.runtimeSwitchState = snapshot.runtimeSwitchState;

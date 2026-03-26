@@ -5,6 +5,7 @@ const application_service_1 = require("./application.service");
 const creator_service_1 = require("./creator.service");
 const notice_service_1 = require("./notice.service");
 const publisher_service_1 = require("./publisher.service");
+const report_service_1 = require("./report.service");
 const request_debug_1 = require("../utils/request-debug");
 const request_1 = require("../utils/request");
 const FIXED_DEV_NOTICE_ID = 'notice_202603160001';
@@ -40,6 +41,33 @@ const APPLICATION_SAMPLE_BASE_PAYLOAD = {
     contactType: 'wechat',
     contactValue: 'creator_contact_2001',
 };
+function buildInventoryNoticeDraftPayload() {
+    return {
+        title: 'R58 报名管理样本通告',
+        brandName: '蟹宝品牌店',
+        cooperationPlatform: 'xiaohongshu',
+        cooperationCategory: 'food_beverage',
+        cooperationType: 'short_video',
+        city: '上海',
+        settlementType: 'fixed_price',
+        budgetRange: '500_1000',
+        recruitCount: 1,
+        deadlineAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+        creatorRequirements: '用于技术盘点的最小样本通告',
+        cooperationDescription: '仅用于报名管理页技术验收，不参与产品体验结论。',
+        attachments: [],
+    };
+}
+function buildInventoryReportPayload(target) {
+    return {
+        targetType: 'notice',
+        targetId: target?.noticeId,
+        targetSummary: target?.title || target?.city || 'R63 举报记录样本',
+        reasonCode: 'false_information',
+        description: '仅用于补齐举报记录页真实样本，不作为产品规则新增。',
+        evidenceImages: [],
+    };
+}
 const smokeState = {
     latestResolvedNoticeId: '',
     latestSubmittedApplicationId: '',
@@ -391,6 +419,91 @@ function createDevSmokeHelper(getRuntimeSummary) {
             requestLogs: (0, request_debug_1.getRequestDebugRecords)(),
         };
     }
+    async function resolveInventorySamples() {
+        const result = {
+            publisherNoticeId: '',
+            creatorApplicationId: smokeState.latestWithdrawnApplicationId || smokeState.latestSubmittedApplicationId || '',
+            searchKeyword: '',
+            errors: {},
+        };
+        let publicSearchNotice = null;
+        let preferredPublisherNotice = null;
+        try {
+            await getApp().bootstrapApp(true);
+            const publicNoticeList = await (0, notice_service_1.list)({});
+            publicSearchNotice = publicNoticeList.list[0] || null;
+            if (publicSearchNotice) {
+                result.searchKeyword = publicSearchNotice.title || publicSearchNotice.city || '';
+            }
+        }
+        catch (error) {
+            result.errors.searchKeyword = error instanceof Error ? error.message : 'public_notice_resolve_failed';
+        }
+        try {
+            await getApp().bootstrapApp(true);
+            const noticeList = await (0, notice_service_1.myList)({});
+            const candidates = [...noticeList.list].sort((left, right) => Number(right.applicationCount || 0) - Number(left.applicationCount || 0));
+            const inspectPayloadBase = {};
+            for (const item of candidates.slice(0, 5)) {
+                try {
+                    const applications = await (0, application_service_1.publisherList)({
+                        ...inspectPayloadBase,
+                        noticeId: item.noticeId,
+                    });
+                    if ((applications.list || []).length > 0) {
+                        preferredPublisherNotice = item;
+                        break;
+                    }
+                }
+                catch (error) {
+                    result.errors.publisherNoticeInspect = error instanceof Error ? error.message : 'publisher_notice_inspect_failed';
+                }
+            }
+            const preferredNotice = preferredPublisherNotice ||
+                candidates.find((item) => Number(item.applicationCount || 0) > 0) ||
+                candidates[0] ||
+                null;
+            if (preferredNotice?.noticeId) {
+                result.publisherNoticeId = preferredNotice.noticeId;
+                preferredPublisherNotice = preferredNotice;
+                if (!result.searchKeyword) {
+                    result.searchKeyword = preferredNotice.title || preferredNotice.city || '';
+                }
+            }
+            else {
+                const createdDraft = await (0, notice_service_1.createDraft)(buildInventoryNoticeDraftPayload());
+                result.publisherNoticeId = createdDraft.noticeId || '';
+                if (!result.searchKeyword) {
+                    result.searchKeyword = '上海';
+                }
+            }
+        }
+        catch (error) {
+            result.errors.publisherNoticeId = error instanceof Error ? error.message : 'publisher_notice_resolve_failed';
+        }
+        try {
+            await getApp().bootstrapApp(true);
+            const applicationList = await (0, application_service_1.myList)({});
+            const candidate = applicationList.list.find((item) => item.applicationId && item.status !== 'withdrawn') ||
+                applicationList.list[0] ||
+                null;
+            result.creatorApplicationId = candidate?.applicationId || result.creatorApplicationId;
+        }
+        catch (error) {
+            result.errors.creatorApplicationId = error instanceof Error ? error.message : 'creator_application_resolve_failed';
+        }
+        try {
+            await getApp().bootstrapApp(true);
+            const reportList = await (0, report_service_1.myList)();
+            if (!(reportList.list || []).length) {
+                await (0, report_service_1.submit)(buildInventoryReportPayload(publicSearchNotice || preferredPublisherNotice));
+            }
+        }
+        catch (error) {
+            result.errors.reportRecordSample = error instanceof Error ? error.message : 'report_record_seed_failed';
+        }
+        return result;
+    }
     return {
         prepare,
         getSummary: buildSummary,
@@ -401,5 +514,6 @@ function createDevSmokeHelper(getRuntimeSummary) {
         submitApplication: submitApplicationStep,
         withdrawLatestApplication: withdrawLatestApplicationStep,
         runFirstBatch,
+        resolveInventorySamples,
     };
 }

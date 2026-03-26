@@ -1,0 +1,38 @@
+.skeleton-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.skeleton-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+.skeleton-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.38), rgba(18, 179, 168, 0.18), transparent);
+  opacity: 0.85;
+}
+.skeleton-card::after {
+  content: "";
+  position: absolute;
+  right: -42rpx;
+  bottom: -56rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(47, 107, 255, 0.08), transparent 68%);
+  pointer-events: none;
+}
+.skeleton-card {
+  padding: 24rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 250, 255, 0.92));
+  box-shadow: 0 20rpx 56rpx rgba(25, 61, 118, 0.12);
+  min-height: 220rpx;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(239, 244, 251, 0.92), rgba(255, 255, 255, 0.92));
+}

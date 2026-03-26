@@ -10,4 +10,5 @@ exports.STORAGE_KEYS = {
     cloudEnvId: 'dm.cloudEnvId',
     requestDebugEnabled: 'dm.requestDebugEnabled',
     requestDebugRecords: 'dm.requestDebugRecords',
+    devAutoSmokeResult: 'dm.devAutoSmokeResult',
 };

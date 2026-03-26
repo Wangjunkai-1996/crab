@@ -15,6 +15,51 @@ export interface BootstrapResponseData {
   }
 }
 
+export interface MineEntryStateDto {
+  locked: boolean
+  reason?: string
+  actionText?: string
+}
+
+export interface MineQuickActionDto {
+  key: string
+  label: string
+  route: string
+  hint?: string
+  badgeText?: string
+  locked?: boolean
+  lockedReason?: string
+}
+
+export interface MineSummaryResponseData {
+  userSummary: {
+    displayName: string
+    avatarText: string
+    city: string
+  }
+  publisherSummary: {
+    noticeCount: number
+    profileCompleteness: number
+  }
+  creatorSummary: {
+    applicationCount: number
+    cardCompleteness: number
+  }
+  messageSummary: {
+    unreadCount: number
+  }
+  quickActions: MineQuickActionDto[]
+  isTourist: boolean
+  roleFlags: BootstrapUserDto['roleFlags']
+  preferredView: BootstrapUserDto['preferredView']
+  restrictionSummary?: {
+    type: string
+    title: string
+    description: string
+  }
+  entryStates: Record<string, MineEntryStateDto>
+}
+
 export interface MiniprogramCloudbaseAccessGuide {
   envFields: string[]
   availableFunctions: Array<{

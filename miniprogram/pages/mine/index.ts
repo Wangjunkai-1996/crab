@@ -1,12 +1,86 @@
 import { ROUTES } from '../../constants/routes';
 import { formatPreferredView } from '../../utils/formatter';
-import type { MineSummaryResponse } from '../../models/user';
+import type { MineSummaryResponse, QuickAction } from '../../models/user';
 import { mine, setPreferredView } from '../../services/user.service';
 import { ensureBootstrapReady } from '../../services/bootstrap.service';
 import { setPreferredViewInStore } from '../../stores/user.store';
 import { uiStore } from '../../stores/ui.store';
 import { PAGE_STATUS } from '../../utils/page-state';
 import { navigateByRoute } from '../../utils/router';
+
+interface RoleCard {
+  title: string;
+  badgeText: string;
+  copy: string;
+}
+
+function decorateAction(action: QuickAction) {
+  return {
+    ...action,
+    helperText: action.locked ? action.lockedReason || '请先完善资料' : action.hint || '继续进入对应主流程处理',
+  };
+}
+
+function buildRoleCards(summary: MineSummaryResponse): RoleCard[] {
+  return [
+    {
+      title: '发布方',
+      badgeText: `${summary.publisherSummary.profileCompleteness}%`,
+      copy: summary.roleFlags.publisherEnabled
+        ? `资料已可用，当前累计 ${summary.publisherSummary.noticeCount} 条通告。`
+        : '当前还没开通发布方能力，先补资料后再继续发布。',
+    },
+    {
+      title: '达人',
+      badgeText: `${summary.creatorSummary.cardCompleteness}%`,
+      copy: summary.roleFlags.creatorEnabled
+        ? `名片已可用，当前累计 ${summary.creatorSummary.applicationCount} 条报名。`
+        : '当前还没开通达人能力，先补名片后再继续报名。',
+    },
+  ];
+}
+
+function buildActionGroups(summary: MineSummaryResponse) {
+  const decorated = summary.quickActions.map(decorateAction);
+  const preferredView =
+    summary.preferredView || (summary.roleFlags.publisherEnabled ? 'publisher' : summary.roleFlags.creatorEnabled ? 'creator' : 'publisher');
+  const preferredOrder =
+    preferredView === 'publisher'
+      ? ['myNotice', 'messages', 'creatorCard', 'myApplication']
+      : ['myApplication', 'messages', 'creatorCard', 'myNotice'];
+  const priorityActions = preferredOrder
+    .map((key) => decorated.find((item) => item.key === key))
+    .filter((item): item is ReturnType<typeof decorateAction> => !!item)
+    .slice(0, 3);
+  const pickedKeys = new Set(priorityActions.map((item) => item.key));
+  const secondaryActions = decorated.filter((item) => !pickedKeys.has(item.key));
+
+  return {
+    priorityActions,
+    secondaryActions,
+  };
+}
+
+function buildNextStep(summary: MineSummaryResponse) {
+  if (summary.preferredView === 'publisher') {
+    return {
+      title: '当前优先处理发布方动作',
+      copy: '先从通告管理和消息继续推进，再回头补达人侧资料或报名动作，避免双角色入口一起抢首屏注意力。',
+    };
+  }
+
+  if (summary.preferredView === 'creator') {
+    return {
+      title: '当前优先处理达人侧动作',
+      copy: '先从我的报名和消息继续推进，再回头维护发布方资料，避免双角色入口同时展开造成决策压力。',
+    };
+  }
+
+  return {
+    title: '先选一个当前主视角',
+    copy: '如果你同时具备发布方和达人能力，先在上方切一个当前优先视角，再按下面的入口继续推进。',
+  };
+}
 
 Page({
   data: {
@@ -15,6 +89,9 @@ Page({
     errorText: '',
     summary: null as (MineSummaryResponse & { preferredViewLabel?: string }) | null,
     stats: [] as Array<{ label: string; value: number }>,
+    roleCards: [] as RoleCard[],
+    priorityActions: [] as Array<QuickAction & { helperText?: string }>,
+    secondaryActions: [] as Array<QuickAction & { helperText?: string }>,
     supportActions: [
       {
         key: 'report',
@@ -48,6 +125,8 @@ Page({
     roleSummaryText: '',
     identityCopy: '',
     canSwitchView: false,
+    nextStepTitle: '',
+    nextStepCopy: '',
   },
 
   onLoad() {
@@ -77,12 +156,15 @@ Page({
           : summary.roleFlags.publisherEnabled
             ? '当前已具备发布方能力，可继续维护资料并查看报名。'
             : '当前已具备达人能力，可继续维护名片并跟进报名进展。';
+      const formattedSummary = {
+        ...summary,
+        preferredViewLabel: formatPreferredView(summary.preferredView),
+      };
+      const { priorityActions, secondaryActions } = buildActionGroups(summary);
+      const nextStep = buildNextStep(summary);
 
       this.setData({
-        summary: {
-          ...summary,
-          preferredViewLabel: formatPreferredView(summary.preferredView),
-        },
+        summary: formattedSummary,
         stats: [
           {
             label: '我的通告',
@@ -97,9 +179,14 @@ Page({
             value: summary.messageSummary.unreadCount,
           },
         ],
+        roleCards: buildRoleCards(summary),
+        priorityActions,
+        secondaryActions,
         roleSummaryText,
         identityCopy,
         canSwitchView: roleCount > 1,
+        nextStepTitle: nextStep.title,
+        nextStepCopy: nextStep.copy,
         pageState: PAGE_STATUS.ready,
       });
     } catch (error) {

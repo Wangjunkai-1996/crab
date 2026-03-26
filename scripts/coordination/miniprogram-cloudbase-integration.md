@@ -1,12 +1,12 @@
-# 小程序 CloudBase 接入说明（后端，R54）
+# 小程序 CloudBase 接入说明（后端，R58）
 
 ## 1. 当前固定事实
 
 - 小程序 `AppID`：`wxa6f615dcab1f984f`
 - 当前 `dev` CloudBase 环境：`cloud1-4grxqg018586792d`
 - 小程序默认仍保持：`DEFAULT_API_MODE=mock`
-- 真实联调 runbook：`/Users/gy-vip/Desktop/KK_Crab/docs/engineering/MiniProgram-Real-Smoke-Runbook-R54.md`
-- 小程序半自动 smoke 证据目录：`/Users/gy-vip/Desktop/KK_Crab-mp/miniprogram/evidence/r54/`
+- 技术验收 runbook：`/Users/gy-vip/Desktop/KK_Crab/docs/engineering/MiniProgram-Technical-Acceptance-Runbook-R58.md`
+- 小程序技术验收证据目录：`/Users/gy-vip/Desktop/KK_Crab/miniprogram/evidence/r58/`
 
 说明：
 
@@ -18,7 +18,7 @@
 
 参考：`/Users/gy-vip/Desktop/KK_Crab-backend/scripts/api-samples/cloudfunctions.available.json`
 
-### `R54` 首轮真实 smoke 范围
+### `R58` 首轮真实 smoke 范围
 
 - `user-bff.bootstrap`
 - `publisher-bff.getProfile`
@@ -91,9 +91,9 @@ wx.cloud.init({
 
 ## 4. 首轮 smoke 顺序（固定）
 
-1. `runtimeDebug.useCloud()`
-2. `devSmoke.prepare()`
-3. `devSmoke.runFirstBatch()`
+1. 通过 compile query 启动 `__dev_auto_smoke=1&__dev_runtime=cloud`
+2. 等待 tagged 输出 `AUTO_SMOKE_RESULT::...`
+3. 若 CLI 无法稳定驱动，再降级为一次性 console fallback
 
 `runFirstBatch()` 内部固定顺序：
 
@@ -146,7 +146,7 @@ wx.cloud.init({
 1. 不把 `DEFAULT_API_MODE` 改成 `cloud`。
 2. 不新增前台可见 debug UI。
 3. 不用脚本伪造 `OPENID` 做“假真实 smoke”。
-4. 不在 `R54` 并发扩大到 `notice-bff` 更宽写链路、消息链路和广场 / 搜索真实行为。
+4. 不在 `R58` 并发扩大到 `notice-bff` 更宽写链路、消息链路和广场 / 搜索真实行为。
 
 ## 7. 失败回传最小要求
 

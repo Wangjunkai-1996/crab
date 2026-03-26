@@ -26,6 +26,28 @@
         </view>
       </view>
 
+      <view class="surface-card insight-card motion-slide-up">
+        <view class="insight-card__head">
+          <view>
+            <text class="insight-card__eyebrow">编辑路径</text>
+            <text class="insight-card__title">编辑页先帮你判断是“补信息重新提审”，还是“先存修改稍后再确认”。</text>
+          </view>
+          <text class="pill-primary">{{currentStatusText}}</text>
+        </view>
+        <view class="guide-grid">
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">本轮重点</text>
+            <text class="guide-card__title">优先修影响审核判断的字段</text>
+            <text class="guide-card__copy">标题、平台、领域、预算、截止时间和达人要求会直接影响再次审核时的可读性，建议优先确认。</text>
+          </view>
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">动作区别</text>
+            <text class="guide-card__title">保存修改不会立刻对外生效</text>
+            <text class="guide-card__copy">只有重新提交审核通过后，广场和详情页才会看到新的内容。</text>
+          </view>
+        </view>
+      </view>
+
       <view class="surface-card form-section">
         <view class="form-section__head">
           <text class="form-section__title">通告核心信息</text>
@@ -144,5 +166,5 @@
     </block>
   </view>
 
-  <bottom-action-bar primaryText="重新提交审核" secondaryText="{{savingDraft ? '保存中...' : '保存修改'}}" primaryDisabled="{{primaryDisabled}}" loading="{{primaryLoading}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+  <bottom-action-bar primaryText="重新提交审核" secondaryText="{{savingDraft ? '保存中...' : '保存修改'}}" helperText="{{savingDraft ? '正在保存当前修改' : '保存修改不会直接改线上展示，确认无误后再重新提交审核'}}" primaryDisabled="{{primaryDisabled}}" loading="{{primaryLoading}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
 </view>

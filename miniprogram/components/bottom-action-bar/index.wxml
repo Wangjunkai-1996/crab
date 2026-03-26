@@ -1,4 +1,5 @@
 <view class="bar" style="padding-bottom: {{bottomInset}}px;">
+  <text wx:if="{{helperText}}" class="bar__helper">{{helperText}}</text>
   <view class="bar__inner">
     <view wx:if="{{secondaryText}}" class="bar__button bar__button--secondary" bindtap="onSecondaryTap">{{secondaryText}}</view>
     <view class="bar__button {{primaryDisabled ? 'bar__button--disabled' : 'bar__button--primary'}}" bindtap="onPrimaryTap">

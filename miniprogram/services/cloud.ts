@@ -1,12 +1,12 @@
 import type { ApiResponse, CloudActionRequest } from '../models/api';
 import type { RuntimeSwitchState } from './runtime-config';
-import { resolveRuntimeSwitchState } from './runtime-config';
+import { resolveRuntimeSwitchState, type RuntimeOverrideInput } from './runtime-config';
 import { mockCallFunction } from './mock-adapter';
 
 let runtimeSwitchState: RuntimeSwitchState = resolveRuntimeSwitchState();
 
-export function initCloud() {
-  runtimeSwitchState = resolveRuntimeSwitchState();
+export function initCloud(runtimeOverride?: RuntimeOverrideInput) {
+  runtimeSwitchState = resolveRuntimeSwitchState(runtimeOverride);
 
   if (runtimeSwitchState.activeMode !== 'cloud') {
     return runtimeSwitchState;

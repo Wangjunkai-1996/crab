@@ -10,6 +10,8 @@ const repoRoot = path.resolve(__dirname, '..')
 const miniprogramRoot = path.join(repoRoot, 'miniprogram')
 const tsconfigPath = path.join(miniprogramRoot, 'tsconfig.json')
 const appJsonPath = path.join(miniprogramRoot, 'app.json')
+const nodeBin = process.execPath
+const executionPath = `${path.dirname(process.execPath)}:${process.env.PATH || ''}`
 
 function readJson(targetPath) {
   return JSON.parse(fs.readFileSync(targetPath, 'utf8'))
@@ -32,6 +34,29 @@ function runTsc() {
   const result = spawnSync('npx', ['--yes', '-p', 'typescript', 'tsc', '-p', tsconfigPath], {
     cwd: repoRoot,
     stdio: 'inherit',
+    env: {
+      ...process.env,
+      PATH: executionPath,
+    },
+  })
+
+  if (typeof result.status === 'number' && result.status !== 0) {
+    process.exit(result.status)
+  }
+
+  if (result.error) {
+    throw result.error
+  }
+}
+
+function runStyleBuild() {
+  const result = spawnSync(nodeBin, [path.join(repoRoot, 'scripts/build-miniprogram-styles.mjs')], {
+    cwd: repoRoot,
+    stdio: 'inherit',
+    env: {
+      ...process.env,
+      PATH: executionPath,
+    },
   })
 
   if (typeof result.status === 'number' && result.status !== 0) {
@@ -57,6 +82,7 @@ const appConfig = readJson(appJsonPath)
 const pageEntries = collectPageEntryPaths(appConfig)
 
 runTsc()
+runStyleBuild()
 
 const outputCheck = verifyJsOutputs(pageEntries)
 

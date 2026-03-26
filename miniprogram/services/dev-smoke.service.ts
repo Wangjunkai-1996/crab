@@ -1,9 +1,10 @@
-import type { ApplicationSubmitPayload, ApplicationSubmitResponse, ApplicationWithdrawResponse } from '../models/application';
+import type { ApplicationSubmitPayload, ApplicationSubmitResponse, ApplicationWithdrawResponse, PublisherApplicationListPayload } from '../models/application';
 import type { CreatorCardResponse, CreatorCardUpsertPayload, CreatorCardUpsertResponse, PublisherProfileResponse, PublisherProfileUpsertPayload, PublisherProfileUpsertResponse } from '../models/user';
-import { withdraw, submit } from './application.service';
+import { myList as listMyApplications, publisherList, withdraw, submit } from './application.service';
 import { getCard, upsertCard } from './creator.service';
-import { detail as getNoticeDetail, list as listNotices } from './notice.service';
+import { createDraft, detail as getNoticeDetail, list as listNotices, myList as listMyNotices } from './notice.service';
 import { getProfile, upsertProfile } from './publisher.service';
+import { myList as listMyReports, submit as submitReport } from './report.service';
 import { clearRequestDebugRecords, getRequestDebugRecords, setRequestDebugEnabled } from '../utils/request-debug';
 import { RequestError } from '../utils/request';
 
@@ -43,6 +44,39 @@ const APPLICATION_SAMPLE_BASE_PAYLOAD = {
   contactType: 'wechat',
   contactValue: 'creator_contact_2001',
 } satisfies Omit<ApplicationSubmitPayload, 'noticeId'>;
+
+function buildInventoryNoticeDraftPayload() {
+  return {
+    title: 'R58 报名管理样本通告',
+    brandName: '蟹宝品牌店',
+    cooperationPlatform: 'xiaohongshu',
+    cooperationCategory: 'food_beverage',
+    cooperationType: 'short_video',
+    city: '上海',
+    settlementType: 'fixed_price',
+    budgetRange: '500_1000',
+    recruitCount: 1,
+    deadlineAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+    creatorRequirements: '用于技术盘点的最小样本通告',
+    cooperationDescription: '仅用于报名管理页技术验收，不参与产品体验结论。',
+    attachments: [],
+  };
+}
+
+function buildInventoryReportPayload(target: {
+  noticeId?: string;
+  title?: string;
+  city?: string;
+} | null) {
+  return {
+    targetType: 'notice',
+    targetId: target?.noticeId,
+    targetSummary: target?.title || target?.city || 'R63 举报记录样本',
+    reasonCode: 'false_information',
+    description: '仅用于补齐举报记录页真实样本，不作为产品规则新增。',
+    evidenceImages: [],
+  };
+}
 
 interface DevSmokeState {
   latestResolvedNoticeId: string;
@@ -491,6 +525,103 @@ export function createDevSmokeHelper(getRuntimeSummary: () => RuntimeDebugSummar
     };
   }
 
+  async function resolveInventorySamples(): Promise<DevSmokeInventorySamples> {
+    const result: DevSmokeInventorySamples = {
+      publisherNoticeId: '',
+      creatorApplicationId: smokeState.latestWithdrawnApplicationId || smokeState.latestSubmittedApplicationId || '',
+      searchKeyword: '',
+      errors: {},
+    };
+    let publicSearchNotice: { noticeId?: string; title?: string; city?: string } | null = null;
+    let preferredPublisherNotice: { noticeId?: string; title?: string; city?: string; applicationCount?: number } | null = null;
+
+    try {
+      await getApp<IAppOption>().bootstrapApp(true);
+      const publicNoticeList = await listNotices({});
+      publicSearchNotice = publicNoticeList.list[0] || null;
+
+      if (publicSearchNotice) {
+        result.searchKeyword = publicSearchNotice.title || publicSearchNotice.city || '';
+      }
+    } catch (error) {
+      result.errors.searchKeyword = error instanceof Error ? error.message : 'public_notice_resolve_failed';
+    }
+
+    try {
+      await getApp<IAppOption>().bootstrapApp(true);
+      const noticeList = await listMyNotices({});
+      const candidates = [...noticeList.list].sort((left, right) => Number(right.applicationCount || 0) - Number(left.applicationCount || 0));
+      const inspectPayloadBase: Omit<PublisherApplicationListPayload, 'noticeId'> = {};
+
+      for (const item of candidates.slice(0, 5)) {
+        try {
+          const applications = await publisherList({
+            ...inspectPayloadBase,
+            noticeId: item.noticeId,
+          });
+
+          if ((applications.list || []).length > 0) {
+            preferredPublisherNotice = item;
+            break;
+          }
+        } catch (error) {
+          result.errors.publisherNoticeInspect = error instanceof Error ? error.message : 'publisher_notice_inspect_failed';
+        }
+      }
+
+      const preferredNotice =
+        preferredPublisherNotice ||
+        candidates.find((item) => Number(item.applicationCount || 0) > 0) ||
+        candidates[0] ||
+        null;
+
+      if (preferredNotice?.noticeId) {
+        result.publisherNoticeId = preferredNotice.noticeId;
+        preferredPublisherNotice = preferredNotice;
+
+        if (!result.searchKeyword) {
+          result.searchKeyword = preferredNotice.title || preferredNotice.city || '';
+        }
+      } else {
+        const createdDraft = await createDraft(buildInventoryNoticeDraftPayload());
+        result.publisherNoticeId = createdDraft.noticeId || '';
+
+        if (!result.searchKeyword) {
+          result.searchKeyword = '上海';
+        }
+      }
+    } catch (error) {
+      result.errors.publisherNoticeId = error instanceof Error ? error.message : 'publisher_notice_resolve_failed';
+    }
+
+    try {
+      await getApp<IAppOption>().bootstrapApp(true);
+      const applicationList = await listMyApplications({});
+      const candidate =
+        applicationList.list.find((item) => item.applicationId && item.status !== 'withdrawn') ||
+        applicationList.list[0] ||
+        null;
+      result.creatorApplicationId = candidate?.applicationId || result.creatorApplicationId;
+    } catch (error) {
+      result.errors.creatorApplicationId = error instanceof Error ? error.message : 'creator_application_resolve_failed';
+    }
+
+    try {
+      await getApp<IAppOption>().bootstrapApp(true);
+      const reportList = await listMyReports();
+
+      if (!(reportList.list || []).length) {
+        await submitReport(
+          buildInventoryReportPayload(publicSearchNotice || preferredPublisherNotice),
+        );
+      }
+    } catch (error) {
+      result.errors.reportRecordSample = error instanceof Error ? error.message : 'report_record_seed_failed';
+    }
+
+    return result;
+  }
+
   return {
     prepare,
     getSummary: buildSummary,
@@ -501,5 +632,6 @@ export function createDevSmokeHelper(getRuntimeSummary: () => RuntimeDebugSummar
     submitApplication: submitApplicationStep,
     withdrawLatestApplication: withdrawLatestApplicationStep,
     runFirstBatch,
+    resolveInventorySamples,
   };
 }

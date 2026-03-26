@@ -11,6 +11,7 @@ const EXPECTED_FUNCTIONS = [
   'publisher-bff',
   'creator-bff',
   'application-bff',
+  'report-bff',
   'review-admin',
   'governance-admin',
   'notice-bff',

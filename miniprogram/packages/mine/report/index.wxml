@@ -9,6 +9,22 @@
   ></app-hero-header>
 
   <view class="page-stack report-stack">
+    <view class="surface-card insight-card motion-slide-up">
+      <view class="insight-card__head">
+        <view>
+          <text class="insight-card__eyebrow">举报路径</text>
+          <text class="insight-card__title">先把举报对象和原因讲清楚，再补截图或说明，方便平台快速进入处理队列。</text>
+        </view>
+        <text class="pill-primary">{{submitted ? '已提交' : '待提交'}}</text>
+      </view>
+      <view class="guide-grid">
+        <view class="guide-card">
+          <text class="guide-card__eyebrow">优先填写</text>
+          <text class="guide-card__title">对象摘要和举报原因最关键</text>
+          <text class="guide-card__copy">这两个字段会决定分流方向，截图和补充说明则用于后续人工核验。</text>
+        </view>
+      </view>
+    </view>
     <view wx:if="{{submitted}}" class="surface-card success-card">
       <text class="success-card__title">举报已提交</text>
       <text class="success-card__copy">当前编号：{{reportId}}。平台已接收你的举报并进入处理队列，如需补充证据会通过消息中心提醒。</text>
@@ -76,5 +92,5 @@
     </block>
   </view>
 
-  <bottom-action-bar primaryText="{{submitted ? '查看举报记录' : '提交举报'}}" secondaryText="{{submitted ? '返回上一页' : '重置表单'}}" primaryDisabled="{{primaryDisabled}}" loading="{{submitting}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+  <bottom-action-bar primaryText="{{submitted ? '查看举报记录' : '提交举报'}}" secondaryText="{{submitted ? '返回上一页' : '重置表单'}}" helperText="{{submitted ? '如需继续补充问题，可再次提交新的举报并带上当前编号' : '请优先上传能证明问题的截图或聊天凭证，平台会按编号持续跟进'}}" primaryDisabled="{{primaryDisabled}}" loading="{{submitting}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
 </view>

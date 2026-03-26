@@ -7,8 +7,8 @@ exports.invokeCloudFunction = invokeCloudFunction;
 const runtime_config_1 = require("./runtime-config");
 const mock_adapter_1 = require("./mock-adapter");
 let runtimeSwitchState = (0, runtime_config_1.resolveRuntimeSwitchState)();
-function initCloud() {
-    runtimeSwitchState = (0, runtime_config_1.resolveRuntimeSwitchState)();
+function initCloud(runtimeOverride) {
+    runtimeSwitchState = (0, runtime_config_1.resolveRuntimeSwitchState)(runtimeOverride);
     if (runtimeSwitchState.activeMode !== 'cloud') {
         return runtimeSwitchState;
     }

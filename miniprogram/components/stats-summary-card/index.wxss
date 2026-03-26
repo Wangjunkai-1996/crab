@@ -1,0 +1,54 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16rpx;
+}
+
+.stats-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+.stats-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.38), rgba(18, 179, 168, 0.18), transparent);
+  opacity: 0.85;
+}
+.stats-card::after {
+  content: "";
+  position: absolute;
+  right: -42rpx;
+  bottom: -56rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(47, 107, 255, 0.08), transparent 68%);
+  pointer-events: none;
+}
+.stats-card {
+  padding: 24rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 250, 255, 0.92));
+  box-shadow: 0 20rpx 56rpx rgba(25, 61, 118, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  align-items: center;
+  text-align: center;
+  padding: 24rpx 12rpx;
+}
+
+.stats-card__value {
+  font-family: "SF Pro Display", "DIN Alternate", "HarmonyOS Sans SC", sans-serif;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #152033;
+}
+
+.stats-card__label {
+  font-size: 24rpx;
+  color: #5c6980;
+}

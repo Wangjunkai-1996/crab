@@ -18,3 +18,5 @@ scripts/node_modules/
 scripts/*.cache-bust.json
 scripts/admin-web-deploy-check*.json
 scripts/evidence/
+.autonomous/
+.tmp-cloudfunctions-deploy/

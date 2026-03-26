@@ -4,6 +4,25 @@
     <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
     <page-error-state wx:elif="{{pageState === 'error'}}" title="报名详情加载失败" description="{{errorText}}" actionText="重新加载" bind:action="loadPage"></page-error-state>
     <block wx:else>
+      <view class="surface-card insight-card motion-slide-up">
+        <view class="insight-card__head">
+          <view>
+            <text class="insight-card__eyebrow">详情解读</text>
+            <text class="insight-card__title">这页先讲清你当前所处阶段，再告诉你还能不能撤回、什么时候能看到联系方式。</text>
+          </view>
+          <text class="pill-primary">{{statusText}}</text>
+        </view>
+        <view class="info-grid">
+          <view class="info-tile">
+            <text class="info-tile__label">联系方式</text>
+            <text class="info-tile__value">{{contactTitle === '发布方联系方式' ? '已开放' : '待开放'}}</text>
+          </view>
+          <view class="info-tile">
+            <text class="info-tile__label">可否撤回</text>
+            <text class="info-tile__value">{{canWithdraw ? '可撤回' : '不可撤回'}}</text>
+          </view>
+        </view>
+      </view>
       <view class="surface-card app-detail-card">
         <text class="app-detail-card__status">{{statusText}}</text>
         <text class="app-detail-card__title">{{detail.noticeSummary.title}}</text>
@@ -35,5 +54,5 @@
       </view>
     </block>
   </view>
-  <bottom-action-bar primaryText="查看原通告" secondaryText="{{secondaryText}}" primaryDisabled="{{withdrawing}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+  <bottom-action-bar primaryText="查看原通告" secondaryText="{{secondaryText}}" helperText="{{canWithdraw ? '若当前还在可撤回阶段，可以直接从这里撤回报名' : '当前阶段不可撤回，建议继续关注消息中心和报名状态时间线'}}" primaryDisabled="{{withdrawing}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
 </view>

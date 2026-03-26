@@ -16,6 +16,7 @@ const functionNames = [
   'notice-bff',
   'application-bff',
   'message-bff',
+  'report-bff',
   'review-admin',
   'governance-admin',
   'cron-jobs',

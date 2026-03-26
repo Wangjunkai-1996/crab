@@ -9,6 +9,22 @@
   ></app-hero-header>
 
   <view class="page-stack feedback-stack">
+    <view class="surface-card insight-card motion-slide-up">
+      <view class="insight-card__head">
+        <view>
+          <text class="insight-card__eyebrow">反馈路径</text>
+          <text class="insight-card__title">优先把问题发生在哪、你预期应该怎样、实际又发生了什么写清楚。</text>
+        </view>
+        <text class="pill-primary">{{submitted ? '已提交' : '待提交'}}</text>
+      </view>
+      <view class="guide-grid">
+        <view class="guide-card">
+          <text class="guide-card__eyebrow">建议写法</text>
+          <text class="guide-card__title">页面位置 + 预期结果 + 实际现象</text>
+          <text class="guide-card__copy">这三段写清楚后，就算只有一张截图，也足够产品和研发快速复盘问题。</text>
+        </view>
+      </view>
+    </view>
     <view wx:if="{{submitted}}" class="surface-card success-card">
       <text class="success-card__title">反馈已提交</text>
       <text class="success-card__copy">当前编号：{{feedbackId}}。我们会优先处理截图清晰、描述明确的问题反馈；如需补充信息，会通过消息中心联系你。</text>
@@ -60,5 +76,5 @@
     </block>
   </view>
 
-  <bottom-action-bar primaryText="{{submitted ? '返回上一页' : '提交反馈'}}" secondaryText="重置表单" primaryDisabled="{{primaryDisabled}}" loading="{{submitting}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+  <bottom-action-bar primaryText="{{submitted ? '返回上一页' : '提交反馈'}}" secondaryText="重置表单" helperText="{{submitted ? '如果后续还需要补充上下文，可再次提交并注明当前反馈编号' : '写明页面位置、预期结果和实际现象，定位会更快；截图越清晰越容易复盘'}}" primaryDisabled="{{primaryDisabled}}" loading="{{submitting}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
 </view>

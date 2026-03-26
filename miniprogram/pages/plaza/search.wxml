@@ -1,15 +1,34 @@
 <view class="page-shell page-shell--tight-bottom">
   <app-hero-header theme="surface" kicker="搜索结果" title="快速找到合适合作" subtitle="输入关键词后，继续沿用广场的发现筛选条件。" showBack="{{true}}" topInset="{{topInset}}"></app-hero-header>
 
+  <view class="surface-card insight-card motion-slide-up">
+    <view class="insight-card__head">
+      <view>
+        <text class="insight-card__eyebrow">搜索路径</text>
+        <text class="insight-card__title">先用关键词缩小范围，再决定是沿用当前筛选，还是放宽条件继续浏览。</text>
+      </view>
+      <text class="pill-primary">{{resultCountText}}</text>
+    </view>
+    <text class="insight-card__copy">{{searchSummaryText}}</text>
+    <view wx:if="{{filterChips.length}}" class="insight-chip-row">
+      <text class="glass-chip glass-chip--active">沿用广场筛选</text>
+      <text wx:for="{{filterChips}}" wx:key="*this" class="glass-chip">{{item}}</text>
+    </view>
+  </view>
+
   <view class="search-panel surface-card">
     <input class="search-input" placeholder="搜索品牌、城市、合作需求" value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="onSearchSubmit" confirm-type="search" />
     <view class="search-button" bindtap="onSearchSubmit">搜索</view>
     <view class="search-summary-row">
       <text class="search-summary-pill search-summary-pill--active">{{resultCountText}}</text>
-      <text class="search-summary-pill">历史记录</text>
-      <text class="search-summary-pill">热门词</text>
+      <text class="search-summary-pill">{{hasSearched ? (searchMode === 'relaxed' ? '建议放宽筛选' : '沿用当前筛选') : '等待搜索'}}</text>
+      <text class="search-summary-pill">{{recentKeywords.length ? recentKeywords.length + ' 条历史' : '可复用历史'}}</text>
+    </view>
+    <view wx:if="{{suggestionKeywords.length}}" class="search-chip-row">
+      <view wx:for="{{suggestionKeywords}}" wx:key="*this" class="recent-chip" data-keyword="{{item}}" bindtap="onTapSuggestion">{{item}}</view>
     </view>
     <view wx:if="{{filterChips.length}}" class="search-chip-row">
+      <text class="search-chip search-chip--muted">当前筛选</text>
       <text wx:for="{{filterChips}}" wx:key="*this" class="search-chip">{{item}}</text>
     </view>
   </view>
@@ -17,16 +36,45 @@
   <view class="page-stack search-stack">
     <page-skeleton wx:if="{{pageState === 'loading'}}"></page-skeleton>
     <page-error-state wx:elif="{{pageState === 'error'}}" title="搜索暂时不可用" description="{{errorText}}" actionText="重新搜索" bind:action="onSearchSubmit"></page-error-state>
-    <empty-state wx:elif="{{hasSearched && pageState === 'empty'}}" title="没有更匹配的结果了" description="可以尝试放宽关键词，或者回到广场调整筛选条件。"></empty-state>
     <block wx:elif="{{hasSearched && pageState === 'ready'}}">
-      <notice-card wx:for="{{notices}}" wx:key="noticeId" notice="{{item}}" bind:tapcard="onTapNotice"></notice-card>
+      <view wx:if="{{searchMode === 'relaxed'}}" class="surface-card search-tip-card">
+        <text class="search-tip-card__title">当前筛选下没有直接命中，但放宽后有结果</text>
+        <text class="search-tip-card__copy">如果你只是想先确认有没有真实合作可看，可以先浏览下面的建议结果；如果想正式切回更宽的发现流，再一键清空筛选重搜。</text>
+        <view class="search-tip-card__action" bindtap="onClearFiltersAndSearch">清空筛选后重搜</view>
+      </view>
+
+      <view wx:if="{{exactNotices.length}}" class="result-section">
+        <view class="result-section__head">
+          <text class="result-section__title">当前筛选下的结果</text>
+          <text class="result-section__copy">先看是否已经有足够匹配的合作，不够再回去调筛选。</text>
+        </view>
+        <notice-card wx:for="{{exactNotices}}" wx:key="noticeId" notice="{{item}}" featured="{{index === 0}}" bind:tapcard="onTapNotice"></notice-card>
+      </view>
+
+      <view wx:if="{{relaxedNotices.length}}" class="result-section">
+        <view class="result-section__head">
+          <text class="result-section__title">放宽筛选后的建议结果</text>
+          <text class="result-section__copy">这些结果保留了相同关键词，只是先移除了更窄的广场筛选，方便你确认是不是筛选条件太严。</text>
+        </view>
+        <notice-card wx:for="{{relaxedNotices}}" wx:key="noticeId" notice="{{item}}" featured="{{index === 0}}" bind:tapcard="onTapNotice"></notice-card>
+      </view>
+    </block>
+    <block wx:elif="{{hasSearched && pageState === 'empty'}}">
+      <empty-state title="没有更匹配的结果了" description="可以尝试放宽关键词，或者回到广场调整筛选条件。" actionText="回合作广场" bind:action="onBackToPlaza"></empty-state>
+      <view class="surface-card recent-panel">
+        <text class="recent-panel__title">换个词再试</text>
+        <view class="recent-panel__chips">
+          <view wx:for="{{suggestionKeywords}}" wx:key="*this" class="recent-chip" data-keyword="{{item}}" bindtap="onTapSuggestion">{{item}}</view>
+        </view>
+        <text wx:if="{{!suggestionKeywords.length}}" class="recent-panel__copy">还没有推荐词，先试试“上海 探店”。</text>
+      </view>
     </block>
     <view wx:else class="surface-card recent-panel">
       <text class="recent-panel__title">最近搜索</text>
       <view class="recent-panel__chips">
         <view wx:for="{{recentKeywords}}" wx:key="*this" class="recent-chip" data-keyword="{{item}}" bindtap="onTapRecent">{{item}}</view>
       </view>
-      <text wx:if="{{!recentKeywords.length}}" class="recent-panel__copy">还没有搜索记录，先试试“杭州 探店”。</text>
+      <text wx:if="{{!recentKeywords.length}}" class="recent-panel__copy">还没有搜索记录，先试试“上海 探店”。</text>
     </view>
   </view>
 </view>

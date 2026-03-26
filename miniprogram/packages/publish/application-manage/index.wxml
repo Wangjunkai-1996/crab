@@ -5,6 +5,30 @@
     <page-error-state wx:elif="{{pageState === 'error'}}" title="报名管理加载失败" description="{{errorText}}" actionText="重新加载" bind:action="onRetry"></page-error-state>
     <empty-state wx:elif="{{pageState === 'empty'}}" title="当前通告下暂无报名" description="后续达人提交报名后，会按状态混排出现在这里。"></empty-state>
     <block wx:else>
+      <view class="surface-card insight-card motion-slide-up">
+        <view class="insight-card__head">
+          <view>
+            <text class="insight-card__eyebrow">报名推进</text>
+            <text class="insight-card__title">先从列表里挑一条最值得处理的报名，再看详情区当前允许执行哪些动作。</text>
+          </view>
+          <text class="pill-primary">{{applications.length}} 条报名</text>
+        </view>
+        <view class="guide-grid">
+          <view class="guide-card">
+            <text class="guide-card__eyebrow">怎么判断优先级</text>
+            <text class="guide-card__title">先看状态、联系人释放情况和达人案例摘要</text>
+            <text class="guide-card__copy">列表负责做筛选，右侧详情负责解释下一步动作；动作按钮仍然只以后端返回为准。</text>
+          </view>
+        </view>
+        <view wx:if="{{focusApplication}}" class="focus-card">
+          <view class="focus-card__head">
+            <text class="focus-card__title">当前优先处理</text>
+            <text class="pill-accent">{{focusApplication.badgeText}}</text>
+          </view>
+          <text class="focus-card__headline">{{focusApplication.title}}</text>
+          <text class="focus-card__copy">{{focusApplication.copy}}</text>
+        </view>
+      </view>
       <stats-summary-card items="{{stats}}"></stats-summary-card>
 
       <view class="manage-list">
@@ -25,21 +49,24 @@
             <text class="manage-item__chip">{{item.categoryLabel}}</text>
             <text class="manage-item__chip">{{item.creatorCardSnapshot.followerBand}}</text>
           </view>
-          <text class="manage-item__copy">{{item.creatorCardSnapshot.caseDescription || '暂未补充案例说明'}}</text>
+          <text class="manage-item__copy">{{item.priorityHint}}</text>
+          <text class="manage-item__subcopy">{{item.creatorCardSnapshot.caseDescription || '暂未补充案例说明'}}</text>
           <text class="manage-item__contact {{item.contactRevealState === 'revealed' ? 'manage-item__contact--visible' : ''}}">{{item.contactStateText}}</text>
         </view>
       </view>
 
       <view class="surface-card manage-detail-card">
         <view class="manage-detail-card__head">
-          <text class="manage-detail-card__title">报名详情</text>
-          <text class="manage-detail-card__copy">选中一条报名后查看详情与可执行动作</text>
+          <view>
+            <text class="manage-detail-card__title">报名详情</text>
+            <text class="manage-detail-card__copy">选中一条报名后查看详情与可执行动作</text>
+          </view>
+          <status-tag wx:if="{{detail}}" status="{{detail.application.status}}" text="{{detail.statusText}}"></status-tag>
         </view>
 
         <page-skeleton wx:if="{{detailLoading}}"></page-skeleton>
         <page-error-state wx:elif="{{detailErrorText}}" title="报名详情加载失败" description="{{detailErrorText}}" actionText="重试" bind:action="onRetry"></page-error-state>
         <block wx:elif="{{detail}}">
-          <status-tag status="{{detail.application.status}}" text="{{detail.statusText}}"></status-tag>
           <grouped-form-card title="达人摘要" items="{{detail.creatorItems}}"></grouped-form-card>
           <grouped-form-card title="报名内容" items="{{detail.applicationItems}}"></grouped-form-card>
           <view class="manage-contact-card">
@@ -50,7 +77,7 @@
             <view
               wx:for="{{detail.actionButtons}}"
               wx:key="key"
-              class="manage-action-grid__button"
+              class="manage-action-grid__button manage-action-grid__button--{{item.tone}}"
               data-id="{{selectedApplicationId}}"
               data-action="{{item.key}}"
               bindtap="onTapAction"
@@ -63,5 +90,5 @@
       </view>
     </block>
   </view>
-  <bottom-action-bar primaryText="查看原通告" secondaryText="刷新列表" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
+  <bottom-action-bar primaryText="查看原通告" secondaryText="刷新列表" helperText="{{selectedApplicationId ? '当前详情区只展示已选中的报名，动作按钮也只针对当前项生效' : '先从上方列表选中一条报名，再查看详情与可执行动作'}}" bottomInset="{{bottomInset}}" bind:primary="onPrimaryAction" bind:secondary="onSecondaryAction"></bottom-action-bar>
 </view>

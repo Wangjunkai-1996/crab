@@ -60,21 +60,22 @@
 
 1. `.control-state/current/board.md`
 2. `.control-state/current/decisions.md`
-3. `.control-state/current/control-principles.md`
-4. `.control-state/current/parking-lot.md`
-5. `.control-state/current/meetings/` 中最新轮次的会议纪要
-6. `.control-state/current/inbox/前端.md`
-7. `.control-state/current/inbox/后台.md`
-8. `.control-state/current/inbox/后端.md`
-9. `.control-state/current/inbox/产品经理.md`
-10. `.control-state/current/inbox/体验设计审查.md`
-11. `.control-state/current/inbox/阻塞协调.md`
-12. `.control-state/current/outbox/前端.md`
-13. `.control-state/current/outbox/后台.md`
-14. `.control-state/current/outbox/后端.md`
-15. `.control-state/current/outbox/产品经理.md`
-16. `.control-state/current/outbox/体验设计审查.md`
-17. `.control-state/current/outbox/阻塞协调.md`
+3. `.control-state/current/handoff-miniapp-2026-03-25.md`
+4. `.control-state/current/control-principles.md`
+5. `.control-state/current/parking-lot.md`
+6. `.control-state/current/meetings/` 中最新轮次的会议纪要
+7. `.control-state/current/inbox/前端.md`
+8. `.control-state/current/inbox/后台.md`
+9. `.control-state/current/inbox/后端.md`
+10. `.control-state/current/inbox/产品经理.md`
+11. `.control-state/current/inbox/体验设计审查.md`
+12. `.control-state/current/inbox/阻塞协调.md`
+13. `.control-state/current/outbox/前端.md`
+14. `.control-state/current/outbox/后台.md`
+15. `.control-state/current/outbox/后端.md`
+16. `.control-state/current/outbox/产品经理.md`
+17. `.control-state/current/outbox/体验设计审查.md`
+18. `.control-state/current/outbox/阻塞协调.md`
 
 你必须保留以下 6 个角色，不得漏掉，不得混角色边界：
 
@@ -111,6 +112,34 @@
 2. 六个角色状态
 3. 当前主要阻塞
 4. 你将按“总控单窗口 + Subagents”模式继续推进
+```
+
+## 小程序长对话后的专用补充提示词
+
+如果你是因为“小程序对话太长、需要重新开窗口续接”才来这里，优先直接发下面这段：
+
+```md
+你现在接手 KK_Crab 项目总控窗口。
+
+这次先不要沿用旧聊天记忆判断小程序状态，先按仓库事实纠偏。
+
+请优先阅读：
+1. `/Users/gy-vip/Desktop/KK_Crab/.control-state/current/handoff-miniapp-2026-03-25.md`
+2. `/Users/gy-vip/Desktop/KK_Crab/.control-state/current/board.md`
+3. `/Users/gy-vip/Desktop/KK_Crab/.control-state/current/decisions.md`
+
+严格按以下口径继续：
+- 小程序当前已能编译、能启动、DevTools CLI 能连上
+- 用户之前看到“页面像纯文字”是事实，不是误会
+- 直接根因是缺少 `.wxss` 产物链，这个已经修了
+- 但不能因此声称“小程序页面都完成了”
+- 当前主线应是“逐页核清真实 UI 完成度”，而不是继续夸大为“只差验收”
+
+请先只输出：
+1. 当前已确认的事实
+2. 当前不能确认的事实
+3. 下一步页面盘点顺序
+4. 是否适合进入产品 / 体验签收
 ```
 
 ## 你在新电脑上的最简流程

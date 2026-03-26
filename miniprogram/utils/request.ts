@@ -23,14 +23,15 @@ export class RequestError extends Error {
   missingFieldKeys?: string[];
   errorType?: string;
 
-  constructor(code: number, message: string, requestId: string, extra: ApiExtraErrorData = {}) {
+  constructor(code: number, message: string, requestId: string, extra: ApiExtraErrorData | null | undefined = {}) {
     super(message);
+    const normalizedExtra = extra && typeof extra === 'object' ? extra : {};
     this.name = 'RequestError';
     this.code = code;
     this.requestId = requestId;
-    this.fieldErrors = extra.fieldErrors;
-    this.missingFieldKeys = extra.missingFieldKeys;
-    this.errorType = extra.errorType;
+    this.fieldErrors = normalizedExtra.fieldErrors;
+    this.missingFieldKeys = normalizedExtra.missingFieldKeys;
+    this.errorType = normalizedExtra.errorType;
   }
 }
 

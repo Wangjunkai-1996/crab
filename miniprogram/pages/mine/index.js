@@ -8,6 +8,65 @@ const user_store_1 = require("../../stores/user.store");
 const ui_store_1 = require("../../stores/ui.store");
 const page_state_1 = require("../../utils/page-state");
 const router_1 = require("../../utils/router");
+function decorateAction(action) {
+    return {
+        ...action,
+        helperText: action.locked ? action.lockedReason || '请先完善资料' : action.hint || '继续进入对应主流程处理',
+    };
+}
+function buildRoleCards(summary) {
+    return [
+        {
+            title: '发布方',
+            badgeText: `${summary.publisherSummary.profileCompleteness}%`,
+            copy: summary.roleFlags.publisherEnabled
+                ? `资料已可用，当前累计 ${summary.publisherSummary.noticeCount} 条通告。`
+                : '当前还没开通发布方能力，先补资料后再继续发布。',
+        },
+        {
+            title: '达人',
+            badgeText: `${summary.creatorSummary.cardCompleteness}%`,
+            copy: summary.roleFlags.creatorEnabled
+                ? `名片已可用，当前累计 ${summary.creatorSummary.applicationCount} 条报名。`
+                : '当前还没开通达人能力，先补名片后再继续报名。',
+        },
+    ];
+}
+function buildActionGroups(summary) {
+    const decorated = summary.quickActions.map(decorateAction);
+    const preferredView = summary.preferredView || (summary.roleFlags.publisherEnabled ? 'publisher' : summary.roleFlags.creatorEnabled ? 'creator' : 'publisher');
+    const preferredOrder = preferredView === 'publisher'
+        ? ['myNotice', 'messages', 'creatorCard', 'myApplication']
+        : ['myApplication', 'messages', 'creatorCard', 'myNotice'];
+    const priorityActions = preferredOrder
+        .map((key) => decorated.find((item) => item.key === key))
+        .filter((item) => !!item)
+        .slice(0, 3);
+    const pickedKeys = new Set(priorityActions.map((item) => item.key));
+    const secondaryActions = decorated.filter((item) => !pickedKeys.has(item.key));
+    return {
+        priorityActions,
+        secondaryActions,
+    };
+}
+function buildNextStep(summary) {
+    if (summary.preferredView === 'publisher') {
+        return {
+            title: '当前优先处理发布方动作',
+            copy: '先从通告管理和消息继续推进，再回头补达人侧资料或报名动作，避免双角色入口一起抢首屏注意力。',
+        };
+    }
+    if (summary.preferredView === 'creator') {
+        return {
+            title: '当前优先处理达人侧动作',
+            copy: '先从我的报名和消息继续推进，再回头维护发布方资料，避免双角色入口同时展开造成决策压力。',
+        };
+    }
+    return {
+        title: '先选一个当前主视角',
+        copy: '如果你同时具备发布方和达人能力，先在上方切一个当前优先视角，再按下面的入口继续推进。',
+    };
+}
 Page({
     data: {
         topInset: 0,
@@ -15,6 +74,9 @@ Page({
         errorText: '',
         summary: null,
         stats: [],
+        roleCards: [],
+        priorityActions: [],
+        secondaryActions: [],
         supportActions: [
             {
                 key: 'report',
@@ -48,6 +110,8 @@ Page({
         roleSummaryText: '',
         identityCopy: '',
         canSwitchView: false,
+        nextStepTitle: '',
+        nextStepCopy: '',
     },
     onLoad() {
         this.setData({
@@ -74,11 +138,14 @@ Page({
                     : summary.roleFlags.publisherEnabled
                         ? '当前已具备发布方能力，可继续维护资料并查看报名。'
                         : '当前已具备达人能力，可继续维护名片并跟进报名进展。';
+            const formattedSummary = {
+                ...summary,
+                preferredViewLabel: (0, formatter_1.formatPreferredView)(summary.preferredView),
+            };
+            const { priorityActions, secondaryActions } = buildActionGroups(summary);
+            const nextStep = buildNextStep(summary);
             this.setData({
-                summary: {
-                    ...summary,
-                    preferredViewLabel: (0, formatter_1.formatPreferredView)(summary.preferredView),
-                },
+                summary: formattedSummary,
                 stats: [
                     {
                         label: '我的通告',
@@ -93,9 +160,14 @@ Page({
                         value: summary.messageSummary.unreadCount,
                     },
                 ],
+                roleCards: buildRoleCards(summary),
+                priorityActions,
+                secondaryActions,
                 roleSummaryText,
                 identityCopy,
                 canSwitchView: roleCount > 1,
+                nextStepTitle: nextStep.title,
+                nextStepCopy: nextStep.copy,
                 pageState: page_state_1.PAGE_STATUS.ready,
             });
         }

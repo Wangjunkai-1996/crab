@@ -72,11 +72,20 @@ function buildChips(filter: Record<string, string>) {
   return chips;
 }
 
+function splitNotices(list: NoticeCardItem[]) {
+  return {
+    featuredNotice: list[0] || null,
+    secondaryNotices: list.slice(1),
+  };
+}
+
 Page({
   data: {
     topInset: 0,
     pageState: PAGE_STATUS.loading,
     notices: [] as NoticeCardItem[],
+    featuredNotice: null as NoticeCardItem | null,
+    secondaryNotices: [] as NoticeCardItem[],
     chipItems: [] as Array<{ label: string; value: string; active: boolean }>,
     filterVisible: false,
     selectedPlatform: '',
@@ -110,6 +119,8 @@ Page({
     this.setData({
       pageState: PAGE_STATUS.loading,
       errorText: '',
+      featuredNotice: null,
+      secondaryNotices: [],
     });
 
     try {
@@ -118,9 +129,13 @@ Page({
       const result = await listNotices(filter);
       const nextFilter = (result.filterEcho || filter) as Record<string, string>;
       const hasFilter = Object.keys(nextFilter).length > 0;
+      const decoratedNotices = decorateCards(result.list);
+      const { featuredNotice, secondaryNotices } = splitNotices(decoratedNotices);
 
       this.setData({
-        notices: decorateCards(result.list),
+        notices: decoratedNotices,
+        featuredNotice,
+        secondaryNotices,
         pageState: resolveListPageStatus(result.list),
         chipItems: buildChips(nextFilter),
         currentFilter: nextFilter,

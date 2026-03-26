@@ -1,7 +1,7 @@
 # KK_Crab 已拍板事项
 
-- 更新时间：2026-03-21 11:08
-- 当前轮次：R57
+- 更新时间：2026-03-26 16:10
+- 当前轮次：R63
 
 ## 协作机制
 
@@ -29,6 +29,15 @@
 - [x] 变更时间：2026-03-21 11:08；发布 owner、回滚 owner、值守 owner 当前默认暂按 `王俊凯` 挂载，用于先打通上线台账；若后续有专门负责人，再统一替换
 - [x] 变更时间：2026-03-21 11:08；法院辖区当前暂按 `浙江省杭州市滨江区人民法院` 记为候选口径，但正式上线前仍需结合主体所在地与法务意见最终确认
 - [x] 变更时间：2026-03-21 11:08；`R57` 主线正式切到“已确认真实值入稿 + 法院辖区最终确认 + 冷启动内容 / 提审终稿收口”，继续不要求用户当前做人肉 smoke
+- [x] 变更时间：2026-03-23 20:15；当前轮次切到 `R58`，小程序主线从“readiness / future gate”正式切回“技术验收收口”
+- [x] 变更时间：2026-03-23 20:15；`R58` 验收入口固定为三段 gate：`build-miniprogram-js.mjs`、`check-devtools-readiness.mjs`、`check-wechat-devtools-cli.mjs`
+- [x] 变更时间：2026-03-23 20:15；小程序新增 developer-only `auto-smoke` 启动参数：`__dev_auto_smoke=1`、`__dev_runtime=cloud`；不新增正式用户可见 debug UI
+- [x] 变更时间：2026-03-23 20:15；`R58` 结构化结果 bundle 固定包含 `runtimeSummary / batch / steps / requestLogs / generatedAt`，并统一输出单一 tagged console 结果 `AUTO_SMOKE_RESULT::...`
+- [x] 变更时间：2026-03-23 20:15；`R58` 页面级技术冒烟固定覆盖 `4 个主 Tab + notice-detail + creator/apply + creator/application-list + publish/notice-list + publish/application-manage`
+- [x] 变更时间：2026-03-23 20:15；当前只接受 1 个前置人工动作：开启微信开发者工具服务端口；若 CLI 仍无法稳定驱动，才允许降级为一次性 console fallback
+- [x] 变更时间：2026-03-24 20:12；`R58` 新增仓库内一键技术验收入口：`scripts/run-miniprogram-tech-acceptance-r58.mjs`，输出固定落到 `miniprogram/evidence/r58/runtime/tech-acceptance-run.json` 与 `miniprogram/evidence/r58/summary.md`
+- [x] 变更时间：2026-03-24 20:12；服务端口阻塞已正式关闭，当前小程序技术验收第一阻塞改为“微信开发者工具登录态失效”；日志已命中 `access_token missing / 需要重新登录 / getNewTicket empty ticket`
+- [x] 变更时间：2026-03-24 20:12；在 DevTools 重新登录前，不再把 `automation 端口 9421 未监听` 误判为前端代码问题或继续要求人肉逐页排查
 - [x] `阻塞协调` 窗口默认视为“老板/外部协调窗口”；凡需外部支援、环境真实值、部署入口、账号交付或安全渠道确认的事项，先由该窗口与用户/外部持有方对接，再回写正式回报
 - [x] 当当前第一阻塞依赖老板/外部持有方掌握的真实值时，`阻塞协调` 窗口必须主动产出正式索取文案并向老板发起询问，不等待用户自行想起或主动补充
 - [x] 变更时间：2026-03-19 14:06；默认协作模式切换为“总控单窗口 + 内部 Subagents + 会议落盘”，用户正常情况下只与总控窗口对接，不再承担角色间消息转发
@@ -187,6 +196,47 @@
 - [x] 前端 / 后台后续回报必须按体验证据模板提交；无法截图 / 录屏时，必须补可接受替代证据，并写明当前是 `mock` 还是 `real`
 - [x] 环境未到位导致的缺口统一登记为“待环境后复核”；规则未拍板导致的缺口统一登记为“待拍板后复核”；两类都不提前判定为开发未完成或设计偏离
 - [x] 总控窗口必须遵守 `control-principles.md`，凡是没在文档、决议、会议纪要或回报中明确出现的内容，一律标注为待确认，不得当成既定事实
+- [x] 变更时间：2026-03-25 11:50；小程序当前事实已纠偏：此前“页面像纯文字”的直接根因不是用户误看，也不是单纯 DevTools 问题，而是项目缺少 `.scss -> .wxss` 样式产物链；现已补齐 `scripts/build-miniprogram-styles.mjs` 并接入 `scripts/build-miniprogram-js.mjs`
+- [x] 变更时间：2026-03-25 11:50；总控后续不得再将“小程序能编译/能启动/有页面骨架”表述为“页面已完成、只差验收”；当前正式口径改为：`WXML/TS 结构较完整，但真实视觉完成度仍待逐页复核`
+- [x] 变更时间：2026-03-25 11:50；当前小程序主任务从“优先深挖 DevTools 自动化”切为“先核清真实 UI 完成度”；在页面盘点完成前，不进入产品 / 体验最终签收表述
+- [x] 变更时间：2026-03-25 13:10；`R58` 页面完成度盘点已固定为结构化证据，输出路径为 `miniprogram/evidence/r58/runtime/ui-inventory.json` 与 `miniprogram/evidence/r58/ui-inventory.md`；当前盘点覆盖 `app.json` 注册的 `18` 个页面
+- [x] 变更时间：2026-03-25 13:10；当前小程序页面盘点正式结论为：`可验收 2 / 基本可用待收口 11 / 仅骨架 0 / 运行异常 5`；并已确认“不再出现整页像纯文字”的系统性样式失效
+- [x] 变更时间：2026-03-25 13:10；当前 `5` 个运行异常页固定为 `messages`、`mine`、`publish-application-manage`、`creator-application-detail`、`report-records`；本轮只允许围绕这些真实缺口与直接关联的最小样本 / 权限问题推进，不主动扩公开 API 或 Cloud Function contract
+- [x] 变更时间：2026-03-25 13:12；`R58` 最新技术验收已确认“链路可跑但结果未过”：固定预检、DevTools CLI、automation 预热与唯一允许的一次 console fallback 均已成功，但 `application-bff.submit` 返回 `code=10000`、`message=系统繁忙，请稍后重试`，因此技术验收当前不通过
+- [x] 变更时间：2026-03-25 13:12；当前技术验收第一 blocker 已从“DevTools 登录态 / 服务端口问题”正式切换为 `application-bff.submit` 真实业务失败；后续不得再把 `9421`、CLI 端口或日志噪音误记为当前主阻塞
+- [x] 变更时间：2026-03-25 13:12；产品 / 体验签收 gate 正式更新为双条件同时满足：`技术验收通过` 且 `页面盘点无 P0/P1 体验缺口`；任一条件不满足，都不得宣称可进入最终签收
+- [x] 变更时间：2026-03-26 10:13；`R58` 页面盘点已完成二次复核：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续保持 `18` 页覆盖、`可验收 2 / 基本可用待收口 16 / 仅骨架 0 / 运行异常 0`
+- [x] 变更时间：2026-03-26 10:13；当前小程序截图证据口径已更新为：默认采用 `reuse-existing-first`，优先复用已存在真实截图；是否刷新当天 live screenshot 不再阻塞技术或签收准备结论
+- [x] 变更时间：2026-03-26 10:16；`R58` 技术验收已完成二次复核：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 继续保持 `ok=true / blocker=none / batch ok=true`
+- [x] 变更时间：2026-03-26 10:53；小程序下一阶段主线已从“技术验收闭环”正式切到“产品 / 体验签收准备”；默认不再主动追加新的技术修复，除非签收阶段重新暴露前端真实 `P0/P1` 或被明确归因到最小接口 / 样本 blocker
+- [x] 变更时间：2026-03-26 10:53；当前允许启动产品 / 体验签收准备，但仍不得把“技术前提已满足”直接表述成“产品 / 体验已签收”；正式签收结论必须由页面级签收输入包进一步产出
+- [x] 变更时间：2026-03-26 11:32；`R60` 轻量复核已确认当前技术基线未漂移：`node scripts/build-miniprogram-js.mjs` 与 `node scripts/check-miniprogram-tech-acceptance.mjs` 继续全绿，因此本轮默认继续沿用现有 `R58` 技术证据，不重开新的技术排障
+- [x] 变更时间：2026-03-26 11:32；页面级产品 / 体验候选结论已正式落盘到 `.control-state/current/miniapp-signoff-judgment-r60.md`；当前 `18` 页固定结论为：产品 `建议签收 2 / 可评审待收口 16 / 回流修复 0`，体验 `建议签收 2 / 可评审待收口 16 / 回流修复 0`
+- [x] 变更时间：2026-03-26 11:32；当前可以进入最终签收讨论，但仍不得把 `R60` 候选结论直接表述为“最终签收已完成”；只有逐页确认后才能输出正式签收结论
+- [x] 变更时间：2026-03-26 11:32；`R60` 当前未发现新的前端 `P0/P1`、后端最小支援或后台共享 blocker；默认不再开启新的技术修复轮次，只有签收讨论重新暴露真实缺口时才按最小范围回流
+- [x] 变更时间：2026-03-26 13:45；`R61` 固定预检已再次确认技术基线未漂移：`node scripts/build-miniprogram-js.mjs` 与 `node scripts/check-miniprogram-tech-acceptance.mjs` 继续全绿，因此本轮继续沿用现有 `R58` 技术证据，不补跑新的技术验收或页面盘点
+- [x] 变更时间：2026-03-26 13:45；正式最终签收结论已落盘到 `.control-state/current/miniapp-signoff-conclusion-r61.md`；当前 `18` 页固定最终结论为：页面 `签收通过 2 / 有条件通过 16 / 退回修复 0`，产品 `签收通过 2 / 有条件通过 16 / 退回修复 0`，体验 `签收通过 2 / 有条件通过 16 / 退回修复 0`
+- [x] 变更时间：2026-03-26 13:45；当前小程序整体最终签收结论已形成，正式结果为 `最终签收有条件通过`；当前允许表述为“已完成正式最终签收，结果为有条件通过”，但不得表述为“18 页已全部无条件签收通过”
+- [x] 变更时间：2026-03-26 13:45；`R61` 的 `16` 页“有条件通过”只登记为非阻塞待收口项，不重新打开技术主线；只有这些条件项升级为真实 `P0/P1`、接口或样本 blocker 时，才按最小范围回流
+- [x] 变更时间：2026-03-26 14:35；当前轮次切到 `R62`，主线从“仅跟踪条件项”推进到“`16` 页前端收口冲刺 + 正式结论刷新”；默认仍不新增公开业务 API、Cloud Function contract 或后台接口
+- [x] 变更时间：2026-03-26 14:35；`R62` 固定复核已确认技术基线继续稳定：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 继续 `ok=true / blocker=none / batch ok=true`，`MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续 `18` 页覆盖、`runtimeError=0 / skeletonOnly=0`
+- [x] 变更时间：2026-03-26 14:35；`R62` 已执行一次 live screenshot 刷新尝试，但 DevTools 截图实时采集仍回落到缓存图；该结果按“证据刷新动作已执行、未构成技术回退”登记，不重新打开技术 blocker
+- [x] 变更时间：2026-03-26 14:35；`R62` 正式结论文档已落盘到 `.control-state/current/miniapp-signoff-conclusion-r62.md`；当前 `18` 页固定最终结论刷新为：页面 `签收通过 10 / 有条件通过 8 / 退回修复 0`，产品 `签收通过 10 / 有条件通过 8 / 退回修复 0`，体验 `签收通过 10 / 有条件通过 8 / 退回修复 0`
+- [x] 变更时间：2026-03-26 14:35；`R62` 后整体小程序正式结论仍为 `最终签收有条件通过`；当前剩余 `8` 页条件项全部记为前端展示 / 信息层级 / 列表密度 / 空态转化路径的非阻塞收口项，不记为真实 `P0/P1`
+- [x] 变更时间：2026-03-26 16:10；当前轮次切到 `R63`，主线从“`16` 页已完成一轮收口”推进到“剩余 `8` 页升档冲刺 + 正式结论刷新”；默认继续不新增公开业务 API、Cloud Function contract 或后台接口
+- [x] 变更时间：2026-03-26 16:10；`R63` 固定复核已再次确认技术基线继续稳定：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 继续 `ok=true / blocker=none / batch ok=true`，`MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续 `18` 页覆盖、`runtimeError=0 / skeletonOnly=0`
+- [x] 变更时间：2026-03-26 16:10；`R63` 已再次执行 live screenshot 刷新尝试，但 DevTools 截图实时采集仍回落到缓存图；该结果继续按“证据刷新动作已执行、未构成技术回退”登记，不重新打开技术 blocker
+- [x] 变更时间：2026-03-26 16:10；`R63` 正式结论文档已落盘到 `.control-state/current/miniapp-signoff-conclusion-r63.md`；当前 `18` 页固定最终结论刷新为：页面 `签收通过 15 / 有条件通过 3 / 退回修复 0`，产品 `签收通过 15 / 有条件通过 3 / 退回修复 0`，体验 `签收通过 15 / 有条件通过 3 / 退回修复 0`
+- [x] 变更时间：2026-03-26 16:10；`R63` 后整体小程序正式结论继续为 `最终签收有条件通过`；当前剩余 `3` 页条件项固定为 `search`、`publish-application-manage`、`report-records`，并统一记为“真实非空样本不足导致未升档”的非阻塞条件项，不记为新的前端 `P0/P1`
+- [x] 变更时间：2026-03-26 18:21；已通过 CloudBase 最小样本脚本补齐 `search / publish-application-manage / report-records` 所需真实业务样本，并允许继续沿用当前 dual-role 测试用户，不新增测试账号策略
+- [x] 变更时间：2026-03-26 18:21；最新 `MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续保持 `18` 页覆盖、`runtimeError=0 / skeletonOnly=0`，且 `publish-application-manage=ready`、`report-records=ready`、`search=empty`
+- [x] 变更时间：2026-03-26 18:21；今日补跑 `WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 命中 `auto_smoke_fallback_failed / cloud.callFunction:fail Error: access_token missing`；该结果判定为 DevTools 登录态噪音，不推翻 `R58` 既有技术验收通过事实
+- [x] 变更时间：2026-03-26 18:21；`R63` 页面最终结论进一步刷新为：页面 `签收通过 17 / 有条件通过 1 / 退回修复 0`，产品 `签收通过 17 / 有条件通过 1 / 退回修复 0`，体验 `签收通过 17 / 有条件通过 1 / 退回修复 0`
+- [x] 变更时间：2026-03-26 18:21；`R63` 后整体小程序正式结论继续为 `最终签收有条件通过`；当前剩余条件项只剩 `search` `1` 页，性质固定为“已补真实样本但仍未拿到关键词命中非空结果页证据”，不记为新的前端 `P0/P1`
+- [x] 变更时间：2026-03-26 18:52；已确认 `pages/plaza/search` 的最后一跳问题来自路由 `keyword` 未解码；修复后，真实请求 `keyword=上海探店合作管理样本` 已稳定命中结果列表
+- [x] 变更时间：2026-03-26 18:52；`R63` 固定复核已再次全绿：`WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-tech-acceptance-r58.mjs` 恢复 `ok=true / blocker=none / batch ok=true`，`MINIPROGRAM_REFRESH_SCREENSHOTS=1 WECHAT_DEVTOOLS_PORT=25116 node scripts/run-miniprogram-ui-inventory-r58.mjs` 继续保持 `18` 页覆盖、`runtimeError=0 / skeletonOnly=0`，且 `search=ready`
+- [x] 变更时间：2026-03-26 18:52；`R63` 页面最终结论最终刷新为：页面 `签收通过 18 / 有条件通过 0 / 退回修复 0`，产品 `签收通过 18 / 有条件通过 0 / 退回修复 0`，体验 `签收通过 18 / 有条件通过 0 / 退回修复 0`
+- [x] 变更时间：2026-03-26 18:52；`R63` 后整体小程序正式结论升级为 `最终签收通过`；当前允许表述为“18 页已全部签收通过”，但仍不得把 live screenshot 缓存回落误写成技术 blocker
 
 ## 记录规则
 

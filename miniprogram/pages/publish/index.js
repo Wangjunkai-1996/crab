@@ -76,6 +76,85 @@ function clearError(errors, field) {
     delete nextErrors[field];
     return nextErrors;
 }
+function countFilled(values) {
+    return values.filter((item) => `${item ?? ''}`.trim().length > 0).length;
+}
+function buildProgressCards(profileForm, noticeForm) {
+    const budgetFields = [
+        noticeForm.city,
+        noticeForm.settlementType,
+        noticeForm.deadlineAt,
+    ];
+    const budgetTotal = noticeForm.settlementType === 'barter' || noticeForm.settlementType === 'free_experience' ? 3 : 4;
+    const budgetDone = countFilled([
+        ...budgetFields,
+        budgetTotal === 4 ? noticeForm.budgetRange : undefined,
+    ]);
+    const cards = [
+        {
+            key: 'profile',
+            title: '发布方资料',
+            done: countFilled([profileForm.identityType, profileForm.displayName, profileForm.city, profileForm.contactType, profileForm.contactValue]),
+            total: 5,
+        },
+        {
+            key: 'core',
+            title: '通告核心信息',
+            done: countFilled([
+                noticeForm.title,
+                noticeForm.cooperationPlatform,
+                noticeForm.cooperationCategory,
+                noticeForm.cooperationType,
+            ]),
+            total: 4,
+        },
+        {
+            key: 'budget',
+            title: '合作方式与预算',
+            done: budgetDone,
+            total: budgetTotal,
+        },
+        {
+            key: 'detail',
+            title: '达人要求与说明',
+            done: countFilled([noticeForm.creatorRequirements, noticeForm.cooperationDescription]),
+            total: 2,
+        },
+    ];
+    return cards.map((item) => ({
+        ...item,
+        complete: item.done >= item.total,
+        statusText: item.done >= item.total ? '已完成' : `已完成 ${item.done}/${item.total}`,
+    }));
+}
+function buildSectionProgress(progressCards) {
+    const findCard = (key) => progressCards.find((item) => item.key === key)?.statusText || '';
+    return {
+        profile: findCard('profile'),
+        core: findCard('core'),
+        budget: findCard('budget'),
+        detail: findCard('detail'),
+    };
+}
+function buildNextStep(progressCards, profileIncomplete, draftNoticeId) {
+    if (profileIncomplete) {
+        return {
+            title: '先完成发布方资料',
+            copy: '资料保存成功后，当前页会继续保留下面已填写的通告内容，不需要重新录入。',
+        };
+    }
+    const pendingCard = progressCards.find((item) => !item.complete);
+    if (pendingCard) {
+        return {
+            title: `继续补齐「${pendingCard.title}」`,
+            copy: '当前建议沿着页面顺序往下推进，先把当前段落补完整，再决定是保存草稿还是直接提交审核。',
+        };
+    }
+    return {
+        title: draftNoticeId ? '当前草稿已可直接提审' : '当前内容已具备提审条件',
+        copy: '如果还需要和门店、品牌或同事对一次细节，可以先保存草稿；确认无误后再直接提交审核。',
+    };
+}
 Page({
     data: {
         topInset: 0,
@@ -92,6 +171,15 @@ Page({
         primaryText: '保存发布方资料',
         primaryDisabled: true,
         canSubmit: false,
+        progressCards: [],
+        sectionProgress: {
+            profile: '',
+            core: '',
+            budget: '',
+            detail: '',
+        },
+        nextStepTitle: '',
+        nextStepCopy: '',
         isFirstProfile: true,
         profileIncomplete: true,
         draftNoticeId: '',
@@ -127,6 +215,8 @@ Page({
         const draftNoticeId = `${partial.draftNoticeId ?? this.data.draftNoticeId ?? ''}`;
         const isFirstProfile = Boolean(partial.isFirstProfile ?? this.data.isFirstProfile);
         const profileIncomplete = !profileReady;
+        const progressCards = buildProgressCards(profileForm, noticeForm);
+        const nextStep = buildNextStep(progressCards, profileIncomplete, draftNoticeId);
         this.setData({
             ...partial,
             noticeForm,
@@ -134,6 +224,10 @@ Page({
             canSubmit: profileReady && noticeReady,
             primaryText: profileIncomplete ? '保存发布方资料' : '提交审核',
             primaryDisabled: profileIncomplete ? !profileReady : !noticeReady,
+            progressCards,
+            sectionProgress: buildSectionProgress(progressCards),
+            nextStepTitle: nextStep.title,
+            nextStepCopy: nextStep.copy,
             profileBadgeText: profileReady ? '资料已齐备' : isFirstProfile ? '首次必填' : '待补资料',
             draftStatusText: draftNoticeId ? '草稿已生成，可继续修改后提交审核。' : '可随时先存草稿，再回头完善。',
             profileSummaryPills: [

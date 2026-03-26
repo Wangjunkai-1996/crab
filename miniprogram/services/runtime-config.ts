@@ -4,6 +4,11 @@ import { STORAGE_KEYS } from '../constants/storage-keys';
 export type ApiMode = 'mock' | 'cloud';
 export type RuntimeFallbackReason = 'ready' | 'mock_default' | 'missing_cloud_env' | 'cloud_unavailable';
 
+export interface RuntimeOverrideInput {
+  desiredMode?: ApiMode;
+  cloudEnvId?: string;
+}
+
 export interface RuntimeSwitchState {
   desiredMode: ApiMode;
   activeMode: ApiMode;
@@ -50,9 +55,9 @@ export function persistRuntimeConfig(mode: ApiMode, cloudEnvId = '') {
   safeSetStorage(STORAGE_KEYS.cloudEnvId, cloudEnvId);
 }
 
-export function resolveRuntimeSwitchState(): RuntimeSwitchState {
-  const desiredMode = getDesiredApiMode();
-  const cloudEnvId = getCloudEnvId();
+export function resolveRuntimeSwitchState(override: RuntimeOverrideInput = {}): RuntimeSwitchState {
+  const desiredMode = override.desiredMode ?? getDesiredApiMode();
+  const cloudEnvId = override.cloudEnvId ?? getCloudEnvId();
   const cloudAvailable = typeof wx !== 'undefined' && !!wx.cloud;
 
   if (desiredMode === 'mock') {

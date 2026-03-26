@@ -1,0 +1,204 @@
+.motion-fade-in {
+  animation: motionFadeIn 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.motion-slide-up {
+  animation: motionSlideUp 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes motionFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes motionSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.glass-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: 999rpx;
+  border: 1px solid rgba(214, 224, 238, 0.92);
+  color: #152033;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.glass-chip--active {
+  color: #2457e6;
+  background: linear-gradient(180deg, rgba(47, 107, 255, 0.12), rgba(255, 255, 255, 0.9));
+  border-color: rgba(47, 107, 255, 0.28);
+  box-shadow: 0 10rpx 24rpx rgba(47, 107, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.pill-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: 999rpx;
+  border: 1px solid rgba(47, 107, 255, 0.24);
+  color: #2457e6;
+  background: rgba(47, 107, 255, 0.12);
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.pill-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: 999rpx;
+  border: 1px solid rgba(255, 181, 71, 0.28);
+  color: #d77f11;
+  background: rgba(255, 181, 71, 0.16);
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.pill-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: 999rpx;
+  border: 1px solid rgba(18, 179, 168, 0.24);
+  color: #0a766f;
+  background: rgba(18, 179, 168, 0.12);
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.pill-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56rpx;
+  padding: 0 22rpx;
+  border-radius: 999rpx;
+  border: 1px solid rgba(227, 93, 106, 0.24);
+  color: #e35d6a;
+  background: rgba(227, 93, 106, 0.12);
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.page-bottom-space {
+  height: calc(128rpx + env(safe-area-inset-bottom));
+}
+
+.divider {
+  height: 1px;
+  background: rgba(220, 229, 240, 0.92);
+}
+
+page {
+  min-height: 100%;
+  color: #152033;
+  background: radial-gradient(circle at 12% 0%, rgba(47, 107, 255, 0.18), transparent 26%), radial-gradient(circle at 86% 8%, rgba(18, 179, 168, 0.14), transparent 22%), linear-gradient(180deg, #fcfdff 0%, #eef4fa 100%);
+  font-family: "PingFang SC", "HarmonyOS Sans SC", "Noto Sans SC", sans-serif;
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: inherit;
+}
+
+button::after {
+  display: none;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 0 32rpx calc(144rpx + env(safe-area-inset-bottom));
+}
+
+.page-shell--tight-bottom {
+  padding-bottom: calc(56rpx + env(safe-area-inset-bottom));
+}
+
+.page-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.surface-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+.surface-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.38), rgba(18, 179, 168, 0.18), transparent);
+  opacity: 0.85;
+}
+.surface-card::after {
+  content: "";
+  position: absolute;
+  right: -42rpx;
+  bottom: -56rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(47, 107, 255, 0.08), transparent 68%);
+  pointer-events: none;
+}
+.surface-card {
+  padding: 24rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 250, 255, 0.92));
+  box-shadow: 0 20rpx 56rpx rgba(25, 61, 118, 0.12);
+}
+
+.panel-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.panel-copy {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #5c6980;
+}

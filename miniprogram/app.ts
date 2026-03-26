@@ -1,5 +1,6 @@
 import { getRuntimeSwitchState } from './services/cloud';
 import { performBootstrapRequest, prepareBootstrapRuntime, switchBootstrapRuntime } from './services/bootstrap.service';
+import { getStoredAutoSmokeResult, resolveAutoSmokeLaunchOptions, runAutoSmokeIfNeeded } from './services/dev-auto-smoke.service';
 import { createDevSmokeHelper } from './services/dev-smoke.service';
 import { resolveRuntimeDescription } from './services/runtime-config';
 import {
@@ -8,6 +9,46 @@ import {
   isRequestDebugEnabled,
   setRequestDebugEnabled,
 } from './utils/request-debug';
+
+const MAX_RUNTIME_ERRORS = 20;
+
+function serializePreview(input: unknown, maxLength = 600) {
+  try {
+    const text = JSON.stringify(input);
+
+    if (!text) {
+      return '';
+    }
+
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  } catch (error) {
+    return '[unserializable]';
+  }
+}
+
+function appendRuntimeErrorRecord(type: DevRuntimeErrorRecord['type'], payload: unknown) {
+  const app = getApp<IAppOption>();
+  const currentPages = typeof getCurrentPages === 'function' ? getCurrentPages() : [];
+  const currentPage = currentPages.length ? currentPages[currentPages.length - 1] : null;
+  const message =
+    payload instanceof Error
+      ? payload.message
+      : typeof payload === 'string'
+        ? payload
+        : typeof (payload as { errMsg?: string })?.errMsg === 'string'
+          ? `${(payload as { errMsg?: string }).errMsg || ''}`
+          : 'runtime_error';
+
+  const nextRecord = {
+    timestamp: Date.now(),
+    type,
+    route: `${currentPage?.route || ''}`,
+    message,
+    payloadPreview: serializePreview(payload),
+  } satisfies DevRuntimeErrorRecord;
+
+  app.globalData.runtimeErrors = [nextRecord, ...app.globalData.runtimeErrors].slice(0, MAX_RUNTIME_ERRORS);
+}
 
 function buildRuntimeDebugSummary(): RuntimeDebugSummary {
   const app = getApp<IAppOption>();
@@ -43,6 +84,8 @@ App<IAppOption>({
     runtimeMode: 'mock',
     runtimeSwitchState: getRuntimeSwitchState(),
     pendingConfirmations: [],
+    runtimeErrors: [],
+    autoSmokeResult: getStoredAutoSmokeResult(),
     requestDebug: {
       enabled: isRequestDebugEnabled(),
       setEnabled(enabled: boolean) {
@@ -78,14 +121,28 @@ App<IAppOption>({
     devSmoke: createDevSmokeHelper(() => buildRuntimeDebugSummary()),
   },
 
-  onLaunch() {
-    const snapshot = prepareBootstrapRuntime();
+  onLaunch(options: WechatMiniprogram.AnyRecord) {
+    const autoSmokeLaunch = resolveAutoSmokeLaunchOptions(options);
+    const snapshot = prepareBootstrapRuntime(
+      autoSmokeLaunch.enabled
+        ? {
+            desiredMode: autoSmokeLaunch.runtimeMode,
+            cloudEnvId: autoSmokeLaunch.cloudEnvId,
+          }
+        : undefined,
+    );
 
     this.globalData.runtimeMode = snapshot.runtimeMode;
     this.globalData.runtimeSwitchState = snapshot.runtimeSwitchState;
     this.globalData.pendingConfirmations = snapshot.pendingConfirmations;
 
     this.bootstrapApp(true);
+
+    if (autoSmokeLaunch.enabled) {
+      setTimeout(() => {
+        void runAutoSmokeIfNeeded(autoSmokeLaunch, () => buildRuntimeDebugSummary());
+      }, 0);
+    }
   },
 
   async bootstrapApp(force = false) {
@@ -107,5 +164,17 @@ App<IAppOption>({
 
     this.globalData.bootstrapPromise = task;
     return task;
+  },
+
+  onError(error: string) {
+    appendRuntimeErrorRecord('app_error', error);
+  },
+
+  onUnhandledRejection(payload: unknown) {
+    appendRuntimeErrorRecord('unhandled_rejection', payload);
+  },
+
+  onPageNotFound(payload: unknown) {
+    appendRuntimeErrorRecord('page_not_found', payload);
   },
 });

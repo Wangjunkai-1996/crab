@@ -2,7 +2,27 @@
 
 ## 项目状态
 
-当前仓库已完成多米通告 V1 的产品、交互、UI 与技术选型定稿，仍处于文档先行阶段，尚未进入正式代码开发。
+当前仓库不再是“文档先行、尚未开发”的早期状态。
+
+截至 `2026-03-27`，当前真实状态是：
+
+1. 小程序主线代码、技术验收、页面盘点与正式签收结论都已落盘
+2. 小程序当前正式结论为 `最终签收通过`
+3. 后台与后端当前转入维护态，默认只处理未来回归暴露出的最小 blocker
+4. 仓库里仍同时保留产品、设计、技术、上线与控制面文档，作为后续维护和换机接手事实源
+
+## 最新接手入口
+
+如果你是在另一台电脑接手当前项目，先看：
+
+1. [docs/engineering/Project-Handoff-2026-03-27.md](docs/engineering/Project-Handoff-2026-03-27.md)
+2. [.control-state/current/handoff-miniapp-2026-03-25.md](.control-state/current/handoff-miniapp-2026-03-25.md)
+3. [.control-state/current/board.md](.control-state/current/board.md)
+4. [.control-state/current/miniapp-signoff-conclusion-r63.md](.control-state/current/miniapp-signoff-conclusion-r63.md)
+5. [miniprogram/evidence/r58/summary.md](miniprogram/evidence/r58/summary.md)
+6. [miniprogram/evidence/r58/ui-inventory.md](miniprogram/evidence/r58/ui-inventory.md)
+
+如果只是想确认“项目现在是不是已经开发落地”，看第 `1` 和第 `4` 项即可。
 
 当前有效方向：
 
